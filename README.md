@@ -1,7 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=반미콩%20&fontSize=75)
 
 <p align='center'>
-  <a href="https://github.com/codestates-seb/seb43_pre_005/issues">
+  <a href="https://github.com/codestates-seb/seb43_pre_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
   <a href="#demo">
