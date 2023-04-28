@@ -8,5 +8,6 @@
     <img src="https://img.shields.io/badge/DEMO%20(not%20yet)%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
 </p>
+<img src="https://img.shields.io/badge/아이콘내용-바탕색?style=flat&logo=javascript&logoColor=white"/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=내용입력&fontSize=90" />
