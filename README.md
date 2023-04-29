@@ -9,18 +9,21 @@
   </a>
 </p>
 
-<br>
-
----
-
-
-# 구현 내용....
 
 <br>
 
 ---
+<div align="center">
+    <h1>구현 내용....</h1>
+</div>
 
-# Team members 👨‍👦‍👦
+
+<br>
+
+---
+<div align="center">
+    <h1>Team members 👨‍👦‍👦</h1>
+</div>
 
 <table>
   <thead>
@@ -76,9 +79,13 @@
 
 ---
 
-# Stacks used 🛒
+<div align="center">
+    <h1>Stacks used 🛒</h1>
+</div>
 
-## Tools
+<div align="center">
+    <h2>Tools</h2>
+</div>
 
 <table>
   <thead>
@@ -101,9 +108,9 @@
   </tbody>
 </table>
 
-
-
-## Back-End
+<div align="center">
+    <h2>Back-End</h2>
+</div>
 
 <table>
   <thead>
@@ -128,7 +135,9 @@
   </tbody>
 </table>
 
-## Front-End
+<div align="center">
+    <h2>Front-End</h2>
+</div>
 
 <table>
   <thead>
