@@ -75,8 +75,6 @@
 
 <br>
 
----
-
 <div align="center">
     <h1>Stacks used 🛒</h1>
     <p style="font-weight: bold; font-size:25px">Tools</p>
