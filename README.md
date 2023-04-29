@@ -79,7 +79,7 @@
 
 <div align="center">
     <h1>Stacks used 🛒</h1>
-    <h2>Tools</h2>
+    <p style="font-weight: bold; font-size:25px">Tools</p>
 <table>
   <thead>
     <tr>
@@ -100,7 +100,7 @@
     </tr>
   </tbody>
 </table>
-    <h2>Back-End</h2>
+    <p style="font-weight: bold; font-size:25px">Back-End</p>
 <table>
   <thead>
     <tr>
@@ -123,7 +123,7 @@
     </tr>
   </tbody>
 </table>
-    <h2>Front-End</h2>
+    <p style="font-weight: bold; font-size:25px">Front-End</p>
 <table>
   <thead>
     <tr>
