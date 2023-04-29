@@ -12,7 +12,7 @@
 
 <br>
 
----
+
 <div align="center">
     <h1>구현 내용....</h1>
 </div>
@@ -20,10 +20,8 @@
 
 <br>
 
----
 <div align="center">
     <h1>Team members 👨‍👦‍👦</h1>
-
 <table>
   <thead>
     <tr>
@@ -81,12 +79,7 @@
 
 <div align="center">
     <h1>Stacks used 🛒</h1>
-</div>
-
-<div align="center">
     <h2>Tools</h2>
-</div>
-
 <table>
   <thead>
     <tr>
@@ -107,11 +100,7 @@
     </tr>
   </tbody>
 </table>
-
-<div align="center">
     <h2>Back-End</h2>
-</div>
-
 <table>
   <thead>
     <tr>
@@ -134,11 +123,7 @@
     </tr>
   </tbody>
 </table>
-
-<div align="center">
     <h2>Front-End</h2>
-</div>
-
 <table>
   <thead>
     <tr>
@@ -162,6 +147,7 @@
   </tbody>
 </table>
 
+</div>
 
 <br>
 
