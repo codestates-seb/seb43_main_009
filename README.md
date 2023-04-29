@@ -23,7 +23,6 @@
 ---
 <div align="center">
     <h1>Team members 👨‍👦‍👦</h1>
-</div>
 
 <table>
   <thead>
@@ -74,6 +73,7 @@
   </tbody>
 </table>
 
+</div>
 
 <br>
 
