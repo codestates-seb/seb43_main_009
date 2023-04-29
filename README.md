@@ -32,9 +32,9 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120099321?v=4" alt="조만기" width="400"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" style="max-width: 100%"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" style="max-width: 100%"></td>
+      <td align="center"><img src="https://avatars.githubusercontent.com/u/120099321?v=4" alt="조만기" width="180"></td>
+      <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" width="180"></td>
+      <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" width="180"></td>
     </tr>
     <tr>
       <td align="center">구현 예시들</td>
