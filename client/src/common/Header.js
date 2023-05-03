@@ -3,6 +3,10 @@ import styled from "styled-components";
 import logo from "../../public/logo.png";
 import { Link } from "react-router-dom";
 
+const GlobalFont = styled.div`
+  font-family: "Noto Sans KR";
+  font-weight: 700;
+`
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -23,6 +27,10 @@ const MenuWrapper = styled.div`
   width: 100%;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Menu = styled.div`
   font-size : 20px;
   margin-left: 20px;
@@ -38,39 +46,40 @@ const UnderMenuWrapper = styled.div`
   justify-content: space-around;
   box-shadow: 0 3px 3px -3px black;
   height : 35px;
+
 `;
-;
+
 
 export const Header = () => {
   
   return(
-    <>
+    <GlobalFont>
       <HeaderWrapper>
         <Menu>❤️</Menu>
-        <Link to="/">
+        <StyledLink to="/">
           <Logo src={logo}/>
-        </Link>
+        </StyledLink>
         <MenuWrapper >
-            <Link to="/login">
+            <StyledLink to="/login">
               <Menu>로그인</Menu>
-            </Link>
-            <Link to="/login">
+            </StyledLink>
+            <StyledLink to="/login">
               <Menu className="signup">회원가입</Menu>
-            </Link>
+            </StyledLink>
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-          <Link to="/survey">
+          <StyledLink to="/survey">
             <Menu>맞춤추천</Menu>
-          </Link>
-          <Link to="/commu">
+          </StyledLink>
+          <StyledLink to="/commu">
             <Menu>커뮤니티</Menu>
-          </Link>
-          <Link to="/login">
+          </StyledLink>
+          <StyledLink to="/login">
             <Menu>의약품검색</Menu>
-          </Link>
+          </StyledLink>
       </UnderMenuWrapper>
-    </>
+    </GlobalFont>
   );
 };
 export default Header;
