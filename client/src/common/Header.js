@@ -7,11 +7,11 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  border-top : 3px solid #F05858;
+  height: 110px;
+  border-top : 5px solid #F05858;
 `;
 const Logo = styled.img`
-  height: 40px;
+  height: 50px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -22,22 +22,22 @@ const MenuWrapper = styled.div`
   justify-content: end;
   width: 100%;
 `;
+
 const Menu = styled.div`
   font-size : 20px;
   margin-left: 20px;
-  text-decoration-line: none;
+  color : black;
+  text-decoration: none;
   &.signup{
     margin-right: 20px;
   }
-
-
 `;
 
 const UnderMenuWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  border-bottom : 1px solid gray;
-  height : 20px;
+  justify-content: space-around;
+  box-shadow: 0 3px 3px -3px black;
+  height : 35px;
 `;
 ;
 
@@ -47,11 +47,10 @@ export const Header = () => {
     <>
       <HeaderWrapper>
         <Menu>❤️</Menu>
-
         <Link to="/">
           <Logo src={logo}/>
         </Link>
-        <MenuWrapper>
+        <MenuWrapper >
             <Link to="/login">
               <Menu>로그인</Menu>
             </Link>
