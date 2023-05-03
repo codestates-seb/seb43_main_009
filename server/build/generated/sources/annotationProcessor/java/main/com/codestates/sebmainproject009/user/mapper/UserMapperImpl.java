@@ -7,6 +7,7 @@ import com.codestates.sebmainproject009.user.entity.User;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
+
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
     date = "2023-05-03T14:41:42+0900",
