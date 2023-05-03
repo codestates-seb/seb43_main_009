@@ -6,6 +6,7 @@ import Header from "./Header";
 
 const MainContent = styled.div`
   display: flex;
+  border: 1px solid black;
 `;
 
 const Layout = (props) => {
