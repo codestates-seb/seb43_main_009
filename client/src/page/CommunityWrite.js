@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const CommunityWrite = () => {
-  const count = useSelector((state) => state.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -42,7 +41,6 @@ const CommunityWrite = () => {
             <button className="cancel-button" onClick={goHome}>
               취소
             </button>
-            {/* Value: {count} */}
             <button className="submit-button" onClick={handleSubmit}>
               글올리기
             </button>
