@@ -172,22 +172,18 @@
 <table>
   <thead>
     <tr>
-      <th align="center"> Java </th>
-      <th align="center"> Spring </th>
-      <th align="center"> Spring Boot </th>
-      <th align="center"> Spring Security </th>
-      <th align="center"> MySQL </th>
-      <th align="center"> AWS </th>
+      <th align="center"> React </th>
+      <th align="center"> JavaScript </th>
+      <th align="center"> HTML </th>
+      <th align="center"> CSS </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td align="center"> <img  alt="Java" src="https://techstack-generator.vercel.app/java-icon.svg" style="max-width: 100%"/> </td>
-      <td align="center"> <img alt="spring logo" src="https://simpleicons.org/icons/spring.svg" width="50" > </td>
-      <td align="center"> <img alt="spring-boot logo" src="https://simpleicons.org/icons/springboot.svg" width="60"> </td>
-      <td align="center"> <img alt="spring-security logo" src="https://simpleicons.org/icons/springsecurity.svg" width="60"></td>
-      <td align="center"> <img alt="MySQL" src="https://simpleicons.org/icons/mysql.svg" width="80"> </td>
-      <td align="center"> <img alt="AWS" src="https://simpleicons.org/icons/amazonaws.svg" width="70"> </td>
+    <tr>      
+      <td align="center"> <img alt="React" src="https://simpleicons.org/icons/react.svg" width="60"></td>
+      <td align="center"> <img alt="JavaScript" src="https://simpleicons.org/icons/javascript.svg" style="max-width: 100%"/> </td>
+      <td align="center"> <img alt="HTML" src="https://simpleicons.org/icons/html5.svg" width="50" > </td>
+      <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/css3.svg" width="60"> </td>
     </tr>
   </tbody>
 </table>
