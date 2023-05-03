@@ -2,29 +2,49 @@ import Layout from "../common/Layout";
 import styled from "styled-components";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { plus, minus } from "../redux/counterSlice";
+import { submitPost } from "../redux/counterSlice";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const CommunityWrite = () => {
   const count = useSelector((state) => state.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  console.log(title, content);
+
+  const goHome = () => {
+    navigate("/");
+  };
+
+  const handleSubmit = () => {
+    dispatch(submitPost({ title, content }));
+    goHome();
+  };
 
   return (
     <Layout>
       <CommunityBox>
         <div className="title-box">
           <div className="title">제목</div>
-          <input />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className="content-box">
           <div className="content">내용</div>
-          <textarea type="text" />
+          <textarea
+            type="text"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
           <div className="button-container">
-            <button className="submit-button" onClick={() => dispatch(minus())}>
-              글올리기
-            </button>
-            Value: {count}
-            <button className="cancel-button" onClick={() => dispatch(plus())}>
+            <button className="cancel-button" onClick={goHome}>
               취소
+            </button>
+            {/* Value: {count} */}
+            <button className="submit-button" onClick={handleSubmit}>
+              글올리기
             </button>
           </div>
         </div>
@@ -43,14 +63,16 @@ const CommunityBox = styled.div`
 
   .title-box {
     margin-top: 3rem;
-    width: 100vw;
+    width: 90vw;
     height: 100px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
 
     > .title {
+      margin-right: 34%;
       padding: 1rem;
       font-size: large;
       font-weight: bold;
@@ -58,7 +80,8 @@ const CommunityBox = styled.div`
     }
 
     input {
-      width: 40vw;
+      margin-left: 4rem;
+      width: 38vw;
       height: 4vh;
       padding: 0.5rem;
       font-size: 16px;
@@ -78,7 +101,7 @@ const CommunityBox = styled.div`
   .content-box {
     margin-top: 1rem;
     margin-left: 0.5rem;
-    width: 100vw;
+    width: 90%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -91,11 +114,12 @@ const CommunityBox = styled.div`
       font-size: large;
       font-weight: bold;
       color: #333333;
+      margin-right: 38%;
     }
 
     textarea {
-      margin-left: 2rem;
-      width: 47vw;
+      margin-left: 4rem;
+      width: 47%;
       height: 50vh;
       padding: 1rem;
       font-size: 16px;
@@ -113,8 +137,8 @@ const CommunityBox = styled.div`
     }
     .button-container {
       display: flex;
-      justify-content: space-around;
-      width: 100%;
+      justify-content: flex-end;
+      width: 53%;
       padding: 1rem 0;
       margin-top: 1rem;
     }
@@ -127,7 +151,7 @@ const CommunityBox = styled.div`
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-      margin: 4px 2px;
+      margin: 4px 0.5rem;
       cursor: pointer;
       border-radius: 1rem;
       transition: background-color 0.3s, color 0.3s;
