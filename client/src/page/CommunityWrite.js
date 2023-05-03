@@ -30,9 +30,9 @@ const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
 
   .title-box {
+    margin-top: 3rem;
     width: 100vw;
     height: 100px;
     display: flex;
@@ -50,13 +50,24 @@ const CommunityBox = styled.div`
     input {
       width: 40vw;
       height: 4vh;
-      border-radius: 1rem;
       padding: 0.5rem;
       font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      outline: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: #fdd7a0;
+        box-shadow: 0 2px 4px rgba(244, 67, 54, 0.3);
+      }
     }
   }
 
   .content-box {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
     width: 100vw;
     height: 400px;
     display: flex;
@@ -73,24 +84,34 @@ const CommunityBox = styled.div`
     }
 
     textarea {
-      width: 80vw;
-      height: 25vh;
-      border-radius: 1rem;
+      margin-left: 2rem;
+      width: 47vw;
+      height: 50vh;
       padding: 1rem;
       font-size: 16px;
       resize: vertical;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      outline: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: #fdd7a0;
+        box-shadow: 0 2px 4px rgba(244, 67, 54, 0.3);
+      }
     }
     .button-container {
       display: flex;
       justify-content: space-around;
       width: 100%;
       padding: 1rem 0;
+      margin-top: 1rem;
     }
 
-    .submit-button {
-      background-color: #f44336;
+    .submit-button,
+    .cancel-button {
       border: none;
-      color: white;
       padding: 10px 20px;
       text-align: center;
       text-decoration: none;
@@ -99,20 +120,25 @@ const CommunityBox = styled.div`
       margin: 4px 2px;
       cursor: pointer;
       border-radius: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .submit-button {
+      background-color: #f06868;
+      color: white;
+
+      &:hover {
+        background-color: #d32f2f;
+      }
     }
 
     .cancel-button {
       background-color: #ccc;
-      border: none;
       color: black;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 1rem;
+
+      &:hover {
+        background-color: #999;
+      }
     }
   }
 `;
