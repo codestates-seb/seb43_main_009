@@ -176,6 +176,9 @@
       <th align="center"> JavaScript </th>
       <th align="center"> HTML </th>
       <th align="center"> CSS </th>
+        <th align="center"> Webpack </th>
+	 <th align="center"> styled-components </th>
+	 <th align="center"> Redux </th>
     </tr>
   </thead>
   <tbody>
@@ -184,6 +187,9 @@
       <td align="center"> <img alt="JavaScript" src="https://simpleicons.org/icons/javascript.svg" style="max-width: 100%"/> </td>
       <td align="center"> <img alt="HTML" src="https://simpleicons.org/icons/html5.svg" width="50" > </td>
       <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/css3.svg" width="60"> </td>
+      <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/webpack.svg" width="60"> </td>
+       <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/styledcomponents.svg" width="60"> </td>
+        <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/redux.svg" width="60"> </td>
     </tr>
   </tbody>
 </table>
