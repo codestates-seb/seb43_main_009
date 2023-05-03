@@ -1,8 +1,13 @@
 import Layout from "../common/Layout";
 import styled from "styled-components";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { plus, minus } from "../redux/counterSlice";
 
 const CommunityWrite = () => {
+  const count = useSelector((state) => state.value);
+  const dispatch = useDispatch();
+
   return (
     <Layout>
       <CommunityBox>
@@ -14,8 +19,13 @@ const CommunityWrite = () => {
           <div className="content">내용</div>
           <textarea type="text" />
           <div className="button-container">
-            <button className="submit-button">글올리기</button>
-            <button className="cancel-button">취소</button>
+            <button className="submit-button" onClick={() => dispatch(minus())}>
+              글올리기
+            </button>
+            Value: {count}
+            <button className="cancel-button" onClick={() => dispatch(plus())}>
+              취소
+            </button>
           </div>
         </div>
       </CommunityBox>
