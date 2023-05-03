@@ -75,7 +75,7 @@ export const Header = () => {
           <StyledLink to="/commu">
             <Menu>커뮤니티</Menu>
           </StyledLink>
-          <StyledLink to="/login">
+          <StyledLink to="/signup">
             <Menu>의약품검색</Menu>
           </StyledLink>
       </UnderMenuWrapper>
