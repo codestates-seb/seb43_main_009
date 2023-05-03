@@ -1,6 +1,6 @@
+import React from "react";
 import Layout from "../common/Layout";
 import styled from "styled-components";
-import React from "react";
 import myImage from "../../public/logo.png";
 import my from "../../public/high.jpg";
 
