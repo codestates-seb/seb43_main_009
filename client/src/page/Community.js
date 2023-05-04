@@ -1,9 +1,7 @@
 import Layout from "../common/Layout";
 import styled from "styled-components";
-
 import Commpost from "./Commpost";
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
+import React, { useEffect, useState } from "react";
 
 const CommunityDesign = styled.div`
   margin: 0;
@@ -18,6 +16,7 @@ const CommunityDesign = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   font-family: "Noto Sans KR", sans-serif;
 
   .flexcontent {
@@ -81,7 +80,7 @@ const CommunityDesign = styled.div`
     justify-content: center;
     background-color: white;
     width: 70vw;
-    height: 70vh;
+    height: 77vh;
   }
 
   .writepost {
@@ -96,22 +95,20 @@ const CommunityDesign = styled.div`
 `;
 
 const Community = () => {
-  const [items, setItems] = useState([...Array(10).keys()]); // 0 ~ 9의 배열
-  const [currentPage, setCurrentPage] = useState(0);
-
-  const itemsPerPage = 3;
-  const pagesVisited = currentPage * itemsPerPage;
-
-  const displayItems = items
-    .slice(pagesVisited, pagesVisited + itemsPerPage)
-    .map((item) => <li key={item}>{item}</li>);
-
-  const pageCount = Math.ceil(items.length / itemsPerPage);
-
-  const handlePageChange = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get("http://localhost:3001/commu");
+        setData(response.data);
+      } catch (error) {
+        setError(error);
+      }
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
   return (
     <Layout>
       <CommunityDesign>
@@ -129,22 +126,8 @@ const Community = () => {
             <li className="infoview">조회수</li>
             <li className="infocreat">작성시간</li>
           </ul>
-          <Commpost />
-          <Commpost />
-        </div>
-        <div>
-          <ul>{displayItems}</ul>
-          <ReactPaginate
-            previousLabel={"이전"}
-            nextLabel={"다음"}
-            pageCount={pageCount}
-            onPageChange={handlePageChange}
-            containerClassName={"pagination"}
-            previousLinkClassName={"previous"}
-            nextLinkClassName={"next"}
-            disabledClassName={"disabled"}
-            activeClassName={"active"}
-          />
+
+          <Commpost data={data} />
         </div>
       </CommunityDesign>
     </Layout>
