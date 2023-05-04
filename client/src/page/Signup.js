@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    height: 1800px;
+    height: 1000px;
     margin-top: 50px;
 `;
 
@@ -20,7 +20,7 @@ const SignupWrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 400px;
+    height: 700px;
 `;
 
 const Logo = styled.img`
@@ -31,25 +31,28 @@ const GoogleSignup = styled.button`
     width: 290px;
     height: 37px;
     margin-bottom: 10px;
-    background-color: #23262a;
+    background-color: grey;
     color: white;
     border-radius: 3px;
+    border: none;
 `;
 const FacebookSignup = styled.button`
     width: 290px;
     height: 37px;
     margin-bottom: 10px;
-    background-color: #23262a;
+    background-color: #4967AA;
     color: white;
     border-radius: 3px;
+    border: none;
 `;
 const NaverSignup = styled.button`
     width: 290px;
-    height: 100px;
+    height: 37px;
     margin-bottom: 10px;
-    background-color: #23262a;
+    background-color: #0AC157;
     color: white;
     border-radius: 3px;
+    border: none;
 `;
 const EmailSignup = styled.form`
     display: flex;
@@ -157,7 +160,6 @@ export default function Signup() {
         <Layout>
             <Wrapper>
                 <SignupWrapper>
-                    <Logo src={logo} />
                     <GoogleSignup>Sign with Google</GoogleSignup>
                     <FacebookSignup>Sign with Facebook</FacebookSignup>
                     <NaverSignup>Sign with Naver</NaverSignup>
