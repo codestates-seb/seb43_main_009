@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 const GlobalFont = styled.div`
   font-family: "Noto Sans KR";
   font-weight: 700;
-`
+`;
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 110px;
-  border-top : 5px solid #F05858;
+  border-top: 5px solid #f05858;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -32,11 +32,11 @@ const StyledLink = styled(Link)`
 `;
 
 const Menu = styled.div`
-  font-size : 20px;
+  font-size: 20px;
   margin-left: 20px;
-  color : black;
+  color: black;
   text-decoration: none;
-  &.signup{
+  &.signup {
     margin-right: 20px;
   }
 `;
@@ -44,40 +44,37 @@ const Menu = styled.div`
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  box-shadow: 0 3px 3px -3px black;
-  height : 35px;
-
+  border-bottom: 1px solid gray;
+  height: 35px;
+  text-decoration: none;
 `;
-
-
 export const Header = () => {
-  
-  return(
+  return (
     <GlobalFont>
       <HeaderWrapper>
         <Menu>❤️</Menu>
         <StyledLink to="/">
-          <Logo src={logo}/>
+          <Logo src={logo} />
         </StyledLink>
-        <MenuWrapper >
-            <StyledLink to="/login">
-              <Menu>로그인</Menu>
-            </StyledLink>
-            <StyledLink to="/signup">
-              <Menu className="signup">회원가입</Menu>
-            </StyledLink>
+        <MenuWrapper>
+          <StyledLink to="/login">
+            <Menu>로그인</Menu>
+          </StyledLink>
+          <StyledLink to="/signup">
+            <Menu className="signup">회원가입</Menu>
+          </StyledLink>
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-          <StyledLink to="/survey">
-            <Menu>맞춤추천</Menu>
-          </StyledLink>
-          <StyledLink to="/commu">
-            <Menu>커뮤니티</Menu>
-          </StyledLink>
-          <StyledLink to="/login">
-            <Menu>의약품검색</Menu>
-          </StyledLink>
+        <StyledLink to="/survey">
+          <Menu>맞춤추천</Menu>
+        </StyledLink>
+        <StyledLink to="/commu">
+          <Menu>커뮤니티</Menu>
+        </StyledLink>
+        <StyledLink to="/login">
+          <Menu>의약품검색</Menu>
+        </StyledLink>
       </UnderMenuWrapper>
     </GlobalFont>
   );
