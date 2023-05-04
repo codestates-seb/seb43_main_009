@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-//글올리기
+
 export const submitPost = createAsyncThunk(
   "counter/submitPost",
   async ({ title, content }, { dispatch }) => {
@@ -49,6 +49,17 @@ export const deletePost = createAsyncThunk(
       await axios.delete(`http://url/commu/${commuId}`);
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const submitComment = createAsyncThunk(
+  "counter/submitComment",
+  async ({ commuId, comment }, { dispatch }) => {
+    try {
+      await axios.post(`http://url/commu/${commuId}`, { comment });
+    } catch (error) {
+      console.error(`http://url/commu/${commuId}`, error);
     }
   }
 );

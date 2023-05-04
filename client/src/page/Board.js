@@ -5,7 +5,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBoardData, deletePost, updatePost } from "../redux/counterSlice";
+import {
+  fetchBoardData,
+  deletePost,
+  updatePost,
+  submitComment,
+} from "../redux/counterSlice";
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -17,6 +22,13 @@ const Board = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedContent, setEditedContent] = useState("");
+  const [comment, setComment] = useState("");
+
+  const handleSubmitComment = useCallback(() => {
+    dispatch(submitComment({ commuId: boardData.commuId, comment }));
+    setComment("");
+  }, [dispatch, boardData.commuId, comment]);
+
   //수정
   const handleEditClick = () => {
     setShowEditForm(true);
@@ -114,8 +126,13 @@ const Board = () => {
             )}
           </div>
           <div className="write-box">
-            <input />
-            <button>댓글달기</button>
+            <input
+              type="text"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="댓글을 입력하세요"
+            />
+            <button onClick={handleSubmitComment}>댓글달기</button>
           </div>
         </div>
       </CommunityBox>
