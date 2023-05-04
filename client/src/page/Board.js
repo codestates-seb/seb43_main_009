@@ -2,14 +2,22 @@ import Layout from "../common/Layout";
 import styled from "styled-components";
 import React from "react";
 import { useEffect } from "react";
+import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBoardData } from "../redux/counterSlice";
+import { fetchBoardData, deletePost } from "../redux/counterSlice";
 
 const Board = () => {
   const dispatch = useDispatch();
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
+
+  const handleDeletePost = useCallback(() => {
+    if (window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
+      dispatch(deletePost(boardData.commuId));
+      // 삭제 후 게시글 리스트로 이동 또는 새로고침
+    }
+  }, [dispatch, boardData.commuId]);
 
   useEffect(() => {
     if (boardStatus === "idle") {
@@ -23,7 +31,7 @@ const Board = () => {
         <div className="up-box">
           <div className="button-box">
             <button>게시글 수정</button>
-            <button>게시글 삭제</button>
+            <button onClick={handleDeletePost}>게시글 삭제</button>
           </div>
           <div className="title-box">
             {boardStatus === "succeeded" && (
