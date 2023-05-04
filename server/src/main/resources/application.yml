@@ -3,12 +3,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mainproject009?crateDatabaseIfNotExist=true&createTableIfNotExist=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=true
     username: root
-    password: dh4613
+    password: 1004
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: create # (1) ???
+      ddl-auto: update # (1) ???
     show-sql: true      # (2) SQL ?? ??
     properties:
       hibernate:
