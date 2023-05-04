@@ -7,37 +7,52 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 
-
 const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    height: 100vh;
-    margin: 20px;
-    background-color : #f5f5f6;
+    height: 1000px;
+    margin-top: 50px;
 `;
-
-
 
 const SignupWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: 700px;
 `;
 
 const Logo = styled.img`
-    width: 40px;
+    width: 140px;
     margin-bottom: 20px;
 `;
-const GithubSignup = styled.button`
+const GoogleSignup = styled.button`
     width: 290px;
     height: 37px;
     margin-bottom: 10px;
-    background-color: #23262a;
+    background-color: grey;
     color: white;
     border-radius: 3px;
+    border: none;
+`;
+const FacebookSignup = styled.button`
+    width: 290px;
+    height: 37px;
+    margin-bottom: 10px;
+    background-color: #4967AA;
+    color: white;
+    border-radius: 3px;
+    border: none;
+`;
+const NaverSignup = styled.button`
+    width: 290px;
+    height: 37px;
+    margin-bottom: 10px;
+    background-color: #0AC157;
+    color: white;
+    border-radius: 3px;
+    border: none;
 `;
 const EmailSignup = styled.form`
     display: flex;
@@ -50,6 +65,7 @@ const EmailSignup = styled.form`
     border-radius: 3px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
+
 const DisplayNameWrapper = styled.div`
     display: flex;
     justify-content: start;
@@ -109,6 +125,7 @@ const SignupButton = styled.button`
     height: 35px;
     color: white;
     border-radius: 3px;
+    background-color: #F05858; 
     border: none;
     &:hover {
         cursor: pointer;
@@ -119,16 +136,16 @@ export default function Signup() {
     const navigate = useNavigate();
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
-    const [displayNameInputValue, setDisplayNameInputValue] = useState("");
+    const [DisplayNameInputValue, setDisplayNameInputValue] = useState("");
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://ec2-13-209-67-47.ap-northeast-2.compute.amazonaws.com/api/members",
+                "http://localhost:3000/",
                 {
                     email: emailInputValue,
-                    username: displayNameInputValue,
+                    username: DisplayNameInputValue,
                     password: passwordInputValue,
                 }
             );
@@ -141,40 +158,39 @@ export default function Signup() {
 
     return (
         <Layout>
-                    <Wrapper>
-            <SignupWrapper>
-                <Logo src={logo} />
-                {/* <GithubSignup>
-                    <AiFillGithub size={22} /> Sign up with Github
-                </GithubSignup> */}
-                <EmailSignup onSubmit={handleSignup}>
-                    <DisplayNameWrapper>
-                        <DisplayNameLabel>Display name</DisplayNameLabel>
-                    </DisplayNameWrapper>
-                    <DisplayNameInput
-                        type="name"
-                        onChange={(e) => setDisplayNameInputValue(e.target.value)}
-                    />
-                    <EmailWrapper>
-                        <EmailLabel>Email</EmailLabel>
-                    </EmailWrapper>
-                    <EmailInput
-                        type="email"
-                        onChange={(e) => setEmailInputValue(e.target.value)}
-                    />
-                    <PasswordWrapper>
-                        <PasswordLabel>Password</PasswordLabel>
-                        <ForgotPassword>Forgot password?</ForgotPassword>
-                    </PasswordWrapper>
-                    <PasswordInput
-                        type="password"
-                        onChange={(e) => setPasswordInputValue(e.target.value)}
-                    />
-                    {/* <Captcha /> */}
-                    <SignupButton type="submit">Sign up</SignupButton>
-                </EmailSignup>
-            </SignupWrapper>
-        </Wrapper>
+            <Wrapper>
+                <SignupWrapper>
+                    <GoogleSignup>Sign with Google</GoogleSignup>
+                    <FacebookSignup>Sign with Facebook</FacebookSignup>
+                    <NaverSignup>Sign with Naver</NaverSignup>
+                    <EmailSignup onSubmit={handleSignup}>
+                        <DisplayNameWrapper>
+                            <DisplayNameLabel>ID</DisplayNameLabel>
+                        </DisplayNameWrapper>
+                        <DisplayNameInput
+                            type="name"
+                            onChange={(e) => setDisplayNameInputValue(e.target.value)}
+                        />
+                        <EmailWrapper>
+                            <EmailLabel>Email</EmailLabel>
+                        </EmailWrapper>
+                        <EmailInput
+                            type="email"
+                            onChange={(e) => setEmailInputValue(e.target.value)}
+                        />
+                        <PasswordWrapper>
+                            <PasswordLabel>Password</PasswordLabel>
+                            <ForgotPassword>Forgot password?</ForgotPassword>
+                        </PasswordWrapper>
+                        <PasswordInput
+                            type="password"
+                            onChange={(e) => setPasswordInputValue(e.target.value)}
+                        />
+                
+                        <SignupButton type="submit">Sign up</SignupButton>
+                    </EmailSignup>
+                </SignupWrapper>
+            </Wrapper>
 
         </Layout>
 
