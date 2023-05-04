@@ -12,8 +12,8 @@ module.exports = {
   //dist 폴더에 결과물을 저장
   output: {
     path: path.resolve("./dist"),
+    publicPath: "/",
     //dist에 설정되는 파일이름
-    publicPath: '/',
     filename: "bundle.js",
     clean: true,
   },
