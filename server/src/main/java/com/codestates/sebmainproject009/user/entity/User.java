@@ -1,5 +1,6 @@
 package com.codestates.sebmainproject009.user.entity;
 
+import com.codestates.sebmainproject009.commu.entity.Commu;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +24,5 @@ public class User {
     String password;
     @Column
     LocalDateTime createAt = LocalDateTime.now();
+
 }
