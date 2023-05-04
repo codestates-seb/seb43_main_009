@@ -15,18 +15,36 @@ export const submitPost = createAsyncThunk(
   }
 );
 
+export const fetchBoardData = createAsyncThunk(
+  "counter/fetchBoardData",
+  async () => {
+    const response = await fetch("http://url/commu/commuid");
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const counterSlice = createSlice({
   name: "counter",
-  initialState: { value: 0 },
-  reducers: {
-    plus: (state) => {
-      state.value += 1;
-    },
-    minus: (state) => {
-      state.value -= 1;
-    },
+  initialState: {
+    data: [],
+    status: "idle",
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBoardData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBoardData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(fetchBoardData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { plus, minus } = counterSlice.actions;
 export default counterSlice.reducer;
