@@ -6,7 +6,7 @@ import Login from "./page/Login";
 import Signup from "./page/Signup";
 import Community from "./page/Community";
 import Survey from "./page/Survey";
-import { AuthProvider } from "./components/AuthProvider";
+import { AuthProvider } from "./common/AuthProvider";
 
 const App = () => {
   return (
