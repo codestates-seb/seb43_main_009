@@ -28,6 +28,17 @@ export const fetchBoardData = createAsyncThunk(
   }
 );
 
+export const deletePost = createAsyncThunk(
+  "counter/deletePost",
+  async (commuId, { rejectWithValue }) => {
+    try {
+      await axios.delete(`http://url/commu/posts/${commuId}`);
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
