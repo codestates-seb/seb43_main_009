@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../common/AuthProvider";
+import Layout from "../common/Layout";
 import { getCookie } from "../utils/cookies";
 
 const LoginWrapper = styled.div`
@@ -48,7 +49,7 @@ const EmailWrapper = styled.div`
 const EmailLabel = styled.div`
 	margin: 20px 10px 2px 24px;
 	font-weight: bold;
-	font-size: ${({ theme }) => theme.fontSizes.lg};
+	
 `;
 const EmailInput = styled.input`
   margin: 10px;
@@ -65,7 +66,7 @@ const PasswordWrapper = styled.div`
 const PasswordLabel = styled.div`
   margin-left: 26px;
   font-weight: bold;
-  font-size: ${({ theme }) => theme.fontSizes.lg};
+ 
 `;
 const ForgotPassword = styled.a`
   margin-right: 26px;
@@ -83,7 +84,7 @@ const LoginButton = styled.button`
   width: 240px;
   height: 35px;
   color: white;
-  background-color: ${({ theme }) => theme.colors.skyblue};
+  background-color : #F05858;
   border-radius: 3px;
   border: none;
   
@@ -112,7 +113,7 @@ const Login = () => {
       });
 
       alert("로그인 성공!");
-      navigate("/questions");
+      navigate("/survey");
     } catch (error) {
       alert("로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.");
       console.error(error);
@@ -120,28 +121,30 @@ const Login = () => {
   };
 
 	return (
-		<LoginWrapper>
-			<EmailLogin onSubmit={handleSubmit}>
-				<EmailWrapper>
-					<EmailLabel>Email</EmailLabel>
-				</EmailWrapper>
-				<EmailInput
-					type="email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<PasswordWrapper>
-					<PasswordLabel>Password</PasswordLabel>
-					<ForgotPassword>Forgot password?</ForgotPassword>
-				</PasswordWrapper>
-				<PasswordInput
-					type="password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<LoginButton type="submit">Log in</LoginButton>
-			</EmailLogin>
-		</LoginWrapper>
+    <Layout>
+      <LoginWrapper>
+        <EmailLogin onSubmit={handleSubmit}>
+          <EmailWrapper>
+            <EmailLabel>Email</EmailLabel>
+          </EmailWrapper>
+          <EmailInput
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <PasswordWrapper>
+            <PasswordLabel>Password</PasswordLabel>
+            <ForgotPassword>Forgot password?</ForgotPassword>
+          </PasswordWrapper>
+          <PasswordInput
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <LoginButton type="submit">Log in</LoginButton>
+        </EmailLogin>
+      </LoginWrapper>
+    </Layout>
 	);
 
 }
