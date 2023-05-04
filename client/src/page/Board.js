@@ -69,7 +69,10 @@ const Board = () => {
               </div>
             )}
           </div>
-          <div className="comment-write">댓글달기</div>
+          <div className="write-box">
+            <input />
+            <button>댓글달기</button>
+          </div>
         </div>
       </CommunityBox>
     </Layout>
@@ -86,7 +89,6 @@ const CommunityBox = styled.div`
   background-color: #f5f5f5;
 
   .up-box {
-    border: 1px solid #e0e0e0;
     width: 100vw;
     height: 40vh;
     display: flex;
@@ -96,7 +98,7 @@ const CommunityBox = styled.div`
     background-color: #ffffff;
 
     .button-box {
-      width: 80%;
+      width: 70%;
       display: flex;
       justify-content: flex-end;
 
@@ -124,7 +126,8 @@ const CommunityBox = styled.div`
 
     .title-box {
       border: 1px solid #e0e0e0;
-      width: 80%;
+      border-radius: 20px;
+      width: 70%;
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
@@ -132,7 +135,6 @@ const CommunityBox = styled.div`
   }
 
   .down-box {
-    border: 1px solid #e0e0e0;
     width: 100vw;
     height: 30vh;
     display: flex;
@@ -143,29 +145,47 @@ const CommunityBox = styled.div`
 
     .comment-content {
       border: 1px solid #e0e0e0;
-      width: 50%;
+      width: 60%;
       height: 30%;
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
+      margin-bottom: 2rem;
     }
 
-    .comment-write {
-      border: 1px solid #f06868;
-      width: 50%;
-      height: 30%;
-      font-size: 14px;
-      padding: 16px;
-      box-sizing: border-box;
-      background-color: #f5f5f5;
-      text-align: center;
-      cursor: pointer;
-      transition-duration: 0.4s;
+    .write-box {
+      display: flex;
+      /* border: 1px solid black; */
+      width: 60%;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 1rem;
 
-      &:hover {
-        background-color: #f06868;
+      input {
+        width: 50vw;
+        height: 70%;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+      }
+
+      button {
+        background-color: #e0e0e0;
+        border: none;
         color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        padding: 8px 24px;
+        transition-duration: 0.4s;
+
+        &:hover {
+          background-color: #f06868;
+          color: white;
+        }
       }
     }
   }
