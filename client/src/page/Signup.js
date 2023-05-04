@@ -13,6 +13,8 @@ const Wrapper = styled.div`
     justify-content: space-around;
     height: 1000px;
     margin-top: 50px;
+    font-family: "Noto Sans KR";
+    font-weight: 700;
 `;
 
 const SignupWrapper = styled.div`
@@ -57,7 +59,7 @@ const NaverSignup = styled.button`
 const EmailSignup = styled.form`
     display: flex;
     width: 290px;
-    height: 600px;
+    height: 400px;
     flex-direction: column;
     align-items: center;
     background-color : white;
@@ -121,7 +123,7 @@ const PasswordInput = styled.input`
 
 const SignupButton = styled.button`
     margin: 10px;
-    width: 240px;
+    width: 246px;
     height: 35px;
     color: white;
     border-radius: 3px;
@@ -131,8 +133,7 @@ const SignupButton = styled.button`
         cursor: pointer;
     }
 `;
-
-export default function Signup() {
+const Signup = () => {
     const navigate = useNavigate();
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -196,4 +197,4 @@ export default function Signup() {
 
     );
 }
-
+export default Signup;
