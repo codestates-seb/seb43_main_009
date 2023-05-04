@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    height: 1800px;
     margin-top: 50px;
 `;
 
@@ -20,16 +20,32 @@ const SignupWrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 50vh;
+    height: 400px;
 `;
 
 const Logo = styled.img`
     width: 140px;
     margin-bottom: 20px;
 `;
-const GithubSignup = styled.button`
+const GoogleSignup = styled.button`
     width: 290px;
     height: 37px;
+    margin-bottom: 10px;
+    background-color: #23262a;
+    color: white;
+    border-radius: 3px;
+`;
+const FacebookSignup = styled.button`
+    width: 290px;
+    height: 37px;
+    margin-bottom: 10px;
+    background-color: #23262a;
+    color: white;
+    border-radius: 3px;
+`;
+const NaverSignup = styled.button`
+    width: 290px;
+    height: 100px;
     margin-bottom: 10px;
     background-color: #23262a;
     color: white;
@@ -46,6 +62,7 @@ const EmailSignup = styled.form`
     border-radius: 3px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
+
 const DisplayNameWrapper = styled.div`
     display: flex;
     justify-content: start;
@@ -116,16 +133,16 @@ export default function Signup() {
     const navigate = useNavigate();
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
-    const [displayNameInputValue, setDisplayNameInputValue] = useState("");
+    const [DisplayNameInputValue, setDisplayNameInputValue] = useState("");
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://ec2-13-209-67-47.ap-northeast-2.compute.amazonaws.com/api/members",
+                "http://localhost:3000/",
                 {
                     email: emailInputValue,
-                    username: displayNameInputValue,
+                    username: DisplayNameInputValue,
                     password: passwordInputValue,
                 }
             );
@@ -141,7 +158,9 @@ export default function Signup() {
             <Wrapper>
                 <SignupWrapper>
                     <Logo src={logo} />
-
+                    <GoogleSignup>Sign with Google</GoogleSignup>
+                    <FacebookSignup>Sign with Facebook</FacebookSignup>
+                    <NaverSignup>Sign with Naver</NaverSignup>
                     <EmailSignup onSubmit={handleSignup}>
                         <DisplayNameWrapper>
                             <DisplayNameLabel>ID</DisplayNameLabel>
@@ -165,7 +184,7 @@ export default function Signup() {
                             type="password"
                             onChange={(e) => setPasswordInputValue(e.target.value)}
                         />
-                        {/* <Captcha /> */}
+                
                         <SignupButton type="submit">Sign up</SignupButton>
                     </EmailSignup>
                 </SignupWrapper>
