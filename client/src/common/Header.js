@@ -63,7 +63,7 @@ export const Header = () => {
             <StyledLink to="/login">
               <Menu>로그인</Menu>
             </StyledLink>
-            <StyledLink to="/login">
+            <StyledLink to="/signup">
               <Menu className="signup">회원가입</Menu>
             </StyledLink>
         </MenuWrapper>
