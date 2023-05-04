@@ -6,19 +6,23 @@ import Login from "./page/Login";
 import Signup from "./page/Signup";
 import Community from "./page/Community";
 import Survey from "./page/Survey";
+import { AuthProvider } from "./common/AuthProvider";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/commus" element={<CommunityWrite />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/commu" element={<Community />}></Route>
-        <Route path="/survey" element={<Survey />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/commus" element={<CommunityWrite />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/commu" element={<Community />}></Route>
+          <Route path="/survey" element={<Survey />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+
   );
 };
 
