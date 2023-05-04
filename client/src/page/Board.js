@@ -21,6 +21,10 @@ const Board = () => {
     <Layout>
       <CommunityBox>
         <div className="up-box">
+          <div className="button-box">
+            <button>게시글 수정</button>
+            <button>게시글 삭제</button>
+          </div>
           <div className="title-box">
             {boardStatus === "succeeded" && (
               <div>
@@ -38,6 +42,7 @@ const Board = () => {
             )}
           </div>
         </div>
+
         <div className="down-box">
           <div className="comment-content">
             {boardStatus === "succeeded" && (
@@ -60,49 +65,96 @@ const Board = () => {
 };
 
 const CommunityBox = styled.div`
-  box-sizing: 0;
+  box-sizing: border-box;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #f5f5f5;
 
   .up-box {
-    border: 1px solid black;
+    border: 1px solid #e0e0e0;
     width: 100vw;
-    height: 30vh;
+    height: 40vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #ffffff;
+
+    .button-box {
+      width: 80%;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        background-color: #f06868;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        padding: 8px 24px;
+        transition-duration: 0.4s;
+
+        &:hover {
+          background-color: white;
+          color: #f06868;
+          border: 1px solid #f06868;
+        }
+      }
+    }
 
     .title-box {
-      border: 1px solid red;
+      border: 1px solid #e0e0e0;
       width: 80%;
-      height: 80%;
+      height: 70%;
+      padding: 16px;
+      box-sizing: border-box;
     }
   }
 
   .down-box {
-    border: 1px solid black;
+    border: 1px solid #e0e0e0;
     width: 100vw;
     height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #ffffff;
 
     .comment-content {
-      border: 1px solid orange;
+      border: 1px solid #e0e0e0;
       width: 50%;
       height: 30%;
-      font-size: large;
+      font-size: 14px;
+      padding: 16px;
+      box-sizing: border-box;
+      background-color: #f5f5f5;
     }
 
     .comment-write {
-      border: 1px solid blueviolet;
+      border: 1px solid #f06868;
       width: 50%;
       height: 30%;
-      font-size: large;
+      font-size: 14px;
+      padding: 16px;
+      box-sizing: border-box;
+      background-color: #f5f5f5;
+      text-align: center;
+      cursor: pointer;
+      transition-duration: 0.4s;
+
+      &:hover {
+        background-color: #f06868;
+        color: white;
+      }
     }
   }
 `;
