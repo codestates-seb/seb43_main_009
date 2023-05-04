@@ -146,7 +146,7 @@ const Signup = () => {
                 "http://localhost:3000/",
                 {
                     email: emailInputValue,
-                    username: DisplayNameInputValue,
+                    displayName: DisplayNameInputValue,
                     password: passwordInputValue,
                 }
             );
