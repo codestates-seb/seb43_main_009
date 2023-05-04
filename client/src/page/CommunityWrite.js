@@ -15,7 +15,7 @@ const CommunityWrite = () => {
   console.log(title, content);
 
   const goHome = () => {
-    navigate("/");
+    navigate("/commu");
   };
 
   const handleSubmit = () => {

@@ -2,10 +2,10 @@ import Layout from "../common/Layout";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBoardData, deletePost } from "../redux/counterSlice";
+import { fetchBoardData, deletePost, updatePost } from "../redux/counterSlice";
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,27 @@ const Board = () => {
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
+
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editedTitle, setEditedTitle] = useState("");
+  const [editedContent, setEditedContent] = useState("");
+  //수정
+  const handleEditClick = () => {
+    setShowEditForm(true);
+    setEditedTitle(boardData.title);
+    setEditedContent(boardData.content);
+  };
+  //수정 저장
+  const handleSaveEdit = useCallback(() => {
+    dispatch(
+      updatePost({
+        commuId: boardData.commuId,
+        title: editedTitle,
+        content: editedContent,
+      })
+    );
+    setShowEditForm(false);
+  }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
   //게시글이 삭제 전에 확인메세지를 표시하고, 삭제가 완료된 후에 페이지 이동
   //혹시 delete확인이 필요하지 않다면 navigate hook을 제거할 것
@@ -34,18 +55,41 @@ const Board = () => {
       <CommunityBox>
         <div className="up-box">
           <div className="button-box">
-            <button>게시글 수정</button>
-            <button onClick={handleDeletePost}>게시글 삭제</button>
+            {showEditForm ? (
+              <>
+                <button onClick={handleSaveEdit}>저장</button>
+                <button onClick={() => setShowEditForm(false)}>취소</button>
+              </>
+            ) : (
+              <>
+                <button onClick={handleEditClick}>게시글 수정</button>
+                <button onClick={handleDeletePost}>게시글 삭제</button>
+              </>
+            )}
           </div>
           <div className="title-box">
-            {boardStatus === "succeeded" && (
+            {showEditForm ? (
               <div>
-                <h3>{boardData.title}</h3>
-                <p>{boardData.content}</p>
-                <p>작성자: {boardData.displayName}</p>
-                <p>작성시간: {boardData.createdAt}</p>
-                <p>조회수: {boardData.view}</p>
+                <input
+                  type="text"
+                  value={editedTitle}
+                  onChange={(e) => setEditedTitle(e.target.value)}
+                />
+                <textarea
+                  value={editedContent}
+                  onChange={(e) => setEditedContent(e.target.value)}
+                ></textarea>
               </div>
+            ) : (
+              boardStatus === "succeeded" && (
+                <div>
+                  <h3>{boardData.title}</h3>
+                  <p>{boardData.content}</p>
+                  <p>작성자: {boardData.displayName}</p>
+                  <p>작성시간: {boardData.createdAt}</p>
+                  <p>조회수: {boardData.view}</p>
+                </div>
+              )
             )}
             {boardStatus === "failed" && (
               <div>
@@ -131,6 +175,14 @@ const CommunityBox = styled.div`
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
+
+      input {
+        width: 80%;
+      }
+
+      textarea {
+        width: 80%;
+      }
     }
   }
 
