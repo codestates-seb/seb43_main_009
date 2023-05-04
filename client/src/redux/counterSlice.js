@@ -18,16 +18,28 @@ export const submitPost = createAsyncThunk(
 export const fetchBoardData = createAsyncThunk(
   "counter/fetchBoardData",
   async () => {
-    const response = await fetch("http://url/commu/commuid");
-    const data = await response.json();
-    return data;
+    try {
+      const response = await axios.get("http://url/commu/commuid");
+      return response.data;
+    } catch (error) {
+      console.error("http://url/commu/commuid", error);
+      throw error;
+    }
   }
 );
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    data: [],
+    data: {
+      title: "",
+      content: "",
+      createdAt: "",
+      displayName: "",
+      view: 0,
+      commuId: 0,
+      commentList: [],
+    },
     status: "idle",
     error: null,
   },
@@ -38,7 +50,13 @@ export const counterSlice = createSlice({
       })
       .addCase(fetchBoardData.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.data.title = action.payload.title;
+        state.data.content = action.payload.content;
+        state.data.createdAt = action.payload.createdAt;
+        state.data.displayName = action.payload.displayName;
+        state.data.view = action.payload.view;
+        state.data.commuId = action.payload.commuId;
+        state.data.commentList = action.payload.commentList;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
         state.status = "failed";
