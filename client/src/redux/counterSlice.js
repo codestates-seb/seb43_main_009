@@ -14,19 +14,91 @@ export const submitPost = createAsyncThunk(
     }
   }
 );
+//조회
+export const fetchBoardData = createAsyncThunk(
+  "counter/fetchBoardData",
+  async () => {
+    try {
+      const response = await axios.get("http://url/commu/commuid");
+      return response.data;
+    } catch (error) {
+      console.error("http://url/commu/commuid", error);
+      throw error;
+    }
+  }
+);
+//수정
+export const updatePost = createAsyncThunk(
+  "counter/updatePost",
+  async ({ commuId, title, content }, { dispatch }) => {
+    try {
+      await axios.patch(`http://url/commu/${commuId}`, {
+        title,
+        content,
+      });
+    } catch (error) {
+      console.error(`http://url/commu/${commuId}`, error);
+    }
+  }
+);
+//삭제
+export const deletePost = createAsyncThunk(
+  "counter/deletePost",
+  async (commuId, { rejectWithValue }) => {
+    try {
+      await axios.delete(`http://url/commu/${commuId}`);
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const submitComment = createAsyncThunk(
+  "counter/submitComment",
+  async ({ commuId, comment }, { dispatch }) => {
+    try {
+      await axios.post(`http://url/commu/${commuId}`, { comment });
+    } catch (error) {
+      console.error(`http://url/commu/${commuId}`, error);
+    }
+  }
+);
 
 export const counterSlice = createSlice({
   name: "counter",
-  initialState: { value: 0 },
-  reducers: {
-    plus: (state) => {
-      state.value += 1;
+  initialState: {
+    data: {
+      title: "",
+      content: "",
+      createdAt: "",
+      displayName: "",
+      view: 0,
+      commuId: 0,
+      commentList: [],
     },
-    minus: (state) => {
-      state.value -= 1;
-    },
+    status: "idle",
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBoardData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBoardData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data.title = action.payload.title;
+        state.data.content = action.payload.content;
+        state.data.createdAt = action.payload.createdAt;
+        state.data.displayName = action.payload.displayName;
+        state.data.view = action.payload.view;
+        state.data.commuId = action.payload.commuId;
+        state.data.commentList = action.payload.commentList;
+      })
+      .addCase(fetchBoardData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { plus, minus } = counterSlice.actions;
 export default counterSlice.reducer;

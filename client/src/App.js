@@ -6,6 +6,7 @@ import Login from "./page/Login";
 import Signup from "./page/Signup";
 import Community from "./page/Community";
 import Survey from "./page/Survey";
+import Board from "./page/Board";
 import { AuthProvider } from "./common/AuthProvider";
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/commus" element={<CommunityWrite />}></Route>
+          <Route path="/commu/posts" element={<CommunityWrite />}></Route>
+          <Route path="/commu/commuid" element={<Board />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/commu" element={<Community />}></Route>
@@ -22,7 +24,6 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
-
   );
 };
 
