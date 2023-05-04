@@ -1,5 +1,6 @@
 import Layout from "../common/Layout";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useEffect } from "react";
 import { useCallback } from "react";
@@ -8,16 +9,19 @@ import { fetchBoardData, deletePost } from "../redux/counterSlice";
 
 const Board = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
 
-  const handleDeletePost = useCallback(() => {
+  //게시글이 삭제 전에 확인메세지를 표시하고, 삭제가 완료된 후에 페이지 이동
+  //혹시 delete확인이 필요하지 않다면 navigate hook을 제거할 것
+  const handleDeletePost = useCallback(async () => {
     if (window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
-      dispatch(deletePost(boardData.commuId));
-      // 삭제 후 게시글 리스트로 이동 또는 새로고침
+      await dispatch(deletePost(boardData.commuId));
+      navigate("/commu");
     }
-  }, [dispatch, boardData.commuId]);
+  }, [dispatch, navigate, boardData.commuId]);
 
   useEffect(() => {
     if (boardStatus === "idle") {
