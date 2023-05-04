@@ -7,28 +7,24 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 
-
 const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
     height: 100vh;
-    margin: 20px;
-    background-color : #f5f5f6;
+    margin-top: 50px;
 `;
-
-
 
 const SignupWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: 50vh;
 `;
 
 const Logo = styled.img`
-    width: 40px;
+    width: 140px;
     margin-bottom: 20px;
 `;
 const GithubSignup = styled.button`
@@ -109,6 +105,7 @@ const SignupButton = styled.button`
     height: 35px;
     color: white;
     border-radius: 3px;
+    background-color: #F05858; 
     border: none;
     &:hover {
         cursor: pointer;
@@ -141,40 +138,38 @@ export default function Signup() {
 
     return (
         <Layout>
-                    <Wrapper>
-            <SignupWrapper>
-                <Logo src={logo} />
-                {/* <GithubSignup>
-                    <AiFillGithub size={22} /> Sign up with Github
-                </GithubSignup> */}
-                <EmailSignup onSubmit={handleSignup}>
-                    <DisplayNameWrapper>
-                        <DisplayNameLabel>Display name</DisplayNameLabel>
-                    </DisplayNameWrapper>
-                    <DisplayNameInput
-                        type="name"
-                        onChange={(e) => setDisplayNameInputValue(e.target.value)}
-                    />
-                    <EmailWrapper>
-                        <EmailLabel>Email</EmailLabel>
-                    </EmailWrapper>
-                    <EmailInput
-                        type="email"
-                        onChange={(e) => setEmailInputValue(e.target.value)}
-                    />
-                    <PasswordWrapper>
-                        <PasswordLabel>Password</PasswordLabel>
-                        <ForgotPassword>Forgot password?</ForgotPassword>
-                    </PasswordWrapper>
-                    <PasswordInput
-                        type="password"
-                        onChange={(e) => setPasswordInputValue(e.target.value)}
-                    />
-                    {/* <Captcha /> */}
-                    <SignupButton type="submit">Sign up</SignupButton>
-                </EmailSignup>
-            </SignupWrapper>
-        </Wrapper>
+            <Wrapper>
+                <SignupWrapper>
+                    <Logo src={logo} />
+
+                    <EmailSignup onSubmit={handleSignup}>
+                        <DisplayNameWrapper>
+                            <DisplayNameLabel>ID</DisplayNameLabel>
+                        </DisplayNameWrapper>
+                        <DisplayNameInput
+                            type="name"
+                            onChange={(e) => setDisplayNameInputValue(e.target.value)}
+                        />
+                        <EmailWrapper>
+                            <EmailLabel>Email</EmailLabel>
+                        </EmailWrapper>
+                        <EmailInput
+                            type="email"
+                            onChange={(e) => setEmailInputValue(e.target.value)}
+                        />
+                        <PasswordWrapper>
+                            <PasswordLabel>Password</PasswordLabel>
+                            <ForgotPassword>Forgot password?</ForgotPassword>
+                        </PasswordWrapper>
+                        <PasswordInput
+                            type="password"
+                            onChange={(e) => setPasswordInputValue(e.target.value)}
+                        />
+                        {/* <Captcha /> */}
+                        <SignupButton type="submit">Sign up</SignupButton>
+                    </EmailSignup>
+                </SignupWrapper>
+            </Wrapper>
 
         </Layout>
 
