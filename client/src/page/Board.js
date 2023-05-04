@@ -24,13 +24,11 @@ const Board = () => {
           <div className="title-box">
             {boardStatus === "succeeded" && (
               <div>
-                {boardData.map((item, index) => (
-                  <div key={index}>
-                    {/* Render the data here, e.g. */}
-                    <h3>{item.title}</h3>
-                    <p>{item.content}</p>
-                  </div>
-                ))}
+                <h3>{boardData.title}</h3>
+                <p>{boardData.content}</p>
+                <p>작성자: {boardData.displayName}</p>
+                <p>작성시간: {boardData.createdAt}</p>
+                <p>조회수: {boardData.view}</p>
               </div>
             )}
             {boardStatus === "failed" && (
@@ -41,7 +39,19 @@ const Board = () => {
           </div>
         </div>
         <div className="down-box">
-          <div className="comment-content">댓글내용</div>
+          <div className="comment-content">
+            {boardStatus === "succeeded" && (
+              <div>
+                {boardData.commentList.map((comment, index) => (
+                  <div key={index}>
+                    <p>댓글 작성자: {comment.displayName}</p>
+                    <p>댓글 내용: {comment.content}</p>
+                    <p>댓글 작성시간: {comment.createdAt}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="comment-write">댓글달기</div>
         </div>
       </CommunityBox>
