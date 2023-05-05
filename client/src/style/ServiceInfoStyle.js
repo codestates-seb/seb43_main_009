@@ -2,6 +2,8 @@ import styled from "styled-components";
 import main1 from "../../public/1.png";
 import main2 from "../../public/2.png";
 import main3 from "../../public/3.png";
+import { keyframes } from "styled-components";
+
 export const SServiceInfoLayout = styled.div`
   width: 100%;
   margin-bottom: 100px;
@@ -12,6 +14,7 @@ export const SServiceInfoSection = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   @media only screen and (max-width: 500px) {
     display: flex;
     flex-direction: column;
@@ -23,6 +26,16 @@ export const SServiceInfoSection = styled.div`
 const landingIntroduce1 = main1;
 const landingIntroduce2 = main2;
 const landingIntroduce3 = main3;
+
+export const slide = keyframes`
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
 
 export const SIntroduceImg1 = styled.div`
   margin: 200px 80px 100px 0;
@@ -41,6 +54,7 @@ export const SIntroduceImg1 = styled.div`
     background-size: 500px;
     background-position: center center;
   }
+  animation: ${slide} 2s ease-out;
 `;
 
 export const SIntroduceImg2 = styled(SIntroduceImg1)`
