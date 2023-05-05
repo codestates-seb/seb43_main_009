@@ -44,7 +44,7 @@ const Commpost = ({ data }) => {
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
-
+  console.log(data);
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(data.slice(itemOffset, endOffset));
@@ -59,17 +59,16 @@ const Commpost = ({ data }) => {
   return (
     <CommpostDesign>
       {currentItems &&
-        currentItems.map((el) => {
-          <ul className="list">
+        currentItems.map((el) => (
+          <ul className="list" key={el.commuId}>
             <li className="postid">{el && el.commuId}</li>
             <li className="postname">{el.diplayName}</li>
-            {console.log(data)}
             <li className="posttitle">{el.title}</li>
             <li className="postview">{el.view}</li>
             <li className="postcreat">{el.createdAt}</li>
             <li>asdasdasd</li>
-          </ul>;
-        })}
+          </ul>
+        ))}
     </CommpostDesign>
   );
 };

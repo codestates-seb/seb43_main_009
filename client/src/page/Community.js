@@ -98,7 +98,7 @@ const CommunityDesign = styled.div`
 const Community = () => {
   const [data, setData] = useState([]);
   const [isloading, setIsLoading] = useState();
-  const [errot, setError] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,6 +113,14 @@ const Community = () => {
     };
     fetchData();
   }, []);
+
+  if (isloading) {
+    return <div>Loading</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <Layout>
