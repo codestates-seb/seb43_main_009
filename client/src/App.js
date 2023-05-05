@@ -6,6 +6,7 @@ import Login from "./page/Login";
 import Signup from "./page/Signup";
 import Community from "./page/Community";
 import Survey from "./page/Survey";
+import Search from "./page/Search";
 import Board from "./page/Board";
 import { AuthProvider } from "./common/AuthProvider";
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/commu" element={<Community />}></Route>
           <Route path="/survey" element={<Survey />}></Route>
+          <Route path="/search" element={<Search />}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
