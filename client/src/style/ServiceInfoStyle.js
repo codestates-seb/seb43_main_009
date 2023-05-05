@@ -37,6 +37,16 @@ export const slide = keyframes`
   }
 `;
 
+export const slide2 = keyframes`
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
 export const SIntroduceImg1 = styled.div`
   margin: 200px 80px 100px 0;
   width: 425px;
@@ -63,6 +73,7 @@ export const SIntroduceImg2 = styled(SIntroduceImg1)`
   @media only screen and (max-width: 500px) {
     margin: 0 80px 100px 80px;
   }
+  animation: ${slide2} 2s ease-out;
 `;
 
 export const SIntroduceImg3 = styled(SIntroduceImg1)`
