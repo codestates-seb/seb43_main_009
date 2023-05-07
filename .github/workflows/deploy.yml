@@ -1,4 +1,6 @@
-ame: Deploy to GitHub Pages
+
+name: Deploy to GitHub Pages
+
 
 on:
   push:
@@ -34,6 +36,7 @@ jobs:
           if [ ! -d "client/build" ]; then
             exit 1
           fi
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

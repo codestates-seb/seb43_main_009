@@ -39,21 +39,20 @@ const CommpostDesign = styled.div`
   }
 `;
 
-const Commpost = (props) => {
-  const { data } = props;
+const Commpost = ({ data }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
-
+  console.log(data);
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(data && data.slice(itemOffset, endOffset));
-    setpageCount(Math.ceil(data && data.length / itemsPerPage));
+    setCurrentItems(data.slice(itemOffset, endOffset));
+    setpageCount(Math.ceil(data.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, data]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
 
@@ -61,24 +60,15 @@ const Commpost = (props) => {
     <CommpostDesign>
       {currentItems &&
         currentItems.map((el) => (
-          <ul className="list">
-            <li className="postid">{el.commuId}</li>
+          <ul className="list" key={el.commuId}>
+            <li className="postid">{el && el.commuId}</li>
             <li className="postname">{el.diplayName}</li>
             <li className="posttitle">{el.title}</li>
             <li className="postview">{el.view}</li>
             <li className="postcreat">{el.createdAt}</li>
+            <li>asdasdasd</li>
           </ul>
         ))}
-
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
     </CommpostDesign>
   );
 };
