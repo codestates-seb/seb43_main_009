@@ -39,7 +39,7 @@ jobs:
     
     # build한 후 프로젝트를 압축합니다.
     - name: Make zip file
-      run: zip -r ./practice-deploy.zip .
+      run: zip -r ./seb-main-project-009.zip .
       shell: bash
     
     # Access Key와 Secret Access Key를 통해 권한을 확인합니다.
@@ -53,4 +53,4 @@ jobs:
     
     # 압축한 프로젝트를 S3로 전송합니다.
     - name: Upload to AWS S3
-      run: aws s3 cp --region ap-northeast-2 ./server.seb-main-project-009 s3://$S3_BUCKET_NAME/server.seb-main-project-009.zip
+      run: aws s3 cp --region ap-northeast-2 ./seb-main-project-009 s3://$S3_BUCKET_NAME/seb-main-project-009.zip
