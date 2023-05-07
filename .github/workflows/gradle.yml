@@ -53,9 +53,4 @@ jobs:
     
     # 압축한 프로젝트를 S3로 전송합니다.
     - name: Upload to AWS S3
-      run: |
-          aws deploy push \\
-            --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \\
-            --ignore-hidden-files \\
-            --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \\
-            --source .
+      run: aws s3 cp --region ap-northeast-2 ./server.seb-main-project-009 s3://$S3_BUCKET_NAME/server.seb-main-project-009.zip
