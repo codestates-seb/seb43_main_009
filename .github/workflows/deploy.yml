@@ -1,0 +1,49 @@
+ame: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - FE
+  pull_request:
+    branches:
+      - FE
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: client
+
+      - name: Build
+        run: npm run build
+        working-directory: client
+
+      - name: Check if build is successful
+        run: |
+          if [ ! -d "client/build" ]; then
+            exit 1
+          fi
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/build
