@@ -8,7 +8,10 @@ permissions:
   contents: read
   
 env:
+  AWS_REGION: ap-northeast-2
   S3_BUCKET_NAME: dowajoyak.shop
+  CODE_DEPLOY_APPLICATION_NAME: dowajoyak-client-codeDeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-client-codeDeploy-group
 
 jobs:
   build:
@@ -49,5 +52,10 @@ jobs:
         aws-region: ap-northeast-2
     
     # 압축한 프로젝트를 S3로 전송합니다.
-    - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
+    - name: Upload to AWS S3
+      run: |
+          aws deploy push \\
+            --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \\
+            --ignore-hidden-files \\
+            --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \\
+            --source .
