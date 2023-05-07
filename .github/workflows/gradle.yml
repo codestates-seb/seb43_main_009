@@ -9,7 +9,9 @@ permissions:
   
 env:
   S3_BUCKET_NAME: dowajoyak.shop
-
+  AWS_REGION: ap-northeast-2
+  CODE_DEPLOY_APPLICATION_NAME: dowajoyak-client-codeDeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-client-codeDeploy-group
 jobs:
   build:
 
@@ -27,7 +29,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      uses: server/gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
     
