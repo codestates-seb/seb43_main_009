@@ -13,15 +13,14 @@ env:
   CODE_DEPLOY_APPLICATION_NAME: dowajoyak-client-codeDeploy
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-client-codeDeploy-group
 
-defaults:
-  run:
-    shell: bash
-    working-directory: ./server
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./server
+        
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
