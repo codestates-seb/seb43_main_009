@@ -54,3 +54,10 @@ jobs:
     # 압축한 프로젝트를 S3로 전송합니다.
     - name: Upload to AWS S3
       run: aws s3 cp --region ap-northeast-2 ./seb-main-project-009.zip s3://$S3_BUCKET_NAME/seb-main-project-009.zip
+    # CodeDeploy에게 배포 명령을 내립니다.
+    - name: Code Deploy
+      run: >
+        aws deploy create-deployment --application-name $CODE_DEPLOY_APPLICATION_NAME
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name $CODE_DEPLOY_DEPLOYMENT_GROUP_NAME
+        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=seb-main-project-009.zip
