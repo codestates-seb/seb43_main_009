@@ -19,7 +19,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: scripts
+        working-directory: ./server
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
