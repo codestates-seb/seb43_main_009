@@ -9,10 +9,7 @@ permissions:
   
 env:
   S3_BUCKET_NAME: dowajoyak.shop
-  AWS_REGION: ap-northeast-2
-  CODE_DEPLOY_APPLICATION_NAME: dowajoyak-client-codeDeploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-client-codeDeploy-group
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
