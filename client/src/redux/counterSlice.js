@@ -5,12 +5,21 @@ export const submitPost = createAsyncThunk(
   "counter/submitPost",
   async ({ title, content }, { dispatch }) => {
     try {
-      await axios.post("http://url/commu/posts", {
-        title,
-        content,
-      });
+      await axios.post(
+        "ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/posts",
+        {
+          title,
+          content,
+        },
+        {
+          withCredentials: true,
+        }
+      );
     } catch (error) {
-      console.error("http://url/commu/posts", error);
+      console.error(
+        "ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/posts",
+        error
+      );
     }
   }
 );
