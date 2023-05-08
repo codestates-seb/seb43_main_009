@@ -15,8 +15,9 @@ const Step4 = ({ disease,  allergy, nextSteps, prevSteps, form, submitForm}) => 
         </p>
 
         <p>
-        <button onClick={prevSteps}>이전</button>
-        <button onClick={submitForm}>제출</button>
+            <button onClick={prevSteps}>이전</button>
+            <button onClick={nextSteps}>다음</button>
+            <button onClick={submitForm}>제출</button>
         </p>
         
     </>
