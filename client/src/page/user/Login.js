@@ -101,7 +101,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/users/login", {
         email,
         password,
       });
