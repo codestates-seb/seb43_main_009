@@ -44,7 +44,7 @@ const Menu = styled.div`
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  border-bottom: 1px solid gray;
+  border-bottom: 0.5px solid var(--gray-200);
   height: 35px;
   text-decoration: none;
 `;
@@ -72,7 +72,7 @@ export const Header = () => {
         <StyledLink to="/commu">
           <Menu>커뮤니티</Menu>
         </StyledLink>
-        <StyledLink to="/login">
+        <StyledLink to="/search">
           <Menu>의약품검색</Menu>
         </StyledLink>
       </UnderMenuWrapper>
