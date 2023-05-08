@@ -81,7 +81,7 @@ const CommunityDesign = styled.div`
     justify-content: center;
     background-color: white;
     width: 70vw;
-    height: 77vh;
+    height: 80vh;
   }
 
   .writepost {
