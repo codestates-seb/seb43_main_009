@@ -1,7 +1,9 @@
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 import styled from "styled-components";
 import Commpost from "./Commpost";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CommunityDesign = styled.div`
   margin: 0;
@@ -45,6 +47,9 @@ const CommunityDesign = styled.div`
       text-align: right;
       margin-right: 25px;
       font-family: "MaplestoryOTFBold";
+      &:hover {
+        background-color: #d32f2f;
+      }
     }
   }
 
@@ -80,7 +85,7 @@ const CommunityDesign = styled.div`
     justify-content: center;
     background-color: white;
     width: 70vw;
-    height: 77vh;
+    height: 80vh;
   }
 
   .writepost {
@@ -95,7 +100,11 @@ const CommunityDesign = styled.div`
 `;
 
 const Community = () => {
+  const Navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [isloading, setIsLoading] = useState();
+  const [error, setError] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -109,6 +118,19 @@ const Community = () => {
     };
     fetchData();
   }, []);
+
+  if (isloading) {
+    return <div>Loading</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const goWrite = () => {
+    Navigate("/commu/posts");
+  };
+
   return (
     <Layout>
       <CommunityDesign>
@@ -116,7 +138,9 @@ const Community = () => {
           <div className="flexcontent">
             <span className="community">커뮤니티</span>
             <button className="writebutton">
-              <span className="writepost">글쓰기</span>
+              <span className="writepost" onClick={goWrite}>
+                글쓰기
+              </span>
             </button>
           </div>
           <ul className="writeinfo">
@@ -126,7 +150,6 @@ const Community = () => {
             <li className="infoview">조회수</li>
             <li className="infocreat">작성시간</li>
           </ul>
-
           <Commpost data={data} />
         </div>
       </CommunityDesign>
