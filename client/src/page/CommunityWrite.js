@@ -26,6 +26,7 @@ const CommunityWrite = () => {
   return (
     <Layout>
       <CommunityBox>
+        <div className="doctor-box"></div>
         <div className="title-box">
           <div className="title">제목</div>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
