@@ -104,7 +104,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/login",
+        "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/login",
         { email, password }
       );
       setAuthState({
