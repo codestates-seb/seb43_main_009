@@ -1,25 +1,24 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import React from "react";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
 
 const CommpostDesign = styled.div`
   margin: 0;
   padding: 0;
   border: 0;
+
   font-size: 100%;
   font-family: "Noto Sans KR", sans-serif;
   vertical-align: baseline;
 
-  ul {
+  .list {
     display: flex;
     background-color: #ffa1a1;
-    overflow: hidden;
     white-space: nowrap;
     align-items: center;
-    height: 20px;
-    line-height: 20px;
+    height: 15px;
+    line-height: 15px;
     cursor: pointer;
     .postid {
       flex: 0.2;
@@ -36,6 +35,35 @@ const CommpostDesign = styled.div`
     .postcreat {
       flex: 0.3;
     }
+  }
+
+  .pagestyle {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    width: 70%;
+    border: none;
+    height: 7px;
+    margin-left: 8vw;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999999;
+  }
+  .active {
+    border: 1px solid black;
+    width: 30px;
+    color: #ff0033;
+    text-decoration: underline;
+  }
+
+  .pagelink:hover {
+    color: #333333;
+    text-decoration: underline;
+  }
+  .previous,
+  .next {
+    color: #333333;
   }
 `;
 
@@ -60,15 +88,28 @@ const Commpost = ({ data }) => {
     <CommpostDesign>
       {currentItems &&
         currentItems.map((el) => (
-          <ul className="list" key={el.commuId}>
-            <li className="postid">{el && el.commuId}</li>
-            <li className="postname">{el.diplayName}</li>
+          <ul className="list">
+            <li className="postid">{el.commuId}</li>
+            <li className="postname">{el.displayName}</li>
             <li className="posttitle">{el.title}</li>
             <li className="postview">{el.view}</li>
             <li className="postcreat">{el.createdAt}</li>
-            <li>asdasdasd</li>
           </ul>
         ))}
+
+      <ReactPaginate
+        className="pagestyle"
+        nextLabel="다음 ▶︎"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="◀︎ 이전"
+        renderOnZeroPageCount={null}
+        previousClassName="previous"
+        activeClassName="active"
+        NextClassName="next"
+        pageLinkClassName="pagelink"
+      />
     </CommpostDesign>
   );
 };
