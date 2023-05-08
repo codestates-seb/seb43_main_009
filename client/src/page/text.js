@@ -3,10 +3,6 @@ import styled from "styled-components";
 import logo from "../../public/logo.png";
 import { Link } from "react-router-dom";
 
-const GlobalFont = styled.div`
-  font-family: "Noto Sans KR";
-  font-weight: 700;
-`;
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -26,11 +22,6 @@ const MenuWrapper = styled.div`
   justify-content: end;
   width: 100%;
 `;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
 const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
@@ -44,39 +35,39 @@ const Menu = styled.div`
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  border-bottom: 0.5px solid var(--gray-200);
+  border-bottom: 1px solid gray;
   height: 35px;
-  text-decoration: none;
 `;
 export const Header = () => {
   return (
-    <GlobalFont>
+    <>
       <HeaderWrapper>
-        <Menu>❤️</Menu>
-        <StyledLink to="/">
+        <Menu>:heart:</Menu>
+
+        <Link to="/">
           <Logo src={logo} />
-        </StyledLink>
+        </Link>
         <MenuWrapper>
-          <StyledLink to="/login">
+          <Link to="/login">
             <Menu>로그인</Menu>
-          </StyledLink>
-          <StyledLink to="/signup">
+          </Link>
+          <Link to="/login">
             <Menu className="signup">회원가입</Menu>
-          </StyledLink>
+          </Link>
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-        <StyledLink to="/survey">
+        <Link to="/survey">
           <Menu>맞춤추천</Menu>
-        </StyledLink>
-        <StyledLink to="/commu">
+        </Link>
+        <Link to="/commu">
           <Menu>커뮤니티</Menu>
-        </StyledLink>
-        <StyledLink to="/search">
+        </Link>
+        <Link to="/login">
           <Menu>의약품검색</Menu>
-        </StyledLink>
+        </Link>
       </UnderMenuWrapper>
-    </GlobalFont>
+    </>
   );
 };
 export default Header;
