@@ -7,6 +7,11 @@ import { keyframes } from "styled-components";
 export const SServiceInfoLayout = styled.div`
   width: 100%;
   margin-bottom: 100px;
+  font-family: "MaplestoryOTFBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 `;
 
 export const SServiceInfoSection = styled.div`
@@ -91,7 +96,7 @@ export const STextIntroduceSection = styled.div`
   }
 `;
 
-export const STextTitle = styled.h1`
+export const STextTitle1 = styled.h1`
   line-height: 40px;
   color: var(--gray-800);
   font-weight: 600;
@@ -100,10 +105,26 @@ export const STextTitle = styled.h1`
   text-align: right;
 `;
 
-export const STextSub = styled.h2`
+export const STextSub1 = styled.h2`
   line-height: 30px;
   color: var(--gray-700);
   font-weight: 600;
   font-size: 18px;
   text-align: right;
+`;
+export const STextTitle2 = styled.h1`
+  line-height: 40px;
+  color: var(--gray-800);
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0 0 20px 0;
+  text-align: left;
+`;
+
+export const STextSub2 = styled.h2`
+  line-height: 30px;
+  color: var(--gray-700);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
 `;
