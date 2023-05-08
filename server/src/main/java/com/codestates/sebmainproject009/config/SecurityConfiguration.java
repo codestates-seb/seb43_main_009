@@ -22,7 +22,7 @@ public class SecurityConfiguration {//인증 방식과 웹페이지 접근 권�
                 .loginProcessingUrl("/process_login")
                 .failureUrl("/auths/login-form?error")
                 .and()
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .anyRequest()
                 .permitAll();
         return http.build();
