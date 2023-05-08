@@ -40,16 +40,12 @@ const Survey = () => {
             {
                 step === 1 &&
                 <Step1 
-                
-                disease={disease}
-                changeInput={changeInput}
-                prevSteps={prevSteps}
                 nextSteps={nextSteps}
                 />
             }{
                 step ===2 &&
                 <Step2
-                allergy = {allergy}
+                disease={disease}
                 changeInput={changeInput}
                 prevSteps={prevSteps}
                 nextSteps={nextSteps}
@@ -57,7 +53,6 @@ const Survey = () => {
             }{
                 step===3 &&
                 <Step3
-                disease={disease}
                 allergy = {allergy}
                 changeInput={changeInput}
                 prevSteps={prevSteps}
@@ -66,7 +61,11 @@ const Survey = () => {
             }{
                 step ===4 &&
                 <Step4
-                form={form}
+                disease={disease}
+                allergy = {allergy}
+                changeInput={changeInput}
+                prevSteps={prevSteps}
+                nextSteps={nextSteps}
                 />
             }
             

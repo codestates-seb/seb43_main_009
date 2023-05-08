@@ -1,43 +1,35 @@
 import React from 'react';
 
-const Step2 = ({allergy, prevSteps, nextSteps, changeInput}) => {
-    const handleAllergyClick = (e) => {
-        changeInput({ target: { name: "allergy", value: e.target.value } });
-      };
-    return (
-        <>
-            <p>
-                <label>알레르기  </label> :
-                <button value="카페인" onClick={handleAllergyClick}>
-                카페인
-                </button>
-                <button value="아스피린" onClick={handleAllergyClick}>
-                아스피린
-                </button>
-                <button value="항생제" onClick={handleAllergyClick}>
-                항생제
-                </button>
-                <button value="소염진통제" onClick={handleAllergyClick}>
-                소염진통제
-                </button>
-                <button value="ACE길항제" onClick={handleAllergyClick}>
-                ACE길항제
-                </button>
-                <button value="잔틴산화억제제" onClick={handleAllergyClick}>
-                잔틴산화억제제
-                </button>
-                <button value="유당" onClick={handleAllergyClick}>
-                유당
-                </button>
-            </p>
+const Step2 = ({ disease, changeInput, nextSteps }) => {
+  const handleDiseaseClick = (e) => {
+    changeInput({ target: { name: "disease", value: e.target.value } });
+  };
 
-            <p>
-            <button onClick={prevSteps}>이전</button>
-            <button onClick={nextSteps}>다음</button>
-            </p>
-            
-        </>
-    );
+  return (
+    <>
+      <p>
+        <label>불편한곳 </label> :
+        <button value="소화" onClick={handleDiseaseClick}>
+          소화, 장
+        </button>
+        <button value="피부" onClick={handleDiseaseClick}>
+          피부
+        </button>
+        <button value="눈" onClick={handleDiseaseClick}>
+          눈
+        </button>
+        <button value="면역" onClick={handleDiseaseClick}>
+          면역
+        </button>
+        <button value="피로" onClick={handleDiseaseClick}>
+          피로
+        </button>
+      </p>
+      <p>
+        <button onClick={nextSteps}>다음</button>
+      </p>
+    </>
+  );
 };
 
 export default Step2;
