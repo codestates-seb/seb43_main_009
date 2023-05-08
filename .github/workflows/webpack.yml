@@ -5,6 +5,8 @@ on:
     branches: [ "FE" ]
     paths:
       - 'client/**'
+  pull_request:
+    branches: [ "FE" ]
       
 defaults:
   run:
