@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import React from "react";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 const CommpostDesign = styled.div`
   margin: 0;
@@ -20,6 +21,9 @@ const CommpostDesign = styled.div`
     height: 15px;
     line-height: 15px;
     cursor: pointer;
+    &:hover {
+      background-color: #fddcdc;
+    }
     .postid {
       flex: 0.2;
     }
@@ -68,6 +72,7 @@ const CommpostDesign = styled.div`
 `;
 
 const Commpost = ({ data }) => {
+  const Navigate = useNavigate();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -84,11 +89,20 @@ const Commpost = ({ data }) => {
     setItemOffset(newOffset);
   };
 
+  const goBoard = (el) => {
+    Navigate(`/commu/${el.commuId}`);
+  };
+
   return (
     <CommpostDesign>
       {currentItems &&
         currentItems.map((el) => (
-          <ul className="list">
+          <ul
+            className="list"
+            onClick={() => {
+              goBoard(el);
+            }}
+          >
             <li className="postid">{el.commuId}</li>
             <li className="postname">{el.displayName}</li>
             <li className="posttitle">{el.title}</li>
