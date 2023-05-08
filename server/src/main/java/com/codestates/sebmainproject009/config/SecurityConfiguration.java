@@ -2,42 +2,35 @@ package com.codestates.sebmainproject009.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
-public class SecurityConfiguration {//인증 방식과 웹페이지 접근 권한 설정
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{// http 보안설정
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .formLogin()
-                .loginPage("/auths/login-form")
-                .loginProcessingUrl("/process_login")
-                .failureUrl("/auths/login-form?error")
-                .and()
-                .authorizeHttpRequests()
-                .anyRequest()
-                .permitAll();
-        return http.build();
-
+                .cors().and()
+                .authorizeRequests()
+                .anyRequest().permitAll();
     }
 
     @Bean
-    public UserDetailsManager userDetailsManager(){//인터페이스
-        UserDetails userDetails =
-                User.withDefaultPasswordEncoder()//패스워드 암호화
-                        .username("kevin@gmail.com")//고유 사용자를 식별할 수 있는 아이디
-                        .password("1111")//1111를 암호화
-                        .roles("USER")//역할 지정
-                        .build();
-
-        return new InMemoryUserDetailsManager(userDetails);
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("https://dowajoyak.shop"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration.applyPermitDefaultValues());
+        return source;
     }
 }
