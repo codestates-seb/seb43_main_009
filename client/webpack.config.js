@@ -5,8 +5,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const dotenv = require("dotenv");
 const webpack = require("webpack");
 
-module.exports = () => {
-  dotenv.config();
+module.exports = (env) => {
+  if (env.DEV) {
+    dotenv.config({ path: "./dev.env" });
+  } else {
+    dotenv.config({ path: "./.env" });
+  }
   return {
     mode: "development",
     //여러개의 모듈로 연결되어 있는 시작점
