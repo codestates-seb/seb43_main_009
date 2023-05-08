@@ -7,7 +7,7 @@ const Step1 = ({ disease, changeInput, nextSteps }) => {
 
   return (
     <p>
-    <button onClick={nextSteps}>시작하기</button>
+      <button onClick={nextSteps}>시작하기</button>
     </p>
   );
 };

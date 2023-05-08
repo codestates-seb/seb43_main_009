@@ -3,6 +3,7 @@ import Step1 from './SurveyStep/Step1';
 import Step2 from './SurveyStep/Step2';
 import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4'; 
+import Step5 from './SurveyStep/Step5'; 
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookies";
 import axios from 'axios';
@@ -84,7 +85,13 @@ const Survey = () => {
                 allergy = {allergy}
                 changeInput={changeInput}
                 prevSteps={prevSteps}
+                nextSteps={nextSteps}
                 submitForm={submitForm}
+                form = {form}
+                />
+            }{
+                step ===5 &&
+                <Step5
                 form = {form}
                 />
             }
