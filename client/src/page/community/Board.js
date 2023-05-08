@@ -24,6 +24,8 @@ const Board = () => {
   const [editedContent, setEditedContent] = useState("");
   const [comment, setComment] = useState("");
 
+  const commentList = boardData.commentList || [];
+
   const handleSubmitComment = useCallback(() => {
     dispatch(submitComment({ commuId: boardData.commuId, comment }));
     setComment("");
@@ -115,7 +117,7 @@ const Board = () => {
           <div className="comment-content">
             {boardStatus === "succeeded" && (
               <div>
-                {boardData.commentList.map((comment, index) => (
+                {commentList.map((comment, index) => (
                   <div key={index}>
                     <p>댓글 작성자: {comment.displayName}</p>
                     <p>댓글 내용: {comment.content}</p>
