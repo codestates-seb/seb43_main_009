@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../common/AuthProvider";
-import Layout from "../common/Layout";
-import { getCookie } from "../utils/cookies";
+import { useAuthContext } from "../../common/AuthProvider";
+import Layout from "../../common/Layout";
+import { getCookie } from "../../utils/cookies";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -29,15 +29,15 @@ const GithubLogin = styled.button`
   border-radius: 3px;
 `;
 const EmailLogin = styled.form`
-	display: flex;
-	width: 290px;
-	height: 255px;
-	flex-direction: column;
-	align-items: center;
-	border: 1px solid #bbbbbb;
-	background-color: white;
-	border-radius: 3px;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  width: 290px;
+  height: 255px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #bbbbbb;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
 
 const EmailWrapper = styled.div`
@@ -47,9 +47,8 @@ const EmailWrapper = styled.div`
   width: 100%;
 `;
 const EmailLabel = styled.div`
-	margin: 20px 10px 2px 24px;
-	font-weight: bold;
-	
+  margin: 20px 10px 2px 24px;
+  font-weight: bold;
 `;
 const EmailInput = styled.input`
   margin: 10px;
@@ -66,7 +65,6 @@ const PasswordWrapper = styled.div`
 const PasswordLabel = styled.div`
   margin-left: 26px;
   font-weight: bold;
- 
 `;
 const ForgotPassword = styled.a`
   margin-right: 26px;
@@ -84,13 +82,13 @@ const LoginButton = styled.button`
   width: 240px;
   height: 35px;
   color: white;
-  background-color : #F05858;
+  background-color: #f05858;
   border-radius: 3px;
   border: none;
-  
+
   &:hover {
-		cursor: pointer;
-	}
+    cursor: pointer;
+  }
 `;
 
 const Login = () => {
@@ -103,10 +101,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/login",
-        { email, password }
-      );
+      const response = await axios.post("http://localhost:3000/login", {
+        email,
+        password,
+      });
       setAuthState({
         token: response.headers.authorization,
         refresh: response.headers.refresh,
@@ -120,7 +118,7 @@ const Login = () => {
     }
   };
 
-	return (
+  return (
     <Layout>
       <LoginWrapper>
         <EmailLogin onSubmit={handleSubmit}>
@@ -145,7 +143,6 @@ const Login = () => {
         </EmailLogin>
       </LoginWrapper>
     </Layout>
-	);
-
-}
+  );
+};
 export default Login;
