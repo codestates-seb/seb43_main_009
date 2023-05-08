@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .anyRequest().permitAll();
+                .antMatchers("/**").permitAll();
     }
 
     @Bean
@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedOrigin("https://dowajoyak.shop");
         configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration.applyPermitDefaultValues());
         return source;
