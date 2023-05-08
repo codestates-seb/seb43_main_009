@@ -14,13 +14,13 @@ const CommunityWrite = () => {
 
   console.log(title, content);
 
-  const goHome = () => {
-    navigate("/commu");
-  };
+  // const goHome = () => {
+  //   navigate("/commu");
+  // };
 
   const handleSubmit = () => {
     dispatch(submitPost({ title, content }));
-    goHome();
+    // goHome();
   };
 
   return (
@@ -38,9 +38,7 @@ const CommunityWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           />
           <div className="button-container">
-            <button className="cancel-button" onClick={goHome}>
-              취소
-            </button>
+            <button className="cancel-button">취소</button>
             <button className="submit-button" onClick={handleSubmit}>
               글올리기
             </button>
