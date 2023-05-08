@@ -1,30 +1,35 @@
 import React from 'react';
 
-const Step1 = ({name, age, addr, tel, changeInput, nextSteps}) => {
-    return (
-        <>
-            <p>
-                <label>이름  </label> :
-                <input type="text" value={name} name="name" onChange={changeInput}/>
-            </p>
-            <p>
-                <label>나이  </label> :
-                <input type="text" value={age} name="age" onChange={changeInput}/>
-            </p>
-            <p>
-                <label>주소  </label> :
-                <input type="text" value={addr} name="addr" onChange={changeInput}/>
-            </p>
-            <p>
-                <label>연락처  </label> :
-                <input type="text" value={tel} name="tel" onChange={changeInput}/>
-            </p>
-            <p>
-            <button onClick={nextSteps}>다음</button>
-            </p>
-            
-        </>
-    );
+const Step1 = ({ disease, changeInput, nextSteps }) => {
+  const handleDiseaseClick = (e) => {
+    changeInput({ target: { name: "disease", value: e.target.value } });
+  };
+
+  return (
+    <>
+      <p>
+        <label>불편한곳 </label> :
+        <button value="소화" onClick={handleDiseaseClick}>
+          소화, 장
+        </button>
+        <button value="피부" onClick={handleDiseaseClick}>
+          피부
+        </button>
+        <button value="눈" onClick={handleDiseaseClick}>
+          눈
+        </button>
+        <button value="면역" onClick={handleDiseaseClick}>
+          면역
+        </button>
+        <button value="피로" onClick={handleDiseaseClick}>
+          피로
+        </button>
+      </p>
+      <p>
+        <button onClick={nextSteps}>다음</button>
+      </p>
+    </>
+  );
 };
 
 export default Step1;
