@@ -2,6 +2,7 @@ import Layout from "../common/Layout";
 import styled from "styled-components";
 import Commpost from "./Commpost";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const CommunityDesign = styled.div`
   margin: 0;
@@ -96,6 +97,9 @@ const CommunityDesign = styled.div`
 
 const Community = () => {
   const [data, setData] = useState([]);
+  const [isloading, setIsLoading] = useState();
+  const [error, setError] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -109,6 +113,15 @@ const Community = () => {
     };
     fetchData();
   }, []);
+
+  if (isloading) {
+    return <div>Loading</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <Layout>
       <CommunityDesign>
@@ -126,7 +139,6 @@ const Community = () => {
             <li className="infoview">조회수</li>
             <li className="infocreat">작성시간</li>
           </ul>
-
           <Commpost data={data} />
         </div>
       </CommunityDesign>
