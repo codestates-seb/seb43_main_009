@@ -29,7 +29,6 @@ jobs:
     - name: Build webpack
       run: |
         npm i
-        npm run dev
         npm run build
         
     # Access Key와 Secret Access Key를 통해 권한을 확인합니다.
