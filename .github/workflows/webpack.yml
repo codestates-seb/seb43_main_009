@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: 16
 
-    - name: Build
+    - name: Build webpack
       run: |
         npm i
         npm run dev
