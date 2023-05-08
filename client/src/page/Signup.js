@@ -143,7 +143,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://localhost:3000/",
+                "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/signup",
                 {
                     email: emailInputValue,
                     displayName: DisplayNameInputValue,
@@ -153,6 +153,7 @@ const Signup = () => {
             alert("회원가입 성공!");
             navigate("/login");
         } catch (error) {
+            alert("회원가입에 실패했습니다. Email과 Password를 다시 확인해주세요.");
             console.error(error);
         }
     };
