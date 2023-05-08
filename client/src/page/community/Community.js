@@ -1,4 +1,4 @@
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 import styled from "styled-components";
 import Commpost from "./Commpost";
 import React, { useEffect, useState } from "react";

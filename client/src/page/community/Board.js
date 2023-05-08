@@ -1,4 +1,4 @@
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import React from "react";
@@ -10,7 +10,7 @@ import {
   deletePost,
   updatePost,
   submitComment,
-} from "../redux/counterSlice";
+} from "../../redux/counterSlice";
 
 const Board = () => {
   const dispatch = useDispatch();
