@@ -10,18 +10,12 @@ const Survey = () => {
     const[step, setStep] = useState(1) //페이지 전환을 위한 useState
     const[form, setForm] = useState(
         {
-            name :'',
-            age : '',
-            addr : '',
-            tel : '',
-            job : '',
-            email : '',
-            sex : '',
-            interest : '',
+            disease : '',
+            allergy : '',
         }
     ) //사용자로부터 입력받을 값들 초기화(default값 설정)
     
-    const {name, age, addr, tel, job, email, sex, interest} = form
+    const {disease, allergy} = form
     //JSX내에서 간단하게 사용하기 위해 비구조할당
 
     const changeInput = (e)=>{ 		//input란에 이벤트(e)가 생길경우 
@@ -39,7 +33,7 @@ const Survey = () => {
         setStep(step-1)			//이전 페이지로
     } 
 
-
+    console.log(form);
 
     return (
       <Layout>
@@ -47,33 +41,25 @@ const Survey = () => {
             {
                 step === 1 &&
                 <Step1 
-                name={name} 
-                age={age}
-                addr={addr}
-                tel={tel}
+                
+                disease={disease}
                 changeInput={changeInput}
-                nextSteps={nextSteps}/>
+                prevSteps={prevSteps}
+                nextSteps={nextSteps}
+                />
             }{
                 step ===2 &&
                 <Step2
-                job = {job}
-                email={email}
-                sex={sex}
-                interest={interest}
+                allergy = {allergy}
                 changeInput={changeInput}
                 prevSteps={prevSteps}
-                nextSteps={nextSteps}/>
+                nextSteps={nextSteps}
+                />
             }{
                 step===3 &&
                 <Step3
-                name={name} 
-                age={age}
-                addr={addr}
-                tel={tel}
-                job = {job}
-                email={email}
-                sex={sex}
-                interest={interest}
+                disease={disease}
+                allergy = {allergy}
                 changeInput={changeInput}
                 prevSteps={prevSteps}
                 nextSteps={nextSteps}
@@ -81,7 +67,8 @@ const Survey = () => {
             }{
                 step ===4 &&
                 <Step4
-                name={name}/>
+                form={form}
+                />
             }
             
         </div>
