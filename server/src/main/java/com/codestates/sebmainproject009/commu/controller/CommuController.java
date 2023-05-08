@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,11 @@ public class CommuController {
         return new ResponseEntity<>(mapper.commuToCommuResponseDto(commu), HttpStatus.OK);
     }
 
-
+    @GetMapping("/all")
+    public ResponseEntity getCommuAll(){
+        List<Commu> commuList = commuService.findCommuList();
+        return new ResponseEntity<>(mapper.commuListToCommuResponsesDtoList(commuList), HttpStatus.OK);
+    }
 
 
     @GetMapping()
