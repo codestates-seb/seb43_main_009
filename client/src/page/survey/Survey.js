@@ -3,7 +3,7 @@ import Step1 from './SurveyStep/Step1';
 import Step2 from './SurveyStep/Step2';
 import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4'; //스텝별로 만들어둔 컴포넌트 import
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 
 const Survey = () => {
     const[step, setStep] = useState(1) //페이지 전환을 위한 useState
