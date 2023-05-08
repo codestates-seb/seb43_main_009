@@ -7,7 +7,7 @@ on:
       - 'client/**'
 defaults:
   run:
-    working-directory: ./client # workflow에서 default working directory
+    working-directory: ./client #default working directory
 jobs:
   build:
     runs-on: ubuntu-latest
