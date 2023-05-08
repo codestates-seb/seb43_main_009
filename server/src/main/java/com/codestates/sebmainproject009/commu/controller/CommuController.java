@@ -48,7 +48,7 @@ public class CommuController {
 
     @GetMapping()
     public ResponseEntity getCommus(@RequestParam(required = false, defaultValue = "1") int page,
-                                    @RequestParam(required = false, defaultValue = "15") int size) {
+                                    @RequestParam(required = false, defaultValue = "6") int size) {
         Page<Commu> commuPage = commuService.findCommus(page - 1, size);
         List<Commu> commuList = commuPage.getContent();
 
