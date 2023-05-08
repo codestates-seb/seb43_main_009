@@ -1,8 +1,8 @@
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 import styled from "styled-components";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { submitPost } from "../redux/counterSlice";
+import { submitPost } from "../../redux/counterSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
