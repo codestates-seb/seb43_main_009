@@ -11,7 +11,7 @@ const CommunityWrite = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const [userId, setUserId] = useState("");
   console.log(title, content);
 
   // const goHome = () => {
@@ -19,7 +19,7 @@ const CommunityWrite = () => {
   // };
 
   const handleSubmit = () => {
-    dispatch(submitPost({ title, content }));
+    dispatch(submitPost({ title, content, userId }));
     // goHome();
   };
 
@@ -28,7 +28,7 @@ const CommunityWrite = () => {
       <CommunityBox>
         <div className="doctor-box"></div>
         <div className="title-box">
-          <div className="title">제목</div>
+          <div className="title">제목{userId}</div>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className="content-box">
