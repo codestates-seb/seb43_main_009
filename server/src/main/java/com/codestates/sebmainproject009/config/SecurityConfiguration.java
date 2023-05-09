@@ -29,7 +29,7 @@ import java.util.Arrays;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity(debug=true)
 public class SecurityConfiguration {
 
     private final JwtTokenizer jwtTokenizer;
