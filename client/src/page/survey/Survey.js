@@ -49,7 +49,7 @@ const Survey = () => {
   console.log(form);
 
 
-    // 로그인 안했으면 회원가입 페이지로 보냄
+    // 로그인 안했으면 회원가입 페이지로 보냄!
     // useEffect(() => {
     //     if (getCookie("token") === null) {
     //       alert("맞춤추천 서비스는 회원가입 후 사용할 수 있습니다!")
