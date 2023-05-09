@@ -11,16 +11,16 @@ const CommunityWrite = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const [userId, setUserId] = useState("");
   console.log(title, content);
 
-  const goHome = () => {
-    navigate("/commu");
-  };
+  // const goHome = () => {
+  //   navigate("/commu");
+  // };
 
   const handleSubmit = () => {
-    dispatch(submitPost({ title, content }));
-    goHome();
+    dispatch(submitPost({ title, content, userId }));
+    // goHome();
   };
 
   return (
@@ -28,7 +28,7 @@ const CommunityWrite = () => {
       <CommunityBox>
         <div className="doctor-box"></div>
         <div className="title-box">
-          <div className="title">제목</div>
+          <div className="title">제목{userId}</div>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className="content-box">
@@ -39,9 +39,7 @@ const CommunityWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           />
           <div className="button-container">
-            <button className="cancel-button" onClick={goHome}>
-              취소
-            </button>
+            <button className="cancel-button">취소</button>
             <button className="submit-button" onClick={handleSubmit}>
               글올리기
             </button>

@@ -1,6 +1,6 @@
 import Layout from "../../common/Layout";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
@@ -15,19 +15,38 @@ import {
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const boardData = useSelector((state) => state.counter.data);
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
+  // const submitData = useSelector((state) => state.counter.data);
+  // const submitStatus = useSelector((state) => state.counter.status);
 
+  const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedContent, setEditedContent] = useState("");
   const [comment, setComment] = useState("");
 
+  useEffect(() => {
+    {
+      dispatch(fetchBoardData(commuId));
+    }
+  }, [dispatch, commuId]);
+
+  console.log(boardData);
+  const commentList = boardData.comments || [];
+  console.log(commentList);
+
   const handleSubmitComment = useCallback(() => {
-    dispatch(submitComment({ commuId: boardData.commuId, comment }));
+    if (comment.trim() === "") {
+      // 댓글 내용이 비어있는 경우
+      alert("댓글 내용을 입력해주세요.");
+      return;
+    }
+    dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
     setComment("");
-  }, [dispatch, boardData.commuId, comment]);
+  }, [dispatch, boardData.commuId, comment, commuId]);
 
   //수정
   const handleEditClick = () => {
@@ -55,12 +74,6 @@ const Board = () => {
       navigate("/commu");
     }
   }, [dispatch, navigate, boardData.commuId]);
-
-  useEffect(() => {
-    if (boardStatus === "idle") {
-      dispatch(fetchBoardData());
-    }
-  }, [boardStatus, dispatch]);
 
   return (
     <Layout>
@@ -115,11 +128,17 @@ const Board = () => {
           <div className="comment-content">
             {boardStatus === "succeeded" && (
               <div>
-                {boardData.commentList.map((comment, index) => (
-                  <div key={index}>
-                    <p>댓글 작성자: {comment.displayName}</p>
-                    <p>댓글 내용: {comment.content}</p>
-                    <p>댓글 작성시간: {comment.createdAt}</p>
+                {commentList.map((comment) => (
+                  <div key={comment.commentId}>
+                    <div>
+                      <span>댓글 작성자: {comment.displayName}</span>
+                    </div>
+                    <div>
+                      <span>댓글 내용: {comment.comment}</span>
+                    </div>
+                    <div>
+                      <span>댓글 작성시간: {comment.createdAt}</span>
+                    </div>
                   </div>
                 ))}
               </div>
