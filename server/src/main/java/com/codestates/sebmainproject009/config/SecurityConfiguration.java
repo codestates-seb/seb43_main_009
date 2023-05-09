@@ -10,6 +10,7 @@ import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,7 +31,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity(debug=true)
 public class SecurityConfiguration {
-
 
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
@@ -57,15 +57,23 @@ public class SecurityConfiguration {
                 .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
-                .authorizeRequests(authorize->authorize
+                .authorizeHttpRequests(authorize->authorize
                         .antMatchers(HttpMethod.POST, "/*/users/signup").permitAll() // 회원가입은 누구나
                         .antMatchers(HttpMethod.PATCH, "/*/users/**").hasRole("USER") // 회원 정보 수정은 USER 만
                         .antMatchers(HttpMethod.GET, "/*/users/**").hasAnyRole("USER","ADMIN") // 특정 회원은 ADMIN, USER 아무나
                         .antMatchers(HttpMethod.DELETE, "/*/users/**").hasRole("USER") // 회원 삭제는 USER 만
-                        .anyRequest().permitAll());
-        // 현재 Spring boot 버젼에서 authorizeHttpRequests 가 안됨. authorizeRequest 는 이전 방식이다.
+                        .anyRequest().permitAll()
+                );
+
+        // 현재 Spring boot 버젼에서 authorizeHttpRequests 가 안됨. authorizeRequest 는 바뀐 방식이다.
         return http.build();
     }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -78,11 +86,6 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     public class CustomFilterConfigurer extends AbstractHttpConfigurer<CustomFilterConfigurer, HttpSecurity> {
