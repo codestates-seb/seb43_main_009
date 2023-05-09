@@ -1,6 +1,6 @@
 import Layout from "../../common/Layout";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
@@ -18,7 +18,7 @@ const Board = () => {
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
-
+  const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedContent, setEditedContent] = useState("");
@@ -65,9 +65,9 @@ const Board = () => {
 
   useEffect(() => {
     if (boardStatus === "idle") {
-      dispatch(fetchBoardData());
+      dispatch(fetchBoardData(commuId));
     }
-  }, [boardStatus, dispatch]);
+  }, [boardStatus, dispatch, commuId]);
 
   return (
     <Layout>
