@@ -18,8 +18,9 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Service
 @RequiredArgsConstructor
+@Transactional
+@Service
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -61,6 +62,7 @@ public class UserService {
         userRepository.delete(findUser);
     }
 
+    @Transactional(readOnly = true)
     public User findVerifiedUser(long userId){
         Optional<User>optionalUser = userRepository.findById(userId);
 
