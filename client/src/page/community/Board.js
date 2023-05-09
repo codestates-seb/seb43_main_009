@@ -27,6 +27,11 @@ const Board = () => {
   const commentList = boardData.commentList || [];
 
   const handleSubmitComment = useCallback(() => {
+    if (comment.trim() === "") {
+      // 댓글 내용이 비어있는 경우
+      alert("댓글 내용을 입력해주세요.");
+      return;
+    }
     dispatch(submitComment({ commuId: boardData.commuId, comment }));
     setComment("");
   }, [dispatch, boardData.commuId, comment]);
@@ -117,11 +122,17 @@ const Board = () => {
           <div className="comment-content">
             {boardStatus === "succeeded" && (
               <div>
-                {commentList.map((comment, index) => (
-                  <div key={index}>
-                    <p>댓글 작성자: {comment.displayName}</p>
-                    <p>댓글 내용: {comment.content}</p>
-                    <p>댓글 작성시간: {comment.createdAt}</p>
+                {commentList.map((comment) => (
+                  <div key={comment.commentId}>
+                    <div>
+                      <span>댓글 작성자: {comment.displayName}</span>
+                    </div>
+                    <div>
+                      <span>댓글 내용: {comment.content}</span>
+                    </div>
+                    <div>
+                      <span>댓글 작성시간: {comment.createdAt}</span>
+                    </div>
                   </div>
                 ))}
               </div>
