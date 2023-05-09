@@ -58,7 +58,7 @@ const Survey = () => {
   return (
     <Layout>
       <div className="wrap">
-        {step === 1 && <Step1 nextSteps={nextSteps} />}
+        {step === 1 && <Step5 nextSteps={nextSteps} />}
         {step === 2 && (
           <Step2
             disease={disease}
