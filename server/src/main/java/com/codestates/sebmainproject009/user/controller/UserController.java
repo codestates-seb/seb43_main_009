@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Positive;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/users")
@@ -20,7 +23,8 @@ public class UserController {
     private final UserMapper mapper;
 
     @PostMapping("/signup")
-    public ResponseEntity postUser(@RequestBody UserPostDto userPostDto){
+    public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto){
+
         User user = userService.createUser(mapper.userPostDtoToUser(userPostDto));
 
 
@@ -28,23 +32,24 @@ public class UserController {
     }
 
     @PatchMapping("/{userId}")
-    public ResponseEntity patchUser(@PathVariable long userId,
+    public ResponseEntity patchUser(@PathVariable @Positive long userId,
                                     @RequestBody UserPatchDto userPatchDto){
         userPatchDto.setUserId(userId);
+
         User user = userService.updateUser(mapper.userPatchDtoToUser(userPatchDto));
 
         return new ResponseEntity<>(mapper.userToUserResponseDto(user),HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity getUser(@PathVariable long userId){
+    public ResponseEntity getUser(@PathVariable @Positive long userId){
         User user = userService.findUser(userId);
 
         return new ResponseEntity<>(mapper.userToUserResponseDto(user),HttpStatus.OK);
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity deleteUser(@PathVariable long userId){
+    public ResponseEntity deleteUser(@PathVariable @Positive long userId){
         userService.deleteUser(userId);
 
         return new ResponseEntity<>(HttpStatus.OK);
