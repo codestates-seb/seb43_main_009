@@ -30,12 +30,12 @@ public class UserDetailsService implements org.springframework.security.core.use
         Optional<User> optionalMember = userRepository.findByEmail(username);
         User findUser = optionalMember.orElseThrow(()->new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
 
-        return new UserDetailsImpl(findUser);
+        return new UserDetails(findUser);
     }
 
-    private final class UserDetailsImpl extends User implements UserDetails{
+    private final class UserDetails extends User implements org.springframework.security.core.userdetails.UserDetails{
 
-        public UserDetailsImpl(User user) {
+        public UserDetails(User user) {
             setUserId(user.getUserId());
             setEmail(user.getEmail());
             setPassword(user.getPassword());
