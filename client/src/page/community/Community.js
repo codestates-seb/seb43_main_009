@@ -109,7 +109,9 @@ const Community = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:3001/commu");
+        const response = await axios.get(
+          "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/all"
+        );
         setData(response.data);
       } catch (error) {
         setError(error);
