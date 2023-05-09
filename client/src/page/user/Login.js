@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../common/AuthProvider";
 import Layout from "../../common/Layout";
 import { getCookie } from "../../utils/cookies";
+import KakaoLogin from "./KakaoLogin"
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -25,15 +26,7 @@ const GoogleLogin = styled.button`
   border-radius: 3px;
   border: none;
 `;
-const FacebookLogin = styled.button`
-  width: 290px;
-  height: 37px;
-  margin-bottom: 10px;
-  background-color: #4967aa;
-  color: white;
-  border-radius: 3px;
-  border: none;
-`;
+
 const NaverLogin = styled.button`
   width: 290px;
   height: 37px;
@@ -139,7 +132,7 @@ const Login = () => {
     <Layout>
       <LoginWrapper>
           <GoogleLogin>Login with Google</GoogleLogin>
-          <FacebookLogin>Login with Facebook</FacebookLogin>
+          <KakaoLogin>Login with Kakao</KakaoLogin>
           <NaverLogin>Login with Naver</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
