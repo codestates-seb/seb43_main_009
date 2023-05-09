@@ -28,7 +28,7 @@ export const submitPost = createAsyncThunk(
 //조회
 export const fetchBoardData = createAsyncThunk(
   "counter/fetchBoardData",
-  async (commuId = 3) => {
+  async (commuId) => {
     try {
       const response = await axios.get(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
@@ -49,7 +49,7 @@ export const fetchBoardData = createAsyncThunk(
 //수정
 export const updatePost = createAsyncThunk(
   "counter/updatePost",
-  async ({ commuId = 3, title, content }, { dispatch }) => {
+  async ({ commuId, title, content }, { dispatch }) => {
     try {
       await axios.patch(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
@@ -88,16 +88,22 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   "counter/submitComment",
-  async ({ commuId = 3, comment }, { dispatch }) => {
+  async ({ commuId, comment, userId }, { dispatch }) => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        { comment },
+        { comment, userId: 1, commuId },
         {
           withCredentials: true,
         }
       );
-      return response.data.commentList; // 응답으로 받은 댓글 목록을 반환합니다.
+      const response = await axios.get(
+        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data;
     } catch (error) {
       console.error(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
@@ -107,7 +113,6 @@ export const submitComment = createAsyncThunk(
   }
 );
 //쿠키에 토큰값이 저장되서
-//
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
@@ -118,7 +123,7 @@ export const counterSlice = createSlice({
       displayName: "",
       view: 0,
       commuId: 0,
-      commentList: [],
+      comments: [],
     },
     status: "idle",
     error: null,
@@ -130,6 +135,7 @@ export const counterSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchBoardData.fulfilled, (state, action) => {
+        console.log("Payload:", action.payload);
         state.status = "succeeded";
         state.data.title = action.payload.title;
         state.data.content = action.payload.content;
@@ -137,11 +143,16 @@ export const counterSlice = createSlice({
         state.data.displayName = action.payload.displayName;
         state.data.view = action.payload.view;
         state.data.commuId = action.payload.commuId;
-        state.data.commentList = action.payload.commentList;
+        state.data.comments = action.payload.comments;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(submitComment.fulfilled, (state, action) => {
+        console.log("Payload:", action.payload);
+        state.status = "succeeded";
+        state.data.comments = action.payload.comments; // 받아온 댓글 목록을 state에 저장합니다.
       });
   },
 });
