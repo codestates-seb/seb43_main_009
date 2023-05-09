@@ -5,15 +5,25 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: update # (1) ???
-    show-sql: true      # (2) SQL ?? ??
+      ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
         show_sql: true
-        format_sql: true  # (3) SQL pretty print
+        format_sql: true
+  cloud:
+    aws:
+      s3:
+        bucket: dowajoyak.shop
+      region:
+        static: ap-northeast-2
 logging:
   level:
     org:
       springframework:
         orm:
           jpa: DEBUG
+
+jwt:
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
