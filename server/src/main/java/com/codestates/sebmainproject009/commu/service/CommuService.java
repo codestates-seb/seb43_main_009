@@ -62,6 +62,10 @@ public class CommuService {
         return commuRepository.findAll(PageRequest.of(page, size, Sort.by("commuId").descending()));
     }
 
+    public List<Commu> findCommuList(){
+        return commuRepository.findAll();
+    }
+
     public void deleteCommu(long commuId){
         commuRepository.deleteById(commuId);
     }
