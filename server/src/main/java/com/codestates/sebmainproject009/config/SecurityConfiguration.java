@@ -28,8 +28,9 @@ import java.util.Arrays;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity(debug = true)
-public class SecurityConfiguration  {
+@EnableWebSecurity(debug=true)
+public class SecurityConfiguration {
+
 
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
