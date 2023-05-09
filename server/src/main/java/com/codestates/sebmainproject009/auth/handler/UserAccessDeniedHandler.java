@@ -14,7 +14,6 @@ import java.io.IOException;
 
 
 @Slf4j
-@Component
 public class UserAccessDeniedHandler implements AccessDeniedHandler {
 
     /*
