@@ -69,7 +69,7 @@ export const SIntroduceImg1 = styled.div`
     background-size: 500px;
     background-position: center center;
   }
-  animation: ${slide} 2s ease-out;
+  animation: ${slide} 6s ease-out;
 `;
 
 export const SIntroduceImg2 = styled(SIntroduceImg1)`
@@ -78,7 +78,7 @@ export const SIntroduceImg2 = styled(SIntroduceImg1)`
   @media only screen and (max-width: 500px) {
     margin: 0 80px 100px 80px;
   }
-  animation: ${slide2} 2s ease-out;
+  animation: ${slide2} 6s ease-out;
 `;
 
 export const SIntroduceImg3 = styled(SIntroduceImg1)`

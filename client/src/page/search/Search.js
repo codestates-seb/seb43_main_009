@@ -1,4 +1,4 @@
-import Layout from "../common/Layout";
+import Layout from "../../common/Layout";
 import styled from "styled-components";
 import React, { useState } from "react";
 import axios from "axios";
@@ -63,7 +63,7 @@ const Search = () => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/search?searchTerm=${searchTerm}`
+        `http://localhost:4000/search?=${searchTerm}`
       );
       setData(response.data);
     } catch (error) {
