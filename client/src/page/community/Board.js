@@ -15,16 +15,28 @@ import {
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const boardData = useSelector((state) => state.counter.data);
   const boardData = useSelector((state) => state.counter.data);
   const boardStatus = useSelector((state) => state.counter.status);
   const boardError = useSelector((state) => state.counter.error);
+  // const submitData = useSelector((state) => state.counter.data);
+  // const submitStatus = useSelector((state) => state.counter.status);
+
   const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedContent, setEditedContent] = useState("");
   const [comment, setComment] = useState("");
 
-  const commentList = boardData.commentList || [];
+  useEffect(() => {
+    {
+      dispatch(fetchBoardData(commuId));
+    }
+  }, [dispatch, commuId]);
+
+  console.log(boardData);
+  const commentList = boardData.comments || [];
+  console.log(commentList);
 
   const handleSubmitComment = useCallback(() => {
     if (comment.trim() === "") {
@@ -32,9 +44,9 @@ const Board = () => {
       alert("댓글 내용을 입력해주세요.");
       return;
     }
-    dispatch(submitComment({ commuId: boardData.commuId, comment }));
+    dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
     setComment("");
-  }, [dispatch, boardData.commuId, comment]);
+  }, [dispatch, boardData.commuId, comment, commuId]);
 
   //수정
   const handleEditClick = () => {
@@ -62,12 +74,6 @@ const Board = () => {
       navigate("/commu");
     }
   }, [dispatch, navigate, boardData.commuId]);
-
-  useEffect(() => {
-    if (boardStatus === "idle") {
-      dispatch(fetchBoardData(commuId));
-    }
-  }, [boardStatus, dispatch, commuId]);
 
   return (
     <Layout>
@@ -128,7 +134,7 @@ const Board = () => {
                       <span>댓글 작성자: {comment.displayName}</span>
                     </div>
                     <div>
-                      <span>댓글 내용: {comment.content}</span>
+                      <span>댓글 내용: {comment.comment}</span>
                     </div>
                     <div>
                       <span>댓글 작성시간: {comment.createdAt}</span>
