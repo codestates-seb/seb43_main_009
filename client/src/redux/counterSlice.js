@@ -106,7 +106,8 @@ export const submitComment = createAsyncThunk(
     }
   }
 );
-
+//쿠키에 토큰값이 저장되서
+//
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
