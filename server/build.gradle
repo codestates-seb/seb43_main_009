@@ -25,6 +25,13 @@ ext {
 	set('springCloudVersion', "2021.0.5")
 }
 
+dependencyManagement {
+	imports {
+		//mavenBom "org.springframework.cloud:spring-cloud-starter:${springCloudVersion}"
+		//mavenBom "io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config:2.4.4"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -48,7 +55,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 	// AWS paramStore 사용
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE'
+	//implementation 'org.springframework.cloud:spring-cloud-dependencies:2022.0.2'
 	// JWT 기능을 위한 jjwt 라이브러리
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
@@ -58,15 +66,15 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE'
+	//implementation 'org.springframework.cloud:spring-cloud-aws-context:${springCloudVersion}'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE'
 
+	//implementation 'org.springframework.cloud:spring-cloud-dependencies:2022.0.2'
+
+	//implementation 'org.springframework.cloud:spring-cloud-starter-parent:2022.0.2'
 }
 
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
-}
+
 
 tasks.named('test') {
 	useJUnitPlatform()
