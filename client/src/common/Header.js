@@ -4,7 +4,7 @@ import logo from "../../public/logo.png";
 import { Link } from "react-router-dom";
 
 const GlobalFont = styled.div`
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
 `;
 const HeaderWrapper = styled.div`
