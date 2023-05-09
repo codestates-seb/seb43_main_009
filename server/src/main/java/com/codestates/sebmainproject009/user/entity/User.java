@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,13 +18,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long userId;
-    @Column
+    @Column(updatable = false, nullable = false, unique = true)
     String email;
-    @Column
+    @Column(nullable = false)
     String displayName;
-    @Column
+    @Column(nullable = false)
     String password;
     @Column
     LocalDateTime createAt = LocalDateTime.now();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String > roles = new ArrayList<>();
 }

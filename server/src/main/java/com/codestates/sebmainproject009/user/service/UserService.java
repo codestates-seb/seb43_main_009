@@ -1,11 +1,20 @@
 package com.codestates.sebmainproject009.user.service;
 
+import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
+import com.codestates.sebmainproject009.exception.BusinessLogicException;
+import com.codestates.sebmainproject009.exception.ExceptionCode;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.NoSuchMessageException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -13,37 +22,56 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
     public User createUser(User user){
-        User saveUser = userRepository.save(user);
+        verifyExistsEmail(user.getEmail());
 
-        return saveUser;
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+
+        List<String > roles = authorityUtils.createRoles(user.getEmail());
+        user.setRoles(roles);
+
+        User savedUser = userRepository.save(user);
+
+        return savedUser;
     }
 
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     public User updateUser(User user){
         User findUser = findVerifiedUser(user.getUserId());
 
-        Optional.ofNullable(user.getEmail())
-                .ifPresent(email -> findUser.setEmail(email));
         Optional.ofNullable(user.getDisplayName())
                 .ifPresent(name -> findUser.setDisplayName(name));
 
         return userRepository.save(findUser);
     }
 
+    @Transactional(readOnly = true)
     public User findUser(long userId){
 
         return findVerifiedUser(userId);
     }
 
     public void deleteUser(long userId){
-        userRepository.deleteById(userId);
+        User findUser = findVerifiedUser(userId);
+        userRepository.delete(findUser);
     }
 
     public User findVerifiedUser(long userId){
         Optional<User>optionalUser = userRepository.findById(userId);
 
-        return optionalUser.orElseThrow(
-                () -> new NoSuchMessageException("회원이 없습니다"));
+        return optionalUser.orElseThrow(()->
+                new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
+
+    private void verifyExistsEmail(String email) {
+        Optional<User> User = userRepository.findByEmail(email);
+        if (User.isPresent())
+            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+    }
+
 }
