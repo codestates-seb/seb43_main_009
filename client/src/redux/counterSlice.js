@@ -1,13 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const API_SERVER = process.env.API_SERVER;
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
-  "counter/submitPost",
-  async ({ title, content, userId = 1 }, { dispatch }) => {
+  'counter/submitPost',
+  async ({ title, content }) => {
     try {
       await axios.post(
-        "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/posts",
+        `${API_SERVER}/commu/posts`,
         {
           title,
           content,
@@ -15,128 +17,107 @@ export const submitPost = createAsyncThunk(
         },
         {
           withCredentials: true,
-        }
+        },
       );
     } catch (error) {
-      console.error(
-        "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/posts",
-        error
-      );
+      console.error(`${API_SERVER}/commu/posts`, error);
     }
-  }
+  },
 );
 //조회
 export const fetchBoardData = createAsyncThunk(
-  "counter/fetchBoardData",
+  'counter/fetchBoardData',
   async (commuId) => {
     try {
-      const response = await axios.get(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
+        withCredentials: true,
+      });
       return response.data;
     } catch (error) {
-      console.error(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        error
-      );
+      console.error(`${API_SERVER}/commu/${commuId}`, error);
       throw error;
     }
-  }
+  },
 );
 //수정
 export const updatePost = createAsyncThunk(
-  "counter/updatePost",
-  async ({ commuId, title, content }, { dispatch }) => {
+  'counter/updatePost',
+  async ({ commuId, title, content }) => {
     try {
       await axios.patch(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
+        `${API_SERVER}/commu/${commuId}`,
         {
           title,
           content,
         },
         {
           withCredentials: true,
-        }
+        },
       );
     } catch (error) {
-      console.error(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        error
-      );
+      console.error(`${API_SERVER}/commu/${commuId}`, error);
     }
-  }
+  },
 );
 //삭제
 export const deletePost = createAsyncThunk(
-  "counter/deletePost",
+  'counter/deletePost',
   async (commuId, { rejectWithValue }) => {
     try {
-      await axios.delete(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.delete(`${API_SERVER}/commu/${commuId}`, {
+        withCredentials: true,
+      });
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export const submitComment = createAsyncThunk(
-  "counter/submitComment",
-  async ({ commuId, comment, userId }, { dispatch }) => {
+  'counter/submitComment',
+  async ({ commuId, comment }) => {
     try {
       await axios.post(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
+        `${API_SERVER}/commu/${commuId}`,
         { comment, userId: 1, commuId },
         {
           withCredentials: true,
-        }
+        },
       );
-      const response = await axios.get(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
+        withCredentials: true,
+      });
       return response.data;
     } catch (error) {
-      console.error(
-        `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
-        error
-      );
+      console.error(`${API_SERVER}/commu/${commuId}`, error);
     }
-  }
+  },
 );
 //쿠키에 토큰값이 저장되서
 export const counterSlice = createSlice({
-  name: "counter",
+  name: 'counter',
   initialState: {
     data: {
-      title: "",
-      content: "",
-      createdAt: "",
-      displayName: "",
+      title: '',
+      content: '',
+      createdAt: '',
+      displayName: '',
       view: 0,
       commuId: 0,
       comments: [],
     },
-    status: "idle",
+    status: 'idle',
     error: null,
   },
   extraReducers: (builder) => {
     builder
 
       .addCase(fetchBoardData.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
       })
       .addCase(fetchBoardData.fulfilled, (state, action) => {
-        console.log("Payload:", action.payload);
-        state.status = "succeeded";
+        console.log('Payload:', action.payload);
+        state.status = 'succeeded';
         state.data.title = action.payload.title;
         state.data.content = action.payload.content;
         state.data.createdAt = action.payload.createdAt;
@@ -146,12 +127,12 @@ export const counterSlice = createSlice({
         state.data.comments = action.payload.comments;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
-        state.status = "failed";
+        state.status = 'failed';
         state.error = action.error.message;
       })
       .addCase(submitComment.fulfilled, (state, action) => {
-        console.log("Payload:", action.payload);
-        state.status = "succeeded";
+        console.log('Payload:', action.payload);
+        state.status = 'succeeded';
         state.data.comments = action.payload.comments; // 받아온 댓글 목록을 state에 저장합니다.
       });
   },
