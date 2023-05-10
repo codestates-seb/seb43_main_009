@@ -18,7 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/commu/posts" element={<CommunityWrite />}></Route>
-          <Route path="/commu/1" element={<Board />}></Route>
+          <Route path="/commu/:commuId" element={<Board />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/kakaoLogin" element={<KakaoLogin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
