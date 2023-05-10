@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_SERVER = process.env.API_SERVER;
+// const API_SERVER = process.env.API_SERVER;
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
@@ -9,7 +9,7 @@ export const submitPost = createAsyncThunk(
   async ({ title, content }) => {
     try {
       await axios.post(
-        `${API_SERVER}/commu/posts`,
+        `${process.env.API_SERVER}/commu/posts`,
         {
           title,
           content,
@@ -20,7 +20,7 @@ export const submitPost = createAsyncThunk(
         },
       );
     } catch (error) {
-      console.error(`${API_SERVER}/commu/posts`, error);
+      console.error(`${process.env.API_SERVER}/commu/posts`, error);
     }
   },
 );
@@ -29,12 +29,15 @@ export const fetchBoardData = createAsyncThunk(
   'counter/fetchBoardData',
   async (commuId) => {
     try {
-      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${process.env.API_SERVER}/commu/${commuId}`,
+        {
+          withCredentials: true,
+        },
+      );
       return response.data;
     } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
+      console.error(`${process.env.API_SERVER}/commu/${commuId}`, error);
       throw error;
     }
   },
@@ -45,7 +48,7 @@ export const updatePost = createAsyncThunk(
   async ({ commuId, title, content }) => {
     try {
       await axios.patch(
-        `${API_SERVER}/commu/${commuId}`,
+        `${process.env.API_SERVER}/commu/${commuId}`,
         {
           title,
           content,
@@ -55,7 +58,7 @@ export const updatePost = createAsyncThunk(
         },
       );
     } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
+      console.error(`${process.env.API_SERVER}/commu/${commuId}`, error);
     }
   },
 );
@@ -64,7 +67,7 @@ export const deletePost = createAsyncThunk(
   'counter/deletePost',
   async (commuId, { rejectWithValue }) => {
     try {
-      await axios.delete(`${API_SERVER}/commu/${commuId}`, {
+      await axios.delete(`${process.env.API_SERVER}/commu/${commuId}`, {
         withCredentials: true,
       });
     } catch (error) {
@@ -78,18 +81,21 @@ export const submitComment = createAsyncThunk(
   async ({ commuId, comment }) => {
     try {
       await axios.post(
-        `${API_SERVER}/commu/${commuId}`,
+        `${process.env.API_SERVER}/commu/${commuId}`,
         { comment, userId: 1, commuId },
         {
           withCredentials: true,
         },
       );
-      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${process.env.API_SERVER}/commu/${commuId}`,
+        {
+          withCredentials: true,
+        },
+      );
       return response.data;
     } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
+      console.error(`${process.env.API_SERVER}/commu/${commuId}`, error);
     }
   },
 );
