@@ -78,11 +78,11 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   'board/submitComment',
-  async ({ commuId, comment }) => {
+  async ({ commuId, comment, userId }) => {
     try {
       await axios.post(
         `${API_SERVER}/commu/${commuId}`,
-        { comment, userId: 1, commuId },
+        { comment, userId, commuId },
         {
           withCredentials: true,
         },

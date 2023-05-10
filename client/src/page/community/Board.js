@@ -134,18 +134,12 @@ const Board = () => {
                       <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <Timestamp>{comment.createdAt}</Timestamp>
+                      <Timestamp>{comment.createAt}</Timestamp>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
           </div>
           <div className="write-box">
             <input
@@ -299,12 +293,13 @@ const CommunityBox = styled.div`
 
 const Author = styled.span`
   font-weight: bold;
-  color: #333;
+  color: red;
 `;
 
 const CommentText = styled.span`
   font-size: 14px;
   color: #444;
+  margin-left: 1rem;
 `;
 
 const Timestamp = styled.span`
