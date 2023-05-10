@@ -111,8 +111,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/users/login", {
-        email,
+      const response = await axios.post("https://server.dowajoyak.shop/users/login", {
+        username : email,
         password,
       });
       setAuthState({
@@ -133,7 +133,7 @@ const Login = () => {
       <LoginWrapper>
           <GoogleLogin>Login with Google</GoogleLogin>
           <KakaoLogin>Login with Kakao!</KakaoLogin>
-          <NaverLogin>Login with Naver</NaverLogin>
+          <NaverLogin>Login with Naver!!</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>
