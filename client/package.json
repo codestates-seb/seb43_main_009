@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --env DEV=true"
+    "dev": "webpack-dev-server --env DEV=true",
+    "lint": "eslint --fix 'src/**/*.{js,jsx}'",
+    "prettier": "prettier --write 'src/**/*.{js,jsx}'"
   },
   "keywords": [],
   "author": "",
