@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { CiCoffeeCup } from "react-icons/ci";
-import penicillin from "../../../../public/penicillin.png";
-import anticonvulsants from "../../../../public/anticonvulsants.png";
-import aspirin from "../../../../public/aspirin.png";
-import xray from "../../../../public/xray.png";
+import React from 'react';
+import styled from 'styled-components';
+import { CiCoffeeCup } from 'react-icons/ci';
+import penicillin from '../../../../public/penicillin.png';
+import anticonvulsants from '../../../../public/anticonvulsants.png';
+import aspirin from '../../../../public/aspirin.png';
+import xray from '../../../../public/xray.png';
 
 const DesginCiCoffeeCup = styled(CiCoffeeCup)`
   margin-left: 33%;
@@ -12,7 +12,7 @@ const DesginCiCoffeeCup = styled(CiCoffeeCup)`
 `;
 
 const Step3Design = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -82,22 +82,22 @@ const Step3Design = styled.div`
 
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
   const menu = {
-    caffeine: "카페인",
-    aspirin: "아스피린",
-    penicillin: "페니실린",
-    anticonvulsants: "항경련제",
-    xray: "조영제",
-    nothing: "없음",
+    caffeine: '카페인',
+    aspirin: '아스피린',
+    penicillin: '페니실린',
+    anticonvulsants: '항경련제',
+    xray: '조영제',
+    nothing: '없음',
   };
 
   const handleAllergyClick = (e) => {
-    changeInput({ target: { name: "allergy", value: e.target.value } });
+    changeInput({ target: { name: 'allergy', value: e.target.value } });
   };
   return (
     <Step3Design>
       <div className="choice">알레르기를 선택해주세요! </div>
       <button
-        className={allergy === menu.caffeine ? "selected" : ""}
+        className={allergy === menu.caffeine ? 'selected' : ''}
         value="카페인"
         onClick={handleAllergyClick}
       >
@@ -105,7 +105,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         카페인
       </button>
       <button
-        className={allergy === menu.aspirin ? "selected" : ""}
+        className={allergy === menu.aspirin ? 'selected' : ''}
         value="아스피린"
         onClick={handleAllergyClick}
       >
@@ -113,7 +113,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         아스피린(소염진통제)
       </button>
       <button
-        className={allergy === menu.penicillin ? "selected" : ""}
+        className={allergy === menu.penicillin ? 'selected' : ''}
         value="페니실린"
         onClick={handleAllergyClick}
       >
@@ -121,7 +121,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         페니실린(항생제)
       </button>
       <button
-        className={allergy === menu.anticonvulsants ? "selected" : ""}
+        className={allergy === menu.anticonvulsants ? 'selected' : ''}
         value="항경련제"
         onClick={handleAllergyClick}
       >
@@ -133,7 +133,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         항경련제
       </button>
       <button
-        className={allergy === menu.xray ? "selected" : ""}
+        className={allergy === menu.xray ? 'selected' : ''}
         value="조영제"
         onClick={handleAllergyClick}
       >
@@ -141,7 +141,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         조영제
       </button>
       <button
-        className={allergy === menu.nothing ? "selected" : ""}
+        className={allergy === menu.nothing ? 'selected' : ''}
         value="없음"
         onClick={handleAllergyClick}
       >

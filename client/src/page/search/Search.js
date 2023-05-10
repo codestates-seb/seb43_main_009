@@ -1,7 +1,7 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import React, { useState } from "react";
-import axios from "axios";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const SearchWrapper = styled.div`
   height: 100vh;
@@ -57,13 +57,13 @@ const StyledTable = styled.table`
 `;
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
 
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/search?=${searchTerm}`
+        `http://localhost:4000/search?=${searchTerm}`,
       );
       setData(response.data);
     } catch (error) {
