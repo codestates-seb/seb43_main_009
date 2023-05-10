@@ -1,7 +1,7 @@
-import React from "react";
-import FooterStyle from "../style/FooterStyle";
-import { RxNotionLogo } from "react-icons/rx";
-import { GoMarkGithub } from "react-icons/go";
+import React from 'react';
+import FooterStyle from '../style/FooterStyle';
+import { RxNotionLogo } from 'react-icons/rx';
+import { GoMarkGithub } from 'react-icons/go';
 
 function Footer() {
   return (

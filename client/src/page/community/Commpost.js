@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import React from "react";
-import ReactPaginate from "react-paginate";
-import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import React from 'react';
+import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 const CommpostDesign = styled.div`
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   vertical-align: baseline;
 
   .list {
@@ -97,6 +97,7 @@ const Commpost = ({ data }) => {
       {currentItems &&
         currentItems.map((el) => (
           <ul
+            key={el.commuId}
             className="list"
             onClick={() => {
               goBoard(el);

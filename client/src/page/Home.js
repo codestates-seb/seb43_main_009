@@ -1,5 +1,5 @@
-import React from "react";
-import Layout from "../common/Layout";
+import React from 'react';
+import Layout from '../common/Layout';
 
 import {
   SServiceInfoLayout,
@@ -12,12 +12,12 @@ import {
   STextSub1,
   STextTitle2,
   STextSub2,
-} from "../style/ServiceInfoStyle";
+} from '../style/ServiceInfoStyle';
 import {
   SBackgroundLayout,
   SGradiant,
   STextInfoSection,
-} from "../style/GreetingInfo";
+} from '../style/GreetingInfo';
 
 const Home = () => {
   return (

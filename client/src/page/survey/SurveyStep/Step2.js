@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import dryskin from "../../../../public/dryskin.png";
-import fatigue from "../../../../public/fatigue.png";
-import { GiStomach } from "react-icons/gi";
-import { ImEye } from "react-icons/im";
-import { BsShieldPlus } from "react-icons/bs";
+import React from 'react';
+import styled from 'styled-components';
+import dryskin from '../../../../public/dryskin.png';
+import fatigue from '../../../../public/fatigue.png';
+import { GiStomach } from 'react-icons/gi';
+import { ImEye } from 'react-icons/im';
+import { BsShieldPlus } from 'react-icons/bs';
 
 const StyledGistomach = styled(GiStomach)`
   margin-left: 37%;
@@ -22,7 +22,7 @@ const StyledBsShieldPlus = styled(BsShieldPlus)`
 `;
 
 const Step2Design = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -62,30 +62,30 @@ const Step2Design = styled.div`
 
 const Step2 = ({ disease, changeInput, nextSteps }) => {
   const menu = {
-    stomach: "소화",
-    skin: "피부",
-    eye: "눈",
-    sheild: "면역",
-    fatiuge: "피로",
-    nothing: "없음",
+    stomach: '소화',
+    skin: '피부',
+    eye: '눈',
+    sheild: '면역',
+    fatiuge: '피로',
+    nothing: '없음',
   };
 
   const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: "disease", value: e.target.value } });
+    changeInput({ target: { name: 'disease', value: e.target.value } });
   };
 
   return (
     <Step2Design>
       <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
       <button
-        className={disease === menu.stomach ? "selected" : ""}
+        className={disease === menu.stomach ? 'selected' : ''}
         value="소화"
         onClick={handleDiseaseClick}
       >
         <StyledGistomach /> 소화, 장
       </button>
       <button
-        className={disease === menu.skin ? "selected" : ""}
+        className={disease === menu.skin ? 'selected' : ''}
         value="피부"
         onClick={handleDiseaseClick}
       >
@@ -93,14 +93,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
         피부
       </button>
       <button
-        className={disease === menu.eye ? "selected" : ""}
+        className={disease === menu.eye ? 'selected' : ''}
         value="눈"
         onClick={handleDiseaseClick}
       >
         <StyledImEye /> 눈
       </button>
       <button
-        className={disease === menu.sheild ? "selected" : ""}
+        className={disease === menu.sheild ? 'selected' : ''}
         value="면역"
         onClick={handleDiseaseClick}
       >
@@ -108,14 +108,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
         면역
       </button>
       <button
-        className={disease === menu.fatiuge ? "selected" : ""}
+        className={disease === menu.fatiuge ? 'selected' : ''}
         value="피로"
         onClick={handleDiseaseClick}
       >
         <img src={fatigue} alt="fatiuge" /> 피로
       </button>
       <button
-        className={disease === menu.nothing ? "selected" : ""}
+        className={disease === menu.nothing ? 'selected' : ''}
         value="없음"
         onClick={handleDiseaseClick}
       >

@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import high from "../../public/home.png";
+import styled from 'styled-components';
+import high from '../../public/home.png';
 const landingTitle = high;
 
 export const SBackgroundLayout = styled.div`
-  font-family: "MaplestoryOTFBold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
-    format("woff");
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
   flex-basis: 100%;
