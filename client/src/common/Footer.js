@@ -130,14 +130,14 @@ function Footer() {
               </div>
               <div className="linkSNS">
                 <a
-                  href="https://www.notion.so/codestates/6a748265eba041fda45f2d6ddb4eb908"
+                  href="https://www.notion.so/codestates/db25eab5a8684b1786324e6cd8724852"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <RxNotionLogo size={25} />
                 </a>
                 <a
-                  href="https://github.com/codestates-seb/seb42_main_020"
+                  href="https://github.com/codestates-seb/seb43_main_009"
                   target="_blank"
                   rel="noreferrer"
                 >

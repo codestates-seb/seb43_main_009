@@ -3,6 +3,7 @@ import "../variables.css";
 
 const FooterStyle = styled.footer`
   position: relative;
+  font-family: "Noto Sans KR", sans-serif;
   li {
     color: #000000;
     display: inline-block;
