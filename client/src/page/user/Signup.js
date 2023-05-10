@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   height: 1000px;
   margin-top: 50px;
-  font-family: "Noto Sans KR";
+  font-family: 'Noto Sans KR';
   font-weight: 700;
 `;
 
@@ -129,9 +129,9 @@ const SignupButton = styled.button`
 `;
 const Signup = () => {
   const navigate = useNavigate();
-  const [emailInputValue, setEmailInputValue] = useState("");
-  const [passwordInputValue, setPasswordInputValue] = useState("");
-  const [DisplayNameInputValue, setDisplayNameInputValue] = useState("");
+  const [emailInputValue, setEmailInputValue] = useState('');
+  const [passwordInputValue, setPasswordInputValue] = useState('');
+  const [DisplayNameInputValue, setDisplayNameInputValue] = useState('');
 
   const handleSignup = async (e) => {
     e.preventDefault();

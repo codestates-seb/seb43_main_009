@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import high from "../../../../public/high.jpg";
-import logo from "../../../../public/logo.png";
+import React from 'react';
+import styled from 'styled-components';
+import high from '../../../../public/high.jpg';
+import logo from '../../../../public/logo.png';
 
 const SurveyResultDesign = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -70,20 +70,20 @@ const Step5 = (/*{form}*/) => {
   // 소화 , 피부, 눈 , 면역, 피로
 
   let form = {
-    disease: "소화",
+    disease: '소화',
   };
 
-  let pill = ["유산균", "콜라겐", "비타민A", "진세노사이드", "비타민B"];
-  let resultPill = "";
-  if (form.disease === "소화") {
+  let pill = ['유산균', '콜라겐', '비타민A', '진세노사이드', '비타민B'];
+  let resultPill = '';
+  if (form.disease === '소화') {
     resultPill = pill[0];
-  } else if (form.disease === "피부") {
+  } else if (form.disease === '피부') {
     resultPill = pill[1];
-  } else if (form.disease === "눈") {
+  } else if (form.disease === '눈') {
     resultPill = pill[2];
-  } else if (form.disease === "면역") {
+  } else if (form.disease === '면역') {
     resultPill = pill[3];
-  } else if (form.disease === "피로") {
+  } else if (form.disease === '피로') {
     resultPill = pill[4];
   }
   return (
