@@ -6,7 +6,7 @@ const API_SERVER = process.env.API_URL;
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
-  'counter/submitPost',
+  'board/submitPost',
   async ({ title, content }) => {
     try {
       await axios.post(
@@ -27,7 +27,7 @@ export const submitPost = createAsyncThunk(
 );
 //조회
 export const fetchBoardData = createAsyncThunk(
-  'counter/fetchBoardData',
+  'board/fetchBoardData',
   async (commuId) => {
     try {
       const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
@@ -42,7 +42,7 @@ export const fetchBoardData = createAsyncThunk(
 );
 //수정
 export const updatePost = createAsyncThunk(
-  'counter/updatePost',
+  'board/updatePost',
   async ({ commuId, title, content }) => {
     try {
       await axios.patch(
@@ -62,7 +62,7 @@ export const updatePost = createAsyncThunk(
 );
 //삭제
 export const deletePost = createAsyncThunk(
-  'counter/deletePost',
+  'board/deletePost',
   async (commuId, { rejectWithValue }) => {
     try {
       await axios.delete(`${API_SERVER}/commu/${commuId}`, {
@@ -75,7 +75,7 @@ export const deletePost = createAsyncThunk(
 );
 
 export const submitComment = createAsyncThunk(
-  'counter/submitComment',
+  'board/submitComment',
   async ({ commuId, comment }) => {
     try {
       await axios.post(
@@ -95,8 +95,8 @@ export const submitComment = createAsyncThunk(
   },
 );
 //쿠키에 토큰값이 저장되서
-export const counterSlice = createSlice({
-  name: 'counter',
+export const boardSlice = createSlice({
+  name: 'board',
   initialState: {
     data: {
       title: '',
@@ -139,4 +139,4 @@ export const counterSlice = createSlice({
   },
 });
 
-export default counterSlice.reducer;
+export default boardSlice.reducer;

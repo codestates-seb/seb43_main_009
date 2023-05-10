@@ -10,15 +10,15 @@ import {
   deletePost,
   updatePost,
   submitComment,
-} from '../../redux/counterSlice';
+} from '../../redux/boardSlice';
 
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const boardData = useSelector((state) => state.counter.data);
-  const boardData = useSelector((state) => state.counter.data);
-  const boardStatus = useSelector((state) => state.counter.status);
-  const boardError = useSelector((state) => state.counter.error);
+  const boardData = useSelector((state) => state.board.data);
+  const boardStatus = useSelector((state) => state.board.status);
+  const boardError = useSelector((state) => state.board.error);
   // const submitData = useSelector((state) => state.counter.data);
   // const submitStatus = useSelector((state) => state.counter.status);
 
