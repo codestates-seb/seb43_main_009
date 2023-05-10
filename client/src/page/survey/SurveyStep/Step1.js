@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import doctor from "../../../../public/doctor.jpg";
+import React from 'react';
+import styled from 'styled-components';
+import doctor from '../../../../public/doctor.jpg';
 
 const Step1Design = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -52,7 +52,7 @@ const Step1Design = styled.div`
 
 const Step1 = ({ disease, changeInput, nextSteps }) => {
   const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: "disease", value: e.target.value } });
+    changeInput({ target: { name: 'disease', value: e.target.value } });
   };
 
   return (
