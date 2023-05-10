@@ -129,20 +129,24 @@ const Board = () => {
             {boardStatus === "succeeded" && (
               <div>
                 {commentList.map((comment) => (
-                  <div key={comment.commentId}>
-                    <div>
-                      <span>댓글 작성자: {comment.displayName}</span>
+                  <div key={comment.commentId} className="comment">
+                    <div className="comment-text">
+                      <Author>{comment.displayName}</Author>
+                      <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <span>댓글 내용: {comment.comment}</span>
-                    </div>
-                    <div>
-                      <span>댓글 작성시간: {comment.createdAt}</span>
+                      <Timestamp>{comment.createdAt}</Timestamp>
                     </div>
                   </div>
                 ))}
               </div>
             )}
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
           </div>
           <div className="write-box">
             <input
@@ -234,12 +238,27 @@ const CommunityBox = styled.div`
     .comment-content {
       border: 1px solid #e0e0e0;
       width: 60%;
-      height: 30%;
+      height: 70%;
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
       margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 500px;
+
+      .comment {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+      }
+
+      .comment-text {
+        display: flex;
+        align-items: baseline;
+      }
     }
 
     .write-box {
@@ -279,4 +298,18 @@ const CommunityBox = styled.div`
   }
 `;
 
+const Author = styled.span`
+  font-weight: bold;
+  color: #333;
+`;
+
+const CommentText = styled.span`
+  font-size: 14px;
+  color: #444;
+`;
+
+const Timestamp = styled.span`
+  font-size: 12px;
+  color: #999;
+`;
 export default Board;
