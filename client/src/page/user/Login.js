@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../common/AuthProvider";
 import Layout from "../../common/Layout";
 import { getCookie } from "../../utils/cookies";
+import KakaoLogin from "./KakaoLogin"
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -16,18 +17,26 @@ const LoginWrapper = styled.div`
   background-color: #f1f2f3;
 `;
 
-const Logo = styled.img`
-  width: 40px;
-  margin-bottom: 20px;
-`;
-const GithubLogin = styled.button`
+const GoogleLogin = styled.button`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: #23262a;
+  background-color: grey;
   color: white;
   border-radius: 3px;
+  border: none;
 `;
+
+const NaverLogin = styled.button`
+  width: 290px;
+  height: 37px;
+  margin-bottom: 10px;
+  background-color: #0ac157;
+  color: white;
+  border-radius: 3px;
+  border: none;
+`;
+
 const EmailLogin = styled.form`
   display: flex;
   width: 290px;
@@ -96,6 +105,7 @@ const Login = () => {
   const [email, setEmail] = useState("hello@gmail.com");
   const [password, setPassword] = useState("1234");
   const { authState, setAuthState } = useAuthContext();
+
   console.log("before login", authState);
 
   const handleSubmit = async (e) => {
@@ -121,6 +131,9 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
+          <GoogleLogin>Login with Google</GoogleLogin>
+          <KakaoLogin>Login with Kakao</KakaoLogin>
+          <NaverLogin>Login with Naver</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>
