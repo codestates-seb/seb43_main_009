@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import main1 from "../../public/1.png";
-import main2 from "../../public/2.png";
-import main3 from "../../public/3.png";
-import { keyframes } from "styled-components";
+import styled from 'styled-components';
+import main1 from '../../public/1.png';
+import main2 from '../../public/2.png';
+import main3 from '../../public/3.png';
+import { keyframes } from 'styled-components';
 
 export const SServiceInfoLayout = styled.div`
   width: 100%;
   margin-bottom: 100px;
-  font-family: "MaplestoryOTFBold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
-    format("woff");
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 `;

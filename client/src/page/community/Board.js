@@ -1,32 +1,32 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
-import React from "react";
-import { useEffect, useState } from "react";
-import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchBoardData,
   deletePost,
   updatePost,
   submitComment,
-} from "../../redux/counterSlice";
+} from '../../redux/boardSlice';
 
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const boardData = useSelector((state) => state.counter.data);
-  const boardData = useSelector((state) => state.counter.data);
-  const boardStatus = useSelector((state) => state.counter.status);
-  const boardError = useSelector((state) => state.counter.error);
+  const boardData = useSelector((state) => state.board.data);
+  const boardStatus = useSelector((state) => state.board.status);
+  const boardError = useSelector((state) => state.board.error);
   // const submitData = useSelector((state) => state.counter.data);
   // const submitStatus = useSelector((state) => state.counter.status);
 
   const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedContent, setEditedContent] = useState("");
-  const [comment, setComment] = useState("");
+  const [editedTitle, setEditedTitle] = useState('');
+  const [editedContent, setEditedContent] = useState('');
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
     {
@@ -39,13 +39,13 @@ const Board = () => {
   console.log(commentList);
 
   const handleSubmitComment = useCallback(() => {
-    if (comment.trim() === "") {
+    if (comment.trim() === '') {
       // 댓글 내용이 비어있는 경우
-      alert("댓글 내용을 입력해주세요.");
+      alert('댓글 내용을 입력해주세요.');
       return;
     }
     dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
-    setComment("");
+    setComment('');
   }, [dispatch, boardData.commuId, comment, commuId]);
 
   //수정
@@ -61,7 +61,7 @@ const Board = () => {
         commuId: boardData.commuId,
         title: editedTitle,
         content: editedContent,
-      })
+      }),
     );
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
@@ -69,9 +69,9 @@ const Board = () => {
   //게시글이 삭제 전에 확인메세지를 표시하고, 삭제가 완료된 후에 페이지 이동
   //혹시 delete확인이 필요하지 않다면 navigate hook을 제거할 것
   const handleDeletePost = useCallback(async () => {
-    if (window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
+    if (window.confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
       await dispatch(deletePost(boardData.commuId));
-      navigate("/commu");
+      navigate('/commu');
     }
   }, [dispatch, navigate, boardData.commuId]);
 
@@ -106,7 +106,7 @@ const Board = () => {
                 ></textarea>
               </div>
             ) : (
-              boardStatus === "succeeded" && (
+              boardStatus === 'succeeded' && (
                 <div>
                   <h3>{boardData.title}</h3>
                   <p>{boardData.content}</p>
@@ -116,7 +116,7 @@ const Board = () => {
                 </div>
               )
             )}
-            {boardStatus === "failed" && (
+            {boardStatus === 'failed' && (
               <div>
                 <p>Error: {boardError}</p>
               </div>
@@ -126,23 +126,27 @@ const Board = () => {
 
         <div className="down-box">
           <div className="comment-content">
-            {boardStatus === "succeeded" && (
+            {boardStatus === 'succeeded' && (
               <div>
                 {commentList.map((comment) => (
-                  <div key={comment.commentId}>
-                    <div>
-                      <span>댓글 작성자: {comment.displayName}</span>
+                  <div key={comment.commentId} className="comment">
+                    <div className="comment-text">
+                      <Author>{comment.displayName}</Author>
+                      <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <span>댓글 내용: {comment.comment}</span>
-                    </div>
-                    <div>
-                      <span>댓글 작성시간: {comment.createdAt}</span>
+                      <Timestamp>{comment.createdAt}</Timestamp>
                     </div>
                   </div>
                 ))}
               </div>
             )}
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
+            <div>test용</div>
           </div>
           <div className="write-box">
             <input
@@ -234,12 +238,27 @@ const CommunityBox = styled.div`
     .comment-content {
       border: 1px solid #e0e0e0;
       width: 60%;
-      height: 30%;
+      height: 70%;
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
       margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 500px;
+
+      .comment {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+      }
+
+      .comment-text {
+        display: flex;
+        align-items: baseline;
+      }
     }
 
     .write-box {
@@ -279,4 +298,18 @@ const CommunityBox = styled.div`
   }
 `;
 
+const Author = styled.span`
+  font-weight: bold;
+  color: #333;
+`;
+
+const CommentText = styled.span`
+  font-size: 14px;
+  color: #444;
+`;
+
+const Timestamp = styled.span`
+  font-size: 12px;
+  color: #999;
+`;
 export default Board;

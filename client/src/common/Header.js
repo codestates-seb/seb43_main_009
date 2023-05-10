@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import logo from "../../public/logo.png";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../../public/logo.png';
+import { Link } from 'react-router-dom';
 
 const GlobalFont = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
 `;
 const HeaderWrapper = styled.div`

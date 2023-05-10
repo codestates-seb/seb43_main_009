@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../common/AuthProvider";
-import Layout from "../../common/Layout";
-import { getCookie } from "../../utils/cookies";
-import KakaoLogin from "./KakaoLogin"
+import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../common/AuthProvider';
+import Layout from '../../common/Layout';
+import { getCookie } from '../../utils/cookies';
+import KakaoLogin from './KakaoLogin';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -102,11 +102,11 @@ const LoginButton = styled.button`
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("hello@gmail.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState('hello@gmail.com');
+  const [password, setPassword] = useState('1234');
   const { authState, setAuthState } = useAuthContext();
 
-  console.log("before login", authState);
+  console.log('before login', authState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,10 +120,10 @@ const Login = () => {
         refresh: response.headers.refresh,
       });
 
-      alert("로그인 성공!");
-      navigate("/survey");
+      alert('로그인 성공!');
+      navigate('/survey');
     } catch (error) {
-      alert("로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.");
+      alert('로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.');
       console.error(error);
     }
   };
