@@ -132,7 +132,7 @@ const Login = () => {
     <Layout>
       <LoginWrapper>
           <GoogleLogin>Login with Google</GoogleLogin>
-          <KakaoLogin>Login with Kakao</KakaoLogin>
+          <KakaoLogin>Login with Kakao!</KakaoLogin>
           <NaverLogin>Login with Naver</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
