@@ -5,6 +5,7 @@ import Header from "./Header";
 
 const MainContent = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Layout = (props) => {
