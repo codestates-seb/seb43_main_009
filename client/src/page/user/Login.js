@@ -123,7 +123,7 @@ const Login = () => {
       alert("로그인 성공!");
       navigate("/survey");
     } catch (error) {
-      alert("로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.");
+      alert("로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.");
       console.error(error);
     }
   };
