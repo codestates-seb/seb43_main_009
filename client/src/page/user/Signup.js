@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Layout from "../../common/Layout";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Layout from '../../common/Layout';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -136,13 +135,13 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://server.dowajoyak.shop/users/signup", {
+      await axios.post('https://server.dowajoyak.shop/users/signup', {
         email: emailInputValue,
         displayName: DisplayNameInputValue,
         password: passwordInputValue,
       });
-      alert("회원가입 성공!");
-      navigate("/login");
+      alert('회원가입 성공!');
+      navigate('/login');
     } catch (error) {
       console.error(error);
     }
