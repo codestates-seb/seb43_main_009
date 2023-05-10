@@ -30,7 +30,7 @@ export const useScrollFadeIn = (direction = 'up', duration = 1, delay = 0) => {
         current.style.transform = 'translate3d(0, 0, 0)';
       }
     },
-    [delay, duration]
+    [delay, duration],
   );
 
   useEffect(() => {

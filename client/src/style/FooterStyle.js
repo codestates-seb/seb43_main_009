@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import "../variables.css";
+import styled from 'styled-components';
+import '../variables.css';
 
 const FooterStyle = styled.footer`
   position: relative;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   li {
     color: #000000;
     display: inline-block;
