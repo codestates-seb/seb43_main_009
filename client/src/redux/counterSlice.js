@@ -4,7 +4,7 @@ import axios from "axios";
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
   "counter/submitPost",
-  async ({ title, content, userId = 1 }, { dispatch }) => {
+  async ({ title, content }) => {
     try {
       await axios.post(
         "http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/posts",
@@ -49,7 +49,7 @@ export const fetchBoardData = createAsyncThunk(
 //수정
 export const updatePost = createAsyncThunk(
   "counter/updatePost",
-  async ({ commuId, title, content }, { dispatch }) => {
+  async ({ commuId, title, content }) => {
     try {
       await axios.patch(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
@@ -88,7 +88,7 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   "counter/submitComment",
-  async ({ commuId, comment, userId }, { dispatch }) => {
+  async ({ commuId, comment }) => {
     try {
       await axios.post(
         `http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/commu/${commuId}`,
