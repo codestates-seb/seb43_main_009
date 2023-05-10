@@ -6,11 +6,14 @@ const dotenv = require('dotenv');
 const webpack = require('webpack');
 
 module.exports = (env) => {
+  console.log(env);
   if (env.DEV) {
-    dotenv.config({ path: './dev.env' });
+    //내가 사실은 이놈을 가르키고 있었다.....env.dev파일이 없엇던거임...
+    dotenv.config({ path: './.env.dev' });
   } else {
     dotenv.config({ path: './.env' });
   }
+
   return {
     mode: 'development',
     //여러개의 모듈로 연결되어 있는 시작점
@@ -68,7 +71,7 @@ module.exports = (env) => {
       }),
       new CleanWebpackPlugin(),
       new webpack.DefinePlugin({
-        'process.env.API_URL': JSON.stringify(process.env.API_URL),
+        'process.env': JSON.stringify(process.env),
       }),
     ],
     //npx webpack-dev-server로 사용가능 -> package.json에 따로 설정해놔서 간편하게 실행할 수 있게 해놨음

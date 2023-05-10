@@ -15,7 +15,6 @@ import {
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const boardData = useSelector((state) => state.counter.data);
   const boardData = useSelector((state) => state.board.data);
   const boardStatus = useSelector((state) => state.board.status);
   const boardError = useSelector((state) => state.board.error);
