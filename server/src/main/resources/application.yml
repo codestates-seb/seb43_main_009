@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: {$spring.datasource.url}
-    username: {$spring.datasource.username}
-    password: {$spring.datasource.password}
+    url: jdbc:mysql://db-pre-project-005.ctbzai9oohqp.ap-northeast-2.rds.amazonaws.com:13306/preproject005?createDatabaseIfNotExist=true&createTableIfNotExist=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+    password: preproject005
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -28,12 +28,13 @@ logging:
           jpa: DEBUG
 
 jwt:
-  key: {$jwt.key}
+  key: sebmain00511234123412341234123412341234123412341234
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 
-config:
-  domain: {$config.domain}
 mail:
   address:
-    admin: {$mail.address.admin}
+    admin: admin@main005.com
+
+config:
+  domain: https://www.dowajoyak.shop
