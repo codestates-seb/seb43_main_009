@@ -1,16 +1,16 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
-import React from "react";
-import { useEffect, useState } from "react";
-import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchBoardData,
   deletePost,
   updatePost,
   submitComment,
-} from "../../redux/counterSlice";
+} from '../../redux/counterSlice';
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,9 @@ const Board = () => {
 
   const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedContent, setEditedContent] = useState("");
-  const [comment, setComment] = useState("");
+  const [editedTitle, setEditedTitle] = useState('');
+  const [editedContent, setEditedContent] = useState('');
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
     {
@@ -39,13 +39,13 @@ const Board = () => {
   console.log(commentList);
 
   const handleSubmitComment = useCallback(() => {
-    if (comment.trim() === "") {
+    if (comment.trim() === '') {
       // 댓글 내용이 비어있는 경우
-      alert("댓글 내용을 입력해주세요.");
+      alert('댓글 내용을 입력해주세요.');
       return;
     }
     dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
-    setComment("");
+    setComment('');
   }, [dispatch, boardData.commuId, comment, commuId]);
 
   //수정
@@ -61,7 +61,7 @@ const Board = () => {
         commuId: boardData.commuId,
         title: editedTitle,
         content: editedContent,
-      })
+      }),
     );
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
@@ -69,9 +69,9 @@ const Board = () => {
   //게시글이 삭제 전에 확인메세지를 표시하고, 삭제가 완료된 후에 페이지 이동
   //혹시 delete확인이 필요하지 않다면 navigate hook을 제거할 것
   const handleDeletePost = useCallback(async () => {
-    if (window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
+    if (window.confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
       await dispatch(deletePost(boardData.commuId));
-      navigate("/commu");
+      navigate('/commu');
     }
   }, [dispatch, navigate, boardData.commuId]);
 
@@ -106,7 +106,7 @@ const Board = () => {
                 ></textarea>
               </div>
             ) : (
-              boardStatus === "succeeded" && (
+              boardStatus === 'succeeded' && (
                 <div>
                   <h3>{boardData.title}</h3>
                   <p>{boardData.content}</p>
@@ -116,7 +116,7 @@ const Board = () => {
                 </div>
               )
             )}
-            {boardStatus === "failed" && (
+            {boardStatus === 'failed' && (
               <div>
                 <p>Error: {boardError}</p>
               </div>
@@ -126,7 +126,7 @@ const Board = () => {
 
         <div className="down-box">
           <div className="comment-content">
-            {boardStatus === "succeeded" && (
+            {boardStatus === 'succeeded' && (
               <div>
                 {commentList.map((comment) => (
                   <div key={comment.commentId} className="comment">
