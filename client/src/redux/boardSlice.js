@@ -1,20 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_SERVER = process.env.API_URL;
+const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
   'board/submitPost',
-  async ({ title, content }) => {
+  async ({ title, content, userId }) => {
     try {
       await axios.post(
         `${API_SERVER}/commu/posts`,
         {
           title,
           content,
-          userId: 1,
+          userId: 2,
         },
         {
           withCredentials: true,
@@ -30,6 +30,8 @@ export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
   async (commuId) => {
     try {
+      console.log(`${API_SERVER}/commu/${commuId}`);
+
       const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
         withCredentials: true,
       });

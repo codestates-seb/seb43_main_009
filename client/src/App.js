@@ -12,6 +12,8 @@ import Board from './page/community/Board';
 import { AuthProvider } from './common/AuthProvider';
 
 const App = () => {
+  console.log(process.env.API_SERVER);
+
   return (
     <AuthProvider>
       <BrowserRouter>
