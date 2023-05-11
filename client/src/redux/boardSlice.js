@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { GetCommulist } from './CommuntiySlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
@@ -20,6 +22,8 @@ export const submitPost = createAsyncThunk(
           withCredentials: true,
         },
       );
+      const dispatch = useDispatch();
+      dispatch(GetCommulist());
     } catch (error) {
       console.error(`${API_SERVER}/commu/posts`, error);
     }
@@ -47,7 +51,7 @@ export const updatePost = createAsyncThunk(
   'board/updatePost',
   async ({ commuId, title, content }) => {
     try {
-      await axios.patch(
+      const response = await axios.patch(
         `${API_SERVER}/commu/${commuId}`,
         {
           title,
@@ -57,6 +61,7 @@ export const updatePost = createAsyncThunk(
           withCredentials: true,
         },
       );
+      return response.data;
     } catch (error) {
       console.error(`${API_SERVER}/commu/${commuId}`, error);
     }
