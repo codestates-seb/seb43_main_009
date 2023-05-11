@@ -2,9 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "FE" ]
-  pull_request:
-    branches: [ "FE" ]
+    branches: [ "dev" ]
       
 defaults:
   run:

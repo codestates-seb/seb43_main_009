@@ -1,20 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_SERVER = process.env.API_URL;
+const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
   'board/submitPost',
-  async ({ title, content }) => {
+  async ({ title, content, userId }) => {
     try {
       await axios.post(
         `${API_SERVER}/commu/posts`,
         {
           title,
           content,
-          userId: 1,
+          userId: 2,
         },
         {
           withCredentials: true,
@@ -30,6 +30,8 @@ export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
   async (commuId) => {
     try {
+      console.log(`${API_SERVER}/commu/${commuId}`);
+
       const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
         withCredentials: true,
       });
@@ -76,11 +78,11 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   'board/submitComment',
-  async ({ commuId, comment }) => {
+  async ({ commuId, comment, userId }) => {
     try {
       await axios.post(
         `${API_SERVER}/commu/${commuId}`,
-        { comment, userId: 1, commuId },
+        { comment, userId, commuId },
         {
           withCredentials: true,
         },
@@ -121,7 +123,7 @@ export const boardSlice = createSlice({
         state.status = 'succeeded';
         state.data.title = action.payload.title;
         state.data.content = action.payload.content;
-        state.data.createdAt = action.payload.createdAt;
+        state.data.createAt = action.payload.createAt;
         state.data.displayName = action.payload.displayName;
         state.data.view = action.payload.view;
         state.data.commuId = action.payload.commuId;

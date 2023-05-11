@@ -15,7 +15,6 @@ import {
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const boardData = useSelector((state) => state.counter.data);
   const boardData = useSelector((state) => state.board.data);
   const boardStatus = useSelector((state) => state.board.status);
   const boardError = useSelector((state) => state.board.error);
@@ -108,11 +107,13 @@ const Board = () => {
             ) : (
               boardStatus === 'succeeded' && (
                 <div>
-                  <h3>{boardData.title}</h3>
-                  <p>{boardData.content}</p>
-                  <p>작성자: {boardData.displayName}</p>
-                  <p>작성시간: {boardData.createdAt}</p>
-                  <p>조회수: {boardData.view}</p>
+                  <h3>제목 : {boardData.title}</h3>
+                  <p>내용 : {boardData.content}</p>
+                  <div className="post-info">
+                    <p>작성자: {boardData.displayName}</p>
+                    <p>작성시간: {boardData.createAt}</p>
+                    <p>조회수: {boardData.view}</p>
+                  </div>
                 </div>
               )
             )}
@@ -135,18 +136,12 @@ const Board = () => {
                       <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <Timestamp>{comment.createdAt}</Timestamp>
+                      <Timestamp>{comment.createAt}</Timestamp>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
-            <div>test용</div>
           </div>
           <div className="write-box">
             <input
@@ -180,6 +175,7 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .button-box {
       width: 70%;
@@ -187,9 +183,6 @@ const CommunityBox = styled.div`
       justify-content: flex-end;
 
       button {
-        background-color: #f06868;
-        border: none;
-        color: white;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -197,13 +190,15 @@ const CommunityBox = styled.div`
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 12px;
-        padding: 8px 24px;
+        padding: 4px 12px;
         transition-duration: 0.4s;
-
+        background-color: white;
+        color: #f06868;
+        border: none;
         &:hover {
-          background-color: white;
-          color: #f06868;
-          border: 1px solid #f06868;
+          background-color: #f06868;
+          border: none;
+          color: white;
         }
       }
     }
@@ -215,13 +210,27 @@ const CommunityBox = styled.div`
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
+      background-color: #fafafa;
+      position: relative;
 
       input {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
       }
 
       textarea {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
+      }
+      .post-info {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
       }
     }
   }
@@ -234,6 +243,7 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .comment-content {
       border: 1px solid #e0e0e0;
@@ -248,6 +258,7 @@ const CommunityBox = styled.div`
       flex-direction: column;
       overflow-y: auto;
       max-height: 500px;
+      border-radius: 10px;
 
       .comment {
         display: flex;
@@ -274,6 +285,7 @@ const CommunityBox = styled.div`
         height: 70%;
         border: 1px solid #e0e0e0;
         border-radius: 10px;
+        padding: 4px;
       }
 
       button {
@@ -300,16 +312,24 @@ const CommunityBox = styled.div`
 
 const Author = styled.span`
   font-weight: bold;
-  color: #333;
+  color: #f06868;
+  font-size: 14px;
 `;
 
 const CommentText = styled.span`
   font-size: 14px;
   color: #444;
+  margin-left: 1rem;
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const Timestamp = styled.span`
   font-size: 12px;
   color: #999;
+  display: inline-block;
+  margin-top: 4px;
 `;
 export default Board;
