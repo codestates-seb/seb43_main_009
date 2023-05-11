@@ -9,11 +9,8 @@ import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.service.UserService;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.NoSuchMessageException;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +20,6 @@ import java.util.Optional;
 @Service
 @Getter
 @Setter
-@RequiredArgsConstructor
 public class CommentService {
 
     private final CommentRepository commentRepository;
@@ -31,12 +27,18 @@ public class CommentService {
     private final UserService userService;
 
     private final CommuService commuService;
-    
+
+    public CommentService(CommentRepository commentRepository, CommentMapper mapper, UserService userService, CommuService commuService) {
+        this.commentRepository = commentRepository;
+        this.mapper = mapper;
+        this.userService = userService;
+        this.commuService = commuService;
+    }
+
 
     public Comment createComment(CommentPostDto commentPostDto){
 
         Commu findCommu = commuService.findVerifiedCommu(commentPostDto.getCommuId());
-
         User findUser = userService.findVerifiedUser(commentPostDto.getUserId());
         Comment comment = mapper.commentPostDtoToComment(commentPostDto);
         comment.setUser(findUser);

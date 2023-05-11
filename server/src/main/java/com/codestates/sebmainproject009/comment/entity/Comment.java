@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -25,9 +27,9 @@ public class Comment {
     private String displayName;
 
     @Column
-    private LocalDateTime createAt = LocalDateTime.now();
+    private LocalDateTime createAt = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @ManyToOne
     @JoinColumn(name = "commuId")
     @JsonIgnore
     private Commu commu;
