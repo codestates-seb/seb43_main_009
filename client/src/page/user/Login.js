@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../common/AuthProvider";
-import Layout from "../../common/Layout";
-import { getCookie } from "../../utils/cookies";
+import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../common/AuthProvider';
+import Layout from '../../common/Layout';
+import { getCookie } from '../../utils/cookies';
+import KakaoLogin from './KakaoLogin';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -16,18 +17,26 @@ const LoginWrapper = styled.div`
   background-color: #f1f2f3;
 `;
 
-const Logo = styled.img`
-  width: 40px;
-  margin-bottom: 20px;
-`;
-const GithubLogin = styled.button`
+const GoogleLogin = styled.button`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: #23262a;
+  background-color: grey;
   color: white;
   border-radius: 3px;
+  border: none;
 `;
+
+const NaverLogin = styled.button`
+  width: 290px;
+  height: 37px;
+  margin-bottom: 10px;
+  background-color: #0ac157;
+  color: white;
+  border-radius: 3px;
+  border: none;
+`;
+
 const EmailLogin = styled.form`
   display: flex;
   width: 290px;
@@ -93,27 +102,31 @@ const LoginButton = styled.button`
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("hello@gmail.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState('hello@gmail.com');
+  const [password, setPassword] = useState('1234');
   const { authState, setAuthState } = useAuthContext();
-  console.log("before login", authState);
+
+  console.log('before login', authState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        'https://server.dowajoyak.shop/users/login',
+        {
+          username: email,
+          password,
+        },
+      );
       setAuthState({
         token: response.headers.authorization,
         refresh: response.headers.refresh,
       });
 
-      alert("로그인 성공!");
-      navigate("/survey");
+      alert('로그인 성공!');
+      navigate('/survey');
     } catch (error) {
-      alert("로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.");
+      alert('로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.');
       console.error(error);
     }
   };
@@ -121,6 +134,9 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
+        <GoogleLogin>Login with Google</GoogleLogin>
+        <KakaoLogin>Login with Kakao!</KakaoLogin>
+        <NaverLogin>Login with Naver!!</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>

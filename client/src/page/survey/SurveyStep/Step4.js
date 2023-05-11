@@ -1,11 +1,31 @@
-import React from "react";
+import React from 'react';
 
-const Step4 = ({form}) => {
-    return(
-        <div>
-            <h2>{form.disease}님 설문조사 감사합니다</h2>
-        </div>
-    );
+const Step4 = ({
+  disease,
+  allergy,
+  nextSteps,
+  prevSteps,
+  form,
+  submitForm,
+}) => {
+  console.log(form);
+  return (
+    <>
+      <p>
+        <label>병</label> :<span name="disease">{disease}</span>
+      </p>
+
+      <p>
+        <label>직업</label> :<span name="allergy">{allergy}</span>
+      </p>
+
+      <p>
+        <button onClick={prevSteps}>이전</button>
+        <button onClick={nextSteps}>다음</button>
+        <button onClick={submitForm}>제출</button>
+      </p>
+    </>
+  );
 };
 
 export default Step4;

@@ -1,26 +1,26 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { submitPost } from "../../redux/counterSlice";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { submitPost } from '../../redux/boardSlice';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const CommunityWrite = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [userId, setUserId] = useState('');
   console.log(title, content);
 
-  const goHome = () => {
-    navigate("/commu");
-  };
+  // const goHome = () => {
+  //   navigate("/commu");
+  // };
 
   const handleSubmit = () => {
-    dispatch(submitPost({ title, content }));
-    goHome();
+    dispatch(submitPost({ title, content, userId }));
+    // goHome();
   };
 
   return (
@@ -28,7 +28,7 @@ const CommunityWrite = () => {
       <CommunityBox>
         <div className="doctor-box"></div>
         <div className="title-box">
-          <div className="title">제목</div>
+          <div className="title">제목{userId}</div>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className="content-box">
@@ -39,9 +39,7 @@ const CommunityWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           />
           <div className="button-container">
-            <button className="cancel-button" onClick={goHome}>
-              취소
-            </button>
+            <button className="cancel-button">취소</button>
             <button className="submit-button" onClick={handleSubmit}>
               글올리기
             </button>

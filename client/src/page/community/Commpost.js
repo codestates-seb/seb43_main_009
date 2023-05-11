@@ -1,16 +1,15 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import React from "react";
-import ReactPaginate from "react-paginate";
-import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import React from 'react';
+import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 const CommpostDesign = styled.div`
   margin: 0;
   padding: 0;
   border: 0;
-
   font-size: 100%;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   vertical-align: baseline;
 
   .list {
@@ -77,7 +76,7 @@ const Commpost = ({ data }) => {
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
-  console.log(data);
+
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(data.slice(itemOffset, endOffset));
@@ -98,6 +97,7 @@ const Commpost = ({ data }) => {
       {currentItems &&
         currentItems.map((el) => (
           <ul
+            key={el.commuId}
             className="list"
             onClick={() => {
               goBoard(el);
@@ -107,7 +107,7 @@ const Commpost = ({ data }) => {
             <li className="postname">{el.displayName}</li>
             <li className="posttitle">{el.title}</li>
             <li className="postview">{el.view}</li>
-            <li className="postcreat">{el.createdAt}</li>
+            <li className="postcreat">{el.creatAt}</li>
           </ul>
         ))}
 

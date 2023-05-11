@@ -1,9 +1,9 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import Commpost from "./Commpost";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import Commpost from './Commpost';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CommunityDesign = styled.div`
   margin: 0;
@@ -19,7 +19,7 @@ const CommunityDesign = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 
   .flexcontent {
     display: flex;
@@ -32,7 +32,7 @@ const CommunityDesign = styled.div`
       margin-bottom: 15px;
       margin-top: 15px;
       margin-left: 15px;
-      font-family: "MaplestoryOTFBold";
+      font-family: 'MaplestoryOTFBold';
     }
     .writebutton {
       background-color: #f05858;
@@ -46,7 +46,7 @@ const CommunityDesign = styled.div`
       cursor: pointer;
       text-align: right;
       margin-right: 25px;
-      font-family: "MaplestoryOTFBold";
+      font-family: 'MaplestoryOTFBold';
       &:hover {
         background-color: #d32f2f;
       }
@@ -109,7 +109,9 @@ const Community = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:3001/commu");
+        const response = await axios.get(
+          'https://server.dowajoyak.shop/commu/all',
+        );
         setData(response.data);
       } catch (error) {
         setError(error);
@@ -128,7 +130,7 @@ const Community = () => {
   }
 
   const goWrite = () => {
-    Navigate("/commu/posts");
+    Navigate('/commu/posts');
   };
 
   return (
