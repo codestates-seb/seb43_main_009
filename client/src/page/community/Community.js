@@ -1,9 +1,10 @@
 import Layout from '../../common/Layout';
 import styled from 'styled-components';
 import Commpost from './Commpost';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { commulist } from '../../redux/boardSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CommunityDesign = styled.div`
   margin: 0;
@@ -101,33 +102,14 @@ const CommunityDesign = styled.div`
 
 const Community = () => {
   const Navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [isloading, setIsLoading] = useState();
-  const [error, setError] = useState();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.commulist.data);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(
-          'https://server.dowajoyak.shop/commu/all',
-        );
-        setData(response.data);
-      } catch (error) {
-        setError(error);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
-
-  if (isloading) {
-    return <div>Loading</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+    {
+      dispatch(commulist());
+    }
+  }, [dispatch]);
 
   const goWrite = () => {
     Navigate('/commu/posts');
