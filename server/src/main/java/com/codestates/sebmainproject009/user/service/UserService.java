@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RequiredArgsConstructor
 @Transactional
 @Service
 public class UserService {
@@ -24,6 +23,11 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils){
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authorityUtils = authorityUtils;
+    }
     public User createUser(User user){
         verifyExistsEmail(user.getEmail());
 
@@ -74,4 +78,10 @@ public class UserService {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
     }
 
+    public boolean verifyUser(String email){
+        Optional<User> User = userRepository.findByEmail(email);
+        if (User.isPresent()) return true;
+
+        return false;
+    }
 }
