@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   height: 1000px;
   margin-top: 50px;
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
 `;
 
@@ -157,7 +157,7 @@ const Signup = () => {
           <NaverSignup>Sign with Naver</NaverSignup>
           <EmailSignup onSubmit={handleSignup}>
             <DisplayNameWrapper>
-              <DisplayNameLabel>ID</DisplayNameLabel>
+              <DisplayNameLabel>Name</DisplayNameLabel>
             </DisplayNameWrapper>
             <DisplayNameInput
               type="name"
