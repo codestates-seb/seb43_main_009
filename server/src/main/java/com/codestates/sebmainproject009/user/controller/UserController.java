@@ -6,7 +6,6 @@ import com.codestates.sebmainproject009.user.dto.UserPostDto;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.mapper.UserMapper;
 import com.codestates.sebmainproject009.user.service.UserService;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,16 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
     private final UserMapper mapper;
+
+    public UserController(UserService userService, UserMapper mapper) {
+        this.userService = userService;
+        this.mapper = mapper;
+    }
 
     @PostMapping("/signup")
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto){
