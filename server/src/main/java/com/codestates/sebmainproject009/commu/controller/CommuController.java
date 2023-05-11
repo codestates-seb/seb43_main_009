@@ -9,23 +9,25 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/commu")
-@RequiredArgsConstructor
 public class CommuController {
     private final CommuService commuService;
     private final CommuMapper mapper;
     private final CommentService commentService;
-    private final CommuMapper commentMapper;
+
+    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService) {
+        this.commuService = commuService;
+        this.mapper = mapper;
+        this.commentService = commentService;
+    }
 
     @PostMapping("/posts")
     public ResponseEntity postCommu(@RequestBody CommuPostDto commuPostDto){
@@ -76,7 +78,10 @@ public class CommuController {
 
     @DeleteMapping("/{commuId}")
     public ResponseEntity deleteCommu(@PathVariable long commuId){
+
+        commentService.deleteCommentsByCommuId(commuId);
         commuService.deleteCommu(commuId);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
