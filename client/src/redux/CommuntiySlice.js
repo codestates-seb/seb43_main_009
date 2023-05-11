@@ -7,12 +7,9 @@ const API_SERVER = process.env.API_SERVER;
 //commu 전체 조회하기
 export const GetCommulist = createAsyncThunk('commu/GetCommulist', async () => {
   try {
-    const response = await axios.get(
-      'https://server.dowajoyak.shop/commu/all',
-      {
-        withCredentials: true,
-      },
-    );
+    const response = await axios.get(`${API_SERVER}/commu/all`, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     console.error('fail', error);
