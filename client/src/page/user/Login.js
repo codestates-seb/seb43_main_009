@@ -48,7 +48,6 @@ const EmailLogin = styled.form`
   border-radius: 3px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
-
 const EmailWrapper = styled.div`
   display: flex;
   justify-content: start;
@@ -112,7 +111,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://server.dowajoyak.shop/users/login',
+        'http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/users/login',
         {
           username: email,
           password,
