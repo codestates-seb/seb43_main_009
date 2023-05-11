@@ -2,6 +2,7 @@ package com.codestates.sebmainproject009.user.entity;
 
 import com.codestates.sebmainproject009.commu.entity.Commu;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@RequiredArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -26,6 +28,10 @@ public class User {
     String password;
     @Column
     LocalDateTime createAt = LocalDateTime.now();
+    public User(String email, String displayName){
+        this.email = email;
+        this.displayName = displayName;
+    }
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String > roles = new ArrayList<>();

@@ -7,10 +7,12 @@ import com.codestates.sebmainproject009.auth.handler.UserAuthenticationEntryPoin
 import com.codestates.sebmainproject009.auth.handler.UserAuthenticationFailureHandler;
 import com.codestates.sebmainproject009.auth.handler.UserAuthenticationSuccessHandler;
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
+import com.codestates.sebmainproject009.auth.OAuth2UserSuccessHandler;
 import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
+import com.codestates.sebmainproject009.user.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,10 +36,12 @@ public class SecurityConfiguration {
 
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
+    private final UserService userService;
 
-    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
+    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, @Lazy UserService userService) {
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
+        this.userService = userService;
     }
 
     @Bean
@@ -63,7 +67,7 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.GET, "/*/users/**").hasAnyRole("USER","ADMIN") // 특정 회원은 ADMIN, USER 아무나
                         .antMatchers(HttpMethod.DELETE, "/*/users/**").hasRole("USER") // 회원 삭제는 USER 만
                         .anyRequest().permitAll()
-                );
+                ).oauth2Login(oauth2 ->oauth2.successHandler(new OAuth2UserSuccessHandler(jwtTokenizer, authorityUtils, userService)));
 
         // 현재 Spring boot 버젼에서 authorizeHttpRequests 가 안됨. authorizeRequest 는 바뀐 방식이다.
         return http.build();
@@ -89,6 +93,7 @@ public class SecurityConfiguration {
     }
 
     public class CustomFilterConfigurer extends AbstractHttpConfigurer<CustomFilterConfigurer, HttpSecurity> {
+
         @Override
         public void configure(HttpSecurity builder) throws Exception {
 
