@@ -1,6 +1,5 @@
 package com.codestates.sebmainproject009.commu.controller;
 
-import com.codestates.sebmainproject009.comment.entity.Comment;
 import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPatchDto;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
@@ -10,22 +9,25 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/commu")
-@RequiredArgsConstructor
 public class CommuController {
     private final CommuService commuService;
     private final CommuMapper mapper;
     private final CommentService commentService;
+
+    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService) {
+        this.commuService = commuService;
+        this.mapper = mapper;
+        this.commentService = commentService;
+    }
 
     @PostMapping("/posts")
     public ResponseEntity postCommu(@RequestBody CommuPostDto commuPostDto){

@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://db-pre-project-005.ctbzai9oohqp.ap-northeast-2.rds.amazonaws.com:13306/preproject005?createDatabaseIfNotExist=true&createTableIfNotExist=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
-    password: preproject005
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -14,6 +14,16 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${google.client_id}
+            clientSecret: ${google.client_secret}
+            scope:
+              - email
+              - profile
   cloud:
     aws:
       s3:
@@ -28,13 +38,13 @@ logging:
           jpa: DEBUG
 
 jwt:
-  key: sebmain00511234123412341234123412341234123412341234
+  key: ${jwt.key}
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 
 mail:
   address:
-    admin: admin@main005.com
+    admin: ${mail.address.admin}
 
 config:
-  domain: https://www.dowajoyak.shop
+  domain: ${config.domain}
