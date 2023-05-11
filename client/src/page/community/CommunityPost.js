@@ -1,88 +1,31 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
-import { commulist } from '../../redux/boardSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { CommunitypostDesign } from '../../style/CommunityDesign';
+import { GetCommulist } from '../../redux/CommuntiySlice';
 
-const CommpostDesign = styled.div`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font-family: 'Noto Sans KR', sans-serif;
-  vertical-align: baseline;
-
-  .list {
-    display: flex;
-    background-color: #ffa1a1;
-    white-space: nowrap;
-    align-items: center;
-    height: 15px;
-    line-height: 15px;
-    cursor: pointer;
-    &:hover {
-      background-color: #fddcdc;
-    }
-    .postid {
-      flex: 0.2;
-    }
-    .postname {
-      flex: 0.4;
-    }
-    .posttitle {
-      flex: 1;
-    }
-    .postview {
-      flex: 0.4;
-    }
-    .postcreat {
-      flex: 0.3;
-    }
-  }
-
-  .pagestyle {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    width: 70%;
-    border: none;
-    height: 7px;
-    margin-left: 8vw;
-    font-size: 30px;
-    cursor: pointer;
-    color: #999999;
-  }
-  .active {
-    border: 1px solid black;
-    width: 30px;
-    color: #ff0033;
-    text-decoration: underline;
-  }
-
-  .pagelink:hover {
-    color: #333333;
-    text-decoration: underline;
-  }
-  .previous,
-  .next {
-    color: #333333;
-  }
-`;
-
-const Commpost = ({ data }) => {
+const Commpost = () => {
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.commu.data);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
+
+  useEffect(() => {
+    {
+      dispatch(GetCommulist());
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(data.slice(itemOffset, endOffset));
+    const reversedData = data.slice().reverse(); // 데이터를 복사하고 역순으로 정렬
+    setCurrentItems(reversedData.slice(itemOffset, endOffset));
+
     setpageCount(Math.ceil(data.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, data]);
 
@@ -91,12 +34,32 @@ const Commpost = ({ data }) => {
     setItemOffset(newOffset);
   };
 
+  // 상세조회로 이동
   const goBoard = (el) => {
     Navigate(`/commu/${el.commuId}`);
   };
 
+  // 오늘과 같은 작성날이면 월,일 표시
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const today = new Date();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 2자리 숫자로 표시
+    const day = date.getDate().toString().padStart(2, '0');
+    const hour = date.getHours().toString().padStart(2, '0');
+    const minute = date.getMinutes().toString().padStart(2, '0');
+    if (
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDate() === today.getDate()
+    ) {
+      return `${hour}:${minute}`;
+    } else {
+      return `${month}/${day}`;
+    }
+  };
+
   return (
-    <CommpostDesign>
+    <CommunitypostDesign>
       {currentItems &&
         currentItems.map((el) => (
           <ul
@@ -110,7 +73,7 @@ const Commpost = ({ data }) => {
             <li className="postname">{el.displayName}</li>
             <li className="posttitle">{el.title}</li>
             <li className="postview">{el.view}</li>
-            <li className="postcreat">{el.creatAt}</li>
+            <li className="postcreat">{formatDate(el.createAt)}</li>
           </ul>
         ))}
 
@@ -127,7 +90,7 @@ const Commpost = ({ data }) => {
         NextClassName="next"
         pageLinkClassName="pagelink"
       />
-    </CommpostDesign>
+    </CommunitypostDesign>
   );
 };
 

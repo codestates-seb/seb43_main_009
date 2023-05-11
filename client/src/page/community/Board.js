@@ -51,7 +51,9 @@ const Board = () => {
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
+    console.log(editedTitle);
     setEditedContent(boardData.content);
+    console.log(editedContent);
   };
   //수정 저장
   const handleSaveEdit = useCallback(() => {
@@ -62,6 +64,8 @@ const Board = () => {
         content: editedContent,
       }),
     );
+    console.log(editedTitle);
+    console.log(editedContent);
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
