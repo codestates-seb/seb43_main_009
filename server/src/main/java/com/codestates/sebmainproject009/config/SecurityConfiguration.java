@@ -61,6 +61,12 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.PATCH, "/*/users/**").hasRole("USER") // 회원 정보 수정은 USER 만
                         .antMatchers(HttpMethod.GET, "/*/users/**").hasAnyRole("USER","ADMIN") // 특정 회원은 ADMIN, USER 아무나
                         .antMatchers(HttpMethod.DELETE, "/*/users/**").hasRole("USER") // 회원 삭제는 USER 만
+
+                        .antMatchers(HttpMethod.POST, "/*/commu/posts").hasAnyRole("USER","ADMIN")
+                        .antMatchers(HttpMethod.PATCH, "/*/commu/**").hasAnyRole("USER","ADMIN")
+                        .antMatchers(HttpMethod.POST, "/*/commu/**").hasAnyRole("USER","ADMIN")
+                        .antMatchers(HttpMethod.DELETE, "/*/commu/**").hasRole("USER")
+
                         .anyRequest().permitAll()
                 );
 
@@ -82,6 +88,7 @@ public class SecurityConfiguration {
         configuration.addAllowedOriginPattern("https://dowajoyak.shop");
         configuration.addAllowedOriginPattern("https://www.dowajoyak.shop");
         configuration.addAllowedOriginPattern("https://server.dowajoyak.shop");
+        configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
 
