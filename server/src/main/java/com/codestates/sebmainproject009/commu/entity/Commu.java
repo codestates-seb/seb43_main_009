@@ -9,6 +9,9 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +30,12 @@ public class Commu {
     @Column
     private String content;
 
-    @OneToMany(mappedBy = "commu", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "commu", cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<Comment> comments = new ArrayList<>();
 
     @Column
-    private LocalDateTime createAt = LocalDateTime.now();
+    private LocalDateTime createAt = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
 
     @Column
     @ColumnDefault("0")
