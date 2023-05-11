@@ -4,6 +4,19 @@ import axios from 'axios';
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
+//commu 전체 조회하기
+export const commulist = createAsyncThunk(async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/commu`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`http://localhost:3000/commu`, error);
+    throw error;
+  }
+});
+
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
   'board/submitPost',

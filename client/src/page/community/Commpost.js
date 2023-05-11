@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
+import { commulist } from '../../redux/boardSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CommpostDesign = styled.div`
   margin: 0;
@@ -72,6 +74,7 @@ const CommpostDesign = styled.div`
 
 const Commpost = ({ data }) => {
   const Navigate = useNavigate();
+
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
