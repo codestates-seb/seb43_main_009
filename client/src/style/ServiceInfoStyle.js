@@ -1,12 +1,17 @@
-import styled from "styled-components";
-import main1 from "../../public/1.png";
-import main2 from "../../public/2.png";
-import main3 from "../../public/3.png";
-import { keyframes } from "styled-components";
+import styled from 'styled-components';
+import main1 from '../../public/1.png';
+import main2 from '../../public/2.png';
+import main3 from '../../public/3.png';
+import { keyframes } from 'styled-components';
 
 export const SServiceInfoLayout = styled.div`
   width: 100%;
   margin-bottom: 100px;
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 `;
 
 export const SServiceInfoSection = styled.div`
@@ -64,7 +69,7 @@ export const SIntroduceImg1 = styled.div`
     background-size: 500px;
     background-position: center center;
   }
-  animation: ${slide} 2s ease-out;
+  animation: ${slide} 6s ease-out;
 `;
 
 export const SIntroduceImg2 = styled(SIntroduceImg1)`
@@ -73,7 +78,7 @@ export const SIntroduceImg2 = styled(SIntroduceImg1)`
   @media only screen and (max-width: 500px) {
     margin: 0 80px 100px 80px;
   }
-  animation: ${slide2} 2s ease-out;
+  animation: ${slide2} 6s ease-out;
 `;
 
 export const SIntroduceImg3 = styled(SIntroduceImg1)`
@@ -91,7 +96,7 @@ export const STextIntroduceSection = styled.div`
   }
 `;
 
-export const STextTitle = styled.h1`
+export const STextTitle1 = styled.h1`
   line-height: 40px;
   color: var(--gray-800);
   font-weight: 600;
@@ -100,10 +105,26 @@ export const STextTitle = styled.h1`
   text-align: right;
 `;
 
-export const STextSub = styled.h2`
+export const STextSub1 = styled.h2`
   line-height: 30px;
   color: var(--gray-700);
   font-weight: 600;
   font-size: 18px;
   text-align: right;
+`;
+export const STextTitle2 = styled.h1`
+  line-height: 40px;
+  color: var(--gray-800);
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0 0 20px 0;
+  text-align: left;
+`;
+
+export const STextSub2 = styled.h2`
+  line-height: 30px;
+  color: var(--gray-700);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
 `;
