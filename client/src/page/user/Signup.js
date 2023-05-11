@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Layout from "../../common/Layout";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Layout from '../../common/Layout';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   height: 1000px;
   margin-top: 50px;
-  font-family: "Noto Sans KR";
+  font-family: 'Noto Sans KR';
   font-weight: 700;
 `;
 
@@ -23,10 +22,6 @@ const SignupWrapper = styled.div`
   height: 700px;
 `;
 
-const Logo = styled.img`
-  width: 140px;
-  margin-bottom: 20px;
-`;
 const GoogleSignup = styled.button`
   width: 290px;
   height: 37px;
@@ -133,25 +128,24 @@ const SignupButton = styled.button`
 `;
 const Signup = () => {
   const navigate = useNavigate();
-  const [emailInputValue, setEmailInputValue] = useState("");
-  const [passwordInputValue, setPasswordInputValue] = useState("");
-  const [DisplayNameInputValue, setDisplayNameInputValue] = useState("");
+  const [emailInputValue, setEmailInputValue] = useState('');
+  const [passwordInputValue, setPasswordInputValue] = useState('');
+  const [DisplayNameInputValue, setDisplayNameInputValue] = useState('');
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/", {
+      await axios.post('https://server.dowajoyak.shop/users/signup', {
         email: emailInputValue,
         displayName: DisplayNameInputValue,
         password: passwordInputValue,
       });
-      alert("회원가입 성공!");
-      navigate("/login");
+      alert('회원가입 성공!');
+      navigate('/login');
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <Layout>
       <Wrapper>
@@ -182,7 +176,6 @@ const Signup = () => {
               type="password"
               onChange={(e) => setPasswordInputValue(e.target.value)}
             />
-
             <SignupButton type="submit">Sign up</SignupButton>
           </EmailSignup>
         </SignupWrapper>
