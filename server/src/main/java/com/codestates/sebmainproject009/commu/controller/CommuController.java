@@ -1,5 +1,6 @@
 package com.codestates.sebmainproject009.commu.controller;
 
+import com.codestates.sebmainproject009.comment.entity.Comment;
 import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPatchDto;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
@@ -25,7 +26,6 @@ public class CommuController {
     private final CommuService commuService;
     private final CommuMapper mapper;
     private final CommentService commentService;
-    private final CommuMapper commentMapper;
 
     @PostMapping("/posts")
     public ResponseEntity postCommu(@RequestBody CommuPostDto commuPostDto){
@@ -76,7 +76,10 @@ public class CommuController {
 
     @DeleteMapping("/{commuId}")
     public ResponseEntity deleteCommu(@PathVariable long commuId){
+
+        commentService.deleteCommentsByCommuId(commuId);
         commuService.deleteCommu(commuId);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

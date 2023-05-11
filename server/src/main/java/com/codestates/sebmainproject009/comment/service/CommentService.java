@@ -11,8 +11,13 @@ import com.codestates.sebmainproject009.user.service.UserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -24,6 +29,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final CommentMapper mapper;
     private final UserService userService;
+
     private final CommuService commuService;
     
 
@@ -42,8 +48,25 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
+    public void deleteCommentsByCommuId(long commuId){
+
+        Commu foundCommu = commuService.findCommu(commuId);
+
+        List<Comment> comments = foundCommu.getComments();
+
+        for (Comment comment : comments){
+            deleteComment(comment.getCommentId());
+        }
+
+    }
+
     public void deleteComment(long commentId){
         commentRepository.deleteById(commentId);
     }
 
+    public Comment findVerifiedComment(long commentId){
+        Optional<Comment> optionalComment = commentRepository.findById(commentId);
+
+        return optionalComment.orElseThrow(()-> new NoSuchMessageException("댓글이 없습니다."));
+    }
 }

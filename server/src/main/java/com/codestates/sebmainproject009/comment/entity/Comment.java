@@ -27,7 +27,7 @@ public class Comment {
     @Column
     private LocalDateTime createAt = LocalDateTime.now();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "commuId")
     @JsonIgnore
     private Commu commu;

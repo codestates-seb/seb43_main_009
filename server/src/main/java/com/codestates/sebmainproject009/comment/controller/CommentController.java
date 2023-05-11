@@ -9,6 +9,7 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 @RequiredArgsConstructor
 public class CommentController {
+
     private final CommentService commentService;
     private final CommentMapper mapper;
-    private final CommuService commuService;
     private final UserService userService;
 
     @PostMapping("/commu/{commuId}")
