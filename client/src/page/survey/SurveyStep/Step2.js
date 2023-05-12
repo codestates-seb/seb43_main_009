@@ -1,64 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import dryskin from '../../../../public/dryskin.png';
 import fatigue from '../../../../public/fatigue.png';
-import { GiStomach } from 'react-icons/gi';
-import { ImEye } from 'react-icons/im';
-import { BsShieldPlus } from 'react-icons/bs';
-
-const StyledGistomach = styled(GiStomach)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const StyledImEye = styled(ImEye)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const StyledBsShieldPlus = styled(BsShieldPlus)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const Step2Design = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  img {
-    width: 35px;
-    height: 35px;
-    margin-left: 37%;
-    margin-right: 10px;
-  }
-
-  button {
-    width: 30vw;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-  .choice {
-    font-size: 35px;
-  }
-  .next,
-  .nothing {
-    margin: 0 auto;
-  }
-`;
+import {
+  Step2Design,
+  StyledGistomach,
+  StyledImEye,
+  StyledBsShieldPlus,
+} from '../../../style/SurveyStyle';
 
 const Step2 = ({ disease, changeInput, nextSteps }) => {
   const menu = {
