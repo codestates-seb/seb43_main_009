@@ -60,6 +60,11 @@ public class UserService {
 
         return findVerifiedUser(userId);
     }
+    public User findUser(String email){
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        return optionalUser.orElseThrow();
+    }
 
     public void deleteUser(long userId){
         User findUser = findVerifiedUser(userId);

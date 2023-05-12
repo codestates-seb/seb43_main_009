@@ -27,16 +27,19 @@ ext {
 
 dependencyManagement {
 	imports {
-		//mavenBom "org.springframework.cloud:spring-cloud-starter:2022.0.2"
-		//mavenBom "io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config:2.4.4"
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-		//mavenBom "io.awspring.cloud:spring-cloud-aws-dependencies:2.3.3"
 	}
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 
+	// AWS paramStore 사용 Spring boot 버전 호환 상세 : https://spring.io/projects/spring-cloud
+
+	implementation "org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE"
+	implementation "io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config:2.3.0"
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -55,12 +58,6 @@ dependencies {
 	implementation 'com.google.code.gson:gson'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-	// AWS paramStore 사용
-	//implementation 'io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config'
-
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE'
-
-	//implementation 'org.springframework.cloud:spring-cloud-dependencies:2022.0.2'
 	// JWT 기능을 위한 jjwt 라이브러리
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
@@ -69,13 +66,6 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	//implementation 'org.springframework.cloud:spring-cloud-aws-context:${springCloudVersion}'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE'
-
-	//implementation 'org.springframework.cloud:spring-cloud-dependencies:2022.0.2'
-
-	//implementation 'org.springframework.cloud:spring-cloud-starter-parent:2022.0.2'
 }
 
 
