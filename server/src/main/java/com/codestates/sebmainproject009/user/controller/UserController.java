@@ -3,15 +3,20 @@ package com.codestates.sebmainproject009.user.controller;
 
 import com.codestates.sebmainproject009.user.dto.UserPatchDto;
 import com.codestates.sebmainproject009.user.dto.UserPostDto;
+import com.codestates.sebmainproject009.user.entity.SessionUser;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.mapper.UserMapper;
 import com.codestates.sebmainproject009.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+
 
 @RestController
 @RequestMapping("/users")
@@ -19,6 +24,7 @@ public class UserController {
 
     private final UserService userService;
     private final UserMapper mapper;
+    private final HttpSession httpSession;
 
     public UserController(UserService userService, UserMapper mapper) {
         this.userService = userService;
