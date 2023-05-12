@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { GetCommulist } from './CommuntiySlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfo } from '../utils/UserInfo';
 
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
@@ -12,6 +13,8 @@ export const submitPost = createAsyncThunk(
   async ({ title, content, userId }) => {
     try {
       const token = localStorage.getItem('accessToken');
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.id;
       await axios.post(
         `${API_SERVER}/commu/posts`,
         {
@@ -21,7 +24,7 @@ export const submitPost = createAsyncThunk(
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `${token}`,
           },
           withCredentials: true,
         },
