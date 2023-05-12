@@ -5,7 +5,6 @@ import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4';
 import Step5 from './SurveyStep/Step5';
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../utils/cookies';
 import axios from 'axios';
 import Layout from '../../common/Layout';
 
