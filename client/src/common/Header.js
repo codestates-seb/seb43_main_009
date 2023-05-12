@@ -55,6 +55,7 @@ const UnderMenuWrapper = styled.div`
 
 export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  // console.log(localStorage);
   return (
     <GlobalFont>
       <HeaderWrapper>
