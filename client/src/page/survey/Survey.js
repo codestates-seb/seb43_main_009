@@ -48,17 +48,10 @@ const Survey = () => {
 
   console.log(form);
 
-  // 로그인 안했으면 회원가입 페이지로 보냄
-  // useEffect(() => {
-  //     if (getCookie("token") === "null") {
-  //       navigate("/signup");
-  //     }
-  //   });
-
   return (
     <Layout>
       <div className="wrap">
-        {step === 1 && <Step5 nextSteps={nextSteps} />}
+        {step === 1 && <Step1 nextSteps={nextSteps} />}
         {step === 2 && (
           <Step2
             disease={disease}
