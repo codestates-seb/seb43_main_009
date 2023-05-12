@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { GetCommulist } from './CommuntiySlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfo } from '../utils/UserInfo';
 
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
@@ -11,6 +12,9 @@ export const submitPost = createAsyncThunk(
   'board/submitPost',
   async ({ title, content, userId }) => {
     try {
+      const token = localStorage.getItem('accessToken');
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.id;
       await axios.post(
         `${API_SERVER}/commu/posts`,
         {
@@ -19,6 +23,9 @@ export const submitPost = createAsyncThunk(
           userId: 2,
         },
         {
+          headers: {
+            Authorization: `${token}`,
+          },
           withCredentials: true,
         },
       );
@@ -51,10 +58,14 @@ export const updatePost = createAsyncThunk(
   'board/updatePost',
   async ({ commuId, title, content }) => {
     try {
+      const token = localStorage.getItem('accessToken');
       const response = await axios.patch(
         `${API_SERVER}/commu/${commuId}`,
         { commuId, title, content },
         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
           withCredentials: true,
         },
       );
@@ -66,12 +77,17 @@ export const updatePost = createAsyncThunk(
     }
   },
 );
+
 //삭제
 export const deletePost = createAsyncThunk(
   'board/deletePost',
   async (commuId, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem('accessToken');
       await axios.delete(`${API_SERVER}/commu/${commuId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         withCredentials: true,
       });
     } catch (error) {
@@ -84,14 +100,21 @@ export const submitComment = createAsyncThunk(
   'board/submitComment',
   async ({ commuId, comment, userId }) => {
     try {
+      const token = localStorage.getItem('accessToken');
       await axios.post(
         `${API_SERVER}/commu/${commuId}`,
         { comment, userId, commuId },
         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
           withCredentials: true,
         },
       );
       const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         withCredentials: true,
       });
       return response.data;
@@ -100,7 +123,7 @@ export const submitComment = createAsyncThunk(
     }
   },
 );
-//쿠키에 토큰값이 저장되서
+//쿠키에 토큰값이 저장돼서
 export const boardSlice = createSlice({
   name: 'board',
   initialState: {
