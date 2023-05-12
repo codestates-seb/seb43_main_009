@@ -1,84 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import { CiCoffeeCup } from 'react-icons/ci';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
 import xray from '../../../../public/xray.png';
-
-const DesginCiCoffeeCup = styled(CiCoffeeCup)`
-  margin-left: 33%;
-  margin-right: 10px;
-`;
-
-const Step3Design = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  .choice {
-    font-size: 35px;
-  }
-
-  img {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
-  }
-  .aspirin {
-    margin-left: 10%;
-  }
-  .penicillin {
-    margin-left: 17%;
-  }
-  .anticonvulsants {
-    margin-left: 29%;
-  }
-  .xray {
-    margin-left: 33%;
-  }
-  .nothing {
-    margin: 0 auto;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-
-  button {
-    width: 30vw;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .goorback {
-    width: 30vw;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-  }
-`;
+import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
 
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
   const menu = {

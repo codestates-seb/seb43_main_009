@@ -6,8 +6,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
-    token: 'token',
-    refresh: 'refresh',
+    token: null,
+    refresh: null,
   });
   useEffect(() => {
     setAuthState((prev) => ({
