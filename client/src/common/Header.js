@@ -1,8 +1,8 @@
-import React from 'react';
+/* eslint-disable */ 
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from './AuthProvider';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -52,13 +52,9 @@ const UnderMenuWrapper = styled.div`
   height: 35px;
   text-decoration: none;
 `;
-export const Header = () => {
-  const {
-    authState: { token },
-    deleteAuthInfo,
-  } = useAuthContext();
-  console.log(token);
 
+export const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -67,21 +63,20 @@ export const Header = () => {
           <Logo src={logo} />
         </StyledLink>
         <MenuWrapper>
-          {token ? (
-            <StyledLink to="/">
-              <Menu className="logout" onClick={deleteAuthInfo}>
-                로그아웃
-              </Menu>
-            </StyledLink>
+          {isLoggedIn ? (
+            <Menu className='logout' onClick={() => {
+            localStorage.removeItem('token');
+            setIsLoggedIn(false);
+            }}>로그아웃</Menu>
           ) : (
-            <>
-              <StyledLink to="/login">
-                <Menu>로그인</Menu>
-              </StyledLink>
-              <StyledLink to="/signup">
-                <Menu className="signup">회원가입</Menu>
-              </StyledLink>
-            </>
+          <>
+            <StyledLink to="/login">
+              <Menu>로그인</Menu>
+            </StyledLink>
+            <StyledLink to="/signup">
+              <Menu className="signup">회원가입</Menu>
+            </StyledLink>
+          </>
           )}
         </MenuWrapper>
       </HeaderWrapper>

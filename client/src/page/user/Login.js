@@ -104,9 +104,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
-  const { authState, setAuthState } = useAuthContext();
-
-  console.log('before login', authState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,13 +115,9 @@ const Login = () => {
           password,
         },
       );
-      setAuthState({
-        token: response.headers.authorization,
-        refresh: response.headers.refresh,
-      });
-
+      localStorage.setItem('token', response.data.token);
       alert('로그인 성공!');
-      navigate('/survey');
+      navigate('/');
     } catch (error) {
       alert('로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.');
       console.error(error);
