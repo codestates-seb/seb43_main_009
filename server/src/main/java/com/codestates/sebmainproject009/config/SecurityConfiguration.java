@@ -28,7 +28,7 @@ import java.util.Arrays;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity(debug=true)
+@EnableWebSecurity(debug=false)
 public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
@@ -73,6 +73,8 @@ public class SecurityConfiguration {
                 //        .antMatchers(HttpMethod.PATCH, "/*/commu/**").hasAnyRole("USER","ADMIN")
                 //        .antMatchers(HttpMethod.POST, "/*/commu/**").hasAnyRole("USER","ADMIN")
                 //        .antMatchers(HttpMethod.DELETE, "/*/commu/**").hasRole("USER")
+
+                        //.anyRequest().authenticated() 검증 부분 잠깐 뺐음
                        .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
