@@ -189,7 +189,7 @@ export const SurveyResultDesign = styled.div`
   background-color: #f1f2f3;
   font-size: 22px;
 
-  img {
+  .logo {
     width: 150px;
     height: 50px;
   }
@@ -240,5 +240,8 @@ export const SurveyResultDesign = styled.div`
     color: white;
   }
   .high {
+    height: 200px;
+    width: 200px;
+    margin-left: 300px;
   }
 `;
