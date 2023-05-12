@@ -54,8 +54,8 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-  // console.log(localStorage);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken'));
+  console.log(localStorage)
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -66,7 +66,7 @@ export const Header = () => {
         <MenuWrapper>
           {isLoggedIn ? (
             <Menu className='logout' onClick={() => {
-            localStorage.removeItem('token');
+            localStorage.removeItem('accessToken');
             setIsLoggedIn(false);
             }}>로그아웃</Menu>
           ) : (

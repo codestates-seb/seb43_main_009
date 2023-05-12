@@ -116,9 +116,10 @@ const Login = () => {
           password,
         },
       );
-      const token = response.headers.get("Authorization");
-      localStorage.setItem('token',token);
-      console.log(token);
+      const accessToken = response.headers['authorization'];
+      const refreshToken = response.headers['refresh'];
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
       navigate('/');
     } catch (error) {
