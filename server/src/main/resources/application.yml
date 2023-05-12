@@ -58,7 +58,6 @@ spring:
             user-name-attribute: id
         pathmatch:
             matching-strategy: ant_path_matcher
-
 cloud:
   aws:
     s3:
@@ -75,7 +74,6 @@ aws:
     prefix: /spring-boot-aws
     defaultContext: db-pre-project-005
     profileSeparator: _
-
 
 logging:
   level:
