@@ -10,7 +10,7 @@ export const CommunitypostDesign = styled.div`
 
   .list {
     display: flex;
-    background-color: #ffc5c5;
+    background-color: white;
     white-space: nowrap;
     align-items: center;
     height: 4px;
@@ -41,7 +41,7 @@ export const CommunitypostDesign = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: space-between;
-    width: 70%;
+    width: 80%;
     border: none;
     height: 7px;
     margin-left: 8vw;
@@ -122,8 +122,8 @@ export const CommunityDesign = styled.div`
     align-items: center;
     margin-top: 10px;
     padding: 15px 0px;
-    margin-bottom: 12px;
-    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f9e6e6;
     font-weight: 500;
 
     .infoid {

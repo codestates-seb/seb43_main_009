@@ -53,14 +53,13 @@ export const updatePost = createAsyncThunk(
     try {
       const response = await axios.patch(
         `${API_SERVER}/commu/${commuId}`,
-        {
-          title,
-          content,
-        },
+        { commuId, title, content },
         {
           withCredentials: true,
         },
       );
+      const dispatch = useDispatch();
+      dispatch(fetchBoardData());
       return response.data;
     } catch (error) {
       console.error(`${API_SERVER}/commu/${commuId}`, error);
