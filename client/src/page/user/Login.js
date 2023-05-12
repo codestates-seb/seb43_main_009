@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -115,7 +116,9 @@ const Login = () => {
           password,
         },
       );
-      localStorage.setItem('token', response.data.token);
+      const token = response.headers.get("Authorization");
+      localStorage.setItem('token',token);
+      console.log(token);
       alert('로그인 성공!');
       navigate('/');
     } catch (error) {
@@ -127,6 +130,9 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/google">Google로 로그인</a>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/naver">Naver 로그인</a>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Kakao 로그인</a>
         <GoogleLogin>Login with Google</GoogleLogin>
         <KakaoLogin>Login with Kakao!</KakaoLogin>
         <NaverLogin>Login with Naver!!</NaverLogin>
