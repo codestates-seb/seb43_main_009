@@ -3,9 +3,7 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../common/AuthProvider';
 import Layout from '../../common/Layout';
-import { getCookie } from '../../utils/cookies';
 import KakaoLogin from './KakaoLogin';
 
 const LoginWrapper = styled.div`
