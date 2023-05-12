@@ -38,9 +38,10 @@ const Step5 = (/*{form}*/) => {
           지구력 증진에 도움을 줄 수 있다고 인정하고 있습니다.
         </div>
       </div>
+
       <div className="recommend">
         <div className="helppill">
-          <img src={logo} alt="logo" />
+          <img className="logo" src={logo} alt="logo" />
           에서 추천하는 옥타코사놀 영양제
         </div>
         <ul className="efficacy">
@@ -51,8 +52,7 @@ const Step5 = (/*{form}*/) => {
         <a className="buynow" href="https://www.naver.com">
           구매하러 가기
         </a>
-        <button className="retry">맞춤검사 다시하기</button>
-        <img className="high" src={high} alt="high" />
+        <button className="retry">맞춤검사 다시하기</button>\
       </div>
     </SurveyResultDesign>
   );

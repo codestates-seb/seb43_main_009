@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+/* eslint-disable */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
@@ -54,7 +54,9 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken'));
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem('accessToken'),
+  );
 
   return (
     <GlobalFont>
@@ -65,19 +67,24 @@ export const Header = () => {
         </StyledLink>
         <MenuWrapper>
           {isLoggedIn ? (
-            <Menu className='logout' onClick={() => {
-            localStorage.removeItem('accessToken');
-            setIsLoggedIn(false);
-            }}>로그아웃</Menu>
+            <Menu
+              className="logout"
+              onClick={() => {
+                localStorage.removeItem('accessToken');
+                setIsLoggedIn(false);
+              }}
+            >
+              로그아웃
+            </Menu>
           ) : (
-          <>
-            <StyledLink to="/login">
-              <Menu>로그인</Menu>
-            </StyledLink>
-            <StyledLink to="/signup">
-              <Menu className="signup">회원가입</Menu>
-            </StyledLink>
-          </>
+            <>
+              <StyledLink to="/login">
+                <Menu>로그인</Menu>
+              </StyledLink>
+              <StyledLink to="/signup">
+                <Menu className="signup">회원가입</Menu>
+              </StyledLink>
+            </>
           )}
         </MenuWrapper>
       </HeaderWrapper>
