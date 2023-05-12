@@ -5,7 +5,6 @@ import com.codestates.sebmainproject009.exception.BusinessLogicException;
 import com.codestates.sebmainproject009.exception.ExceptionCode;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -23,16 +22,19 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils){
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
     }
+
     public User createUser(User user){
         verifyExistsEmail(user.getEmail());
 
-        String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
+        if(!user.getPassword().isEmpty()) {
+            String encryptedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encryptedPassword);
+        }
 
         List<String > roles = authorityUtils.createRoles(user.getEmail());
         user.setRoles(roles);
@@ -72,16 +74,16 @@ public class UserService {
                 new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
 
-    private void verifyExistsEmail(String email) {
+    protected void verifyExistsEmail(String email) {
         Optional<User> User = userRepository.findByEmail(email);
         if (User.isPresent())
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
     }
 
-    public boolean verifyUser(String email){
-        Optional<User> User = userRepository.findByEmail(email);
-        if (User.isPresent()) return true;
+    public boolean verifyUserByEmail(String email){
+        Optional<User> optionalUser = userRepository.findByEmail(email);
 
-        return false;
+        return optionalUser.isPresent();
     }
+
 }

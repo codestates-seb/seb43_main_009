@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce86f03e-65f7-4dcb-8eb6-b1fdaca014ce" name="Changes" comment="[BE][Feat] OAuth- 한동희 작업 공간 temp(Naver)">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/auth/OAuth2UserSuccessHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/entity/SessionUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/templates/my-page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/templates/receive-token.html" afterDir="false" />
+    <list default="true" id="ce86f03e-65f7-4dcb-8eb6-b1fdaca014ce" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/server.seb-main-project-009.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/server.seb-main-project-009.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,12 +17,7 @@
       <change beforePath="$PROJECT_DIR$/server/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/codestates/sebmainproject009/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/dowajoyak.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,15 +113,10 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\donghee\Desktop\Project\seb43_main_009\server\src\main\resources\templates" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.SebMainProject009Application">
+  <component name="RunManager" selected="애플리케이션.SebMainProject009Application">
     <configuration name="SebMainProject009Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.codestates.sebmainproject009.SebMainProject009Application" />
-      <module name="com.codestates.server.seb-main-project-009.main" />
+      <module name="server.seb-main-project-009.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.codestates.sebmainproject009.*" />
@@ -217,19 +204,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.SebMainProject009Application" />
-      <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle" />
       <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (2)" />
       <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (3)" />
       <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (5)" />
+      <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle" />
+      <item itemvalue="애플리케이션.SebMainProject009Application" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (5)" />
-        <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (3)" />
+        <item itemvalue="애플리케이션.SebMainProject009Application" />
         <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (2)" />
         <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle" />
-        <item itemvalue="Application.SebMainProject009Application" />
+        <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (5)" />
+        <item itemvalue="Gradle.C:/Users/mkcho/spring-project/seb43_main_009/server/build.gradle (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -243,6 +230,21 @@
       <updated>1683085234008</updated>
       <workItem from="1683124543202" duration="19654000" />
     </task>
+    <task id="LOCAL-00001" summary="Changes">
+      <created>1683787490666</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683787490666</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changes">
+      <created>1683787503021</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683787503021</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +277,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

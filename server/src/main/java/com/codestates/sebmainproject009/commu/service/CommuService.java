@@ -1,15 +1,12 @@
 package com.codestates.sebmainproject009.commu.service;
 
-import com.codestates.sebmainproject009.comment.entity.Comment;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
 import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.repository.CommuRepository;
 import com.codestates.sebmainproject009.user.entity.User;
-import com.codestates.sebmainproject009.user.repository.UserRepository;
 import com.codestates.sebmainproject009.user.service.UserService;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.data.domain.Page;
@@ -23,12 +20,17 @@ import java.util.Optional;
 @Service
 @Setter
 @Getter
-@RequiredArgsConstructor
 public class CommuService {
     private final CommuRepository commuRepository;
     private final CommuMapper mapper;
     private final UserService userService;
-    private final UserRepository userRepository;
+
+    public CommuService(CommuRepository commuRepository, CommuMapper mapper, UserService userService) {
+        this.commuRepository = commuRepository;
+        this.mapper = mapper;
+        this.userService = userService;
+    }
+
 
     public Commu createCommu(CommuPostDto commuPostDto){
         User user = userService.findVerifiedUser(commuPostDto.getUserId());
@@ -75,4 +77,6 @@ public class CommuService {
 
         return optionalCommu.orElseThrow(()-> new NoSuchMessageException("게시글이 없습니다."));
     }
+
+
 }
