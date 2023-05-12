@@ -10,7 +10,9 @@ export const CommunitypostDesign = styled.div`
 
   .list {
     display: flex;
-    background-color: #ffc5c5;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(255, 197, 197);
+    margin: 10px 0px 10px 0px;
     white-space: nowrap;
     align-items: center;
     height: 4px;
@@ -38,6 +40,7 @@ export const CommunitypostDesign = styled.div`
 
   .pagestyle {
     background-color: white;
+    margin: 37px 0px 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: space-between;
