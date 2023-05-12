@@ -1,12 +1,15 @@
 package com.codestates.sebmainproject009.user.entity;
 
 import com.codestates.sebmainproject009.commu.entity.Commu;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +30,16 @@ public class User {
     @Column(nullable = false)
     String password;
     @Column
-    LocalDateTime createAt = LocalDateTime.now();
-    public User(String email, String displayName){
+    private LocalDateTime createAt = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String > roles = new ArrayList<>();
+
+    public User(String email, String displayName) {
         this.email = email;
         this.displayName = displayName;
     }
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String > roles = new ArrayList<>();
+    public User() {
+    }
 }
