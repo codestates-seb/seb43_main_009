@@ -63,7 +63,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize->authorize
                         .antMatchers(HttpMethod.GET).permitAll()
                         .antMatchers(HttpMethod.POST, "/*/users/signup").permitAll() // 회원가입은 누구나
-                        .anyRequest().authenticated() // 인증된 사용자에 대해서만 접근을 허용하도록
+                //        .anyRequest().authenticated() // 인증된 사용자에 대해서만 접근을 허용하도록
 
                 //        .antMatchers(HttpMethod.PATCH, "/*/users/**").hasRole("USER") // 회원 정보 수정은 USER 만
                 //        .antMatchers(HttpMethod.GET, "/*/users/**").hasAnyRole("USER","ADMIN") // 특정 회원은 ADMIN, USER 아무나
@@ -73,7 +73,7 @@ public class SecurityConfiguration {
                 //        .antMatchers(HttpMethod.PATCH, "/*/commu/**").hasAnyRole("USER","ADMIN")
                 //        .antMatchers(HttpMethod.POST, "/*/commu/**").hasAnyRole("USER","ADMIN")
                 //        .antMatchers(HttpMethod.DELETE, "/*/commu/**").hasRole("USER")
-                //        .anyRequest().permitAll()
+                       .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .successHandler(new OAuth2UserSuccessHandler(jwtTokenizer, authorityUtils, userService)));
@@ -97,6 +97,8 @@ public class SecurityConfiguration {
         configuration.addAllowedOriginPattern("https://server.dowajoyak.shop");
         configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(Arrays.asList("*"));
+        configuration.addExposedHeader("Authorization");
+        configuration.addExposedHeader("Refresh");
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
