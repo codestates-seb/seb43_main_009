@@ -5,56 +5,56 @@
       "displayName": "염경도",
       "title": "custom hook에 대하여.",
       "view": 30,
-      "createdAt": "2020.05.20"
+      "createAt": "2020.05.20"
     },
     {
       "commuId": 2,
       "displayName": "노준호",
       "title": "어린이날에 대하여.",
       "view": 310,
-      "createdAt": "2021.05.05"
+      "createAt": "2021.05.05"
     },
     {
       "commuId": 3,
       "displayName": "이하진",
       "title": "광복절에 대하여.",
       "view": 10,
-      "createdAt": "2220.08.15"
+      "createAt": "2220.08.15"
     },
     {
       "commuId": 4,
       "displayName": "김수성",
       "title": "지구의 날에 대하여.",
       "view": 5,
-      "createdAt": "2020.04.22"
+      "createAt": "2020.04.22"
     },
     {
       "commuId": 5,
       "displayName": "조기만",
       "title": "크리스마스에 대하여.",
       "view": 3,
-      "createdAt": "2020.12.25"
+      "createAt": "2020.12.25"
     },
     {
       "commuId": 6,
       "displayName": "한희동",
       "title": "demo day에 대하여.",
       "view": 130,
-      "createdAt": "2023.05.31"
+      "createAt": "2023.05.31"
     },
     {
       "commuId": 7,
       "displayName": "양수인",
       "title": "인수공통전염병의 날에 대하여.",
       "view": 30,
-      "createdAt": "2022.07.06"
+      "createAt": "2022.07.06"
     },
     {
       "commuId": 8,
       "displayName": "이순신",
       "title": "한산도대첩에 대하여.",
       "view": 25530,
-      "createdAt": "1592.08.14"
+      "createAt": "1592.08.14"
     }
   ]
 }

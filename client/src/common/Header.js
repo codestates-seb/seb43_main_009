@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import logo from "../../public/logo.png";
-import { Link } from "react-router-dom";
+/* eslint-disable */ 
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import logo from '../../public/logo.png';
+import { Link } from 'react-router-dom';
 
 const GlobalFont = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
 `;
 const HeaderWrapper = styled.div`
@@ -39,6 +40,9 @@ const Menu = styled.div`
   &.signup {
     margin-right: 20px;
   }
+  &.logout {
+    margin-right: 20px;
+  }
 `;
 
 const UnderMenuWrapper = styled.div`
@@ -48,7 +52,10 @@ const UnderMenuWrapper = styled.div`
   height: 35px;
   text-decoration: none;
 `;
+
 export const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken'));
+
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -57,12 +64,21 @@ export const Header = () => {
           <Logo src={logo} />
         </StyledLink>
         <MenuWrapper>
-          <StyledLink to="/login">
-            <Menu>로그인</Menu>
-          </StyledLink>
-          <StyledLink to="/signup">
-            <Menu className="signup">회원가입</Menu>
-          </StyledLink>
+          {isLoggedIn ? (
+            <Menu className='logout' onClick={() => {
+            localStorage.removeItem('accessToken');
+            setIsLoggedIn(false);
+            }}>로그아웃</Menu>
+          ) : (
+          <>
+            <StyledLink to="/login">
+              <Menu>로그인</Menu>
+            </StyledLink>
+            <StyledLink to="/signup">
+              <Menu className="signup">회원가입</Menu>
+            </StyledLink>
+          </>
+          )}
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
