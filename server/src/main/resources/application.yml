@@ -1,8 +1,10 @@
 spring:
+  config:
+    import: "aws-parameterstore:"
   datasource:
-    url: jdbc:mysql://db-pre-project-005.ctbzai9oohqp.ap-northeast-2.rds.amazonaws.com:13306/preproject005?createDatabaseIfNotExist=true&createTableIfNotExist=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
-    password: preproject005
+    url: ${AWS-RDS}
+    username: ${AWS-RDS-username}
+    password: ${AWS-RDS-password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
@@ -19,24 +21,24 @@ spring:
       client:
         registration:
           google:
-            clientId: 595193810049-e18ivlshe0brsekk7sn43jl3nf6rrfdm.apps.googleusercontent.com
-            clientSecret: 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
-            redirect-uri: https://server.dowajoyak.shop/login/oauth2/code/google
+            clientId: ${g-client-id}
+            clientSecret: ${g-client-secret}
+            redirect-uri: ${s-redirect-uri-google}
             authorization-grant-type: authorization_code
             scope:
               - email
               - profile
           naver:
-            client-id: O3ZePEHnOfML8lYr8ct3
-            client-secret: ETHo0GWydA
-            redirect-uri: 'https://server.dowajoyak.shop/login/oauth2/code/naver'
+            client-id: ${n-client-id}
+            client-secret: ${n-client-secret}
+            redirect-uri: ${s-redirect-uri-naver}
             authorization-grant-type: authorization_code
             scope: nickname,email
             client-name: Naver
           kakao:
-            clientId: 053b38eb84613c61491ce616974c4f08
-            clientSecret: FPSZpKCWCU22Rgq24pzswlbM1srbDruE
-            redirect-uri: https://server.dowajoyak.shop/login/oauth2/code/kakao
+            clientId: ${k-client-id}
+            clientSecret: ${k-client-secret}
+            redirect-uri: ${s-redirect-uri-kakao}
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: Kakao
@@ -56,12 +58,25 @@ spring:
             user-name-attribute: id
         pathmatch:
             matching-strategy: ant_path_matcher
-  cloud:
-    aws:
-      s3:
-        bucket: dowajoyak.shop
-      region:
-        static: ap-northeast-2
+
+cloud:
+  aws:
+    s3:
+      bucket: dowajoyak.shop
+    region:
+      auto: false
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+aws:
+  paramstore:
+    enabled: true
+    prefix: /spring-boot-aws
+    defaultContext: db-pre-project-005
+    profileSeparator: _
+
+
 logging:
   level:
     org:
@@ -70,13 +85,13 @@ logging:
           jpa: DEBUG
 
 jwt:
-  key: sebmain00511234123412341234123412341234123412341234
+  key: ${jwt-secret}
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 
 mail:
-  address:
-    admin: admin@main005.com
+  address: ${admin-address}
 
 config:
-  domain: https://www.dowajoyak.shop
+  domain : ${deploy-domain}
+
