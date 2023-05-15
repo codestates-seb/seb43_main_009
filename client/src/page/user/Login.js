@@ -124,18 +124,6 @@ const Login = () => {
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
 
-  useEffect(()=>{
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('access_token');
-    const refreshToken = urlParams.get('refresh_token');
-    if(accessToken && refreshToken) {
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-      console.log(accessToken)
-      navigate('/');
-    }
-  })
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
