@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from './authSlice';
+import { login } from '../redux/authSlice';
 import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
 
