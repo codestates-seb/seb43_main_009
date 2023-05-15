@@ -36,6 +36,7 @@ const StyledLink = styled(Link)`
 
 const UserName = styled.div`
   font-weight: 600;
+  margin-top: 0.1rem;
 `;
 
 const Menu = styled.div`
@@ -66,7 +67,13 @@ export const Header = () => {
 
   const [username, setUsername] = useState(null);
   useEffect(() => {
-    setUsername(getUserInfo()?.username);
+    const userInfo = getUserInfo();
+    if (userInfo?.username) {
+      const namePart = userInfo.username.split('@')[0];
+      setUsername(namePart);
+    } else {
+      setUsername('Guest');
+    }
   }, [isLoggedIn]);
 
   return (
