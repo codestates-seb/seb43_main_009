@@ -4,7 +4,6 @@ import com.codestates.sebmainproject009.auth.filter.JwtAuthenticationFilter;
 import com.codestates.sebmainproject009.auth.filter.JwtVerificationFilter;
 import com.codestates.sebmainproject009.auth.handler.*;
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
-import com.codestates.sebmainproject009.auth.OAuth2UserSuccessHandler;
 import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
 import com.codestates.sebmainproject009.user.service.UserService;
 import org.springframework.context.annotation.Bean;
@@ -130,6 +129,7 @@ public class SecurityConfiguration {
                     .addFilterBefore(jwtAuthenticationFilter, OAuth2LoginAuthenticationFilter.class);
         }
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
