@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const OAuthLogin = () => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const accessToken = params.get('access_token');
@@ -12,9 +12,9 @@ const OAuthLogin = () => {
     if (accessToken && refreshToken) {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
+      location.reload();
     }
   }, [location]);
-
   return null;
 };
 
