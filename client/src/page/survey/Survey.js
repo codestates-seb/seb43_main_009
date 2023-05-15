@@ -3,7 +3,6 @@ import Step1 from './SurveyStep/Step1';
 import Step2 from './SurveyStep/Step2';
 import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4';
-import Step5 from './SurveyStep/Step5';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../common/Layout';
@@ -72,20 +71,11 @@ const Survey = () => {
             changeInput={changeInput}
             prevSteps={prevSteps}
             nextSteps={nextSteps}
-          />
-        )}
-        {step === 4 && (
-          <Step4
-            disease={disease}
-            allergy={allergy}
-            changeInput={changeInput}
-            prevSteps={prevSteps}
-            nextSteps={nextSteps}
             submitForm={submitForm}
             form={form}
           />
         )}
-        {step === 5 && <Step5 form={form} />}
+        {step === 4 && <Step4 form={form} />}
       </div>
     </Layout>
   );

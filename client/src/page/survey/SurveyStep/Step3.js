@@ -5,7 +5,7 @@ import aspirin from '../../../../public/aspirin.png';
 import xray from '../../../../public/xray.png';
 import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
 
-const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
+const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const menu = {
     caffeine: '카페인',
     aspirin: '아스피린',
@@ -76,7 +76,13 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         <div className="previous" onClick={prevSteps}>
           ◀︎ 이전
         </div>
-        <div className="next" onClick={nextSteps}>
+        <div
+          className="next"
+          onClick={() => {
+            nextSteps();
+            submitForm();
+          }}
+        >
           다음 ▶︎
         </div>
       </div>
