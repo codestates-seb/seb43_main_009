@@ -13,7 +13,7 @@ const Commpost = () => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 10;
+  const itemsPerPage = 11;
 
   useEffect(() => {
     {

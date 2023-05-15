@@ -11,15 +11,15 @@ export const CommunitypostDesign = styled.div`
   .list {
     display: flex;
     background-color: #ffffff;
-    border-bottom: 1px solid rgb(255, 197, 197);
-    margin: 10px 0px 10px 0px;
+    border-bottom: 1px solid #d9d9d9;
+    margin: 0px 0px 0px 0px;
     white-space: nowrap;
     align-items: center;
     height: 4px;
     line-height: 4px;
     cursor: pointer;
     &:hover {
-      background-color: #f9e6e6;
+      background-color: #ffe0e0;
     }
     .postid {
       flex: 0.2;
@@ -123,10 +123,8 @@ export const CommunityDesign = styled.div`
     justify-content: space-around;
     text-align: center;
     align-items: center;
-    margin-top: 10px;
-    padding: 15px 0px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #f9e6e6;
+    padding: 16px 0px;
+    background-color: #fcb2b2;
     font-weight: 500;
 
     .infoid {
