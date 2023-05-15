@@ -169,6 +169,12 @@ const Board = () => {
               type="text"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmitComment();
+                  e.preventDefault();
+                }
+              }}
               placeholder="댓글을 입력하세요"
             />
             <button onClick={handleSubmitComment}>댓글달기</button>
