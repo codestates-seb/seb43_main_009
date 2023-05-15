@@ -1,10 +1,9 @@
 /* eslint-disable */ 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../common/Layout';
-import KakaoLogin from './KakaoLogin';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -16,7 +15,7 @@ const LoginWrapper = styled.div`
   background-color: #f1f2f3;
 `;
 
-const GoogleLogin = styled.button`
+const GoogleLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -24,9 +23,27 @@ const GoogleLogin = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content : center;
 `;
 
-const NaverLogin = styled.button`
+const KakaoLogin = styled.a`
+  width: 290px;
+  height: 37px;
+  margin-bottom: 10px;
+  background-color: yellow;
+  color: black;
+  border-radius: 3px;
+  border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content : center;
+`;
+
+const NaverLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -34,6 +51,10 @@ const NaverLogin = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content : center;
 `;
 
 const EmailLogin = styled.form`
@@ -103,11 +124,23 @@ const Login = () => {
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
 
+  useEffect(()=>{
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+    const refreshToken = urlParams.get('refresh_token');
+    if(accessToken && refreshToken) {
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      console.log(accessToken)
+      navigate('/');
+    }
+  })
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/users/login',
+        'https://server.dowajoyak.shop/users/login',
         {
           username: email,
           password,
@@ -128,12 +161,9 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
-      <a href="https://server.dowajoyak.shop/oauth2/authorization/google">Google로 로그인</a>
-      <a href="https://server.dowajoyak.shop/oauth2/authorization/naver">Naver 로그인</a>
-      <a href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Kakao 로그인</a>
-        <GoogleLogin>Login with Google</GoogleLogin>
-        <KakaoLogin>Login with Kakao!</KakaoLogin>
-        <NaverLogin>Login with Naver!!</NaverLogin>
+        <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">Login with Google</GoogleLogin>
+        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Login with Kakao</KakaoLogin>
+        <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">Login with Naver</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>

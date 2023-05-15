@@ -1,18 +1,21 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const KakaoLogin = () => {
-  // const restApiKey = process.env.REACT_APP_REST_API_KEY;
+  const location = useLocation();
 
-  // const redirectUrl = process.env.REACT_APP_REDIRECT_URL;
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const accessToken = params.get('access_token');
+    const refreshToken = params.get('refresh_token');
 
-  // const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${restApiKey}&redirect_uri=${redirectUrl}&response_type=code;`
+    if (accessToken && refreshToken) {
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+    }
+  }, [location]);
 
-  // const loginHandler = () => {
-  //     window.location.href = kakaoAuthUrl;
-  // };
-  return (
-    // <button onClick={loginHandler}>
-    <button>login with kakao</button>
-  );
+  return null;
 };
+
 export default KakaoLogin;
