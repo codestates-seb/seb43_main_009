@@ -12,7 +12,7 @@ const OAuthLogin = () => {
     if (accessToken && refreshToken) {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
-      location.reload();
+      navigate('/');
     }
   }, [location]);
   return null;
