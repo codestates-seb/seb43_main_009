@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../common/Layout';
-import KakaoLogin from './user/KakaoLogin';
+import OAuthLogin from './user/OAuthLogin';
 
 import {
   SServiceInfoLayout,
@@ -23,7 +23,7 @@ import {
 const Home = () => {
   return (
     <>
-      <KakaoLogin />
+      <OAuthLogin />
       <Layout>
         <SBackgroundLayout>
           <SGradiant />
