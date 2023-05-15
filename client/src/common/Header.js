@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
+import { getUserInfo } from '../utils/UserInfo';
+import { useEffect } from 'react';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -32,6 +34,10 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const UserName = styled.div`
+  font-weight: 600;
+`;
+
 const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
@@ -58,6 +64,11 @@ export const Header = () => {
     !!localStorage.getItem('accessToken'),
   );
 
+  const [username, setUsername] = useState(null);
+  useEffect(() => {
+    setUsername(getUserInfo()?.username);
+  }, [isLoggedIn]);
+
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -67,15 +78,18 @@ export const Header = () => {
         </StyledLink>
         <MenuWrapper>
           {isLoggedIn ? (
-            <Menu
-              className="logout"
-              onClick={() => {
-                localStorage.removeItem('accessToken');
-                setIsLoggedIn(false);
-              }}
-            >
-              로그아웃
-            </Menu>
+            <>
+              <UserName> {username}님 환영합니다! </UserName>
+              <Menu
+                className="logout"
+                onClick={() => {
+                  localStorage.removeItem('accessToken');
+                  setIsLoggedIn(false);
+                }}
+              >
+                로그아웃
+              </Menu>
+            </>
           ) : (
             <>
               <StyledLink to="/login">

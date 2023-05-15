@@ -185,7 +185,6 @@ export const SurveyResultDesign = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
   background-color: #f1f2f3;
   font-size: 22px;
 
