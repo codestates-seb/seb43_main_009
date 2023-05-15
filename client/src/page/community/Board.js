@@ -54,9 +54,9 @@ const Board = () => {
       alert('댓글 내용을 입력해주세요.');
       return;
     }
-    dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
+    dispatch(submitComment({ commuId: boardData.commuId, comment }));
     setComment('');
-  }, [dispatch, boardData.commuId, comment, commuId]);
+  }, [dispatch, boardData.commuId, comment]);
 
   //수정
   const handleEditClick = () => {
