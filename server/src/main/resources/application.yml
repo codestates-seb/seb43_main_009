@@ -23,7 +23,7 @@ spring:
           google:
             clientId: ${g-client-id}
             clientSecret: ${g-client-secret}
-            redirect-uri: ${s-redirect-uri-google}
+            redirect-uri: ${g-redirect-uri}
             authorization-grant-type: authorization_code
             scope:
               - email
@@ -31,14 +31,14 @@ spring:
           naver:
             client-id: ${n-client-id}
             client-secret: ${n-client-secret}
-            redirect-uri: ${s-redirect-uri-naver}
+            redirect-uri: ${n-redirect-uri}
             authorization-grant-type: authorization_code
             scope: nickname,email
             client-name: Naver
           kakao:
             clientId: ${k-client-id}
             clientSecret: ${k-client-secret}
-            redirect-uri: ${s-redirect-uri-kakao}
+            redirect-uri: ${k-redriect-uri}
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: Kakao
