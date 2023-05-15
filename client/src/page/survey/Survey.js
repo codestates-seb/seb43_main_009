@@ -7,6 +7,7 @@ import Step5 from './SurveyStep/Step5';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../common/Layout';
+import { getUserInfo } from '../../utils/UserInfo';
 
 const Survey = () => {
   const [step, setStep] = useState(1);
@@ -16,13 +17,19 @@ const Survey = () => {
     allergy: '',
   });
 
+  const userInfo = getUserInfo();
+
   const { disease, allergy } = form;
 
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        'http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/surveys',
-        form,
+        'https://server.dowajoyak.shop/surveys',
+        {
+          disease,
+          allergy,
+          userId: userInfo.userId,
+        },
       );
       console.log(response.data);
     } catch (error) {
