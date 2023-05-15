@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const KakaoLogin = () => {
+const OAuthLogin = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const KakaoLogin = () => {
   return null;
 };
 
-export default KakaoLogin;
+export default OAuthLogin;
