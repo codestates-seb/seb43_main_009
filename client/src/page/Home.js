@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from './authSlice';
 import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
 
@@ -21,9 +23,10 @@ import {
 } from '../style/GreetingInfo';
 
 const Home = () => {
+  const dispatch = useDispatch();
   return (
     <>
-      <OAuthLogin />
+      <OAuthLogin onLogin={() => dispatch(login())} />
       <Layout>
         <SBackgroundLayout>
           <SGradiant />
