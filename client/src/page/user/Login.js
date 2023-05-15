@@ -150,7 +150,7 @@ const Login = () => {
     <Layout>
       <LoginWrapper>
         <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">Login with Google</GoogleLogin>
-        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Login with Kakao</KakaoLogin>
+        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Login with Kakao!</KakaoLogin>
         <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">Login with Naver</NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
