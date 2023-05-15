@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/authSlice';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -54,10 +56,12 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    !!localStorage.getItem('accessToken'),
-  );
-
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('accessToken');
+  };
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -69,10 +73,7 @@ export const Header = () => {
           {isLoggedIn ? (
             <Menu
               className="logout"
-              onClick={() => {
-                localStorage.removeItem('accessToken');
-                setIsLoggedIn(false);
-              }}
+              onClick={handleLogout}
             >
               로그아웃
             </Menu>
