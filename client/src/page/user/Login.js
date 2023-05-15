@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../common/Layout';
-
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/authSlice'
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -121,6 +122,7 @@ const LoginButton = styled.button`
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
 
@@ -140,6 +142,7 @@ const Login = () => {
       localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
       navigate('/');
+      dispatch(login());
     } catch (error) {
       alert('로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.');
       console.error(error);
