@@ -1,10 +1,9 @@
+/* eslint-disable */ 
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../common/AuthProvider';
 import Layout from '../../common/Layout';
-import { getCookie } from '../../utils/cookies';
 import KakaoLogin from './KakaoLogin';
 
 const LoginWrapper = styled.div`
@@ -103,9 +102,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
-  const { authState, setAuthState } = useAuthContext();
-
-  console.log('before login', authState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,13 +113,12 @@ const Login = () => {
           password,
         },
       );
-      setAuthState({
-        token: response.headers.authorization,
-        refresh: response.headers.refresh,
-      });
-
+      const accessToken = response.headers['authorization'];
+      const refreshToken = response.headers['refresh'];
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
-      navigate('/survey');
+      navigate('/');
     } catch (error) {
       alert('로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.');
       console.error(error);
@@ -133,6 +128,9 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/google">Google로 로그인</a>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/naver">Naver 로그인</a>
+      <a href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Kakao 로그인</a>
         <GoogleLogin>Login with Google</GoogleLogin>
         <KakaoLogin>Login with Kakao!</KakaoLogin>
         <NaverLogin>Login with Naver!!</NaverLogin>

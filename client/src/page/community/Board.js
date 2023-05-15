@@ -33,9 +33,20 @@ const Board = () => {
     }
   }, [dispatch, commuId]);
 
-  console.log(boardData);
+  // console.log(boardData);
   const commentList = boardData.comments || [];
-  console.log(commentList);
+  // console.log(commentList);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 2자리 숫자로 표시
+    const day = date.getDate().toString().padStart(2, '0');
+    const hour = date.getHours().toString().padStart(2, '0');
+    const minute = date.getMinutes().toString().padStart(2, '0');
+
+    return `${year}/${month}/${day} ${hour}:${minute}`;
+  };
 
   const handleSubmitComment = useCallback(() => {
     if (comment.trim() === '') {
@@ -51,6 +62,7 @@ const Board = () => {
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
+
     setEditedContent(boardData.content);
   };
   //수정 저장
@@ -61,7 +73,9 @@ const Board = () => {
         title: editedTitle,
         content: editedContent,
       }),
-    );
+    ).then(() => {
+      dispatch(fetchBoardData(boardData.commuId));
+    });
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
@@ -111,7 +125,7 @@ const Board = () => {
                   <p>내용 : {boardData.content}</p>
                   <div className="post-info">
                     <p>작성자: {boardData.displayName}</p>
-                    <p>작성시간: {boardData.createAt}</p>
+                    <p>작성시간: {formatDate(boardData.createAt)}</p>
                     <p>조회수: {boardData.view}</p>
                   </div>
                 </div>
@@ -136,7 +150,7 @@ const Board = () => {
                       <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <Timestamp>{comment.createAt}</Timestamp>
+                      <Timestamp>{formatDate(comment.createAt)}</Timestamp>
                     </div>
                   </div>
                 ))}

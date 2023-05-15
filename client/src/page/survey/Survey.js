@@ -5,7 +5,6 @@ import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4';
 import Step5 from './SurveyStep/Step5';
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../utils/cookies';
 import axios from 'axios';
 import Layout from '../../common/Layout';
 
@@ -48,17 +47,10 @@ const Survey = () => {
 
   console.log(form);
 
-  // 로그인 안했으면 회원가입 페이지로 보냄
-  // useEffect(() => {
-  //     if (getCookie("token") === "null") {
-  //       navigate("/signup");
-  //     }
-  //   });
-
   return (
     <Layout>
       <div className="wrap">
-        {step === 1 && <Step5 nextSteps={nextSteps} />}
+        {step === 1 && <Step1 nextSteps={nextSteps} />}
         {step === 2 && (
           <Step2
             disease={disease}
