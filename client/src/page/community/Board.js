@@ -73,7 +73,9 @@ const Board = () => {
         title: editedTitle,
         content: editedContent,
       }),
-    );
+    ).then(() => {
+      dispatch(fetchBoardData(boardData.commuId));
+    });
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
