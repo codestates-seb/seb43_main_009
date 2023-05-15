@@ -14,13 +14,13 @@ export const submitPost = createAsyncThunk(
     try {
       const token = localStorage.getItem('accessToken');
       const userInfo = getUserInfo();
-      const userId = userInfo && userInfo.id;
+      const userId = userInfo && userInfo.userId;
       await axios.post(
         `${API_SERVER}/commu/posts`,
         {
           title,
           content,
-          userId: 2,
+          userId,
         },
         {
           headers: {
