@@ -23,7 +23,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       <div className="choice">알레르기를 선택해주세요! </div>
       <button
         className={allergy === menu.caffeine ? 'selected' : ''}
-        value="카페인"
+        value="CAFFEINE"
         onClick={handleAllergyClick}
       >
         <DesginCiCoffeeCup />
@@ -31,7 +31,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.aspirin ? 'selected' : ''}
-        value="아스피린"
+        value="ASSPIRIN"
         onClick={handleAllergyClick}
       >
         <img className="aspirin" src={aspirin} alt="aspirin" />
@@ -39,7 +39,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.penicillin ? 'selected' : ''}
-        value="페니실린"
+        value="PENICILLIN"
         onClick={handleAllergyClick}
       >
         <img className="penicillin" src={penicillin} alt="penicillin" />
@@ -47,7 +47,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.anticonvulsants ? 'selected' : ''}
-        value="항경련제"
+        value="ANTICONVULSANT"
         onClick={handleAllergyClick}
       >
         <img
@@ -59,7 +59,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.xray ? 'selected' : ''}
-        value="조영제"
+        value="CONTRAST"
         onClick={handleAllergyClick}
       >
         <img className="xray" src={xray} alt="xray" />
@@ -67,7 +67,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.nothing ? 'selected' : ''}
-        value="없음"
+        value="NONE"
         onClick={handleAllergyClick}
       >
         <span className="nothing">없음</span>

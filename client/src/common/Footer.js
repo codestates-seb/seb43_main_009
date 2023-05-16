@@ -147,7 +147,6 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="copyright">ⓒ 2023 Company. All Rights Reserved.</div>
       </FooterStyle>
     </>
   );
