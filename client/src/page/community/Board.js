@@ -62,7 +62,7 @@ const Board = () => {
     }
     const token = localStorage.getItem('accessToken');
     if (token === null) {
-      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다');
+      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
       navigate('/signup');
     }
 
