@@ -69,7 +69,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       >
         <span className="nothing">없음</span>
       </button>
-      <button onClick={nextSteps}>
+      <button onClick={nextSteps} className="next">
         <span className="next">다음 ▶︎</span>
       </button>
     </Step2Design>
