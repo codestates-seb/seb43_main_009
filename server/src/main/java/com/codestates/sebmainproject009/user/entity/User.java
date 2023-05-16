@@ -38,21 +38,13 @@ public class User {
         this.email = email;
         this.displayName = displayName;
     }
+
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = true)
     private WorriedOrgan worriedOrgan = WorriedOrgan.NONE;
 
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = true)
-    private Allergy allergy = Allergy.NONE;
-
-
-    @Enumerated(value = EnumType.STRING)
-    @Column(length = 20, nullable = false)
-    private  WorriedOrgan worriedOrgan = WorriedOrgan.NONE;
-
-    @Enumerated(value = EnumType.STRING)
-    @Column(length = 20, nullable = false)
     private Allergy allergy = Allergy.NONE;
 
 
@@ -81,6 +73,9 @@ public class User {
         PENICILLIN("페니실린"),
         ANTICONVULSANT("항경련제"),
         CONTRAST("조영제"),
+        ALCOHOL("알코올"),
+        ANTIBIOTIC("항생"),
+        PAINKILLER("진통"),
         NONE("없음");
 
         @Getter

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.Column;
 
 @RestController
-@RequestMapping("/survey")
+@RequestMapping("/surveys")
 public class SurveyController {
 
     private final UserRepository userRepository;
