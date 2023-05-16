@@ -2,7 +2,6 @@ package com.codestates.sebmainproject009.auth.handler;
 
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
-import com.codestates.sebmainproject009.user.repository.UserRepository;
 import com.codestates.sebmainproject009.user.service.UserService;
 import com.codestates.sebmainproject009.user.entity.User;
 import org.springframework.security.core.Authentication;
@@ -45,27 +44,34 @@ public class OAuth2UserSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 
         Map<String, Object> responseMap;
 
+        String email ="";
+        String displayName = "";
         switch (provider){
             case "kakao":
                 responseMap = (Map<String, Object>) oAuth2User.getAttributes().get("kakao_account");
+                email = responseMap.get("email").toString();
+                Map<String, Object> responseMap2 = (Map<String, Object>) responseMap.get("profile");
+                displayName = responseMap2.get("nickname").toString();
                 break;
             case "naver":
                 responseMap = (Map<String, Object>) oAuth2User.getAttributes().get("response");
+                email = responseMap.get("email").toString();
+                displayName = responseMap.get("nickname").toString();
                 break;
             default: // google
-                responseMap =  (Map<String, Object>) oAuth2User.getAttributes();
+                responseMap = oAuth2User.getAttributes();
+                email = responseMap.get("email").toString();
+                displayName = responseMap.get("name").toString();
                 break;
         }
 
 
-
         responseMap.forEach((key, value) -> System.out.println(key + " = " + value));
 
+        if(email.isEmpty() || displayName.isEmpty()){
+            throw new IllegalArgumentException("Invalid email or display name");
+        }
 
-
-
-        String email = String.valueOf(oAuth2User.getAttributes().get("email"));
-        String displayName = String.valueOf(oAuth2User.getAttributes().get("name"));
 
         List<String> authorities = authorityUtils.createRoles(email);
 
@@ -99,6 +105,8 @@ public class OAuth2UserSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         return UriComponentsBuilder
                 .newInstance()
                 .scheme("https")
+                //.scheme("http")
+                //.host("localhost")
                 .host("dowajoyak.shop")
                 .port(443)
                 //.path("/receive-token.html")
@@ -106,7 +114,6 @@ public class OAuth2UserSuccessHandler extends SimpleUrlAuthenticationSuccessHand
                 .build()
                 .toUri();
     }
-
     private String delegateAccessToken(String username, List<String> authorities) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", username);
