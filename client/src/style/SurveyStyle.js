@@ -188,6 +188,10 @@ export const SurveyResultDesign = styled.div`
   background-color: #f1f2f3;
   font-size: 22px;
 
+  li {
+    margin-bottom: 3px;
+  }
+
   .logo {
     width: 150px;
     height: 50px;
@@ -204,6 +208,18 @@ export const SurveyResultDesign = styled.div`
     margin-top: 7vh;
     margin-left: 5vw;
   }
+  .danger {
+    margin-top: 7vh;
+    margin-left: 5vw;
+    color: red;
+    width: 80vw;
+  }
+  .caution {
+    color: black;
+    margin-top: 0;
+    margin-left: 7px;
+  }
+
   .explaindetail {
     width: 80vw;
     margin-top: 5vh;
@@ -217,10 +233,26 @@ export const SurveyResultDesign = styled.div`
     background-color: #f5d6d6;
     margin-top: 5vh;
     margin-left: 5vw;
+    margin-bottom: 5vh;
     width: 80vw;
     height: 50vh;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
   }
+  .recommend-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nutrients {
+    margin-left: auto;
+    margin-top: 30px;
+    margin-right: 7vw;
+    height: 300px;
+    width: 300px;
+  }
+
   .efficacy {
     margin-top: 5vh;
   }
@@ -237,10 +269,5 @@ export const SurveyResultDesign = styled.div`
     height: 70px;
     font-size: 20px;
     color: white;
-  }
-  .high {
-    height: 200px;
-    width: 200px;
-    margin-left: 300px;
   }
 `;

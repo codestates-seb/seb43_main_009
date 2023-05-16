@@ -1,11 +1,11 @@
-/* eslint-disable */ 
-import React, { useContext, useState,useEffect } from 'react';
+/* eslint-disable */
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/authSlice'
+import { login } from '../../redux/authSlice';
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@ const GoogleLogin = styled.a`
   text-decoration-line: none;
   display: flex;
   align-items: center;
-  justify-content : center;
+  justify-content: center;
 `;
 
 const KakaoLogin = styled.a`
@@ -41,7 +41,7 @@ const KakaoLogin = styled.a`
   text-decoration-line: none;
   display: flex;
   align-items: center;
-  justify-content : center;
+  justify-content: center;
 `;
 
 const NaverLogin = styled.a`
@@ -55,7 +55,7 @@ const NaverLogin = styled.a`
   text-decoration-line: none;
   display: flex;
   align-items: center;
-  justify-content : center;
+  justify-content: center;
 `;
 
 const EmailLogin = styled.form`
@@ -141,7 +141,7 @@ const Login = () => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
-      navigate('/');
+      navigate(-1);
       dispatch(login());
     } catch (error) {
       alert('로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.');
@@ -152,9 +152,15 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
-        <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">Login with Google</GoogleLogin>
-        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">Login with Kakao!</KakaoLogin>
-        <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">Login with Naver</NaverLogin>
+        <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
+          Login with Google
+        </GoogleLogin>
+        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+          Login with Kakao!
+        </KakaoLogin>
+        <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+          Login with Naver
+        </NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>

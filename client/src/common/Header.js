@@ -49,6 +49,7 @@ const Menu = styled.div`
   }
   &.logout {
     margin-right: 20px;
+    cursor: pointer;
   }
 `;
 
@@ -92,6 +93,7 @@ export const Header = () => {
                 onClick={() => {
                   localStorage.removeItem('accessToken');
                   setIsLoggedIn(false);
+                  window.alert('로그아웃 성공!');
                 }}
               >
                 로그아웃
