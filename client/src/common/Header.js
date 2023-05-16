@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/authSlice';
 
-
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
@@ -66,7 +65,6 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem('accessToken'),
   );
@@ -91,7 +89,6 @@ export const Header = () => {
         </StyledLink>
         <MenuWrapper>
           {isLoggedIn ? (
-
             <>
               <UserName> {username}님 환영합니다! </UserName>
               <Menu
@@ -103,14 +100,11 @@ export const Header = () => {
               >
                 로그아웃
               </Menu>
-            </>
 
-            <Menu
-              className="logout"
-              onClick={handleLogout}
-            >
-              로그아웃
-            </Menu>
+              <Menu className="logout" onClick={handleLogout}>
+                로그아웃
+              </Menu>
+            </>
           ) : (
             <>
               <StyledLink to="/login">
