@@ -27,14 +27,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
       <button
         className={disease === menu.stomach ? 'selected' : ''}
-        value="소화"
+        value="INTESTINE"
         onClick={handleDiseaseClick}
       >
         <StyledGistomach /> 소화, 장
       </button>
       <button
         className={disease === menu.skin ? 'selected' : ''}
-        value="피부"
+        value="SKIN"
         onClick={handleDiseaseClick}
       >
         <img src={dryskin} alt="dryskin" />
@@ -42,14 +42,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       </button>
       <button
         className={disease === menu.eye ? 'selected' : ''}
-        value="눈"
+        value="EYE"
         onClick={handleDiseaseClick}
       >
         <StyledImEye /> 눈
       </button>
       <button
         className={disease === menu.sheild ? 'selected' : ''}
-        value="면역"
+        value="IMMUNE"
         onClick={handleDiseaseClick}
       >
         <StyledBsShieldPlus />
@@ -57,14 +57,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       </button>
       <button
         className={disease === menu.fatiuge ? 'selected' : ''}
-        value="피로"
+        value="FATIGUE"
         onClick={handleDiseaseClick}
       >
         <img src={fatigue} alt="fatiuge" /> 피로
       </button>
       <button
         className={disease === menu.nothing ? 'selected' : ''}
-        value="없음"
+        value="NONE"
         onClick={handleDiseaseClick}
       >
         <span className="nothing">없음</span>
