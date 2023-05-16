@@ -1,5 +1,5 @@
 import Layout from '../../common/Layout';
-import { CommunityDesign } from '../../style/CommunityDesign';
+import { CommunityDesign } from '../../style/CommunityStyle';
 import CommunityPost from './CommunityPost';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

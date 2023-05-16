@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CommunitypostDesign } from '../../style/CommunityDesign';
+import { CommunitypostDesign } from '../../style/CommunityStyle';
 import { GetCommulist } from '../../redux/CommuntiySlice';
 
 const Commpost = () => {

@@ -50,6 +50,9 @@ const Survey = () => {
   const prevSteps = () => {
     setStep(step - 1);
   };
+  const resetSteps = () => {
+    setStep(step - 3);
+  };
 
   console.log(form);
 
@@ -75,7 +78,7 @@ const Survey = () => {
             form={form}
           />
         )}
-        {step === 4 && <Step4 form={form} />}
+        {step === 4 && <Step4 resetSteps={resetSteps} form={form} />}
       </div>
     </Layout>
   );

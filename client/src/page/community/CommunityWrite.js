@@ -1,5 +1,5 @@
 import Layout from '../../common/Layout';
-import { CommunityBox } from '../../style/CommunityDesign';
+import { CommunityBox } from '../../style/CommunityStyle';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitPost } from '../../redux/boardSlice';
