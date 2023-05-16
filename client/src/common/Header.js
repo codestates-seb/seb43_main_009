@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
+
+import { getUserInfo } from '../utils/UserInfo';
+import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/authSlice';
+
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -34,6 +39,11 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const UserName = styled.div`
+  font-weight: 600;
+  margin-top: 0.1rem;
+`;
+
 const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
@@ -56,12 +66,22 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-    localStorage.removeItem('accessToken');
-  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem('accessToken'),
+  );
+
+  const [username, setUsername] = useState(null);
+  useEffect(() => {
+    const userInfo = getUserInfo();
+    if (userInfo?.username) {
+      const namePart = userInfo.username.split('@')[0];
+      setUsername(namePart);
+    } else {
+      setUsername('Guest');
+    }
+  }, [isLoggedIn]);
+
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -71,6 +91,20 @@ export const Header = () => {
         </StyledLink>
         <MenuWrapper>
           {isLoggedIn ? (
+
+            <>
+              <UserName> {username}님 환영합니다! </UserName>
+              <Menu
+                className="logout"
+                onClick={() => {
+                  localStorage.removeItem('accessToken');
+                  setIsLoggedIn(false);
+                }}
+              >
+                로그아웃
+              </Menu>
+            </>
+
             <Menu
               className="logout"
               onClick={handleLogout}

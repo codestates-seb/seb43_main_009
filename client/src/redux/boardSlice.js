@@ -10,7 +10,7 @@ const API_SERVER = process.env.API_SERVER;
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
   'board/submitPost',
-  async ({ title, content, userId }) => {
+  async ({ title, content }, { dispatch }) => {
     try {
       const token = localStorage.getItem('accessToken');
       const userInfo = getUserInfo();
@@ -29,7 +29,7 @@ export const submitPost = createAsyncThunk(
           withCredentials: true,
         },
       );
-      const dispatch = useDispatch();
+      // const dispatch = useDispatch();
       dispatch(GetCommulist());
     } catch (error) {
       console.error(`${API_SERVER}/commu/posts`, error);
@@ -56,7 +56,7 @@ export const fetchBoardData = createAsyncThunk(
 //수정
 export const updatePost = createAsyncThunk(
   'board/updatePost',
-  async ({ commuId, title, content }) => {
+  async ({ commuId, title, content }, { dispatch }) => {
     try {
       const token = localStorage.getItem('accessToken');
       const response = await axios.patch(
@@ -69,9 +69,10 @@ export const updatePost = createAsyncThunk(
           withCredentials: true,
         },
       );
-      const dispatch = useDispatch();
-      dispatch(fetchBoardData());
-      return response.data;
+      // const dispatch = useDispatch();
+      // dispatch(fetchBoardData());
+      // return response.data;
+      dispatch(fetchBoardData(commuId));
     } catch (error) {
       console.error(`${API_SERVER}/commu/${commuId}`, error);
     }
@@ -98,9 +99,11 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   'board/submitComment',
-  async ({ commuId, comment, userId }) => {
+  async ({ commuId, comment }) => {
     try {
       const token = localStorage.getItem('accessToken');
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.userId;
       await axios.post(
         `${API_SERVER}/commu/${commuId}`,
         { comment, userId, commuId },

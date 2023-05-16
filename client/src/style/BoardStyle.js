@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CommunityBox = styled.div`
+export const CommunityBox = styled.div`
   box-sizing: border-box;
   margin: 0;
   display: flex;
@@ -17,6 +17,7 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .button-box {
       width: 70%;
@@ -24,9 +25,6 @@ const CommunityBox = styled.div`
       justify-content: flex-end;
 
       button {
-        background-color: #f06868;
-        border: none;
-        color: white;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -34,13 +32,15 @@ const CommunityBox = styled.div`
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 12px;
-        padding: 8px 24px;
+        padding: 4px 12px;
         transition-duration: 0.4s;
-
+        background-color: white;
+        color: #f06868;
+        border: none;
         &:hover {
-          background-color: white;
-          color: #f06868;
-          border: 1px solid #f06868;
+          background-color: #f06868;
+          border: none;
+          color: white;
         }
       }
     }
@@ -52,13 +52,27 @@ const CommunityBox = styled.div`
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
+      background-color: #fafafa;
+      position: relative;
 
       input {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
       }
 
       textarea {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
+      }
+      .post-info {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
       }
     }
   }
@@ -71,16 +85,33 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .comment-content {
       border: 1px solid #e0e0e0;
       width: 60%;
-      height: 30%;
+      height: 70%;
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
       margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 500px;
+      border-radius: 10px;
+
+      .comment {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+      }
+
+      .comment-text {
+        display: flex;
+        align-items: baseline;
+      }
     }
 
     .write-box {
@@ -96,6 +127,7 @@ const CommunityBox = styled.div`
         height: 70%;
         border: 1px solid #e0e0e0;
         border-radius: 10px;
+        padding: 4px;
       }
 
       button {
@@ -118,4 +150,27 @@ const CommunityBox = styled.div`
       }
     }
   }
+`;
+
+export const Author = styled.span`
+  font-weight: bold;
+  color: #f06868;
+  font-size: 14px;
+`;
+
+export const CommentText = styled.span`
+  font-size: 14px;
+  color: #444;
+  margin-left: 1rem;
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const Timestamp = styled.span`
+  font-size: 12px;
+  color: #999;
+  display: inline-block;
+  margin-top: 4px;
 `;
