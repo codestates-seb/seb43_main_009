@@ -50,9 +50,14 @@ export const STextInfoSection = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 50px;
+  top: 60px;
   color: var(--gray-900);
-
+  font-size: 2rem;
+  color: #f06868;
+  padding: 1.4rem;
+  .div {
+    top: 150px;
+  }
   h1 {
     font-size: 65px;
     font-weight: 500;
@@ -64,6 +69,12 @@ export const STextInfoSection = styled.div`
     font-size: 30px;
     font-weight: 350;
     color: #f06868;
+  }
+
+  h3 {
+    font-size: 25px;
+    font-weight: 350;
+    color: #ee9a9a;
   }
   @media only screen and (max-width: 500px) {
     display: flex;

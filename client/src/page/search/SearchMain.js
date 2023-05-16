@@ -46,8 +46,8 @@ const SearchMain = () => {
       <SBackgroundLayout>
         <SGradiant />
         <STextInfoSection>
-          {/* <h1>약 검색은 도와조약에서</h1> */}
-          <h2>가지고 계신 약의 성분을 확인해보세요!</h2>
+          <div className="pills">💊알고싶은 약의 성분을 확인해보세요!</div>
+          <h3>가지고 계신 🤧알러지를 표기해드립니다</h3>
           <StyledInput
             type="text"
             value={searchTerm}
