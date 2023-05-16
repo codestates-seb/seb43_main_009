@@ -58,12 +58,10 @@ public class SecurityConfiguration {
                 .and()
                 .apply(new JWTFilterConfigurer())
                 // 인증 API 끝, 인가 API 시작
-
                 .and()
                 .authorizeHttpRequests(authorize->authorize
                         .antMatchers(HttpMethod.GET).permitAll()
-                        .antMatchers(HttpMethod.POST, "/*/users/signup").permitAll() // 회원가입은 누구나
-
+                        .antMatchers(HttpMethod.POST, "/*/users/signup").permitAll()// 회원가입은 누구나
                 //        .antMatchers(HttpMethod.PATCH, "/*/users/**").hasRole("USER") // 회원 정보 수정은 USER 만
                 //        .antMatchers(HttpMethod.GET, "/*/users/**").hasAnyRole("USER","ADMIN") // 특정 회원은 ADMIN, USER 아무나
                 //        .antMatchers(HttpMethod.DELETE, "/*/users/**").hasRole("USER") // 회원 삭제는 USER 만
@@ -73,7 +71,8 @@ public class SecurityConfiguration {
                 //        .antMatchers(HttpMethod.POST, "/*/commu/**").hasAnyRole("USER","ADMIN")
                 //        .antMatchers(HttpMethod.DELETE, "/*/commu/**").hasRole("USER")
 
-                        //.anyRequest().authenticated() 검증 부분 잠깐 뺐음
+                       // .anyRequest().authenticated() //검증 부분 잠깐 뺐음
+
                        .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
@@ -112,11 +111,12 @@ public class SecurityConfiguration {
         @Override
         public void configure(HttpSecurity builder) throws Exception {
 
+            System.out.println("In JWT FILTER config");
+
             AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);
 
             JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager, jwtTokenizer);
             jwtAuthenticationFilter.setFilterProcessesUrl("/users/login");
-
             //인증 성공 실패 로그 구성
             jwtAuthenticationFilter.setAuthenticationSuccessHandler(new UserAuthenticationSuccessHandler());
             jwtAuthenticationFilter.setAuthenticationFailureHandler(new UserAuthenticationFailureHandler());
@@ -129,7 +129,18 @@ public class SecurityConfiguration {
                     .addFilterBefore(jwtAuthenticationFilter, OAuth2LoginAuthenticationFilter.class);
         }
     }
+    public class OAUTHFilterConfigurer extends AbstractHttpConfigurer<JWTFilterConfigurer, HttpSecurity> {
+        @Override
+        public void configure(HttpSecurity builder) throws Exception {
 
+            System.out.println("In OAUTH FILTER config");
+            JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
+
+
+            builder
+                    .addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);
+        }
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

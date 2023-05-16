@@ -113,4 +113,31 @@ public class JwtTokenizer {
 
         return expiration;
     }
+
+    public String extractTokenFromHeader(String authorizationHeader){
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+
+            return authorizationHeader.replaceAll("Bearer ", "");
+            // "Bearer " 제외한 토큰 값만 추출
+        }
+        return null;
+    }
+
+    public Long extractUserIdFromToken(String requestToken){
+        if(requestToken!=null) {
+            Jws<Claims> claims =
+                    getClaims(requestToken, encodeBase64SecretKey(secretKey));
+            String userIdString = claims.getBody().get("userId").toString();
+
+            if(userIdString!=null){
+                try{
+                    return Long.parseLong(userIdString);
+                } catch (NumberFormatException e){
+                    throw new IllegalArgumentException(e.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+
 }
