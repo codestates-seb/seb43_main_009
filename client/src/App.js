@@ -6,7 +6,8 @@ import Login from './page/user/Login';
 import Signup from './page/user/Signup';
 import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
-import Search from './page/search/Search';
+import SearchMain from './page/search/SearchMain';
+import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/commu" element={<Community />}></Route>
         <Route path="/survey" element={<Survey />}></Route>
-        <Route path="/search" element={<Search />}></Route>
+        <Route path="/searchmain" element={<SearchMain />}></Route>
+        <Route path="/search" element={<SearchResult />}></Route>
       </Routes>
     </BrowserRouter>
   );
