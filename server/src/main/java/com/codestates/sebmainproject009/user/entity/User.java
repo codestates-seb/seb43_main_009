@@ -47,6 +47,15 @@ public class User {
     private Allergy allergy = Allergy.NONE;
 
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private  WorriedOrgan worriedOrgan = WorriedOrgan.NONE;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private Allergy allergy = Allergy.NONE;
+
+
     public User() {
     }
 

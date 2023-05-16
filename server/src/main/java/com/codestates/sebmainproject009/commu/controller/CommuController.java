@@ -1,5 +1,6 @@
 package com.codestates.sebmainproject009.commu.controller;
 
+import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPatchDto;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
@@ -9,6 +10,8 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +26,13 @@ public class CommuController {
     private final CommuMapper mapper;
     private final CommentService commentService;
 
-    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService) {
+    private final JwtTokenizer jwtTokenizer;
+
+    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService, JwtTokenizer jwtTokenizer) {
         this.commuService = commuService;
         this.mapper = mapper;
         this.commentService = commentService;
+        this.jwtTokenizer = jwtTokenizer;
     }
 
     @PostMapping("/posts")
@@ -36,14 +42,6 @@ public class CommuController {
 
         return new ResponseEntity<>(mapper.commuToCommuResponseDto(commu), HttpStatus.CREATED);
 
-    }
-
-    @PatchMapping("/{commuId}")
-    public ResponseEntity patchCommu(@PathVariable long commuId,
-                                     @RequestBody CommuPatchDto commuPatchDto){
-
-        Commu commu = commuService.updateCommu(mapper.commuPatchDtoToCommu(commuPatchDto));
-        return new ResponseEntity<>(mapper.commuToCommuResponseDto(commu), HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -76,14 +74,55 @@ public class CommuController {
         return new ResponseEntity<>(commuResponseDto, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{commuId}")
-    public ResponseEntity deleteCommu(@PathVariable long commuId){
+    @PatchMapping("/{commuId}")
+    public ResponseEntity patchCommu(@PathVariable long commuId,
+                                     @RequestBody CommuPatchDto commuPatchDto,
+                                     @RequestHeader("Authorization") String authorizationHeader){
 
-        commentService.deleteCommentsByCommuId(commuId);
-        commuService.deleteCommu(commuId);
+        String token = jwtTokenizer.extractTokenFromHeader(authorizationHeader);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        Long userId;
+        if(token != null){
+            userId = jwtTokenizer.extractUserIdFromToken(token);
+        }else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if(userId != null && commuService.isSameWriter(userId, commuId)){
+
+            Commu commu = commuService.updateCommu(mapper.commuPatchDtoToCommu(commuPatchDto));
+
+
+            return new ResponseEntity<>(mapper.commuToCommuResponseDto(commu), HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
     }
+
+    @DeleteMapping("/{commuId}")
+    public ResponseEntity deleteCommu(@PathVariable long commuId,
+                                      @RequestHeader("Authorization") String authorizationHeader){
+        String token = jwtTokenizer.extractTokenFromHeader(authorizationHeader);
+
+        Long userId;
+
+        if(token != null){
+            userId = jwtTokenizer.extractUserIdFromToken(token);
+        }else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if(userId != null && commuService.isSameWriter(userId, commuId)){
+            commentService.deleteCommentsByCommuId(commuId);
+            commuService.deleteCommu(commuId);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
+
+    }
+
 
 
 }
