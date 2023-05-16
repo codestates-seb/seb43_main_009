@@ -2,6 +2,7 @@ package com.codestates.sebmainproject009.auth.jwt;
 
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -85,12 +86,17 @@ public class JwtTokenizer {
 
     public Jws<Claims> getClaims(String jws, String base64EncodedSecretKey){
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
+        try {
+            Jws<Claims> claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(jws);
+            return claims;
+        }catch (ExpiredJwtException e){
+            return null;
+        }
 
-        Jws<Claims> claims = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(jws);
-        return claims;
+
     }
 
     public void verifySignature(String jws, String base64EncodedSecretKey){
@@ -115,11 +121,15 @@ public class JwtTokenizer {
     }
 
     public String extractTokenFromHeader(String authorizationHeader){
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        authorizationHeader =
+                authorizationHeader.replaceAll("Bearer ", "");
+        // "Bearer " 제외한 토큰 값만 추출
+        if(verifyTokenExpiration(authorizationHeader)){
+            System.out.println("authorizationHeader= "+authorizationHeader);
 
-            return authorizationHeader.replaceAll("Bearer ", "");
-            // "Bearer " 제외한 토큰 값만 추출
+            return authorizationHeader;
         }
+
         return null;
     }
 
@@ -128,6 +138,7 @@ public class JwtTokenizer {
             Jws<Claims> claims =
                     getClaims(requestToken, encodeBase64SecretKey(secretKey));
             String userIdString = claims.getBody().get("userId").toString();
+            System.out.println("userId= "+ userIdString);
 
             if(userIdString!=null){
                 try{
@@ -140,4 +151,24 @@ public class JwtTokenizer {
         return null;
     }
 
+
+    public boolean verifyTokenExpiration(String requestToken) {
+        if (requestToken != null) {
+            System.out.println("requestToken= "+requestToken);
+            System.out.println("secretKey= "+secretKey);
+            System.out.println("encodeBase64SecretKey(secretKey)= "+encodeBase64SecretKey(secretKey));
+            Jws<Claims> claims = getClaims(requestToken, encodeBase64SecretKey(secretKey));
+
+            Date expiration = null;
+            if(claims!=null)
+                expiration = claims.getBody().getExpiration();
+            
+            if (expiration != null) {
+                Date now = new Date();
+                return now.before(expiration);
+                // 현재 시간이 토큰의 만료 시간 이전인지 확인
+            }
+        }
+        return false;
+    }
 }

@@ -30,7 +30,16 @@ public class Item {
     @JsonProperty("itemImage") // 이미지 url
     private String itemImage;
 
+    private String allergy;
 
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
 
     public String getItemName() {
         return itemName;
