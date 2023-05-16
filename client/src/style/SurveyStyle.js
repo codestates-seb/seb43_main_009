@@ -18,7 +18,7 @@ export const Step1Design = styled.div`
     flex-direction: column;
     text-align: center;
     width: 440px;
-    height: 70%;
+    height: 600px;
     margin-top: 70px;
     background-color: white;
     font-size: 25px;
@@ -208,14 +208,12 @@ export const SurveyResultDesign = styled.div`
   width: 100vw;
   background-color: #f4f4f4;
   font-size: 22px;
-
   li {
     margin-bottom: 3px;
   }
 
   .logo {
-    width: 150px;
-    height: 50px;
+    width: 100px;
   }
   .whoresult {
     border-bottom: 1px solid black;
@@ -259,6 +257,7 @@ export const SurveyResultDesign = styled.div`
     height: 50vh;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: flex-start;
   }
   .recommend-content {
