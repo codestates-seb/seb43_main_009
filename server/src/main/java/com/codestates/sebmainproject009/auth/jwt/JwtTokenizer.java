@@ -125,8 +125,6 @@ public class JwtTokenizer {
                 authorizationHeader.replaceAll("Bearer ", "");
         // "Bearer " 제외한 토큰 값만 추출
         if(verifyTokenExpiration(authorizationHeader)){
-            System.out.println("authorizationHeader= "+authorizationHeader);
-
             return authorizationHeader;
         }
 
@@ -138,7 +136,6 @@ public class JwtTokenizer {
             Jws<Claims> claims =
                     getClaims(requestToken, encodeBase64SecretKey(secretKey));
             String userIdString = claims.getBody().get("userId").toString();
-            System.out.println("userId= "+ userIdString);
 
             if(userIdString!=null){
                 try{
@@ -154,9 +151,6 @@ public class JwtTokenizer {
 
     public boolean verifyTokenExpiration(String requestToken) {
         if (requestToken != null) {
-            System.out.println("requestToken= "+requestToken);
-            System.out.println("secretKey= "+secretKey);
-            System.out.println("encodeBase64SecretKey(secretKey)= "+encodeBase64SecretKey(secretKey));
             Jws<Claims> claims = getClaims(requestToken, encodeBase64SecretKey(secretKey));
 
             Date expiration = null;
