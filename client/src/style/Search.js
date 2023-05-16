@@ -19,6 +19,8 @@ export const StyledInput = styled.input`
   border: 2px solid #ffa1a1;
   border-radius: 50px;
   animation: ${fadeIn} 2s ease-in-out;
+  font-size: large;
+
   &:focus {
     border-color: red;
   }

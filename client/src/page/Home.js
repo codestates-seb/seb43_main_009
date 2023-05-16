@@ -31,8 +31,10 @@ const Home = () => {
         <SBackgroundLayout>
           <SGradiant />
           <STextInfoSection>
-            <h1>약 검색은 도와조약에서</h1>
-            <h2>가지고 계신 약의 성분을 확인해보세요!</h2>
+            <h1>약 검색은 `도와조약`에서!</h1>
+            <h2>맞춤추천으로 나에게 맞는 영양제를 알아보세요</h2>
+            {/* <h2>커뮤니티에 증상을 공유하고 답변을 받아보세요</h2> */}
+            <button>💁🏻‍♀️맞춤추천 받으러가기</button>
           </STextInfoSection>
         </SBackgroundLayout>
         <SServiceInfoLayout>
