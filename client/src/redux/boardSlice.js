@@ -132,15 +132,7 @@ export const submitComment = createAsyncThunk(
 export const boardSlice = createSlice({
   name: 'board',
   initialState: {
-    data: {
-      title: '',
-      content: '',
-      createdAt: '',
-      displayName: '',
-      view: 0,
-      commuId: 0,
-      comments: [],
-    },
+    data: {},
     status: 'idle',
     error: null,
   },
@@ -151,15 +143,8 @@ export const boardSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchBoardData.fulfilled, (state, action) => {
-        console.log('Payload:', action.payload);
         state.status = 'succeeded';
-        state.data.title = action.payload.title;
-        state.data.content = action.payload.content;
-        state.data.createAt = action.payload.createAt;
-        state.data.displayName = action.payload.displayName;
-        state.data.view = action.payload.view;
-        state.data.commuId = action.payload.commuId;
-        // state.data.comments = action.payload.comments;
+        state.data = action.payload;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
         state.status = 'failed';
