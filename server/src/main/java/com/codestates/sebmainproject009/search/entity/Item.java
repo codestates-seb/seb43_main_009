@@ -30,14 +30,23 @@ public class Item {
     @JsonProperty("itemImage") // 이미지 url
     private String itemImage;
 
+    private String allergy;
 
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
 
     public String getItemName() {
         return itemName;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.itemName = itemName;
     }
 
     public String getEntpName() {
@@ -45,7 +54,7 @@ public class Item {
     }
 
     public void setEntpName(String entpName) {
-        this.entpName = entpName.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.entpName = entpName;
     }
 
     public String getEfcyQesitm() {
@@ -53,7 +62,7 @@ public class Item {
     }
 
     public void setEfcyQesitm(String efcyQesitm) {
-        this.efcyQesitm = efcyQesitm.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.efcyQesitm = efcyQesitm;
     }
 
     public String getUseMethodQesitm() {
@@ -61,7 +70,7 @@ public class Item {
     }
 
     public void setUseMethodQesitm(String useMethodQesitm) {
-        this.useMethodQesitm = useMethodQesitm.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.useMethodQesitm = useMethodQesitm;
     }
 
     public String getAtpnQesitm() {
@@ -71,7 +80,7 @@ public class Item {
 
 
     public void setAtpnQesitm(String atpnQesitm) {
-        this.atpnQesitm = atpnQesitm.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.atpnQesitm = atpnQesitm;
     }
 
     public String getIntrcQesitm() {
@@ -79,7 +88,7 @@ public class Item {
     }
 
     public void setIntrcQesitm(String intrcQesitm) {
-        this.intrcQesitm = intrcQesitm.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.intrcQesitm = intrcQesitm;
     }
 
     public String getItemImage() {
@@ -87,8 +96,9 @@ public class Item {
     }
 
     public void setItemImage(String itemImage) {
-        this.itemImage = itemImage.replaceAll("<br />","").replaceAll("<p>","").replaceAll("</p>","").replaceAll("\n","");
+        this.itemImage = itemImage;
     }
+
     @Builder
     public Item(JSONObject jsonObject) {
         this.setItemName(removeTag(jsonObject.get("itemName").toString()));
@@ -98,20 +108,38 @@ public class Item {
         this.setAtpnQesitm(removeTag(jsonObject.get("atpnQesitm").toString()));
         this.setIntrcQesitm(removeTag(jsonObject.get("intrcQesitm").toString()));
         this.setItemImage(removeTag(jsonObject.get("itemImage").toString()));
+
+        if(this.getEntpName().equals("null")) {
+            this.setEntpName("업체명이 명시되어 있지 않습니다.");
+        }
+        if(this.getEfcyQesitm().equals("null")) {
+            this.setEfcyQesitm("효능이 명시되어 있지 않습니다.");
+        }
+        if(this.getUseMethodQesitm().equals("null")) {
+            this.setUseMethodQesitm("사용법이 명시되어 있지 않습니다.");
+        }
+        if(this.getAtpnQesitm().equals("null")) {
+            this.setAtpnQesitm("주의사항이 명시되어 있지 않습니다.");
+        }
+        if(this.getIntrcQesitm().equals("null")) {
+            this.setIntrcQesitm("상호작용이 명시되어 있지 않습니다.");
+        }
+        if(this.getItemImage().equals("null")) {
+            this.setItemImage("이미지가 존재하지 않습니다.");
+        }
+
+
     }
     public String removeTag(String data){
         return data.replaceAll("<br />","")
                 .replaceAll("<p>","")
                 .replaceAll("</p>","")
                 .replaceAll("\n","")
-                .replaceAll("<sup>1</sup>", "")
-                .replaceAll("<sup>2</sup>", "")
-                .replaceAll("<sup>3</sup>", "")
-                .replaceAll("<sup>4</sup>", "")
-                .replaceAll("<sup>5</sup>", "");
-
-
-
+                .replaceAll("<sup>","")
+                .replaceAll("</sup>","")
+                .replaceAll("<sub>","")
+                .replaceAll("</sub>","")
+;
 
     }
 

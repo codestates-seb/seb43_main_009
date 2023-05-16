@@ -25,6 +25,7 @@ spring:
             clientSecret: ${g-client-secret}
             redirect-uri: ${g-redirect-uri}
             authorization-grant-type: authorization_code
+            client-name: Google
             scope:
               - email
               - profile
@@ -38,7 +39,7 @@ spring:
           kakao:
             clientId: ${k-client-id}
             clientSecret: ${k-client-secret}
-            redirect-uri: ${k-redriect-uri}
+            redirect-uri: ${k-redirect-uri}
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: Kakao

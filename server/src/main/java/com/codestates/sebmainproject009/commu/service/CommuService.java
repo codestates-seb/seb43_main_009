@@ -1,5 +1,8 @@
 package com.codestates.sebmainproject009.commu.service;
 
+import com.codestates.sebmainproject009.comment.entity.Comment;
+import com.codestates.sebmainproject009.comment.repository.CommentRepository;
+import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
 import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
@@ -25,10 +28,13 @@ public class CommuService {
     private final CommuMapper mapper;
     private final UserService userService;
 
-    public CommuService(CommuRepository commuRepository, CommuMapper mapper, UserService userService) {
+    private final CommentRepository commentRepository;
+
+    public CommuService(CommuRepository commuRepository, CommuMapper mapper, UserService userService, CommentRepository commentRepository) {
         this.commuRepository = commuRepository;
         this.mapper = mapper;
         this.userService = userService;
+        this.commentRepository = commentRepository;
     }
 
 
@@ -69,6 +75,12 @@ public class CommuService {
     }
 
     public void deleteCommu(long commuId){
+        Commu foundCommu = findVerifiedCommu(commuId);
+        List<Comment> commentList = foundCommu.getComments();
+        for(Comment comment : commentList){
+            commentRepository.delete(comment);
+        }
+
         commuRepository.deleteById(commuId);
     }
 
@@ -79,4 +91,9 @@ public class CommuService {
     }
 
 
+    public boolean isSameWriter(Long userId, long commuId) {
+        Commu foundCommu = findVerifiedCommu(commuId);
+        Long writerId = foundCommu.getUser().getUserId();
+        return writerId.equals(userId);
+    }
 }
