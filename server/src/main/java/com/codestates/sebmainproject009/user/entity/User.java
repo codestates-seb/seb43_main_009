@@ -38,7 +38,45 @@ public class User {
         this.email = email;
         this.displayName = displayName;
     }
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = true)
+    private WorriedOrgan worriedOrgan = WorriedOrgan.NONE;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = true)
+    private Allergy allergy = Allergy.NONE;
+
 
     public User() {
+    }
+
+    public enum WorriedOrgan{
+        INTESTINE("소화"),
+        SKIN("피부"),
+        EYE("눈"),
+        IMMUNE("면역"),
+        FATIGUE("피로"),
+        NONE("없음");
+
+        @Getter
+        private String target;
+
+        WorriedOrgan(String target){
+            this.target = target;
+        }
+    }
+
+    public enum Allergy{
+        CAFFEINE("카페인"),
+        ASSPIRIN("아스피린"),
+        PENICILLIN("페니실린"),
+        ANTICONVULSANT("항경련제"),
+        CONTRAST("조영제"),
+        NONE("없음");
+
+        @Getter
+        private String allergy;
+
+        Allergy(String allergy){this.allergy = allergy;}
     }
 }
