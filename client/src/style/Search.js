@@ -11,7 +11,10 @@ export const StyledInput = styled.input`
   margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid #ffa1a1;
-  border-radius: 4px;
+  border-radius: 50px;
+  &:focus {
+    border-color: red;
+  }
 `;
 
 export const StyledButton = styled.button`

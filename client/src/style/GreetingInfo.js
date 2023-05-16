@@ -12,9 +12,10 @@ export const SBackgroundLayout = styled.div`
   width: 100%;
   height: 900px;
   background-image: url(${landingTitle});
-  background-size: auto;
-  background-position: center center;
-  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center 50px;
+  /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,6 +29,8 @@ export const SBackgroundLayout = styled.div`
   @media only screen and (max-width: 300px) {
     background-image: url(${landingTitle});
     background-size: contain;
+    background-position: center center;
+    background-attachment: fixed;
     height: 290px;
   }
 `;
@@ -52,11 +55,14 @@ export const STextInfoSection = styled.div`
   h1 {
     font-size: 65px;
     font-weight: 500;
-    padding-bottom: 40px;
+    /* padding-bottom: 30px; */
+    color: #f06868;
   }
   h2 {
+    font-family: sans-serif;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 350;
+    color: #f06868;
   }
   @media only screen and (max-width: 500px) {
     display: flex;

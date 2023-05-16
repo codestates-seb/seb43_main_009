@@ -31,11 +31,8 @@ const Home = () => {
         <SBackgroundLayout>
           <SGradiant />
           <STextInfoSection>
-            <h1>건강 고민은 다나아에서</h1>
-            <h2>
-              건강 고민, 다나아 커뮤니티에 남기고 의학 전문가의 답변을
-              받아보세요!
-            </h2>
+            <h1>약 검색은 도와조약에서</h1>
+            <h2>가지고 계신 약의 성분을 확인해보세요!</h2>
           </STextInfoSection>
         </SBackgroundLayout>
         <SServiceInfoLayout>
