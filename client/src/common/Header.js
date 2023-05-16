@@ -56,7 +56,6 @@ const Menu = styled.div`
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  border-bottom: 0.5px solid var(--gray-200);
   height: 35px;
   text-decoration: none;
 `;

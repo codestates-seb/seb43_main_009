@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import high from '../../public/home.png';
+import high from '../../public/medicine.jpg';
 const landingTitle = high;
 
 export const SBackgroundLayout = styled.div`
@@ -12,15 +12,20 @@ export const SBackgroundLayout = styled.div`
   width: 100%;
   height: 900px;
   background-image: url(${landingTitle});
-  background-size: cover;
+  background-size: auto;
+  background-position: center center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+
   * {
     text-decoration: none;
   }
-  @media only screen and (max-width: 500px) {
+
+  @media only screen and (max-width: 300px) {
     background-image: url(${landingTitle});
     background-size: contain;
     height: 290px;
