@@ -24,7 +24,6 @@ public class UserController {
 
     private final UserService userService;
     private final UserMapper mapper;
-    private final HttpSession httpSession;
 
     public UserController(UserService userService, UserMapper mapper) {
         this.userService = userService;

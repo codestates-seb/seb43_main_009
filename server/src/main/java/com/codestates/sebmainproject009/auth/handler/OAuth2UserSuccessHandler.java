@@ -6,7 +6,6 @@ import com.codestates.sebmainproject009.user.repository.UserRepository;
 import com.codestates.sebmainproject009.user.service.UserService;
 import com.codestates.sebmainproject009.user.entity.User;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.util.LinkedMultiValueMap;
@@ -99,11 +98,8 @@ public class OAuth2UserSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 
         return UriComponentsBuilder
                 .newInstance()
-                //.scheme("http")
                 .scheme("https")
                 .host("dowajoyak.shop")
-                //.host("localhost")
-               // .port(80) // 클라이언트 쪽
                 .port(443)
                 //.path("/receive-token.html")
                 .queryParams(queryParams)
