@@ -1,6 +1,5 @@
 export const getUserInfo = () => {
   const token = localStorage.getItem('accessToken');
-  console.log(token);
   if (!token) {
     return null;
   }

@@ -8,6 +8,7 @@ import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
 import Search from './page/search/Search';
 import Board from './page/community/Board';
+import Searchlist from './page/search/Searchlist';
 
 const App = () => {
   console.log(process.env.API_SERVER);
