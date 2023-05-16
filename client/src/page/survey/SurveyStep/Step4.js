@@ -16,7 +16,7 @@ const Step4 = ({ form, resetSteps }) => {
   return (
     <SurveyResultDesign>
       {nutrients && (
-        <div>
+        <div className="result">
           <div className="whoresult">
             <span>name님의 필요영양성분</span>
           </div>

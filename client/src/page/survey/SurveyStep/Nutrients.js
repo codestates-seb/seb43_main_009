@@ -6,7 +6,7 @@ import vitaminB1 from '../../../../public/vitaminB1.png';
 import multivitamin from '../../../../public/multivitamin.png';
 
 export const choosenutrients = (el) => {
-  let pill = ['소화', '피부', '눈', '면역', '피로', '없음'];
+  const pill = ['INTESTINE', 'SKIN', 'EYE', 'IMMUNE', 'FATIGUE', 'NONE'];
   if (el.disease === pill[0]) {
     return nutrients[0];
   } else if (el.disease === pill[1]) {
