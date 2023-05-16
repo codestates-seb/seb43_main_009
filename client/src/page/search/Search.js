@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const SearchWrapper = styled.div`
-  height: 100vh;
   width: 100%;
   background-color: #ffffff;
 `;
@@ -59,13 +58,25 @@ const StyledTable = styled.table`
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
-
+  const dummy = [
+    {
+      itemName: '정보없음',
+      entpName: '정보없음',
+      efcyQesitm: '정보없음',
+      useMethodQesitm: '정보없음',
+      atpnQesitm: '정보없음',
+      intrcQesitm: '정보없음',
+      itemImage: '정보없음',
+    },
+  ];
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/search?=${searchTerm}`,
+        `https://server.dowajoyak.shop/search?itemName=${searchTerm}`,
       );
-      setData(response.data);
+      if (typeof response.data === 'object') {
+        setData(response.data);
+      } else setData(dummy);
     } catch (error) {
       console.error(error);
     }
@@ -84,50 +95,38 @@ const Search = () => {
           <h1>검색하신 약에대한 정보입니다</h1>
         </div>
         <StyledTable>
-          <thead>
-            <tr>
-              <td>제품명</td>
-              <td>제품명</td>
-              <td>약 이미지</td>
-            </tr>
-            <tr>
-              <td>회사명</td>
-              <td>회사명</td>
-              <td rowSpan="5">약 이미지</td>
-            </tr>
-            <tr>
-              <td>효능</td>
-              <td>효능</td>
-            </tr>
-            <tr>
-              <td>복용방법(사용법)</td>
-              <td>복용방법(사용법)</td>
-            </tr>
-            <tr>
-              <td>사용상 주의사항</td>
-              <td>사용상 주의사항</td>
-            </tr>
-            <tr>
-              <td>사용중 주의사항(약,음식)</td>
-              <td>사용중 주의사항(약,음식)</td>
-            </tr>
-            <tr></tr>
-          </thead>
-          <tbody>
-            {data.map((row) => (
-              <tr key={row.itemName}>
+          {data.map((row) => (
+            <tbody key={row.itemName}>
+              <tr>
+                <td>제품명</td>
                 <td>{row.itemName}</td>
+                <td>약 이미지</td>
+              </tr>
+              <tr>
+                <td>회사명</td>
                 <td>{row.entpName}</td>
-                <td>{row.efcyQesitm}</td>
-                <td>{row.useMethodQesitm}</td>
-                <td>{row.atpnQesitm}</td>
-                <td>{row.intrcQesitm}</td>
-                <td>
+                <td rowSpan="5">
                   <img src={row.itemImage} alt={row.itemName} />
                 </td>
               </tr>
-            ))}
-          </tbody>
+              <tr>
+                <td>효능</td>
+                <td>{row.efcyQesitm}</td>
+              </tr>
+              <tr>
+                <td>복용방법(사용법)</td>
+                <td>{row.useMethodQesitm}</td>
+              </tr>
+              <tr>
+                <td>사용상 주의사항</td>
+                <td>{row.atpnQesitm}</td>
+              </tr>
+              <tr>
+                <td>사용중 주의사항(약,음식)</td>
+                <td>{row.intrcQesitm}</td>
+              </tr>
+            </tbody>
+          ))}
         </StyledTable>
       </SearchWrapper>
     </Layout>
