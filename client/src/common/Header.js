@@ -3,12 +3,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
-
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../redux/authSlice';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -98,10 +94,6 @@ export const Header = () => {
                   setIsLoggedIn(false);
                 }}
               >
-                로그아웃
-              </Menu>
-
-              <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>
             </>
