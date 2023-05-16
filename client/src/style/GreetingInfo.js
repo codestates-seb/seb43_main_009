@@ -14,7 +14,7 @@ export const SBackgroundLayout = styled.div`
   background-image: url(${landingTitle});
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center 50px;
+  background-position: center 2 0px;
   /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
@@ -49,9 +49,10 @@ export const STextInfoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  top: 150px;
+  position: absolute;
+  top: 50px;
   color: var(--gray-900);
+
   h1 {
     font-size: 65px;
     font-weight: 500;
