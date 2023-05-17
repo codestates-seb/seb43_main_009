@@ -76,7 +76,7 @@
   <tbody>
     <tr>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/82639552?v=4" alt="염도경" width="350"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120395149?v=4" alt="김성수" style="max-width: 100%"></td>
+      <td align="center"><img src="https://cdn.pixabay.com/photo/2014/10/04/22/29/monkey-474147_960_720.png" alt="김성수" style="max-width: 100%"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/82007474?v=4" alt="노호준" style="max-width: 100%"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/66173718?v=4" alt="이진하" style="max-width: 100%"></td>
     </tr>
