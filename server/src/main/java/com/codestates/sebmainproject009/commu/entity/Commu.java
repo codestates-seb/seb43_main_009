@@ -45,6 +45,9 @@ public class Commu {
     @JoinColumn(name = "userId")
     private User user;
 
+    @Column
+    private String imageUrl;
+
     public void setUser(User user) {
         this.user = user;
     }
