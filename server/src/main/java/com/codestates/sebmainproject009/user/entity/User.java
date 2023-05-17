@@ -1,9 +1,6 @@
 package com.codestates.sebmainproject009.user.entity;
 
-import com.codestates.sebmainproject009.commu.entity.Commu;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
