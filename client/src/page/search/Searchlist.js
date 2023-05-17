@@ -6,8 +6,22 @@ import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import { GetSearch } from '../../redux/SearchSlice';
 
-const SearchResultDesign = styled.div`
+const SearchlistDesign = styled.div`
   margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  vertical-align: baseline;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .list {
+    display: flex;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -52,8 +66,6 @@ const SearchResult = () => {
       dispatch(GetSearch(spa));
     }
   }, [dispatch]);
-  console.log(searchdata);
-  console.log(spa);
 
   /* useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -72,19 +84,22 @@ const SearchResult = () => {
 
   return (
     <Layout>
-      <StyledInput
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      ></StyledInput>
-      <StyledButton onClick={handleSearch}>Search</StyledButton>
-      {searchdata.map((el) => (
-        <ul key="1" className="list">
-          <li className="postid">{el.itemImage}</li>
-          <li className="postname">{el.itemName}</li>
-          <li className="posttitle">{el.entpName}</li>
-        </ul>
-      ))}
+      <SearchlistDesign>
+        <StyledInput
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        ></StyledInput>
+        <StyledButton onClick={handleSearch}>Search</StyledButton>
+        {searchdata.map((el) => (
+          <div key="1" className="list">
+            <img className="itemimage" alt="itemimage" src={el.itemImage}></img>
+            <div className="itemname">{el.itemName}</div>
+            <div className="allergy">{el.allergy}</div>
+            <div className="entpname">{el.entpName}</div>
+          </div>
+        ))}
+      </SearchlistDesign>
     </Layout>
   );
 };
