@@ -20,7 +20,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   };
   return (
     <Step3Design>
-      <div className="choice">알레르기를 선택해주세요! </div>
+      <div className="choice">해당하는 약물 알러지를 선택해주세요! </div>
       <button
         className={allergy === menu.caffeine ? 'selected' : ''}
         value="CAFFEINE"
@@ -31,7 +31,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.aspirin ? 'selected' : ''}
-        value="ASSPIRIN"
+        value="PAINKILLER"
         onClick={handleAllergyClick}
       >
         <img className="aspirin" src={aspirin} alt="aspirin" />
@@ -39,7 +39,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.penicillin ? 'selected' : ''}
-        value="PENICILLIN"
+        value="ANTIBIOTIC"
         onClick={handleAllergyClick}
       >
         <img className="penicillin" src={penicillin} alt="penicillin" />
