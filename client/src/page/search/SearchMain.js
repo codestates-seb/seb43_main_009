@@ -47,7 +47,9 @@ const SearchMain = () => {
         <SGradiant />
         <STextInfoSection>
           <div className="pills">💊알고싶은 약의 성분을 확인해보세요!</div>
-          <h3>가지고 계신 🤧알러지를 표기해드립니다</h3>
+          <h3>
+            가지고 계신 🤧<span>알러지</span>를 표기해드립니다
+          </h3>
           <StyledInput
             type="text"
             value={searchTerm}
@@ -55,7 +57,8 @@ const SearchMain = () => {
             placeholder="🔎 게보린, 아스피린"
           />
           <div className="example">
-            아직 알러지를 설정하지 않으셨다면, 맞춤 추천 후 검색을 추천드립니다
+            아직 본인이 가진 알러지를 설정하지 않으셨다면,<br></br> 맞춤
+            추천에서 설정 후 검색을 추천드립니다
           </div>
         </STextInfoSection>
       </SBackgroundLayout>

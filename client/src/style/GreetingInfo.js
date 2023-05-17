@@ -102,6 +102,7 @@ export const STextInfoSection = styled.div`
   font-size: 2rem;
   color: #f06868;
   padding: 1.4rem;
+  text-align: center;
 
   .example {
     font-size: medium;
@@ -126,12 +127,20 @@ export const STextInfoSection = styled.div`
     animation: ${slideFromLeft} 1.5s ease-out;
     position: absolute;
     bottom: 0;
+
+    span {
+      color: #ffc81e;
+    }
   }
 
   h3 {
     font-size: 25px;
     font-weight: 350;
-    color: #ee9a9a;
+    color: gray;
+
+    span {
+      color: #ff607f;
+    }
   }
 
   button {

@@ -1,6 +1,6 @@
 import Layout from '../../common/Layout';
 import { useNavigate, useParams } from 'react-router-dom';
-import React from 'react';
+import React, { useId } from 'react';
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +9,9 @@ import {
   deletePost,
   updatePost,
   submitComment,
+  checkToken,
 } from '../../redux/boardSlice';
+import { getUserInfo } from '../../utils/UserInfo';
 
 import {
   CommunityBox,
@@ -24,6 +26,7 @@ const Board = () => {
   const boardData = useSelector((state) => state.board.data);
   const boardStatus = useSelector((state) => state.board.status);
   const boardError = useSelector((state) => state.board.error);
+  const token = useSelector((state) => state.board.token);
   // const submitData = useSelector((state) => state.counter.data);
   // const submitStatus = useSelector((state) => state.counter.status);
 
@@ -32,10 +35,15 @@ const Board = () => {
   const [editedTitle, setEditedTitle] = useState('');
   const [editedContent, setEditedContent] = useState('');
   const [comment, setComment] = useState('');
-
+  const userInfo = getUserInfo();
+  const userId = userInfo && userInfo.userId;
+  console.log(userId); // 로그인한 사용자의 ID
+  console.log(boardData); //여기에 userId가 없음
+  console.log(getUserInfo());
   useEffect(() => {
     {
       dispatch(fetchBoardData(commuId));
+      dispatch(checkToken());
     }
   }, [dispatch, commuId]);
 
@@ -118,8 +126,12 @@ const Board = () => {
               </>
             ) : (
               <>
-                <button onClick={handleEditClick}>게시글 수정</button>
-                <button onClick={handleDeletePost}>게시글 삭제</button>
+                {userId === boardData.userId && ( // 만약 게시글 작성자와 로그인한 사용자가 같다면 버튼을 보여줍니다.
+                  <>
+                    <button onClick={handleEditClick}>게시글 수정</button>
+                    <button onClick={handleDeletePost}>게시글 삭제</button>
+                  </>
+                )}
               </>
             )}
           </div>
