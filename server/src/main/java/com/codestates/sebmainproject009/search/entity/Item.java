@@ -99,6 +99,7 @@ public class Item {
         this.itemImage = itemImage;
     }
 
+
     @Builder
     public Item(JSONObject jsonObject) {
         this.setItemName(removeTag(jsonObject.get("itemName").toString()));
