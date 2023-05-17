@@ -2,7 +2,6 @@ package com.codestates.sebmainproject009.commu.service;
 
 import com.codestates.sebmainproject009.comment.entity.Comment;
 import com.codestates.sebmainproject009.comment.repository.CommentRepository;
-import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
 import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
@@ -95,5 +94,18 @@ public class CommuService {
         Commu foundCommu = findVerifiedCommu(commuId);
         Long writerId = foundCommu.getUser().getUserId();
         return writerId.equals(userId);
+    }
+
+
+    public Commu createCommuCustom(String title, String content, String imageUrl,Long userId) {
+
+        User user = userService.findVerifiedUser(userId);
+        Commu commu =new Commu();
+        commu.setTitle(title);
+        commu.setContent(content);
+        commu.setUser(user);
+        commu.setImageUrl(imageUrl);
+
+        return commuRepository.save(commu);
     }
 }
