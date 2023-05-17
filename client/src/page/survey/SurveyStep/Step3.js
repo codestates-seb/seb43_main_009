@@ -73,10 +73,10 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
         <span className="nothing">없음</span>
       </button>
       <div className="goorback">
-        <div className="previous" onClick={prevSteps}>
+        <button className="previous" onClick={prevSteps}>
           ◀︎ 이전
-        </div>
-        <div
+        </button>
+        <button
           className="next"
           onClick={() => {
             nextSteps();
@@ -84,7 +84,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
           }}
         >
           다음 ▶︎
-        </div>
+        </button>
       </div>
     </Step3Design>
   );
