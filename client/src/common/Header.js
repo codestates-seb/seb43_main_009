@@ -18,6 +18,11 @@ const HeaderWrapper = styled.div`
   justify-content: center;
   height: 110px;
   border-top: 5px solid #f05858;
+  position : fixed;
+  top: 0;
+  width: 100%;
+  background-color : white;
+  z-index : 1;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -61,6 +66,11 @@ const UnderMenuWrapper = styled.div`
   /* border-bottom: 0.5px solid var(--gray-200); */
   height: 35px;
   text-decoration: none;
+  position: fixed;
+  top : 110px;
+  width: 100%;
+  background-color : white;
+  z-index : 1;
 `;
 
 export const Header = () => {
