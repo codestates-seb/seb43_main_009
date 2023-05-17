@@ -17,6 +17,7 @@ import {
 const SearchMain = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
+
   const dummy = [
     {
       itemName: '정보없음',
@@ -45,10 +46,8 @@ const SearchMain = () => {
       <SBackgroundLayout>
         <SGradiant />
         <STextInfoSection>
-          <h1>건강 고민은 다나아에서</h1>
-          <h2>
-            건강 고민, 다나아 커뮤니티에 남기고 의학 전문가의 답변을 받아보세요!
-          </h2>
+          <div className="pills">💊알고싶은 약의 성분을 확인해보세요!</div>
+          <h3>가지고 계신 🤧알러지를 표기해드립니다</h3>
           <StyledInput
             type="text"
             value={searchTerm}

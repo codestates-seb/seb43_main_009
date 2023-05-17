@@ -76,15 +76,15 @@ const SearchResult = () => {
               </tr>
               <tr>
                 <td>사용상 주의사항</td>
-                <td colspan="2">{row.atpnQesitm}</td>
+                <td colSpan="2">{row.atpnQesitm}</td>
               </tr>
               <tr>
                 <td>사용중 주의사항(약,음식)</td>
-                <td colspan="2">{row.intrcQesitm}</td>
+                <td colSpan="2">{row.intrcQesitm}</td>
               </tr>
               <tr>
                 <td>사용자 주의사항</td>
-                <td colspan="2">정보</td>
+                <td colSpan="2">정보</td>
               </tr>
             </tbody>
           ))}

@@ -1,5 +1,4 @@
 import Layout from '../../common/Layout';
-import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -61,9 +60,21 @@ const Board = () => {
       alert('댓글 내용을 입력해주세요.');
       return;
     }
-    dispatch(submitComment({ commuId: boardData.commuId, comment }));
-    setComment('');
-  }, [dispatch, boardData.commuId, comment]);
+    const token = localStorage.getItem('accessToken');
+    if (token === null) {
+      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
+      navigate('/signup');
+    }
+
+    dispatch(submitComment({ commuId: boardData.commuId, comment }))
+      .then(() => {
+        setComment('');
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate('/signup');
+      });
+  }, [dispatch, boardData.commuId, comment, navigate]);
 
   //수정
   const handleEditClick = () => {

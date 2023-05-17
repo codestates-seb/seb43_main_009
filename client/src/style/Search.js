@@ -1,17 +1,29 @@
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
 export const SearchWrapper = styled.div`
   width: 100%;
   background-color: #ffffff;
 `;
-
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
 export const StyledInput = styled.input`
-  width: 80%;
+  top: 125px;
+  position: absolute;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid #ffa1a1;
-  border-radius: 4px;
+  border-radius: 50px;
+  animation: ${fadeIn} 2s ease-in-out;
+  font-size: large;
+
+  &:focus {
+    border-color: red;
+  }
 `;
 
 export const StyledButton = styled.button`

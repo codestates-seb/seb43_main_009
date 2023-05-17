@@ -99,7 +99,7 @@ export const deletePost = createAsyncThunk(
 
 export const submitComment = createAsyncThunk(
   'board/submitComment',
-  async ({ commuId, comment }) => {
+  async ({ commuId, comment }, { dispatch }) => {
     try {
       const token = localStorage.getItem('accessToken');
       const userInfo = getUserInfo();
@@ -114,6 +114,7 @@ export const submitComment = createAsyncThunk(
           withCredentials: true,
         },
       );
+      // dispatch(fetchBoardData(commuId));
       const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -123,6 +124,7 @@ export const submitComment = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error(`${API_SERVER}/commu/${commuId}`, error);
+      throw error;
     }
   },
 );
@@ -130,15 +132,7 @@ export const submitComment = createAsyncThunk(
 export const boardSlice = createSlice({
   name: 'board',
   initialState: {
-    data: {
-      title: '',
-      content: '',
-      createdAt: '',
-      displayName: '',
-      view: 0,
-      commuId: 0,
-      comments: [],
-    },
+    data: {},
     status: 'idle',
     error: null,
   },
@@ -149,15 +143,8 @@ export const boardSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchBoardData.fulfilled, (state, action) => {
-        console.log('Payload:', action.payload);
         state.status = 'succeeded';
-        state.data.title = action.payload.title;
-        state.data.content = action.payload.content;
-        state.data.createAt = action.payload.createAt;
-        state.data.displayName = action.payload.displayName;
-        state.data.view = action.payload.view;
-        state.data.commuId = action.payload.commuId;
-        state.data.comments = action.payload.comments;
+        state.data = action.payload;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
         state.status = 'failed';
@@ -167,6 +154,10 @@ export const boardSlice = createSlice({
         console.log('Payload:', action.payload);
         state.status = 'succeeded';
         state.data.comments = action.payload.comments; // 받아온 댓글 목록을 state에 저장합니다.
+      })
+      .addCase(submitComment.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
   },
 });
