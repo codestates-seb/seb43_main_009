@@ -22,7 +22,7 @@ const Step1 = ({ disease, changeInput, nextSteps }) => {
 
   return (
     <Step1Design>
-      <div className="stepone">
+      <div className="card">
         <img className="doctor" src={doctor} alt="doctor"></img>
         <div>
           <div className="recommend">맞춤추천</div>
