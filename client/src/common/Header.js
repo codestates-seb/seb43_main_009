@@ -6,7 +6,7 @@ import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { setStep } from '../redux/surveySlice';
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
@@ -83,6 +83,10 @@ export const Header = () => {
     window.alert('로그아웃 성공!');
   };
 
+  const handleResetStep = () => {
+    dispatch(setStep(1));
+  };
+
   useEffect(() => {
     const userInfo = getUserInfo();
     if (userInfo?.username) {
@@ -121,7 +125,7 @@ export const Header = () => {
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-        <StyledLink to="/survey">
+        <StyledLink to="/survey" onClick={handleResetStep}>
           <Menu>맞춤추천</Menu>
         </StyledLink>
         <StyledLink to="/commu">
