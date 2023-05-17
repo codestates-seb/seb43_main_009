@@ -10,9 +10,10 @@ const fadeIn = keyframes`
   100% { opacity: 1; }
 `;
 export const StyledInput = styled.input`
-  top: 125px;
+  top: 150px;
   position: absolute;
-  width: 100%;
+  width: 120%;
+  height: 35%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -20,6 +21,7 @@ export const StyledInput = styled.input`
   border-radius: 50px;
   animation: ${fadeIn} 2s ease-in-out;
   font-size: large;
+  /* text-align: center; */
 
   &:focus {
     border-color: red;

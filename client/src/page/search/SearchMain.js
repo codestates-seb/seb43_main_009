@@ -52,8 +52,9 @@ const SearchMain = () => {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="🔎 게보린, 맘모스빵 먹고싶다"
           />
-          <sExample>ex: 게보린, 맘모스빵 먹고싶다</sExample>
+          <div className="example">ex: 게보린, 맘모스빵 먹고싶다</div>
         </STextInfoSection>
       </SBackgroundLayout>
     </Layout>
