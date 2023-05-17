@@ -5,6 +5,8 @@ import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
+import { login, logout } from '../redux/authSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -62,11 +64,16 @@ const UnderMenuWrapper = styled.div`
 `;
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    !!localStorage.getItem('accessToken'),
-  );
-
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [username, setUsername] = useState(null);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('accessToken');
+    window.alert('로그아웃 성공!');
+  };
+
   useEffect(() => {
     const userInfo = getUserInfo();
     if (userInfo?.username) {
@@ -90,11 +97,7 @@ export const Header = () => {
               <UserName> {username}님 환영합니다! </UserName>
               <Menu
                 className="logout"
-                onClick={() => {
-                  localStorage.removeItem('accessToken');
-                  setIsLoggedIn(false);
-                  window.alert('로그아웃 성공!');
-                }}
+                onClick={handleLogout}
               >
                 로그아웃
               </Menu>
