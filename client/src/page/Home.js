@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { login } from '../redux/authSlice';
 import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
-
 import {
   SServiceInfoLayout,
   SServiceInfoSection,
@@ -20,7 +19,9 @@ import {
   SBackgroundLayout,
   SGradiant,
   STextInfoSection,
+  Logoimg,
 } from '../style/GreetingInfo';
+import logo from '../../public/logo.png';
 
 const Home = () => {
   const dispatch = useDispatch();

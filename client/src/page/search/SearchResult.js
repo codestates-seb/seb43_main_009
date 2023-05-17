@@ -6,11 +6,14 @@ import {
   StyledInput,
   StyledButton,
   StyledTable,
+  SGradiant,
 } from '../../style/Search';
 
 const SearchResult = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
+  let num = 1;
+  let sub = num - 1;
   const dummy = [
     {
       itemName: '정보없음',
@@ -27,9 +30,12 @@ const SearchResult = () => {
       const response = await axios.get(
         `https://server.dowajoyak.shop/search?itemName=${searchTerm}`,
       );
+
       if (typeof response.data === 'object') {
         setData(response.data);
-      } else setData(dummy);
+      } else {
+        setData(dummy);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +54,7 @@ const SearchResult = () => {
           <h1>검색하신 약에대한 정보입니다</h1>
         </div>
         <StyledTable>
-          {data.slice(0, 1).map((row) => (
+          {data.slice(sub, num).map((row) => (
             <tbody key={row.itemName}>
               <tr>
                 <td>제품명</td>
@@ -84,11 +90,12 @@ const SearchResult = () => {
               </tr>
               <tr>
                 <td>사용자 주의사항</td>
-                <td colSpan="2">정보</td>
+                <td colSpan="2">{row.allergy}</td>
               </tr>
             </tbody>
           ))}
         </StyledTable>
+        <SGradiant />
       </SearchWrapper>
     </Layout>
   );

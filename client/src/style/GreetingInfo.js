@@ -66,6 +66,8 @@ export const STextInfoSection = styled.div`
   padding: 1.4rem;
 
   h1 {
+    display: flex;
+    align-items: flex-end;
     font-size: 65px;
     font-weight: 500;
     /* padding-bottom: 30px; */
@@ -127,4 +129,7 @@ export const STextInfoSection = styled.div`
       padding-bottom: 40px;
     }
   }
+`;
+export const Logoimg = styled.img`
+  height: 90px;
 `;
