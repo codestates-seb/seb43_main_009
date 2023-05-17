@@ -177,7 +177,9 @@ export const Step3Design = styled.div`
       rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 30px;
+
     :focus {
       background-color: var(--claret);
     }
@@ -201,20 +203,6 @@ export const Step3Design = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    box-shadow: none;
-    margin-top: 40px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
 

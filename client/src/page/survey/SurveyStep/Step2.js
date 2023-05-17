@@ -19,7 +19,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
   };
 
   const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: 'disease', value: e.target.value } });
+    changeInput({ target: { name: 'disease', value: e.currentTarget.value } });
   };
 
   return (

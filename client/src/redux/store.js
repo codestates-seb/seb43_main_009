@@ -3,6 +3,7 @@ import boardSlice from './boardSlice';
 import CommunitySlice from './CommuntiySlice';
 import authReducer from './authSlice';
 import SearchSlice from './SearchSlice';
+import surveyReducer from './surveySlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     commu: CommunitySlice,
     auth: authReducer,
     search: SearchSlice,
+    survey: surveyReducer,
   },
 });
 

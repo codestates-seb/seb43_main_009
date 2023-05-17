@@ -16,7 +16,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   };
 
   const handleAllergyClick = (e) => {
-    changeInput({ target: { name: 'allergy', value: e.target.value } });
+    changeInput({ target: { name: 'allergy', value: e.currentTarget.value } });
   };
   return (
     <Step3Design>

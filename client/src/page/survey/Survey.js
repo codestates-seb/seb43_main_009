@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../common/Layout';
 import { getUserInfo } from '../../utils/UserInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStep } from '../../redux/surveySlice';
 
 const Survey = () => {
-  const [step, setStep] = useState(1);
+  const dispatch = useDispatch();
+  const step = useSelector((state) => state.survey.step);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     disease: '',
@@ -45,13 +48,13 @@ const Survey = () => {
   };
 
   const nextSteps = () => {
-    setStep(step + 1);
+    dispatch(setStep(step + 1));
   };
   const prevSteps = () => {
-    setStep(step - 1);
+    dispatch(setStep(step - 1));
   };
   const resetSteps = () => {
-    setStep(step - 3);
+    dispatch(setStep(step - 3));
   };
 
   console.log(form);
