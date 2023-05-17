@@ -40,7 +40,7 @@ const Board = () => {
   }, [dispatch, commuId]);
 
   // console.log(boardData);
-  const commentList = (boardData.comments || []).slice().reverse();
+  const commentList = (boardData.comments || []).slice();
   // console.log(commentList);
 
   const formatDate = (dateString) => {

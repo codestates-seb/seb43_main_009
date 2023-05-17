@@ -48,7 +48,7 @@ export const CommunityBox = styled.div`
     .title-box {
       border: 1px solid #e0e0e0;
       border-radius: 20px;
-      width: 70%;
+      width: 80%;
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
@@ -79,7 +79,7 @@ export const CommunityBox = styled.div`
 
   .down-box {
     width: 100vw;
-    height: 30vh;
+    /* height: 30vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,9 +88,9 @@ export const CommunityBox = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .comment-content {
-      border: 1px solid #e0e0e0;
-      width: 60%;
-      height: 70%;
+      /* border: 1px solid #e0e0e0; */
+      width: 80%;
+      /* height: 70%; */
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
@@ -98,14 +98,15 @@ export const CommunityBox = styled.div`
       margin-bottom: 2rem;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
-      max-height: 500px;
+      /* overflow-y: auto; */
+      /* max-height: 500px; */
       border-radius: 10px;
 
       .comment {
         display: flex;
         flex-direction: column;
-        padding: 8px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
       }
 
       .comment-text {
@@ -117,10 +118,11 @@ export const CommunityBox = styled.div`
     .write-box {
       display: flex;
       /* border: 1px solid black; */
-      width: 60%;
+      width: 70%;
       justify-content: space-between;
       align-items: center;
       margin-left: 1rem;
+      position: relative;
 
       input {
         width: 50vw;
@@ -131,7 +133,7 @@ export const CommunityBox = styled.div`
       }
 
       button {
-        background-color: #e0e0e0;
+        background-color: #ed8787;
         border: none;
         color: white;
         text-align: center;
