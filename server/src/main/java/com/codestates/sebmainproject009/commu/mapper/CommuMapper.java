@@ -2,10 +2,7 @@ package com.codestates.sebmainproject009.commu.mapper;
 
 import com.codestates.sebmainproject009.comment.dto.CommentResponseDto;
 import com.codestates.sebmainproject009.comment.entity.Comment;
-import com.codestates.sebmainproject009.commu.dto.CommuPatchDto;
-import com.codestates.sebmainproject009.commu.dto.CommuPostDto;
-import com.codestates.sebmainproject009.commu.dto.CommuResponseDto;
-import com.codestates.sebmainproject009.commu.dto.CommuResponsesDto;
+import com.codestates.sebmainproject009.commu.dto.*;
 import com.codestates.sebmainproject009.commu.entity.Commu;
 import org.mapstruct.Mapper;
 
@@ -18,6 +15,8 @@ public interface CommuMapper {
     Commu commuPostDtoToCommu(CommuPostDto commuPostDto);
     Commu commuPatchDtoToCommu(CommuPatchDto commuPatchDto);
     CommuResponsesDto commuToCommuResponsesDto(Commu commu);
+    CommuImageResponseDto commuToCommuImageResponseDto(Commu commu);
+
     default CommuResponseDto commuToCommuResponseDto(Commu commu){
         if ( commu == null ) {
             return null;
@@ -29,6 +28,7 @@ public interface CommuMapper {
         LocalDateTime createAt = null;
         int view = 0;
         List<Comment> comments = null;
+        Long userId = null;
 
         commuId = commu.getCommuId();
         title = commu.getTitle();
@@ -36,13 +36,14 @@ public interface CommuMapper {
         createAt = commu.getCreateAt();
         view = commu.getView();
         List<Comment> list = commu.getComments();
+        userId = commu.getUser().getUserId();
         if ( list != null ) {
             comments = new ArrayList<Comment>( list );
         }
 
         String displayName = commu.getUser().getDisplayName();
 
-        CommuResponseDto commuResponseDto = new CommuResponseDto( commuId, title, content, createAt, view, displayName, comments );
+        CommuResponseDto commuResponseDto = new CommuResponseDto( commuId, title, content, createAt, view, displayName, comments , userId);
 
         return commuResponseDto;
     }
