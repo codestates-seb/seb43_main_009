@@ -102,7 +102,7 @@ export const STextInfoSection = styled.div`
     animation: ${bounce} 2s ease-in-out infinite;
     animation-fill-mode: both;
     &:hover {
-      background-color: var(--gray-100);
+      background-color: var(--bluish-gray-200);
       animation-play-state: paused;
       animation: none;
       opacity: 0.9;
