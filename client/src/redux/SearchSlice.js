@@ -5,11 +5,15 @@ const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
 //commu 전체 조회하기
-export const GetCommulist = createAsyncThunk('commu/GetCommulist', async () => {
+export const GetSearch = createAsyncThunk('search/result', async (params) => {
   try {
-    const response = await axios.get(`${API_SERVER}/commu/all`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${API_SERVER}/search?itemName=${params}`,
+      {
+        withCredentials: true,
+      },
+    );
+    console.log(`${API_SERVER}/search?itemName=${params}`);
     return response.data;
   } catch (error) {
     console.error('fail', error);
@@ -17,8 +21,8 @@ export const GetCommulist = createAsyncThunk('commu/GetCommulist', async () => {
   }
 });
 
-export const CommunitySlice = createSlice({
-  name: 'commu',
+export const SearchSlice = createSlice({
+  name: 'search',
   initialState: {
     data: [],
     status: 'idle',
@@ -28,18 +32,18 @@ export const CommunitySlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(GetCommulist.pending, (state) => {
+      .addCase(GetSearch.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(GetCommulist.fulfilled, (state, action) => {
+      .addCase(GetSearch.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.data = action.payload;
       })
-      .addCase(GetCommulist.rejected, (state, action) => {
+      .addCase(GetSearch.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
   },
 });
 
-export default CommunitySlice.reducer;
+export default SearchSlice.reducer;

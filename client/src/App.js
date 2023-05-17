@@ -9,6 +9,7 @@ import Survey from './page/survey/Survey';
 import SearchMain from './page/search/SearchMain';
 import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
+import Searchlist from './page/search/Searchlist';
 
 const App = () => {
   console.log(process.env.API_SERVER);
