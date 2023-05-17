@@ -177,7 +177,9 @@ export const Step3Design = styled.div`
       rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 30px;
+
     :focus {
       background-color: var(--claret);
     }
