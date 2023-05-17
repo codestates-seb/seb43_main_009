@@ -72,7 +72,7 @@ export const Step2Design = styled.div`
   button {
     width: 30vw;
     height: 75px;
-    border: 1px solid white;
+    border: none;
     border-radius: 20px;
     background-color: white;
     font-size: 25px;
@@ -90,6 +90,12 @@ export const Step2Design = styled.div`
       color: white;
       box-shadow: none;
       margin-top: 40px;
+      :focus {
+        background-color: var(--gray-500);
+      }
+    }
+    :focus {
+      background-color: var(--claret);
     }
   }
   .selected {
@@ -162,7 +168,7 @@ export const Step3Design = styled.div`
   button {
     width: 30vw;
     height: 75px;
-    border: 1px solid white;
+    border: none;
     border-radius: 20px;
     background-color: white;
     font-size: 25px;
@@ -172,6 +178,22 @@ export const Step3Design = styled.div`
     display: flex;
     align-items: center;
     margin-top: 30px;
+    :focus {
+      background-color: var(--claret);
+    }
+    &.next,
+    &.previous {
+      width: 14vw;
+      height: 60px;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      box-shadow: none;
+      margin-top: 40px;
+      :focus {
+        background-color: var(--gray-500);
+      }
+    }
   }
   .goorback {
     width: 30vw;

@@ -24,7 +24,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
 
   return (
     <Step2Design>
-      <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
+      <div className="choice">불편하거나 걱정되는 곳을 선택해 주세요! </div>
       <button
         className={disease === menu.stomach ? 'selected' : ''}
         value="INTESTINE"
