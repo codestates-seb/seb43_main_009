@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   margin-top: 50px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
+  background-color: #f4f4f4;
 `;
 
 const SignupWrapper = styled.div`
@@ -22,7 +23,7 @@ const SignupWrapper = styled.div`
   height: 700px;
 `;
 
-const GoogleSignup = styled.button`
+const GoogleSignup = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -30,17 +31,27 @@ const GoogleSignup = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-const FacebookSignup = styled.button`
+
+const KakaoSignup = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: #4967aa;
-  color: white;
+  background-color: yellow;
+  color: black;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-const NaverSignup = styled.button`
+
+const NaverSignup = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -48,7 +59,12 @@ const NaverSignup = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
+
 const EmailSignup = styled.form`
   display: flex;
   width: 290px;
@@ -122,6 +138,8 @@ const SignupButton = styled.button`
   border-radius: 3px;
   background-color: #f05858;
   border: none;
+  font-size: 17px;
+  font-weight: 600;
   &:hover {
     cursor: pointer;
   }
@@ -150,33 +168,39 @@ const Signup = () => {
     <Layout>
       <Wrapper>
         <SignupWrapper>
-          <GoogleSignup>Sign with Google</GoogleSignup>
-          <FacebookSignup>Sign with Facebook</FacebookSignup>
-          <NaverSignup>Sign with Naver</NaverSignup>
+          <GoogleSignup href="https://server.dowajoyak.shop/oauth2/authorization/google">
+            구글로 회원가입
+          </GoogleSignup>
+          <KakaoSignup href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+            카카오로 회원가입
+          </KakaoSignup>
+          <NaverSignup href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+            네이버로 회원가입
+          </NaverSignup>
           <EmailSignup onSubmit={handleSignup}>
             <DisplayNameWrapper>
-              <DisplayNameLabel>Name</DisplayNameLabel>
+              <DisplayNameLabel>닉네임</DisplayNameLabel>
             </DisplayNameWrapper>
             <DisplayNameInput
               type="name"
               onChange={(e) => setDisplayNameInputValue(e.target.value)}
             />
             <EmailWrapper>
-              <EmailLabel>Email</EmailLabel>
+              <EmailLabel>이메일</EmailLabel>
             </EmailWrapper>
             <EmailInput
               type="email"
               onChange={(e) => setEmailInputValue(e.target.value)}
             />
             <PasswordWrapper>
-              <PasswordLabel>Password</PasswordLabel>
-              <ForgotPassword>Forgot password?</ForgotPassword>
+              <PasswordLabel>비밀번호</PasswordLabel>
+              {/* <ForgotPassword>Forgot password?</ForgotPassword> */}
             </PasswordWrapper>
             <PasswordInput
               type="password"
               onChange={(e) => setPasswordInputValue(e.target.value)}
             />
-            <SignupButton type="submit">Sign up</SignupButton>
+            <SignupButton type="submit">회원가입</SignupButton>
           </EmailSignup>
         </SignupWrapper>
       </Wrapper>
