@@ -1,13 +1,32 @@
 import Layout from '../../common/Layout';
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import {
   SearchWrapper,
-  StyledInput,
   StyledButton,
   StyledTable,
   SGradiant,
 } from '../../style/Search';
+
+const StyledInput = styled.input`
+  top: 125px;
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ffa1a1;
+  border-radius: 10px;
+  font-size: large;
+
+  &:focus {
+    border-color: red;
+  }
+`;
+
+const StyledBox = styled.div`
+  display: flex;
+`;
 
 const SearchResult = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,6 +42,7 @@ const SearchResult = () => {
       atpnQesitm: '정보없음',
       intrcQesitm: '정보없음',
       itemImage: '정보없음',
+      allergy: '정보없음',
     },
   ];
   const handleSearch = async () => {
@@ -44,12 +64,15 @@ const SearchResult = () => {
   return (
     <Layout>
       <SearchWrapper>
-        <StyledInput
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <StyledButton onClick={handleSearch}>Search</StyledButton>
+        <StyledBox>
+          <StyledInput
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <StyledButton onClick={handleSearch}>Search</StyledButton>
+        </StyledBox>
+
         <div>
           <h1>검색하신 약에대한 정보입니다</h1>
         </div>
@@ -100,5 +123,4 @@ const SearchResult = () => {
     </Layout>
   );
 };
-
 export default SearchResult;
