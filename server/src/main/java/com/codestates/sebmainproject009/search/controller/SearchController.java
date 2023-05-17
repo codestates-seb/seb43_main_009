@@ -31,8 +31,6 @@ public class SearchController {
 
     private StringBuilder urlBuilder;
 
-
-
     private JwtTokenizer jwtTokenizer;
 
     private UserService userService;
@@ -97,9 +95,18 @@ public class SearchController {
                     if(user.getAllergy().toString().equals("NONE"))
                         item.setAllergy("회원님이 설정하신 맞춤추천 데이터가 존재하지 않습니다.");
                     else{
-                        if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy()))
-                            item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"이(가) 함유되어 있습니다 주의하세요.");
-                        else item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 대한 상호작용이 존재하지 않습니다.");
+                        if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy())){
+                            if(user.getAllergy().getAllergy().equals("항생")||user.getAllergy().getAllergy().equals("진통"))
+                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"제 계열에 연관된 주의사항이 있습니다. 주의하세요.");
+                            else
+                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 연관된 주의사항이 있습니다. 주의하세요.");
+                        }
+                        else {
+                            if(user.getAllergy().getAllergy().equals("항생")||user.getAllergy().getAllergy().equals("진통"))
+                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"제 계열에 대한 상호작용이 존재하지 않습니다.");
+                            else
+                             item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 대한 상호작용이 존재하지 않습니다.");
+                        }
                     }
                 } else {
                     item.setAllergy("로그인하여 맞춤추천 설정 후에 확인하실 수 있습니다.");
