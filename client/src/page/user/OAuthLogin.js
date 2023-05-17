@@ -13,7 +13,7 @@ const OAuthLogin = ({ onLogin }) => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       onLogin();
-      navigate(-2);
+      navigate('/');
     }
   }, [location, onLogin]);
 
