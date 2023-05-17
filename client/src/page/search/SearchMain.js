@@ -52,9 +52,11 @@ const SearchMain = () => {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="🔎 게보린, 맘모스빵 먹고싶다"
+            placeholder="🔎 게보린, 아스피린"
           />
-          <div className="example">ex: 게보린, 맘모스빵 먹고싶다</div>
+          <div className="example">
+            아직 알러지를 설정하지 않으셨다면, 맞춤 추천 후 검색을 추천드립니다
+          </div>
         </STextInfoSection>
       </SBackgroundLayout>
     </Layout>

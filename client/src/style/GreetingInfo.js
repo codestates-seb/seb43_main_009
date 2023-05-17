@@ -141,9 +141,10 @@ export const STextInfoSection = styled.div`
     margin-top: 15rem;
     border-radius: 50px;
     border: none;
-    opacity: 0.8;
+    opacity: 0.65;
     font-size: 25px;
     color: #eb5035;
+    font-weight: 600;
     cursor: pointer;
     animation: ${bounce} 2s ease-in-out infinite;
     animation-fill-mode: both;
@@ -155,7 +156,7 @@ export const STextInfoSection = styled.div`
       background-color: var(--gray-100);
       /* animation-play-state: paused;
       animation: none; */
-      opacity: 0.9;
+      opacity: 0.8;
       box-shadow: inset 3px 3px 7px rgba(255, 255, 255, 0.1),
         inset -5px -5px 7px rgba(0, 0, 0, 0.3);
       animation: ${sh0} 0.5s ease-in-out both;

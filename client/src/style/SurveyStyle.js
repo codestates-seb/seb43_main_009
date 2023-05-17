@@ -9,34 +9,35 @@ export const Step1Design = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
+  height: 85vh;
+  background-color: #f4f4f4;
 
   .stepone {
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 40%;
-    height: 80%;
+    width: 440px;
+    height: 600px;
     margin-top: 70px;
-    background-color: #fffbfb;
-    font-size: 30px;
+    background-color: white;
+    font-size: 25px;
     border-radius: 15px;
+    box-shadow: 0 5px 5px -5px black;
     .doctor {
       width: 100%;
       height: 60%;
       border-radius: 15px 15px 0 0 / 15px 15px 0 0;
     }
     .recommend {
-      margin-top: 10px;
+      margin-top: 20px;
       font-weight: bold;
     }
     .comment {
-      margin-top: 10px;
+      margin-top: 20px;
     }
     .start {
-      margin-top: 15px;
+      margin-top: 30px;
       width: 120px;
       height: 50px;
       border-radius: 15px;
@@ -51,7 +52,6 @@ export const Step1Design = styled.div`
     }
   }
 `;
-
 export const Step2Design = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
