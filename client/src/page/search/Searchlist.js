@@ -92,7 +92,7 @@ const SearchResult = () => {
         ></StyledInput>
         <StyledButton onClick={handleSearch}>Search</StyledButton>
         {searchdata.map((el) => (
-          <div key="1" className="list">
+          <div key="3" className="list">
             <img className="itemimage" alt="itemimage" src={el.itemImage}></img>
             <div className="itemname">{el.itemName}</div>
             <div className="allergy">{el.allergy}</div>
