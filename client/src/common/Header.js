@@ -1,11 +1,10 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
-import { login, logout } from '../redux/authSlice'
+import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const GlobalFont = styled.div`
@@ -18,11 +17,11 @@ const HeaderWrapper = styled.div`
   justify-content: center;
   height: 110px;
   border-top: 5px solid #f05858;
-  position : fixed;
+  position: fixed;
   top: 0;
   width: 100%;
-  background-color : white;
-  z-index : 1;
+  background-color: white;
+  z-index: 1;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -67,10 +66,10 @@ const UnderMenuWrapper = styled.div`
   height: 35px;
   text-decoration: none;
   position: fixed;
-  top : 110px;
+  top: 110px;
   width: 100%;
-  background-color : white;
-  z-index : 1;
+  background-color: white;
+  z-index: 1;
 `;
 
 export const Header = () => {
@@ -105,10 +104,7 @@ export const Header = () => {
           {isLoggedIn ? (
             <>
               <UserName> {username}님 환영합니다! </UserName>
-              <Menu
-                className="logout"
-                onClick={handleLogout}
-              >
+              <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>
             </>

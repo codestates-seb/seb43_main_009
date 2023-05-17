@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
+import { Link } from 'react-router-dom';
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -123,6 +124,13 @@ const LoginButton = styled.button`
     cursor: pointer;
   }
 `;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color : black;
+  font-size: 12px;
+  margin-bottom : 10px;
+
+`;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -183,6 +191,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <LoginButton type="submit">로그인</LoginButton>
+          <StyledLink to = '/signup'>회원가입</StyledLink>
         </EmailLogin>
       </LoginWrapper>
     </Layout>
