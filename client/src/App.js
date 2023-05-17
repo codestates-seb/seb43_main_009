@@ -9,6 +9,7 @@ import Survey from './page/survey/Survey';
 import SearchMain from './page/search/SearchMain';
 import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
+import SearchList from './page/search/SearchList';
 
 const App = () => {
   console.log(process.env.API_SERVER);
@@ -24,7 +25,7 @@ const App = () => {
         <Route path="/commu" element={<Community />}></Route>
         <Route path="/survey" element={<Survey />}></Route>
         <Route path="/searchmain" element={<SearchMain />}></Route>
-        <Route path="/search" element={<SearchResult />}></Route>
+        <Route path="/search" element={<SearchList />}></Route>
       </Routes>
     </BrowserRouter>
   );
