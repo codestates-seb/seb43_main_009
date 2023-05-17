@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable */
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../common/AuthProvider';
 import Layout from '../../common/Layout';
-import { getCookie } from '../../utils/cookies';
-import KakaoLogin from './KakaoLogin';
-
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/authSlice';
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -17,7 +16,7 @@ const LoginWrapper = styled.div`
   background-color: #f1f2f3;
 `;
 
-const GoogleLogin = styled.button`
+const GoogleLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -25,9 +24,27 @@ const GoogleLogin = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const NaverLogin = styled.button`
+const KakaoLogin = styled.a`
+  width: 290px;
+  height: 37px;
+  margin-bottom: 10px;
+  background-color: yellow;
+  color: black;
+  border-radius: 3px;
+  border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const NaverLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -35,6 +52,10 @@ const NaverLogin = styled.button`
   color: white;
   border-radius: 3px;
   border: none;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const EmailLogin = styled.form`
@@ -48,7 +69,6 @@ const EmailLogin = styled.form`
   border-radius: 3px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
-
 const EmailWrapper = styled.div`
   display: flex;
   justify-content: start;
@@ -102,11 +122,9 @@ const LoginButton = styled.button`
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
-  const { authState, setAuthState } = useAuthContext();
-
-  console.log('before login', authState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,15 +136,15 @@ const Login = () => {
           password,
         },
       );
-      setAuthState({
-        token: response.headers.authorization,
-        refresh: response.headers.refresh,
-      });
-
+      const accessToken = response.headers['authorization'];
+      const refreshToken = response.headers['refresh'];
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
-      navigate('/survey');
+      navigate(-1);
+      dispatch(login());
     } catch (error) {
-      alert('로그인에 실패했습니다. Email과 Password를 다시 확인해주세요.');
+      alert('로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.');
       console.error(error);
     }
   };
@@ -134,9 +152,15 @@ const Login = () => {
   return (
     <Layout>
       <LoginWrapper>
-        <GoogleLogin>Login with Google</GoogleLogin>
-        <KakaoLogin>Login with Kakao!</KakaoLogin>
-        <NaverLogin>Login with Naver!!</NaverLogin>
+        <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
+          Login with Google
+        </GoogleLogin>
+        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+          Login with Kakao!
+        </KakaoLogin>
+        <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+          Login with Naver
+        </NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
             <EmailLabel>Email</EmailLabel>

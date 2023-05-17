@@ -3,33 +3,31 @@ import React from 'react';
 import Home from './page/Home';
 import CommunityWrite from './page/community/CommunityWrite';
 import Login from './page/user/Login';
-import KakaoLogin from './page/user/KakaoLogin';
 import Signup from './page/user/Signup';
 import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
-import Search from './page/search/Search';
+import SearchMain from './page/search/SearchMain';
+import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
-import { AuthProvider } from './common/AuthProvider';
+import SearchList from './page/search/SearchList';
 
 const App = () => {
   console.log(process.env.API_SERVER);
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/commu/posts" element={<CommunityWrite />}></Route>
-          <Route path="/commu/:commuId" element={<Board />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/kakaoLogin" element={<KakaoLogin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/commu" element={<Community />}></Route>
-          <Route path="/survey" element={<Survey />}></Route>
-          <Route path="/search" element={<Search />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/commu/posts" element={<CommunityWrite />}></Route>
+        <Route path="/commu/:commuId" element={<Board />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/commu" element={<Community />}></Route>
+        <Route path="/survey" element={<Survey />}></Route>
+        <Route path="/searchmain" element={<SearchMain />}></Route>
+        <Route path="/search" element={<SearchList />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -1,64 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import dryskin from '../../../../public/dryskin.png';
 import fatigue from '../../../../public/fatigue.png';
-import { GiStomach } from 'react-icons/gi';
-import { ImEye } from 'react-icons/im';
-import { BsShieldPlus } from 'react-icons/bs';
-
-const StyledGistomach = styled(GiStomach)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const StyledImEye = styled(ImEye)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const StyledBsShieldPlus = styled(BsShieldPlus)`
-  margin-left: 37%;
-  margin-right: 10px;
-`;
-
-const Step2Design = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  img {
-    width: 35px;
-    height: 35px;
-    margin-left: 37%;
-    margin-right: 10px;
-  }
-
-  button {
-    width: 30vw;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-  .choice {
-    font-size: 35px;
-  }
-  .next,
-  .nothing {
-    margin: 0 auto;
-  }
-`;
+import {
+  Step2Design,
+  StyledGistomach,
+  StyledImEye,
+  StyledBsShieldPlus,
+} from '../../../style/SurveyStyle';
 
 const Step2 = ({ disease, changeInput, nextSteps }) => {
   const menu = {
@@ -79,14 +27,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
       <button
         className={disease === menu.stomach ? 'selected' : ''}
-        value="소화"
+        value="INTESTINE"
         onClick={handleDiseaseClick}
       >
         <StyledGistomach /> 소화, 장
       </button>
       <button
         className={disease === menu.skin ? 'selected' : ''}
-        value="피부"
+        value="SKIN"
         onClick={handleDiseaseClick}
       >
         <img src={dryskin} alt="dryskin" />
@@ -94,14 +42,14 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       </button>
       <button
         className={disease === menu.eye ? 'selected' : ''}
-        value="눈"
+        value="EYE"
         onClick={handleDiseaseClick}
       >
         <StyledImEye /> 눈
       </button>
       <button
         className={disease === menu.sheild ? 'selected' : ''}
-        value="면역"
+        value="IMMUNE"
         onClick={handleDiseaseClick}
       >
         <StyledBsShieldPlus />
@@ -109,19 +57,19 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       </button>
       <button
         className={disease === menu.fatiuge ? 'selected' : ''}
-        value="피로"
+        value="FATIGUE"
         onClick={handleDiseaseClick}
       >
         <img src={fatigue} alt="fatiuge" /> 피로
       </button>
       <button
         className={disease === menu.nothing ? 'selected' : ''}
-        value="없음"
+        value="NONE"
         onClick={handleDiseaseClick}
       >
         <span className="nothing">없음</span>
       </button>
-      <button onClick={nextSteps}>
+      <button onClick={nextSteps} className="next">
         <span className="next">다음 ▶︎</span>
       </button>
     </Step2Design>

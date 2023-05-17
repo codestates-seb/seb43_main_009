@@ -1,7 +1,12 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
+import { getUserInfo } from '../utils/UserInfo';
+import { useEffect } from 'react';
+import { login, logout } from '../redux/authSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -13,6 +18,11 @@ const HeaderWrapper = styled.div`
   justify-content: center;
   height: 110px;
   border-top: 5px solid #f05858;
+  position : fixed;
+  top: 0;
+  width: 100%;
+  background-color : white;
+  z-index : 1;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -31,6 +41,11 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const UserName = styled.div`
+  font-weight: 600;
+  margin-top: 0.1rem;
+`;
+
 const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
@@ -39,16 +54,46 @@ const Menu = styled.div`
   &.signup {
     margin-right: 20px;
   }
+  &.logout {
+    margin-right: 20px;
+    cursor: pointer;
+  }
 `;
 
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  border-bottom: 0.5px solid var(--gray-200);
+  /* border-bottom: 0.5px solid var(--gray-200); */
   height: 35px;
   text-decoration: none;
+  position: fixed;
+  top : 110px;
+  width: 100%;
+  background-color : white;
+  z-index : 1;
 `;
+
 export const Header = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [username, setUsername] = useState(null);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('accessToken');
+    window.alert('로그아웃 성공!');
+  };
+
+  useEffect(() => {
+    const userInfo = getUserInfo();
+    if (userInfo?.username) {
+      const namePart = userInfo.username.split('@')[0];
+      setUsername(namePart);
+    } else {
+      setUsername('Guest');
+    }
+  }, [isLoggedIn]);
+
   return (
     <GlobalFont>
       <HeaderWrapper>
@@ -57,12 +102,26 @@ export const Header = () => {
           <Logo src={logo} />
         </StyledLink>
         <MenuWrapper>
-          <StyledLink to="/login">
-            <Menu>로그인</Menu>
-          </StyledLink>
-          <StyledLink to="/signup">
-            <Menu className="signup">회원가입</Menu>
-          </StyledLink>
+          {isLoggedIn ? (
+            <>
+              <UserName> {username}님 환영합니다! </UserName>
+              <Menu
+                className="logout"
+                onClick={handleLogout}
+              >
+                로그아웃
+              </Menu>
+            </>
+          ) : (
+            <>
+              <StyledLink to="/login">
+                <Menu>로그인</Menu>
+              </StyledLink>
+              <StyledLink to="/signup">
+                <Menu className="signup">회원가입</Menu>
+              </StyledLink>
+            </>
+          )}
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>

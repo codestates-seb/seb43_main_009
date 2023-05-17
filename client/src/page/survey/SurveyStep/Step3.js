@@ -1,86 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
-import { CiCoffeeCup } from 'react-icons/ci';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
 import xray from '../../../../public/xray.png';
+import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
 
-const DesginCiCoffeeCup = styled(CiCoffeeCup)`
-  margin-left: 33%;
-  margin-right: 10px;
-`;
-
-const Step3Design = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  .choice {
-    font-size: 35px;
-  }
-
-  img {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
-  }
-  .aspirin {
-    margin-left: 10%;
-  }
-  .penicillin {
-    margin-left: 17%;
-  }
-  .anticonvulsants {
-    margin-left: 29%;
-  }
-  .xray {
-    margin-left: 33%;
-  }
-  .nothing {
-    margin: 0 auto;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-
-  button {
-    width: 30vw;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .goorback {
-    width: 30vw;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-  }
-`;
-
-const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
+const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const menu = {
     caffeine: '카페인',
     aspirin: '아스피린',
@@ -98,7 +23,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       <div className="choice">알레르기를 선택해주세요! </div>
       <button
         className={allergy === menu.caffeine ? 'selected' : ''}
-        value="카페인"
+        value="CAFFEINE"
         onClick={handleAllergyClick}
       >
         <DesginCiCoffeeCup />
@@ -106,7 +31,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       </button>
       <button
         className={allergy === menu.aspirin ? 'selected' : ''}
-        value="아스피린"
+        value="ASSPIRIN"
         onClick={handleAllergyClick}
       >
         <img className="aspirin" src={aspirin} alt="aspirin" />
@@ -114,7 +39,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       </button>
       <button
         className={allergy === menu.penicillin ? 'selected' : ''}
-        value="페니실린"
+        value="PENICILLIN"
         onClick={handleAllergyClick}
       >
         <img className="penicillin" src={penicillin} alt="penicillin" />
@@ -122,7 +47,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       </button>
       <button
         className={allergy === menu.anticonvulsants ? 'selected' : ''}
-        value="항경련제"
+        value="ANTICONVULSANT"
         onClick={handleAllergyClick}
       >
         <img
@@ -134,7 +59,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       </button>
       <button
         className={allergy === menu.xray ? 'selected' : ''}
-        value="조영제"
+        value="CONTRAST"
         onClick={handleAllergyClick}
       >
         <img className="xray" src={xray} alt="xray" />
@@ -142,7 +67,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
       </button>
       <button
         className={allergy === menu.nothing ? 'selected' : ''}
-        value="없음"
+        value="NONE"
         onClick={handleAllergyClick}
       >
         <span className="nothing">없음</span>
@@ -151,7 +76,13 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
         <div className="previous" onClick={prevSteps}>
           ◀︎ 이전
         </div>
-        <div className="next" onClick={nextSteps}>
+        <div
+          className="next"
+          onClick={() => {
+            nextSteps();
+            submitForm();
+          }}
+        >
           다음 ▶︎
         </div>
       </div>

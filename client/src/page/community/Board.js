@@ -1,5 +1,4 @@
 import Layout from '../../common/Layout';
-import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -11,6 +10,13 @@ import {
   updatePost,
   submitComment,
 } from '../../redux/boardSlice';
+
+import {
+  CommunityBox,
+  Author,
+  CommentText,
+  Timestamp,
+} from '../../style/BoardStyle';
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -33,9 +39,20 @@ const Board = () => {
     }
   }, [dispatch, commuId]);
 
-  console.log(boardData);
-  const commentList = boardData.comments || [];
-  console.log(commentList);
+  // console.log(boardData);
+  const commentList = (boardData.comments || []).slice().reverse();
+  // console.log(commentList);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 2자리 숫자로 표시
+    const day = date.getDate().toString().padStart(2, '0');
+    const hour = date.getHours().toString().padStart(2, '0');
+    const minute = date.getMinutes().toString().padStart(2, '0');
+
+    return `${year}/${month}/${day} ${hour}:${minute}`;
+  };
 
   const handleSubmitComment = useCallback(() => {
     if (comment.trim() === '') {
@@ -43,14 +60,27 @@ const Board = () => {
       alert('댓글 내용을 입력해주세요.');
       return;
     }
-    dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
-    setComment('');
-  }, [dispatch, boardData.commuId, comment, commuId]);
+    const token = localStorage.getItem('accessToken');
+    if (token === null) {
+      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
+      navigate('/signup');
+    }
+
+    dispatch(submitComment({ commuId: boardData.commuId, comment }))
+      .then(() => {
+        setComment('');
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate('/signup');
+      });
+  }, [dispatch, boardData.commuId, comment, navigate]);
 
   //수정
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
+
     setEditedContent(boardData.content);
   };
   //수정 저장
@@ -61,7 +91,9 @@ const Board = () => {
         title: editedTitle,
         content: editedContent,
       }),
-    );
+    ).then(() => {
+      dispatch(fetchBoardData(boardData.commuId));
+    });
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
@@ -111,7 +143,7 @@ const Board = () => {
                   <p>내용 : {boardData.content}</p>
                   <div className="post-info">
                     <p>작성자: {boardData.displayName}</p>
-                    <p>작성시간: {boardData.createAt}</p>
+                    <p>작성시간: {formatDate(boardData.createAt)}</p>
                     <p>조회수: {boardData.view}</p>
                   </div>
                 </div>
@@ -136,7 +168,7 @@ const Board = () => {
                       <CommentText>{comment.comment}</CommentText>
                     </div>
                     <div>
-                      <Timestamp>{comment.createAt}</Timestamp>
+                      <Timestamp>{formatDate(comment.createAt)}</Timestamp>
                     </div>
                   </div>
                 ))}
@@ -148,6 +180,12 @@ const Board = () => {
               type="text"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmitComment();
+                  e.preventDefault();
+                }
+              }}
               placeholder="댓글을 입력하세요"
             />
             <button onClick={handleSubmitComment}>댓글달기</button>
@@ -158,178 +196,4 @@ const Board = () => {
   );
 };
 
-const CommunityBox = styled.div`
-  box-sizing: border-box;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5;
-
-  .up-box {
-    width: 100vw;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    .button-box {
-      width: 70%;
-      display: flex;
-      justify-content: flex-end;
-
-      button {
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        padding: 4px 12px;
-        transition-duration: 0.4s;
-        background-color: white;
-        color: #f06868;
-        border: none;
-        &:hover {
-          background-color: #f06868;
-          border: none;
-          color: white;
-        }
-      }
-    }
-
-    .title-box {
-      border: 1px solid #e0e0e0;
-      border-radius: 20px;
-      width: 70%;
-      height: 70%;
-      padding: 16px;
-      box-sizing: border-box;
-      background-color: #fafafa;
-      position: relative;
-
-      input {
-        width: 80%;
-        border-radius: 4px;
-        padding: 4px;
-      }
-
-      textarea {
-        width: 80%;
-        border-radius: 4px;
-        padding: 4px;
-      }
-      .post-info {
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-        font-size: 13px;
-        position: absolute;
-        bottom: 0;
-      }
-    }
-  }
-
-  .down-box {
-    width: 100vw;
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    .comment-content {
-      border: 1px solid #e0e0e0;
-      width: 60%;
-      height: 70%;
-      font-size: 14px;
-      padding: 16px;
-      box-sizing: border-box;
-      background-color: #f5f5f5;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      max-height: 500px;
-      border-radius: 10px;
-
-      .comment {
-        display: flex;
-        flex-direction: column;
-        padding: 8px 0;
-      }
-
-      .comment-text {
-        display: flex;
-        align-items: baseline;
-      }
-    }
-
-    .write-box {
-      display: flex;
-      /* border: 1px solid black; */
-      width: 60%;
-      justify-content: space-between;
-      align-items: center;
-      margin-left: 1rem;
-
-      input {
-        width: 50vw;
-        height: 70%;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 4px;
-      }
-
-      button {
-        background-color: #e0e0e0;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        padding: 8px 24px;
-        transition-duration: 0.4s;
-
-        &:hover {
-          background-color: #f06868;
-          color: white;
-        }
-      }
-    }
-  }
-`;
-
-const Author = styled.span`
-  font-weight: bold;
-  color: #f06868;
-  font-size: 14px;
-`;
-
-const CommentText = styled.span`
-  font-size: 14px;
-  color: #444;
-  margin-left: 1rem;
-  background-color: #f5f5f5;
-  padding: 5px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
-const Timestamp = styled.span`
-  font-size: 12px;
-  color: #999;
-  display: inline-block;
-  margin-top: 4px;
-`;
 export default Board;
