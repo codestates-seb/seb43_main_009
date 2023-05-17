@@ -202,20 +202,6 @@ export const Step3Design = styled.div`
     align-items: center;
     justify-content: space-between;
   }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    box-shadow: none;
-    margin-top: 40px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 `;
 
 export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
