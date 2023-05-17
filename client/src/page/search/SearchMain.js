@@ -53,6 +53,7 @@ const SearchMain = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          <sExample>ex: 게보린, 맘모스빵 먹고싶다</sExample>
         </STextInfoSection>
       </SBackgroundLayout>
     </Layout>

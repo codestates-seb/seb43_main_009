@@ -4,8 +4,25 @@ const landingTitle = high;
 import { keyframes } from 'styled-components';
 
 const slideFromLeft = keyframes`
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+
+`;
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 `;
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
@@ -70,14 +87,15 @@ export const STextInfoSection = styled.div`
     font-weight: 500;
     /* padding-bottom: 30px; */
     color: #f06868;
-    animation: ${slideFromLeft} 2s ease-out;
+    animation: ${slideFromLeft} 2.5s ease-out;
   }
   h2 {
     /* font-family: sans-serif; */
     font-size: 30px;
     font-weight: 350;
     color: #f09c8d;
-    animation: ${slideFromLeft} 2.2s ease-out;
+    opacity: 0;
+    animation: ${fadeIn} 3s ease-in 0.5s forwards;
     position: absolute;
     bottom: 0;
   }
@@ -89,23 +107,27 @@ export const STextInfoSection = styled.div`
   }
 
   button {
+    font-family: 'MaplestoryOTFBold';
     width: 40%;
-    height: 45%;
+    height: 40%;
     position: absolute;
     margin-top: 15rem;
     border-radius: 50px;
     border: none;
-    opacity: 0.8;
+    opacity: 0.6;
     font-size: 25px;
-    color: #eb5035;
+    color: var(--peach-600);
+    background-color: rgba(47, 138, 241, 0);
     cursor: pointer;
     animation: ${bounce} 2s ease-in-out infinite;
     animation-fill-mode: both;
     &:hover {
-      background-color: var(--bluish-gray-200);
+      background-color: var(--peach-50);
       animation-play-state: paused;
       animation: none;
-      opacity: 0.9;
+      opacity: 0.8;
+      box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.25),
+        0px 24px 40px -20px rgba(0, 0, 0, 0.3);
     }
   }
   @media only screen and (max-width: 500px) {
