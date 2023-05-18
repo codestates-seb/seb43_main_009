@@ -16,11 +16,11 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   };
 
   const handleAllergyClick = (e) => {
-    changeInput({ target: { name: 'allergy', value: e.target.value } });
+    changeInput({ target: { name: 'allergy', value: e.currentTarget.value } });
   };
   return (
     <Step3Design>
-      <div className="choice">알레르기를 선택해주세요! </div>
+      <div className="choice">해당하는 약물 알러지를 선택해주세요! </div>
       <button
         className={allergy === menu.caffeine ? 'selected' : ''}
         value="CAFFEINE"
@@ -31,7 +31,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.aspirin ? 'selected' : ''}
-        value="ASSPIRIN"
+        value="PAINKILLER"
         onClick={handleAllergyClick}
       >
         <img className="aspirin" src={aspirin} alt="aspirin" />
@@ -39,7 +39,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       </button>
       <button
         className={allergy === menu.penicillin ? 'selected' : ''}
-        value="PENICILLIN"
+        value="ANTIBIOTIC"
         onClick={handleAllergyClick}
       >
         <img className="penicillin" src={penicillin} alt="penicillin" />
@@ -73,10 +73,10 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
         <span className="nothing">없음</span>
       </button>
       <div className="goorback">
-        <div className="previous" onClick={prevSteps}>
+        <button className="previous" onClick={prevSteps}>
           ◀︎ 이전
-        </div>
-        <div
+        </button>
+        <button
           className="next"
           onClick={() => {
             nextSteps();
@@ -84,7 +84,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
           }}
         >
           다음 ▶︎
-        </div>
+        </button>
       </div>
     </Step3Design>
   );

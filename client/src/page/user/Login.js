@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
+import { Link } from 'react-router-dom';
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -13,7 +14,9 @@ const LoginWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background-color: #f1f2f3;
+  background-color: #f4f4f4;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
 `;
 
 const GoogleLogin = styled.a`
@@ -114,10 +117,19 @@ const LoginButton = styled.button`
   background-color: #f05858;
   border-radius: 3px;
   border: none;
+  font-size: 17px;
+  font-weight: 600;
 
   &:hover {
     cursor: pointer;
   }
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color : black;
+  font-size: 12px;
+  margin-bottom : 10px;
+
 `;
 
 const Login = () => {
@@ -141,7 +153,7 @@ const Login = () => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       alert('로그인 성공!');
-      navigate(-1);
+      navigate('/');
       dispatch(login());
     } catch (error) {
       alert('로그인에 실패했습니다! Email과 Password를 다시 확인해주세요.');
@@ -153,17 +165,17 @@ const Login = () => {
     <Layout>
       <LoginWrapper>
         <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
-          Login with Google
+          구글로 로그인
         </GoogleLogin>
         <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
-          Login with Kakao!
+          카카오로 로그인
         </KakaoLogin>
         <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
-          Login with Naver
+          네이버로 로그인
         </NaverLogin>
         <EmailLogin onSubmit={handleSubmit}>
           <EmailWrapper>
-            <EmailLabel>Email</EmailLabel>
+            <EmailLabel>이메일</EmailLabel>
           </EmailWrapper>
           <EmailInput
             type="email"
@@ -171,15 +183,15 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <PasswordWrapper>
-            <PasswordLabel>Password</PasswordLabel>
-            <ForgotPassword>Forgot password?</ForgotPassword>
+            <PasswordLabel>비밀번호</PasswordLabel>
           </PasswordWrapper>
           <PasswordInput
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <LoginButton type="submit">Log in</LoginButton>
+          <LoginButton type="submit">로그인</LoginButton>
+          <StyledLink to = '/signup'>회원가입</StyledLink>
         </EmailLogin>
       </LoginWrapper>
     </Layout>

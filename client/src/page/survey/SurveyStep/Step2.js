@@ -19,12 +19,12 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
   };
 
   const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: 'disease', value: e.target.value } });
+    changeInput({ target: { name: 'disease', value: e.currentTarget.value } });
   };
 
   return (
     <Step2Design>
-      <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
+      <div className="choice">불편하거나 걱정되는 곳을 선택해 주세요! </div>
       <button
         className={disease === menu.stomach ? 'selected' : ''}
         value="INTESTINE"
@@ -69,7 +69,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
       >
         <span className="nothing">없음</span>
       </button>
-      <button onClick={nextSteps}>
+      <button onClick={nextSteps} className="next">
         <span className="next">다음 ▶︎</span>
       </button>
     </Step2Design>

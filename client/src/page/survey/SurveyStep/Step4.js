@@ -11,14 +11,14 @@ const Step4 = ({ form, resetSteps }) => {
   console.log(form.disease);
 
   const nutrients = choosenutrients(form);
-  console.log(nutrients);
-
+  const userInfo = getUserInfo();
+  const namePart = userInfo.username.split('@')[0];
   return (
     <SurveyResultDesign>
       {nutrients && (
-        <div>
+        <div className="result">
           <div className="whoresult">
-            <span>name님의 필요영양성분</span>
+            <span>{namePart}님의 필요영양성분</span>
           </div>
 
           <div className="explain">

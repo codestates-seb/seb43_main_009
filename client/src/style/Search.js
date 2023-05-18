@@ -46,17 +46,17 @@ export const StyledButton = styled.button`
 export const StyledTable = styled.table`
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
-
+  width: auto;
+  margin: 35px 35px 0px;
   td {
-    border: 1px solid #000000;
+    border: 1px solid #959595;
     text-align: left;
     padding: 8px;
   }
 
   td:first-child {
     background-color: #f9e6e6;
-    width: 40%;
+    width: 20%;
   }
   td:nth-child(2) {
     width: 40%;
@@ -64,4 +64,12 @@ export const StyledTable = styled.table`
   tr:first-child td:nth-child(3) {
     background-color: #f9e6e6;
   }
+`;
+export const SGradiant = styled.div`
+  width: 100%;
+  height: 180px;
+`;
+export const SGradiant2 = styled.div`
+  width: 100%;
+  height: 90px;
 `;

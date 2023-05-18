@@ -1,11 +1,12 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
-
+import { login, logout } from '../redux/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStep } from '../redux/surveySlice';
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
@@ -16,6 +17,11 @@ const HeaderWrapper = styled.div`
   justify-content: center;
   height: 110px;
   border-top: 5px solid #f05858;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -59,14 +65,28 @@ const UnderMenuWrapper = styled.div`
   /* border-bottom: 0.5px solid var(--gray-200); */
   height: 35px;
   text-decoration: none;
+  position: fixed;
+  top: 110px;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
 `;
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    !!localStorage.getItem('accessToken'),
-  );
-
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [username, setUsername] = useState(null);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('accessToken');
+    window.alert('로그아웃 성공!');
+  };
+
+  const handleResetStep = () => {
+    dispatch(setStep(1));
+  };
+
   useEffect(() => {
     const userInfo = getUserInfo();
     if (userInfo?.username) {
@@ -88,14 +108,7 @@ export const Header = () => {
           {isLoggedIn ? (
             <>
               <UserName> {username}님 환영합니다! </UserName>
-              <Menu
-                className="logout"
-                onClick={() => {
-                  localStorage.removeItem('accessToken');
-                  setIsLoggedIn(false);
-                  window.alert('로그아웃 성공!');
-                }}
-              >
+              <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>
             </>
@@ -112,7 +125,7 @@ export const Header = () => {
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-        <StyledLink to="/survey">
+        <StyledLink to="/survey" onClick={handleResetStep}>
           <Menu>맞춤추천</Menu>
         </StyledLink>
         <StyledLink to="/commu">

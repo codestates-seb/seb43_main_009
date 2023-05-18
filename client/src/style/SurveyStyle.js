@@ -23,11 +23,15 @@ export const Step1Design = styled.div`
     background-color: white;
     font-size: 25px;
     border-radius: 15px;
+
     transition: all 0.2s;
     box-shadow: 12px 12px 2px 1px rgba(80, 80, 80, 0.2);
     &:hover {
       box-shadow: -12px 12px 2px -1px rgba(80, 80, 80, 0.2);
     }
+
+    box-shadow: 0 5px 5px -5px black;
+
     .doctor {
       width: 100%;
       height: 60%;
@@ -61,33 +65,52 @@ export const Step2Design = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100vw;
   height: 100vh;
-  background-color: #f1f2f3;
-
+  background-color: #f4f4f4;
   img {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     margin-left: 37%;
     margin-right: 10px;
   }
 
   button {
     width: 30vw;
-    height: 60px;
-    border: 1px solid black;
+    height: 75px;
+    border: none;
     border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
+    background-color: white;
+    font-size: 25px;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     display: flex;
     align-items: center;
+    margin-top: 30px;
+    &.next {
+      width: 14vw;
+      height: 60px;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      box-shadow: none;
+      margin-top: 40px;
+      :focus {
+        background-color: var(--gray-500);
+      }
+    }
+    :focus {
+      background-color: var(--claret);
+    }
   }
   .selected {
     background-color: #f05858;
   }
   .choice {
-    font-size: 35px;
+    font-size: 25px;
+    margin-top: 30px;
   }
   .next,
   .nothing {
@@ -115,13 +138,14 @@ export const Step3Design = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100vw;
   height: 100vh;
-  background-color: #f1f2f3;
+  background-color: #f4f4f4;
 
   .choice {
-    font-size: 35px;
+    font-size: 25px;
+    margin-top: 30px;
   }
 
   img {
@@ -150,14 +174,43 @@ export const Step3Design = styled.div`
 
   button {
     width: 30vw;
-    height: 60px;
-    border: 1px solid black;
+    height: 75px;
+    border: none;
     border-radius: 20px;
+
     background-color: #eaddca;
     font-size: 35px;
     display: flex;
     align-items: center;
     outline: none;
+
+    background-color: white;
+    font-size: 25px;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    :focus {
+      background-color: var(--claret);
+    }
+    &.next,
+    &.previous {
+      width: 14vw;
+      height: 60px;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      box-shadow: none;
+      margin-top: 40px;
+      :focus {
+        background-color: var(--gray-500);
+      }
+    }
+
   }
   .goorback {
     width: 30vw;
@@ -165,18 +218,6 @@ export const Step3Design = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    border-radius: 20px;
-    background-color: #f9e6e6;
   }
 `;
 
@@ -190,16 +231,14 @@ export const SurveyResultDesign = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  background-color: #f1f2f3;
+  background-color: #f4f4f4;
   font-size: 22px;
-
   li {
     margin-bottom: 3px;
   }
 
   .logo {
-    width: 150px;
-    height: 50px;
+    width: 100px;
   }
   .whoresult {
     border-bottom: 1px solid black;
@@ -243,6 +282,7 @@ export const SurveyResultDesign = styled.div`
     height: 50vh;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: flex-start;
   }
   .recommend-content {
