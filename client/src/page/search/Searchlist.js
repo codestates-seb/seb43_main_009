@@ -48,7 +48,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const SearchResult = () => {
+const Searchlist = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const spa = '아스피린';
@@ -104,4 +104,4 @@ const SearchResult = () => {
   );
 };
 
-export default SearchResult;
+export default Searchlist;
