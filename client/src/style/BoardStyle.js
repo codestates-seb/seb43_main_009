@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import picture from '../../public/write.jpg';
+import picture from '../../public/pencil.png';
 import { keyframes } from 'styled-components';
 
 const float = keyframes`
@@ -39,7 +39,7 @@ export const CommunityBox = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .button-box {
-      width: 60%;
+      width: 100%;
       display: flex;
       justify-content: flex-end;
 
@@ -51,37 +51,55 @@ export const CommunityBox = styled.div`
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 12px;
-        padding: 4px 12px;
+        padding: 5px 12px;
         transition-duration: 0.4s;
         background-color: white;
-        color: #f06868;
+        color: var(--bluish-gray-500);
         border: none;
         &:hover {
-          background-color: #f06868;
           border: none;
-          color: white;
+          color: var(--peach-500);
         }
       }
     }
 
     .title-box {
       /* border: 1px solid #e0e0e0; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       border-radius: 20px;
       width: 80%;
-      height: 100%;
+      min-height: 100%;
       padding: 16px;
       box-sizing: border-box;
-      /* background-color: #fafafa; */
       position: relative;
       margin-bottom: 20px;
+      white-space: pre-wrap;
 
       .content {
-        border: 1px solid black;
+        overflow: auto;
+        flex-grow: 1;
       }
 
+      .content h3 {
+        padding: 10px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        padding: 10px;
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+        word-break: break-all;
+      }
       input {
         width: 80%;
-        height: 80%;
+        height: 10%;
         border-radius: 4px;
         padding: 10px;
         opacity: 0.8;
@@ -91,20 +109,23 @@ export const CommunityBox = styled.div`
 
       textarea {
         width: 100%;
-        height: 80%;
+        height: 30vh;
         border-radius: 4px;
         padding: 10px;
         font-size: large;
         opacity: 0.8;
         border: none;
+        overflow-wrap: break-word;
+        resize: vertical;
       }
       .post-info {
         display: flex;
         justify-content: space-between;
         width: 90%;
-        font-size: 13px;
+        font-size: 15px;
         position: absolute;
         bottom: 0;
+        color: var(--gray-500);
       }
     }
   }
@@ -121,7 +142,7 @@ export const CommunityBox = styled.div`
 
     .comment-content {
       /* border: 1px solid #e0e0e0; */
-      width: 80%;
+      width: 60%;
       /* height: 70%; */
       font-size: 14px;
       padding: 16px;
@@ -131,7 +152,7 @@ export const CommunityBox = styled.div`
       display: flex;
       flex-direction: column;
       border-radius: 10px;
-
+      z-index: 2;
       .comment {
         display: flex;
         flex-direction: column;
@@ -148,7 +169,7 @@ export const CommunityBox = styled.div`
     .write-box {
       display: flex;
       /* border: 1px solid black; */
-      width: 70%;
+      /* width: 70%; */
       justify-content: space-between;
       align-items: center;
       margin-left: 1rem;
@@ -209,11 +230,15 @@ export const Timestamp = styled.span`
 `;
 
 export const ImgBox = styled.div`
-  width: 100%;
+  width: 20%;
   height: 300px;
   background-image: url(${picture});
   background-size: 300px;
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
   animation: ${float} 5s ease-in infinite;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
 `;

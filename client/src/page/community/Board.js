@@ -12,7 +12,7 @@ import {
   checkToken,
 } from '../../redux/boardSlice';
 import { getUserInfo } from '../../utils/UserInfo';
-
+import questionsmark from '../../../public/questionsmark.png';
 import {
   CommunityBox,
   Author,
@@ -120,24 +120,24 @@ const Board = () => {
       <CommunityBox>
         <ImgBox></ImgBox>
         <div className="up-box">
-          <div className="button-box">
-            {showEditForm ? (
-              <>
-                <button onClick={handleSaveEdit}>저장</button>
-                <button onClick={() => setShowEditForm(false)}>취소</button>
-              </>
-            ) : (
-              <>
-                {userId === boardData.userId && ( // 만약 게시글 작성자와 로그인한 사용자가 같다면 버튼을 보여줍니다.
-                  <>
-                    <button onClick={handleEditClick}>게시글 수정</button>
-                    <button onClick={handleDeletePost}>게시글 삭제</button>
-                  </>
-                )}
-              </>
-            )}
-          </div>
           <div className="title-box">
+            <div className="button-box">
+              {showEditForm ? (
+                <>
+                  <button onClick={handleSaveEdit}>저장</button>
+                  <button onClick={() => setShowEditForm(false)}>취소</button>
+                </>
+              ) : (
+                <>
+                  {userId === boardData.userId && ( // 만약 게시글 작성자와 로그인한 사용자가 같다면 버튼을 보여줍니다.
+                    <>
+                      <button onClick={handleEditClick}>게시글 수정</button>
+                      <button onClick={handleDeletePost}>게시글 삭제</button>
+                    </>
+                  )}
+                </>
+              )}
+            </div>
             {showEditForm ? (
               <div>
                 <input
@@ -156,9 +156,9 @@ const Board = () => {
                   <h3>제목 : {boardData.title}</h3>
                   <p>내용 : {boardData.content}</p>
                   <div className="post-info">
-                    <p>작성자: {boardData.displayName}</p>
-                    <p>작성시간: {formatDate(boardData.createAt)}</p>
-                    <p>조회수: {boardData.view}</p>
+                    <span>작성자: {boardData.displayName}</span>
+                    <span>작성시간: {formatDate(boardData.createAt)}</span>
+                    <span>조회수: {boardData.view}</span>
                   </div>
                 </div>
               )
