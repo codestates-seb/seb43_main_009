@@ -10,6 +10,7 @@ import SearchMain from './page/search/SearchMain';
 import Searchlist from './page/search/Searchlist';
 import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
+import SearchList from './page/search/SearchList';
 
 const App = () => {
   console.log(process.env.API_SERVER);
