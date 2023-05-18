@@ -242,25 +242,29 @@ export const SurveyResultDesign = styled.div`
   .whoresult {
     border-bottom: 1px solid black;
     margin-top: 10vh;
+    padding-bottom: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'MaplestoryOTFBold';
   }
 
   div span {
-    margin-left: 5vw;
+    margin-left: 10vw;
   }
   .explain {
-    margin-top: 7vh;
-    margin-left: 5vw;
+    margin-top: 5vh;
+    margin-left: 10vw;
   }
   .danger {
     margin-top: 7vh;
-    margin-left: 5vw;
+    margin-left: 10vw;
     color: red;
     width: 80vw;
   }
   .caution {
     color: black;
     margin-top: 0;
-    margin-left: 7px;
+    margin-left: 1vw;
   }
 
   .explaindetail {
@@ -269,14 +273,15 @@ export const SurveyResultDesign = styled.div`
   }
   .helppill {
     margin-top: 5vh;
-    margin-left: 1vw;
+    margin-left: 4vw;
   }
 
   .recommend {
     background-color: #f5d6d6;
     margin-top: 5vh;
-    margin-left: 5vw;
+    margin-left: 10vw;
     margin-bottom: 5vh;
+    border-radius: 14px;
     width: 80vw;
     height: 50vh;
     display: flex;
@@ -292,26 +297,41 @@ export const SurveyResultDesign = styled.div`
   .nutrients {
     margin-left: auto;
     margin-top: 30px;
-    margin-right: 7vw;
+    margin-right: 3vw;
     height: 300px;
     width: 300px;
   }
 
   .efficacy {
     margin-top: 5vh;
+    margin-left: 20px;
+  }
+  .buttonWrapper {
+    margin-left: 45px;
+    margin-top: 3vh;
   }
 
   .buynow {
-    margin-left: 2vw;
-    margin-top: 20px;
-  }
-  .retry {
-    background-color: #f05858;
-    border: none;
-    margin-left: 5vw;
+    background-color: #d4f8ff;
+    margin-bottom: 30px;
     width: 160px;
     height: 70px;
     font-size: 20px;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .retry {
+    background-color: #f05858;
+    border-radius: 14px;
+    margin-left: 2vw;
+    width: 160px;
+    height: 70px;
+    border: none;
+    font-size: 20px;
     color: white;
+    font-weight: 700;
+    cursor: pointer;
   }
 `;

@@ -1,9 +1,9 @@
 import React from 'react';
 import high from '../../../../public/high.jpg';
 import logo from '../../../../public/logo.png';
-import { SurveyResultDesign } from '../../../style/SurveyStyle';
 import { getUserInfo } from '../../../utils/UserInfo';
 import { choosenutrients } from './Nutrients';
+import { SurveyResultDesign } from '../../../style/SurveyStyle';
 
 const Step4 = ({ form, resetSteps }) => {
   // 소화 , 피부, 눈 , 면역, 피로
@@ -20,7 +20,6 @@ const Step4 = ({ form, resetSteps }) => {
           <div className="whoresult">
             <span>{namePart}님의 필요영양성분</span>
           </div>
-
           <div className="explain">
             <div>{nutrients.help}</div>
             <div className="explaindetail">{nutrients.explain}</div>
@@ -41,15 +40,13 @@ const Step4 = ({ form, resetSteps }) => {
                 <li>{nutrients.listtwo}</li>
                 <li>{nutrients.listthree}</li>
               </ul>
-              <div>
-                <a
+              <div className="buttonWrapper">
+                <button
                   className="buynow"
-                  href={nutrients.link}
-                  target="_blank"
-                  rel="noreferrer"
+                  onClick={() => window.open(nutrients.link, '_blank')}
                 >
-                  구매하러 가기
-                </a>
+                  바로구매
+                </button>
                 <button className="retry" onClick={resetSteps}>
                   맞춤검사 다시하기
                 </button>
