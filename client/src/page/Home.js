@@ -5,7 +5,6 @@ import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-
 import {
   SServiceInfoLayout,
   SServiceInfoSection,

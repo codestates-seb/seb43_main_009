@@ -137,6 +137,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('hello@gmail.com');
   const [password, setPassword] = useState('1234');
+  window.scrollTo(0, 0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
