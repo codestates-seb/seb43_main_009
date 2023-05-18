@@ -55,6 +55,7 @@ export const StyledTable = styled.table`
   }
 
   td:first-child {
+    font-weight: bold;
     background-color: #f9e6e6;
     width: 20%;
   }
@@ -63,6 +64,10 @@ export const StyledTable = styled.table`
   }
   tr:first-child td:nth-child(3) {
     background-color: #f9e6e6;
+    font-weight: bold;
+  }
+  tr:nth-child(7) td:nth-child(2) {
+    color: red;
   }
 `;
 export const SGradiant = styled.div`

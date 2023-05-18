@@ -2,7 +2,9 @@ import Layout from '../../common/Layout';
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { StyledButton, StyledTable, SGradiant } from '../../style/Search';
+import { StyledTable, SGradiant } from '../../style/Search';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const SearchWrapper = styled.div`
   margin: 0px;
@@ -38,30 +40,15 @@ export const SearchWrapper2 = styled.div`
   background-color: #fff;
 `;
 
-const StyledInput = styled.input`
-  top: 125px;
-  width: 80%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ffa1a1;
-  border-radius: 10px;
-  font-size: large;
-
-  &:focus {
-    border-color: red;
-  }
-`;
-
 const StyledBox = styled.div`
   display: flex;
   padding: 35px 35px 0px 35px;
 `;
 
 const SearchResult = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const { searchTerm } = useParams();
   const [data, setData] = useState([]);
-  let num = 2;
+  let num = 1;
   let sub = num - 1;
   const dummy = [
     {
@@ -75,10 +62,12 @@ const SearchResult = () => {
       allergy: '정보없음',
     },
   ];
+
+  // handleSearch 함수를 정의합니다.
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `https://server.dowajoyak.shop/search?itemName=${searchTerm}`,
+        `https://server.dowajoyak.shop/search/${searchTerm}`,
       );
 
       if (typeof response.data === 'object') {
@@ -91,21 +80,16 @@ const SearchResult = () => {
     }
   };
 
+  useEffect(() => {
+    handleSearch();
+  }, []);
+
   return (
     <Layout>
       <SearchWrapper>
         <SearchWrapper2>
           <StyledBox>
-            <StyledInput
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <StyledButton onClick={handleSearch}>Search</StyledButton>
-          </StyledBox>
-
-          <StyledBox>
-            <h1>검색하신 약에대한 정보입니다</h1>
+            <h1>약에대한 정보입니다</h1>
           </StyledBox>
 
           <StyledTable>
@@ -146,24 +130,6 @@ const SearchResult = () => {
                 <tr>
                   <td>사용자 주의사항</td>
                   <td colSpan="2">{row.allergy}</td>
-                </tr>
-              </tbody>
-            ))}
-          </StyledTable>
-          <StyledTable>
-            {data.map((row) => (
-              <tbody key={row.itemName}>
-                <tr>
-                  <td>{row.entpName}</td>
-                  <td>{row.itemName}</td>
-                  <td>
-                    <img
-                      src={row.itemImage}
-                      alt={row.itemName}
-                      style={{ maxWidth: '50%', maxHeight: '50%' }}
-                    />
-                  </td>
-                  <td>true, false</td>
                 </tr>
               </tbody>
             ))}

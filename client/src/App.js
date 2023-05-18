@@ -7,6 +7,7 @@ import Signup from './page/user/Signup';
 import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
 import SearchMain from './page/search/SearchMain';
+import Searchlist from './page/search/Searchlist';
 import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
 
@@ -24,7 +25,8 @@ const App = () => {
         <Route path="/commu" element={<Community />}></Route>
         <Route path="/survey" element={<Survey />}></Route>
         <Route path="/searchmain" element={<SearchMain />}></Route>
-        <Route path="/search" element={<SearchResult />}></Route>
+        <Route path="/searchlist" element={<Searchlist />}></Route>
+        <Route path="/search/:searchTerm" element={<SearchResult />}></Route>
       </Routes>
     </BrowserRouter>
   );
