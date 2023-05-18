@@ -18,6 +18,7 @@ import {
   Author,
   CommentText,
   Timestamp,
+  ImgBox,
 } from '../../style/BoardStyle';
 
 const Board = () => {
@@ -117,6 +118,7 @@ const Board = () => {
   return (
     <Layout>
       <CommunityBox>
+        <ImgBox></ImgBox>
         <div className="up-box">
           <div className="button-box">
             {showEditForm ? (
@@ -150,7 +152,7 @@ const Board = () => {
               </div>
             ) : (
               boardStatus === 'succeeded' && (
-                <div>
+                <div className="content">
                   <h3>제목 : {boardData.title}</h3>
                   <p>내용 : {boardData.content}</p>
                   <div className="post-info">
