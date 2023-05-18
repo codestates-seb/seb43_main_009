@@ -62,7 +62,7 @@ const Menu = styled.div`
 const UnderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  /* border-bottom: 0.5px solid var(--gray-200); */
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   height: 35px;
   text-decoration: none;
   position: fixed;
@@ -86,6 +86,9 @@ export const Header = () => {
   const handleResetStep = () => {
     dispatch(setStep(1));
   };
+  const handleScrollZero = () => {
+    window.scrollTo(0, 0);
+  };
 
   useEffect(() => {
     const userInfo = getUserInfo();
@@ -101,7 +104,7 @@ export const Header = () => {
     <GlobalFont>
       <HeaderWrapper>
         <Menu>❤️</Menu>
-        <StyledLink to="/">
+        <StyledLink to="/" onClick={handleScrollZero}>
           <Logo src={logo} />
         </StyledLink>
         <MenuWrapper>
@@ -114,10 +117,10 @@ export const Header = () => {
             </>
           ) : (
             <>
-              <StyledLink to="/login">
+              <StyledLink to="/login" onClick={handleScrollZero}>
                 <Menu>로그인</Menu>
               </StyledLink>
-              <StyledLink to="/signup">
+              <StyledLink to="/signup" onClick={handleScrollZero}>
                 <Menu className="signup">회원가입</Menu>
               </StyledLink>
             </>
@@ -125,13 +128,19 @@ export const Header = () => {
         </MenuWrapper>
       </HeaderWrapper>
       <UnderMenuWrapper>
-        <StyledLink to="/survey" onClick={handleResetStep}>
+        <StyledLink
+          to="/survey"
+          onClick={() => {
+            handleResetStep();
+            window.scrollTo(0, 0);
+          }}
+        >
           <Menu>맞춤추천</Menu>
         </StyledLink>
-        <StyledLink to="/commu">
+        <StyledLink to="/commu" onClick={handleScrollZero}>
           <Menu>커뮤니티</Menu>
         </StyledLink>
-        <StyledLink to="/search">
+        <StyledLink to="/search" onClick={handleScrollZero}>
           <Menu>의약품검색</Menu>
         </StyledLink>
       </UnderMenuWrapper>
