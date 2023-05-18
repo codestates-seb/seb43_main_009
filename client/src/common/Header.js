@@ -16,7 +16,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 110px;
-  border-top: 5px solid #f05858;
+  border-top: 5px solid #f05758;
   position: fixed;
   top: 0;
   width: 100%;
