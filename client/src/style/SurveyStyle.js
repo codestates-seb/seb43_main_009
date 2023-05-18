@@ -17,12 +17,20 @@ export const Step1Design = styled.div`
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 440px;
-    height: 600px;
-    margin-top: 70px;
+    width: 400px;
+    height: 560px;
+    min-height: 400px;
+    margin-top: 7%;
     background-color: white;
     font-size: 25px;
     border-radius: 15px;
+    @media screen and (max-height: 800px) {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      width: 300px;
+      height: 360px;
+    }
 
     transition: all 0.2s;
     box-shadow: 12px 12px 2px 1px rgba(80, 80, 80, 0.2);
@@ -34,7 +42,7 @@ export const Step1Design = styled.div`
 
     .doctor {
       width: 100%;
-      height: 60%;
+      height: 50%;
       border-radius: 15px 15px 0 0 / 15px 15px 0 0;
     }
     .recommend {
@@ -45,17 +53,21 @@ export const Step1Design = styled.div`
       margin-top: 20px;
     }
     .start {
-      margin-top: 30px;
+      margin: 20px;
       width: 120px;
       height: 50px;
       border-radius: 15px;
       border: none;
       background-color: #f05858;
       font-size: 25px;
+      font-weight: 700;
       color: white;
       cursor: pointer;
       &:hover {
         background-color: #d32f2f;
+      }
+      @media screen and (max-height: 700px) {
+        font-size: 16px;
       }
     }
   }
@@ -153,18 +165,7 @@ export const Step3Design = styled.div`
     height: 35px;
     margin-right: 10px;
   }
-  .aspirin {
-    margin-left: 10%;
-  }
-  .penicillin {
-    margin-left: 17%;
-  }
-  .anticonvulsants {
-    margin-left: 29%;
-  }
-  .xray {
-    margin-left: 33%;
-  }
+
   .nothing {
     margin: 0 auto;
   }
@@ -210,7 +211,6 @@ export const Step3Design = styled.div`
         background-color: var(--gray-500);
       }
     }
-
   }
   .goorback {
     width: 30vw;
@@ -222,7 +222,6 @@ export const Step3Design = styled.div`
 `;
 
 export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
-  margin-left: 33%;
   margin-right: 10px;
 `;
 

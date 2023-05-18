@@ -42,7 +42,12 @@ const Step4 = ({ form, resetSteps }) => {
                 <li>{nutrients.listthree}</li>
               </ul>
               <div>
-                <a className="buynow" href={nutrients.link}>
+                <a
+                  className="buynow"
+                  href={nutrients.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   구매하러 가기
                 </a>
                 <button className="retry" onClick={resetSteps}>
