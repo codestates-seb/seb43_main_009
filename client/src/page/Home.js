@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { login } from '../redux/authSlice';
 import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
 import {
   SServiceInfoLayout,
   SServiceInfoSection,
@@ -25,6 +28,11 @@ import logo from '../../public/logo.png';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    Navigate('/survey');
+  };
   return (
     <>
       <OAuthLogin onLogin={() => dispatch(login())} />
@@ -33,9 +41,12 @@ const Home = () => {
           <SGradiant />
           <STextInfoSection>
             <h1>약 검색은 `도와조약`에서!</h1>
-            <h2>맞춤추천으로 나에게 맞는 영양제를 알아보세요</h2>
+            <h2>
+              🧚‍♂️ <span>맞춤추천</span>으로 나에게 맞는 <span>영양제</span>를
+              알아보세요
+            </h2>
             {/* <h2>커뮤니티에 증상을 공유하고 답변을 받아보세요</h2> */}
-            <button>💁🏻‍♀️맞춤추천 받으러가기</button>
+            <button onClick={handleButtonClick}>💁🏻‍♀️맞춤추천 받으러가기!</button>
           </STextInfoSection>
         </SBackgroundLayout>
         <SServiceInfoLayout>

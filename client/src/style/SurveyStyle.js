@@ -12,7 +12,7 @@ export const Step1Design = styled.div`
   height: 85vh;
   background-color: #f4f4f4;
 
-  .stepone {
+  .card {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,7 +23,15 @@ export const Step1Design = styled.div`
     background-color: white;
     font-size: 25px;
     border-radius: 15px;
+
+    transition: all 0.2s;
+    box-shadow: 12px 12px 2px 1px rgba(80, 80, 80, 0.2);
+    &:hover {
+      box-shadow: -12px 12px 2px -1px rgba(80, 80, 80, 0.2);
+    }
+
     box-shadow: 0 5px 5px -5px black;
+
     .doctor {
       width: 100%;
       height: 60%;
@@ -52,7 +60,6 @@ export const Step1Design = styled.div`
     }
   }
 `;
-
 export const Step2Design = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
@@ -170,6 +177,13 @@ export const Step3Design = styled.div`
     height: 75px;
     border: none;
     border-radius: 20px;
+
+    background-color: #eaddca;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    outline: none;
+
     background-color: white;
     font-size: 25px;
     font-weight: 600;
@@ -196,6 +210,7 @@ export const Step3Design = styled.div`
         background-color: var(--gray-500);
       }
     }
+
   }
   .goorback {
     width: 30vw;

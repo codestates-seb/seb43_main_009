@@ -4,12 +4,50 @@ const landingTitle = high;
 import { keyframes } from 'styled-components';
 
 const slideFromLeft = keyframes`
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  /* 60% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10px);
+  } */
+  100% {
+    transform: translateY(0);
+  }
+
+`;
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 `;
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
+`;
+const sh0 = keyframes`
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: rotate(5deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-5deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
 `;
 export const SBackgroundLayout = styled.div`
   font-family: 'MaplestoryOTFBold';
@@ -64,52 +102,78 @@ export const STextInfoSection = styled.div`
   font-size: 2rem;
   color: #f06868;
   padding: 1.4rem;
+  text-align: center;
 
+  .example {
+    font-size: medium;
+    position: absolute;
+    margin-top: 240px;
+    color: var(--gray-400);
+  }
   h1 {
     display: flex;
     align-items: flex-end;
     font-size: 65px;
     font-weight: 500;
     /* padding-bottom: 30px; */
-    color: #f06868;
-    animation: ${slideFromLeft} 2s ease-out;
+    color: #f05758;
+    animation: ${slideFromLeft} 1.5s ease-out;
   }
   h2 {
     /* font-family: sans-serif; */
     font-size: 30px;
     font-weight: 350;
-    color: #f09c8d;
-    animation: ${slideFromLeft} 2.2s ease-out;
+    color: #ed8787;
+    /* opacity: 0; */
+    /* animation: ${fadeIn} 1.5s ease-in; */
+    animation: ${slideFromLeft} 1.5s ease-out;
     position: absolute;
     bottom: 0;
+
+    span {
+      color: #ffc81e;
+    }
   }
 
   h3 {
     font-size: 25px;
     font-weight: 350;
-    color: #ee9a9a;
+    color: gray;
+
+    span {
+      color: #ff607f;
+    }
   }
 
   button {
-    width: 40%;
-    height: 45%;
+    width: 38%;
+    height: 42%;
     position: absolute;
     margin-top: 15rem;
     border-radius: 50px;
     border: none;
-    opacity: 0.8;
+    opacity: 0.75;
     font-size: 25px;
     color: #eb5035;
+    font-weight: 600;
     cursor: pointer;
     animation: ${bounce} 2s ease-in-out infinite;
     animation-fill-mode: both;
+    box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.25),
+      0px 24px 40px -20px rgba(0, 0, 0, 0.3),
+      inset 3px 3px 7px rgba(255, 255, 255, 0.1),
+      inset -3px -3px 5px rgba(0, 0, 0, 0.3);
     &:hover {
-      background-color: var(--bluish-gray-200);
-      animation-play-state: paused;
-      animation: none;
+      background-color: var(--gray-100);
+      /* animation-play-state: paused;
+      animation: none; */
       opacity: 0.9;
+      box-shadow: inset 3px 3px 7px rgba(255, 255, 255, 0.1),
+        inset -5px -5px 7px rgba(0, 0, 0, 0.3);
+      animation: ${sh0} 0.5s ease-in-out both;
     }
   }
+
   @media only screen and (max-width: 500px) {
     display: flex;
     flex-direction: column;

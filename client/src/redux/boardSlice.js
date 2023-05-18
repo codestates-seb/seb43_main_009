@@ -6,6 +6,10 @@ import { getUserInfo } from '../utils/UserInfo';
 
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
+export const checkToken = createAsyncThunk('board/checkToken', async () => {
+  const token = localStorage.getItem('accessToken');
+  return token;
+});
 
 //userid는 로그인할 때 받아오기
 export const submitPost = createAsyncThunk(
@@ -158,6 +162,9 @@ export const boardSlice = createSlice({
       .addCase(submitComment.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(checkToken.fulfilled, (state, action) => {
+        state.token = action.payload;
       });
   },
 });

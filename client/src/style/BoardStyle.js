@@ -1,5 +1,24 @@
 import styled from 'styled-components';
+import picture from '../../public/write.jpg';
+import { keyframes } from 'styled-components';
 
+const float = keyframes`
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  25% {
+    transform: translateX(-3px) translateY(3px);
+  }
+  50% {
+    transform: translateX(3px) translateY(0px);
+  }
+  73% {
+    transform: translateX(-3px) translateY(0px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+`;
 export const CommunityBox = styled.div`
   box-sizing: border-box;
   margin: 0;
@@ -7,11 +26,11 @@ export const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: white;
 
   .up-box {
     width: 100vw;
-    height: 40vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +39,7 @@ export const CommunityBox = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .button-box {
-      width: 70%;
+      width: 60%;
       display: flex;
       justify-content: flex-end;
 
@@ -46,25 +65,38 @@ export const CommunityBox = styled.div`
     }
 
     .title-box {
-      border: 1px solid #e0e0e0;
+      /* border: 1px solid #e0e0e0; */
       border-radius: 20px;
-      width: 70%;
-      height: 70%;
+      width: 80%;
+      height: 100%;
       padding: 16px;
       box-sizing: border-box;
-      background-color: #fafafa;
+      /* background-color: #fafafa; */
       position: relative;
+      margin-bottom: 20px;
+
+      .content {
+        border: 1px solid black;
+      }
 
       input {
         width: 80%;
+        height: 80%;
         border-radius: 4px;
-        padding: 4px;
+        padding: 10px;
+        opacity: 0.8;
+        font-size: large;
+        border: none;
       }
 
       textarea {
-        width: 80%;
+        width: 100%;
+        height: 80%;
         border-radius: 4px;
-        padding: 4px;
+        padding: 10px;
+        font-size: large;
+        opacity: 0.8;
+        border: none;
       }
       .post-info {
         display: flex;
@@ -79,7 +111,7 @@ export const CommunityBox = styled.div`
 
   .down-box {
     width: 100vw;
-    height: 30vh;
+    /* height: 30vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,24 +120,23 @@ export const CommunityBox = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .comment-content {
-      border: 1px solid #e0e0e0;
-      width: 60%;
-      height: 70%;
+      /* border: 1px solid #e0e0e0; */
+      width: 80%;
+      /* height: 70%; */
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
-      margin-bottom: 2rem;
+      margin: 50px 30px;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
-      max-height: 500px;
       border-radius: 10px;
 
       .comment {
         display: flex;
         flex-direction: column;
-        padding: 8px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
       }
 
       .comment-text {
@@ -117,10 +148,12 @@ export const CommunityBox = styled.div`
     .write-box {
       display: flex;
       /* border: 1px solid black; */
-      width: 60%;
+      width: 70%;
       justify-content: space-between;
       align-items: center;
       margin-left: 1rem;
+      position: relative;
+      margin-bottom: 80px;
 
       input {
         width: 50vw;
@@ -131,7 +164,7 @@ export const CommunityBox = styled.div`
       }
 
       button {
-        background-color: #e0e0e0;
+        background-color: #ed8787;
         border: none;
         color: white;
         text-align: center;
@@ -173,4 +206,14 @@ export const Timestamp = styled.span`
   color: #999;
   display: inline-block;
   margin-top: 4px;
+`;
+
+export const ImgBox = styled.div`
+  width: 100%;
+  height: 300px;
+  background-image: url(${picture});
+  background-size: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: ${float} 5s ease-in infinite;
 `;
