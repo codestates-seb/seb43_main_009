@@ -4,6 +4,7 @@ import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
 import xray from '../../../../public/xray.png';
 import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
+import GoogleSearch from '../../../common/GoogleSearch';
 
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const menu = {
@@ -75,18 +76,16 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
         <img className="xray" src={xray} alt="xray" />
         조영제
       </button> */}
-      <input
+      {/* <input
         type="text"
         value={userInput}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         placeholder="이외 알러지 입력 ex) 유당"
-      />
-      <button
-        className={allergy === menu.nothing ? 'selected' : ''}
-        value="NONE"
-        onClick={handleAllergyClick}
-      >
+      /> */}
+      <GoogleSearch changeInput={changeInput} />
+      <div className="etc">이외 알러지 입력 ex: 유당</div>
+      <button className="nonono" value="NONE" onClick={handleAllergyClick}>
         <span className="nothing">없음</span>
       </button>
       <div className="goorback">
