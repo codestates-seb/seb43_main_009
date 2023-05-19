@@ -115,10 +115,14 @@ const Board = () => {
     }
   }, [dispatch, navigate, boardData.commuId]);
 
+  const handleImgClick = () => {
+    navigate('/commu/posts', { replace: true });
+  };
+
   return (
     <Layout>
       <CommunityBox>
-        <ImgBox></ImgBox>
+        <ImgBox onClick={handleImgClick}></ImgBox>
         <div className="up-box">
           <div className="title-box">
             <div className="button-box">
