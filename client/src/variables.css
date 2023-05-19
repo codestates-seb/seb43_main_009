@@ -70,7 +70,7 @@
 }
 @font-face {
   font-family: 'Noto Sans KR';
-  src: url('https://fonts.gstatic.com/s/notosanskr/v12/Pby6FmXiEBPT4ITbgNA5CgmOelv.ttf')
+  src: url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Raleway:ital,wght@0,700;1,300;1,400&display=swap')
     format('truetype');
   font-weight: 400;
   font-style: normal;

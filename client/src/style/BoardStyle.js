@@ -19,6 +19,23 @@ const float = keyframes`
     transform: translateX(0px) translateY(0px);
   }
 `;
+const hoverAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 export const CommunityBox = styled.div`
   box-sizing: border-box;
   margin: 0;
@@ -241,4 +258,22 @@ export const ImgBox = styled.div`
   bottom: 0;
   right: 0;
   z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  text-align: calc();
+  font-size: 0.9rem;
+
+  &:hover {
+    color: black; // 텍스트 색상
+    animation: ${hoverAnimation} 2s linear infinite;
+  }
+
+  &::after {
+    content: '나도 글쓰러 가기!'; // hover시 표시될 텍스트
+    display: block;
+    width: 100%;
+  }
 `;
