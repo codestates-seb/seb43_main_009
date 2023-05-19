@@ -15,7 +15,10 @@ export const GetSearch = createAsyncThunk('search/result', async (params) => {
         Authorization: `${token}`,
       };
     }
-    const response = await axios.get(`${API_SERVER}/search?itemName=${params}`);
+    const response = await axios.get(
+      `${API_SERVER}/search?itemName=${params}`,
+      config,
+    );
     return response.data;
   } catch (error) {
     console.error('fail', error);

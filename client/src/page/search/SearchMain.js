@@ -1,6 +1,6 @@
 import Layout from '../../common/Layout';
 import React, { useState } from 'react';
-import { StyledInput } from '../../style/Search';
+import { StyledInput } from '../../style/SearchStyle';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SetParams, GetSearch } from '../../redux/SearchSlice';

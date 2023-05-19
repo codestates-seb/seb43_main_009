@@ -2,7 +2,7 @@ import Layout from '../../common/Layout';
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { StyledTable, SGradiant } from '../../style/Search';
+import { StyledTable, SGradiant } from '../../style/SearchStyle';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

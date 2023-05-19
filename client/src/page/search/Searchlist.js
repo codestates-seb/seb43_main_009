@@ -6,139 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { SetParams, GetSearch } from '../../redux/SearchSlice';
 import ReactPaginate from 'react-paginate';
 import noimg from '../../../public/noimg.jpg';
-
-const SearchlistDesign = styled.div`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  width: 100vw;
-  font-family: 'Noto Sans KR', sans-serif;
-  vertical-align: baseline;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-  margin-top: 50px;
-
-  .search {
-    width: 500px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ffa1a1;
-    border-radius: 4px;
-  }
-
-  .itemnumber {
-    align-items: flex-start;
-  }
-
-  .searchbutton {
-    width: 100px;
-    background-color: #f05858;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #45a049;
-    }
-  }
-  .result {
-    font-size: 30px;
-    margin-top: 30px;
-    margin-top: 50px;
-  }
-
-  img {
-    width: 110px;
-    height: 100px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-
-  .image {
-    height: 30px;
-    width: 130px;
-  }
-  .image,
-  .name,
-  .company {
-    border-right: 1px solid white;
-  }
-
-  .itemnumber {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  .table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .sub {
-    background-color: #fcb2b2;
-    justify-content: center;
-  }
-
-  .list,
-  .sub {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: center;
-  }
-
-  .name {
-    width: 350px;
-  }
-
-  .image,
-  .itemname,
-  .name,
-  .entpname,
-  .company,
-  .haveallergy,
-  .allergy,
-  .imgdiv {
-    display: flex;
-    align-items: center;
-  }
-
-  .image,
-  .name,
-  .company,
-  .haveallergy,
-  .entpname,
-  .allergy {
-    justify-content: center;
-  }
-
-  .itemname {
-    padding-left: 20px;
-    width: 330px;
-  }
-
-  .entpname,
-  .company {
-    width: 170px;
-  }
-
-  .haveallergy,
-  .allergy {
-    width: 160px;
-  }
-
-  .list {
-    border-bottom: 1px dotted #999999;
-    height: 120px;
-  }
-`;
+import nosearch from '../../../public/nosearch.png';
+import { SearchlistDesign } from '../../style/SearchStyle';
 
 const SearchList = () => {
   const Navigate = useNavigate();
@@ -212,12 +81,14 @@ const SearchList = () => {
         </div>
 
         <div className="table">
-          <div className="sub">
-            <div className="image">식별/포장</div>
-            <div className="name">제품명</div>
-            <div className="company">회사명</div>
-            <div className="haveallergy">알러지 여부</div>
-          </div>
+          {searchResults !== noresult ? (
+            <div className="sub">
+              <div className="image">식별/포장</div>
+              <div className="name">제품명</div>
+              <div className="company">회사명</div>
+              <div className="haveallergy">알러지 여부</div>
+            </div>
+          ) : null}
           {searchResults !== noresult ? (
             searchResults.map((el) => (
               <div key={el.itemName} className="list">
@@ -234,7 +105,7 @@ const SearchList = () => {
               </div>
             ))
           ) : (
-            <div>검색결과가 없습니다.</div>
+            <img className="nosearch" alt="nosearch" src={nosearch}></img>
           )}
         </div>
       </SearchlistDesign>
