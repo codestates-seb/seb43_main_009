@@ -3,8 +3,8 @@ import Layout from '../../common/Layout';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { SetParams, GetSearch } from '../../redux/SearchSlice';
 import ReactPaginate from 'react-paginate';
-import { GetSearch } from '../../redux/SearchSlice';
 import noimg from '../../../public/noimg.jpg';
 
 const SearchlistDesign = styled.div`
@@ -51,6 +51,8 @@ const SearchlistDesign = styled.div`
   }
   .result {
     font-size: 30px;
+    margin-top: 30px;
+    margin-top: 50px;
   }
 
   img {
@@ -70,6 +72,10 @@ const SearchlistDesign = styled.div`
     border-right: 1px solid white;
   }
 
+  .itemnumber {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
   .table {
     display: flex;
     flex-direction: column;
@@ -134,29 +140,35 @@ const SearchlistDesign = styled.div`
   }
 `;
 
-const Searchlist = () => {
+const SearchList = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const { itemname } = useParams();
-
-  const spa = '아스피린';
-  const searchdata = useSelector((state) => state.search.data);
+  const searchKeyword = useSelector((state) => state.search.params);
+  const searchResults = useSelector((state) => state.search.data);
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
-  const nothing = '이미지가 존재하지 않습니다.';
-
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
+  const nothing = '이미지가 존재하지 않습니다.';
+  const noresult = '찾으시는 데이터가 존재하지 않습니다.';
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      Navigate(`/search/list/${searchTerm}`);
+      dispatch(GetSearch(searchTerm));
+      dispatch(SetParams(searchTerm));
+    }
+  };
 
   useEffect(() => {
     {
-      dispatch(GetSearch(spa));
+      dispatch(GetSearch(itemname));
     }
-  }, [dispatch]);
-  console.log(searchdata);
-  console.log(searchdata.length);
+  }, [dispatch, itemname]);
 
   /* useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -179,17 +191,18 @@ const Searchlist = () => {
           <input
             className="search"
             type="text"
-            value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           ></input>
           <button className="searchbutton" onClick={handleSearch}>
             Search
           </button>
         </div>
-        <div className="result">찾으시는 {spa}에 대한 결과입니다.</div>
+        <div className="result">{searchKeyword}(으)로 검색한 결과입니다.</div>
         <div className="itemnumber">
-          검색결과 리스트 ({searchdata.length}개)
+          검색결과 리스트 (
+          {searchResults !== noresult ? searchResults.length : 0}개)
         </div>
+
         <div className="table">
           <div className="sub">
             <div className="image">식별/포장</div>
@@ -197,9 +210,8 @@ const Searchlist = () => {
             <div className="company">회사명</div>
             <div className="haveallergy">알러지 여부</div>
           </div>
-
-          {searchdata.length > 0 ? (
-            searchdata.map((el) => (
+          {searchResults !== noresult ? (
+            searchResults.map((el) => (
               <div key={el.itemName} className="list">
                 <div className="imgdiv">
                   <img
@@ -214,7 +226,7 @@ const Searchlist = () => {
               </div>
             ))
           ) : (
-            <div>없다</div>
+            <div>asd</div>
           )}
         </div>
       </SearchlistDesign>
@@ -222,4 +234,4 @@ const Searchlist = () => {
   );
 };
 
-export default Searchlist;
+export default SearchList;
