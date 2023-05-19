@@ -154,7 +154,11 @@ const Board = () => {
               boardStatus === 'succeeded' && (
                 <div className="content">
                   <h3>제목 : {boardData.title}</h3>
-                  <p>내용 : {boardData.content}</p>
+                  <p>
+                    내용 : <br></br>
+                    <br></br>
+                    {boardData.content}
+                  </p>
                   <div className="post-info">
                     <span>작성자: {boardData.displayName}</span>
                     <span>작성시간: {formatDate(boardData.createAt)}</span>
