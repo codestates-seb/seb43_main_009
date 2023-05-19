@@ -46,7 +46,6 @@ export const CommunityBox = styled.div`
 
   .up-box {
     width: 100vw;
-    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,7 +119,7 @@ export const CommunityBox = styled.div`
       }
 
       .content {
-        overflow: auto;
+        /* overflow: auto; */
         flex-grow: 1;
       }
 
