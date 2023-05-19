@@ -156,10 +156,13 @@ export const Step3Design = styled.div`
   background-color: #f4f4f4;
 
   .choice {
-    font-size: 25px;
+    font-size: 23px;
     margin-top: 30px;
   }
-
+  .choice2 {
+    font-size: 23px;
+    margin-top: 10px;
+  }
   img {
     width: 35px;
     height: 35px;
@@ -211,6 +214,17 @@ export const Step3Design = styled.div`
         background-color: var(--gray-500);
       }
     }
+  }
+  input {
+    width: 30vw;
+    height: 75px;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   }
   .goorback {
     width: 30vw;

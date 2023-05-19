@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
@@ -14,13 +14,23 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
     xray: '조영제',
     nothing: '없음',
   };
-
+  const [userInput, setUserInput] = useState('');
   const handleAllergyClick = (e) => {
     changeInput({ target: { name: 'allergy', value: e.currentTarget.value } });
   };
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+  };
+  const handleInputBlur = () => {
+    changeInput({ target: { name: 'allergy', value: userInput } });
+  };
+
   return (
     <Step3Design>
-      <div className="choice">해당하는 약물 알러지를 선택해주세요! </div>
+      <div className="choice">해당하는 약물 알러지를 선택해주세요 </div>
+      <div className="choice2">
+        의약품검색 페이지에서 알러지정보가 반영됩니다!
+      </div>
       <button
         className={allergy === menu.caffeine ? 'selected' : ''}
         value="CAFFEINE"
@@ -57,14 +67,21 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
         />
         항경련제
       </button>
-      <button
+      {/* <button
         className={allergy === menu.xray ? 'selected' : ''}
         value="CONTRAST"
         onClick={handleAllergyClick}
       >
         <img className="xray" src={xray} alt="xray" />
         조영제
-      </button>
+      </button> */}
+      <input
+        type="text"
+        value={userInput}
+        onChange={handleInputChange}
+        onBlur={handleInputBlur}
+        placeholder="이외 알러지 입력 ex) 유당"
+      />
       <button
         className={allergy === menu.nothing ? 'selected' : ''}
         value="NONE"
