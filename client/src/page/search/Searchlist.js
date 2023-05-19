@@ -61,10 +61,8 @@ const SearchList = () => {
   useEffect(() => {
     {
       dispatch(GetSearch(itemname));
-      console.log(searchResults);
     }
   }, [dispatch, itemname]);
-  console.log(allergylist);
 
   /* useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
