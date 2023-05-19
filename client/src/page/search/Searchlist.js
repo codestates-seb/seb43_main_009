@@ -1,10 +1,8 @@
-import styled from 'styled-components';
 import Layout from '../../common/Layout';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SetParams, GetSearch } from '../../redux/SearchSlice';
-import ReactPaginate from 'react-paginate';
 import noimg from '../../../public/noimg.jpg';
 import nosearch from '../../../public/nosearch.png';
 import { SearchlistDesign } from '../../style/SearchStyle';
@@ -16,11 +14,6 @@ const SearchList = () => {
   const searchKeyword = useSelector((state) => state.search.params);
   const searchResults = useSelector((state) => state.search.data);
   const [searchTerm, setSearchTerm] = useState('');
-  const [data, setData] = useState([]);
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setpageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 6;
   const nothing = '이미지가 존재하지 않습니다.';
   const noresult = '찾으시는 데이터가 존재하지 않습니다.';
 
@@ -61,22 +54,8 @@ const SearchList = () => {
   useEffect(() => {
     {
       dispatch(GetSearch(itemname));
-      console.log(searchResults);
     }
   }, [dispatch, itemname]);
-  console.log(allergylist);
-
-  /* useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    const reversedData = searchdata.slice().reverse(); // 데이터를 복사하고 역순으로 정렬
-    setCurrentItems(reversedData.slice(itemOffset, endOffset));
-    setpageCount(Math.ceil(searchdata.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, searchdata]);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % searchdata.length;
-    setItemOffset(newOffset);
-  }; */
 
   return (
     <Layout>
@@ -114,6 +93,7 @@ const SearchList = () => {
                 className={`list ${
                   index === searchResults.length - 1 ? 'last-item' : ''
                 }`}
+                onClick={() => Navigate(`/search/${el.itemName}`)}
               >
                 <div className="imgdiv">
                   <img
