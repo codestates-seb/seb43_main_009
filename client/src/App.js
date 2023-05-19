@@ -10,6 +10,7 @@ import SearchMain from './page/search/SearchMain';
 import Searchlist from './page/search/Searchlist';
 import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
+import Mypage from './page/user/Mypage';
 
 const App = () => {
   console.log(process.env.API_SERVER);
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/searchmain" element={<SearchMain />}></Route>
         <Route path="/searchlist" element={<Searchlist />}></Route>
         <Route path="/search/:searchTerm" element={<SearchResult />}></Route>
+        <Route path="/mypage" element={<Mypage />}></Route>
       </Routes>
     </BrowserRouter>
   );

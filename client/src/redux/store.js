@@ -4,6 +4,7 @@ import CommunitySlice from './CommuntiySlice';
 import authReducer from './authSlice';
 import SearchSlice from './SearchSlice';
 import surveyReducer from './surveySlice';
+import mypageReducer from './MypageSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     auth: authReducer,
     search: SearchSlice,
     survey: surveyReducer,
+    mypage: mypageReducer,
   },
 });
 
