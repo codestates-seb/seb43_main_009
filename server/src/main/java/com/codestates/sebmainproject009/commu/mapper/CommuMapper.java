@@ -29,6 +29,7 @@ public interface CommuMapper {
         int view = 0;
         List<Comment> comments = null;
         Long userId = null;
+        String imageUrl = null;
 
         commuId = commu.getCommuId();
         title = commu.getTitle();
@@ -37,13 +38,16 @@ public interface CommuMapper {
         view = commu.getView();
         List<Comment> list = commu.getComments();
         userId = commu.getUser().getUserId();
+        imageUrl = commu.getImageUrl();
+
         if ( list != null ) {
             comments = new ArrayList<Comment>( list );
         }
 
         String displayName = commu.getUser().getDisplayName();
 
-        CommuResponseDto commuResponseDto = new CommuResponseDto( commuId, title, content, createAt, view, displayName, comments , userId);
+        CommuResponseDto commuResponseDto = new CommuResponseDto( commuId, title, content, createAt, view, displayName, comments , userId, imageUrl);
+
 
         return commuResponseDto;
     }
