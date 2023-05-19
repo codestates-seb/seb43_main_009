@@ -26,4 +26,5 @@ public class CommuResponseDto {
     private Long userId;
 
     private String imageUrl;
+
 }

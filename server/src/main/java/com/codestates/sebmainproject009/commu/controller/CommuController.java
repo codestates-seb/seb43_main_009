@@ -65,6 +65,7 @@ public class CommuController {
 
     @PostMapping(value = "/postsToS3", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity postCommu(@RequestParam("image") @Nullable MultipartFile image,
+
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content,
                                     @RequestParam("userId") Long userId) {

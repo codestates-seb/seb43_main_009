@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -53,6 +54,7 @@ public class SearchController {
         urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
 
+
         URL url = new URL(urlBuilder.toString());
 
         RestTemplate restTemplate = new RestTemplate();
@@ -66,6 +68,7 @@ public class SearchController {
         JSONObject jsonObject1 = jsonObject.getJSONObject("body");
 
         JSONArray jsonArray;
+
         try{
             jsonArray = jsonObject1.getJSONArray("items");
         }catch (JSONException exception){
@@ -83,7 +86,9 @@ public class SearchController {
 
 
         if(!jsonArray.isEmpty()) {
+
             jsonArray = jsonObject1.getJSONArray("items");
+
             List<Object> list = jsonArray.toList();
 
             List<ItemList> resultList = new ArrayList<>();

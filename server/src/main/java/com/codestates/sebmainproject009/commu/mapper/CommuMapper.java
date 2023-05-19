@@ -39,6 +39,7 @@ public interface CommuMapper {
         List<Comment> list = commu.getComments();
         userId = commu.getUser().getUserId();
         imageUrl = commu.getImageUrl();
+
         if ( list != null ) {
             comments = new ArrayList<Comment>( list );
         }
@@ -46,6 +47,7 @@ public interface CommuMapper {
         String displayName = commu.getUser().getDisplayName();
 
         CommuResponseDto commuResponseDto = new CommuResponseDto( commuId, title, content, createAt, view, displayName, comments , userId, imageUrl);
+
 
         return commuResponseDto;
     }
