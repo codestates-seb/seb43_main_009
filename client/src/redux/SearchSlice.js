@@ -4,16 +4,21 @@ import axios from 'axios';
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
-//commu 전체 조회하기
 export const GetSearch = createAsyncThunk('search/result', async (params) => {
   try {
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      withCredentials: true,
+    };
+    if (token) {
+      config.headers = {
+        Authorization: `${token}`,
+      };
+    }
     const response = await axios.get(
       `${API_SERVER}/search?itemName=${params}`,
-      {
-        withCredentials: true,
-      },
+      config,
     );
-    console.log(`${API_SERVER}/search?itemName=${params}`);
     return response.data;
   } catch (error) {
     console.error('fail', error);
@@ -25,13 +30,17 @@ export const SearchSlice = createSlice({
   name: 'search',
   initialState: {
     data: [],
+    params: '',
     status: 'idle',
     error: null,
-    reducers: {},
+  },
+  reducers: {
+    SetParams: (state, action) => {
+      state.params = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-
       .addCase(GetSearch.pending, (state) => {
         state.status = 'loading';
       })
@@ -45,5 +54,7 @@ export const SearchSlice = createSlice({
       });
   },
 });
+
+export const { SetParams } = SearchSlice.actions;
 
 export default SearchSlice.reducer;
