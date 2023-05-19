@@ -143,16 +143,24 @@ const Board = () => {
               )}
             </div>
             {showEditForm ? (
-              <div>
-                <input
-                  type="text"
-                  value={editedTitle}
-                  onChange={(e) => setEditedTitle(e.target.value)}
-                />
-                <textarea
-                  value={editedContent}
-                  onChange={(e) => setEditedContent(e.target.value)}
-                ></textarea>
+              <div className="retouch-box">
+                <div className="retouch-title">
+                  <span>제목 : </span>
+                  <input
+                    type="text"
+                    value={editedTitle}
+                    onChange={(e) => setEditedTitle(e.target.value)}
+                  />
+                </div>
+                <br></br>
+
+                <div className="retouch-content">
+                  <span>내용 :</span> <br></br>
+                  <textarea
+                    value={editedContent}
+                    onChange={(e) => setEditedContent(e.target.value)}
+                  ></textarea>
+                </div>
               </div>
             ) : (
               boardStatus === 'succeeded' && (
