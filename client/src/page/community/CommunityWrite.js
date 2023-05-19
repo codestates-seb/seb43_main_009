@@ -13,7 +13,6 @@ const CommunityWrite = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
-  console.log(title, content);
 
   const goHome = () => {
     navigate('/commu');

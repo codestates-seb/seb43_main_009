@@ -38,9 +38,7 @@ const Board = () => {
   const [comment, setComment] = useState('');
   const userInfo = getUserInfo();
   const userId = userInfo && userInfo.userId;
-  console.log(userId); // 로그인한 사용자의 ID
-  console.log(boardData); //여기에 userId가 없음
-  console.log(getUserInfo());
+
   useEffect(() => {
     {
       dispatch(fetchBoardData(commuId));
@@ -48,9 +46,7 @@ const Board = () => {
     }
   }, [dispatch, commuId]);
 
-  // console.log(boardData);
   const commentList = (boardData.comments || []).slice();
-  // console.log(commentList);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -114,11 +110,13 @@ const Board = () => {
       navigate('/commu');
     }
   }, [dispatch, navigate, boardData.commuId]);
-
+  const handleImgClick = () => {
+    navigate('/commu/posts', { replace: true });
+  };
   return (
     <Layout>
       <CommunityBox>
-        <ImgBox></ImgBox>
+        <ImgBox onClick={handleImgClick}></ImgBox>
         <div className="up-box">
           <div className="title-box">
             <div className="button-box">
@@ -138,17 +136,27 @@ const Board = () => {
                 </>
               )}
             </div>
+
             {showEditForm ? (
-              <div>
-                <input
-                  type="text"
-                  value={editedTitle}
-                  onChange={(e) => setEditedTitle(e.target.value)}
-                />
-                <textarea
-                  value={editedContent}
-                  onChange={(e) => setEditedContent(e.target.value)}
-                ></textarea>
+              <div className="retouch-box">
+                <div className="retouch-title">
+                  <span>제목</span>
+                  <input
+                    type="text"
+                    value={editedTitle}
+                    onChange={(e) => setEditedTitle(e.target.value)}
+                  />
+                </div>
+                <div className="retouch-content">
+                  <span>
+                    내용<br></br>
+                    <br></br>
+                  </span>
+                  <textarea
+                    value={editedContent}
+                    onChange={(e) => setEditedContent(e.target.value)}
+                  ></textarea>
+                </div>
               </div>
             ) : (
               boardStatus === 'succeeded' && (

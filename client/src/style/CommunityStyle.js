@@ -217,6 +217,8 @@ export const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    line-height: normal;
+    letter-spacing: normal;
 
     > .content {
       padding: 1rem;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../public/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
@@ -110,7 +110,7 @@ export const Header = () => {
         <MenuWrapper>
           {isLoggedIn ? (
             <>
-              <UserName> {username}님 환영합니다! </UserName>
+              <UserName>{username}님 환영합니다! </UserName>
               <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>

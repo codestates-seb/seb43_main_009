@@ -43,11 +43,9 @@ export const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
 
   .up-box {
     width: 100vw;
-    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,8 +92,34 @@ export const CommunityBox = styled.div`
       margin-bottom: 20px;
       white-space: pre-wrap;
 
+      .retouch-box {
+        overflow-y: auto;
+        overflow-x: hidden;
+        span {
+          font-size: x-large;
+          font-weight: 600;
+          padding: 1rem;
+        }
+        .retouch-title {
+          border-bottom: 1px solid #e0e0e0;
+          margin-bottom: 1rem;
+          input:focus {
+            outline: none;
+            font-size: x-large;
+            font-weight: 600;
+          }
+        }
+        .retouch-content {
+          /* border: 1px solid #e0e0e0; */
+          margin-top: 1rem;
+          textarea:focus {
+            outline: none;
+          }
+        }
+      }
+
       .content {
-        overflow: auto;
+        /* overflow: auto; */
         flex-grow: 1;
       }
 
@@ -250,7 +274,7 @@ export const ImgBox = styled.div`
   width: 20%;
   height: 300px;
   background-image: url(${picture});
-  background-size: 300px;
+  background-size: 200px;
   /* background-position: center; */
   background-repeat: no-repeat;
   animation: ${float} 5s ease-in infinite;
@@ -265,9 +289,10 @@ export const ImgBox = styled.div`
   color: transparent;
   text-align: calc();
   font-size: 0.9rem;
+  margin-left: 100px;
 
   &:hover {
-    color: black; // 텍스트 색상
+    color: var(--gray-600); // 텍스트 색상
     animation: ${hoverAnimation} 2s linear infinite;
   }
 
@@ -275,5 +300,12 @@ export const ImgBox = styled.div`
     content: '나도 글쓰러 가기!'; // hover시 표시될 텍스트
     display: block;
     width: 100%;
+    margin-bottom: 300px;
+    margin-left: 50px;
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
   }
 `;
