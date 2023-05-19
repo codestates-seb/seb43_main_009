@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { keyframes } from 'styled-components';
 
 export const SearchWrapper = styled.div`
@@ -91,8 +91,8 @@ export const SearchlistDesign = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
-  margin-top: 50px;
+
+  background-color: #f4f4f4;
 
   .search {
     width: 500px;
@@ -101,6 +101,7 @@ export const SearchlistDesign = styled.div`
     box-sizing: border-box;
     border: 2px solid #ffa1a1;
     border-radius: 4px;
+    margin-top: 50px;
     &:focus {
       outline: none;
     }
@@ -207,7 +208,7 @@ export const SearchlistDesign = styled.div`
 
   .haveallergy,
   .allergy {
-    width: 160px;
+    width: 180px;
   }
 
   .list {
@@ -218,5 +219,13 @@ export const SearchlistDesign = styled.div`
   .nosearch {
     width: 40vw;
     height: 40vh;
+    margin-bottom: 50px;
+  }
+
+  .allergy {
+    color: red;
+  }
+  .list.last-item {
+    margin-bottom: 50px;
   }
 `;

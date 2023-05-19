@@ -24,6 +24,22 @@ const SearchList = () => {
   const nothing = '이미지가 존재하지 않습니다.';
   const noresult = '찾으시는 데이터가 존재하지 않습니다.';
 
+  const warn = ['O', 'X', `로그인 및 맞춤추천 후 확인 가능합니다.`];
+  const allergylist = [
+    '주의사항 있음.',
+    '주의사항 없음.',
+    '로그인 후 확인 가능',
+  ];
+  const checkwarn = (el) => {
+    if (el === allergylist[0]) {
+      return warn[0];
+    } else if (el === allergylist[1]) {
+      return warn[1];
+    } else if (el === allergylist[2]) {
+      return warn[2];
+    }
+  };
+
   const handleSearch = () => {
     if (searchTerm.length >= 2) {
       const url = `/search/list/${searchTerm}`;
@@ -45,8 +61,10 @@ const SearchList = () => {
   useEffect(() => {
     {
       dispatch(GetSearch(itemname));
+      console.log(searchResults);
     }
   }, [dispatch, itemname]);
+  console.log(allergylist);
 
   /* useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -90,8 +108,13 @@ const SearchList = () => {
             </div>
           ) : null}
           {searchResults !== noresult ? (
-            searchResults.map((el) => (
-              <div key={el.itemName} className="list">
+            searchResults.map((el, index) => (
+              <div
+                key={el.itemName}
+                className={`list ${
+                  index === searchResults.length - 1 ? 'last-item' : ''
+                }`}
+              >
                 <div className="imgdiv">
                   <img
                     className="itemimage"
@@ -101,7 +124,7 @@ const SearchList = () => {
                 </div>
                 <div className="itemname">{el.itemName}</div>
                 <div className="entpname">{el.entpName}</div>
-                <div className="allergy">{el.allergy}</div>
+                <div className="allergy">{checkwarn(el.allergy)}</div>
               </div>
             ))
           ) : (
