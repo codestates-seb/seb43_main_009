@@ -24,7 +24,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/commu" element={<Community />}></Route>
         <Route path="/survey" element={<Survey />}></Route>
-        <Route path="/searchmain" element={<SearchResult />}></Route>
+        <Route path="/search/:searchTerm" element={<SearchResult />}></Route>
         <Route path="/search" element={<SearchMain />}></Route>
         <Route path="/search/list/:itemname" element={<SearchList />}></Route>
       </Routes>
