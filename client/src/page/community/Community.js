@@ -10,8 +10,8 @@ const Community = () => {
   const goWrite = () => {
     const token = localStorage.getItem('accessToken');
     if (token === null) {
-      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
-      Navigate('/signup');
+      alert('가입정보가 없습니다. 로그인 페이지로 이동합니다.');
+      Navigate('/login');
     } else Navigate('/commu/posts');
   };
 
