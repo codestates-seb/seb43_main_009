@@ -38,9 +38,7 @@ const Board = () => {
   const [comment, setComment] = useState('');
   const userInfo = getUserInfo();
   const userId = userInfo && userInfo.userId;
-  console.log(userId); // 로그인한 사용자의 ID
-  console.log(boardData); //여기에 userId가 없음
-  console.log(getUserInfo());
+
   useEffect(() => {
     {
       dispatch(fetchBoardData(commuId));
@@ -48,9 +46,7 @@ const Board = () => {
     }
   }, [dispatch, commuId]);
 
-  // console.log(boardData);
   const commentList = (boardData.comments || []).slice();
-  // console.log(commentList);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -115,14 +111,10 @@ const Board = () => {
     }
   }, [dispatch, navigate, boardData.commuId]);
 
-  const handleImgClick = () => {
-    navigate('/commu/posts', { replace: true });
-  };
-
   return (
     <Layout>
       <CommunityBox>
-        <ImgBox onClick={handleImgClick}></ImgBox>
+        <ImgBox></ImgBox>
         <div className="up-box">
           <div className="title-box">
             <div className="button-box">
@@ -145,17 +137,18 @@ const Board = () => {
             {showEditForm ? (
               <div className="retouch-box">
                 <div className="retouch-title">
-                  <span>제목 : </span>
+                  <span>제목</span>
                   <input
                     type="text"
                     value={editedTitle}
                     onChange={(e) => setEditedTitle(e.target.value)}
                   />
                 </div>
-                <br></br>
-
                 <div className="retouch-content">
-                  <span>내용 :</span> <br></br>
+                  <span>
+                    내용<br></br>
+                    <br></br>
+                  </span>
                   <textarea
                     value={editedContent}
                     onChange={(e) => setEditedContent(e.target.value)}
@@ -166,11 +159,7 @@ const Board = () => {
               boardStatus === 'succeeded' && (
                 <div className="content">
                   <h3>제목 : {boardData.title}</h3>
-                  <p>
-                    내용 : <br></br>
-                    <br></br>
-                    {boardData.content}
-                  </p>
+                  <p>내용 : {boardData.content}</p>
                   <div className="post-info">
                     <span>작성자: {boardData.displayName}</span>
                     <span>작성시간: {formatDate(boardData.createAt)}</span>

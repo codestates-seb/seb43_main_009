@@ -24,7 +24,8 @@ export const StyledInput = styled.input`
   /* text-align: center; */
 
   &:focus {
-    border-color: red;
+    border-color: #dd7b6a;
+    outline: none;
   }
 `;
 

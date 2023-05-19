@@ -43,7 +43,6 @@ export const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
 
   .up-box {
     width: 100vw;
@@ -95,16 +94,25 @@ export const CommunityBox = styled.div`
       white-space: pre-wrap;
 
       .retouch-box {
+        overflow-y: auto;
+        overflow-x: hidden;
+        span {
+          font-size: x-large;
+          font-weight: 600;
+          padding: 1rem;
+        }
         .retouch-title {
-          border: 1px solid #e0e0e0;
-          padding: 0.3rem;
+          border-bottom: 1px solid #e0e0e0;
+          margin-bottom: 1rem;
           input:focus {
             outline: none;
+            font-size: x-large;
+            font-weight: 600;
           }
         }
         .retouch-content {
-          border: 1px solid #e0e0e0;
-          padding: 0.3rem;
+          /* border: 1px solid #e0e0e0; */
+          margin-top: 1rem;
           textarea:focus {
             outline: none;
           }
