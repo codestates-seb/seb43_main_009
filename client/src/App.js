@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/searchmain" element={<SearchMain />}></Route>
         <Route path="/searchlist" element={<Searchlist />}></Route>
         <Route path="/search/:searchTerm" element={<SearchResult />}></Route>
-        <Route path="/mypage" element={<Mypage />}></Route>
+        <Route path="/users/:userId" element={<Mypage />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,15 +1,31 @@
 import Layout from '../../common/Layout';
 import { MyDesign } from '../../style/MyStyle';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import picture from '../../../public/3.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserData } from '../../redux/MypageSlice';
 
 const Mypage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [allergy, setAllergy] = useState('');
+  const token = localStorage.getItem('accessToken');
+  const { userId } = useParams();
+  console.log(token);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.mypage.user);
+  const status = useSelector((state) => state.mypage.status);
+  console.log(user);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchUserData(userId));
+    }
+  }, [status, dispatch, userId]);
+  console.log(user);
 
   const handleEditButtonClick = () => {
     setIsEditing(true);
@@ -22,6 +38,9 @@ const Mypage = () => {
   const handleSaveButtonClick = () => {
     setIsEditing(false);
   };
+  if (!user) {
+    return <div>Loading...</div>; // Or some loading spinner
+  }
   return (
     <Layout>
       <MyDesign>
@@ -59,8 +78,8 @@ const Mypage = () => {
                 </>
               ) : (
                 <>
-                  <h2>name : {name}</h2>
-                  <h2>email : {email}</h2>
+                  <h2>name : {user.displayName}</h2>
+                  <h2>email : {user.email}</h2>
                   <h2>allergy : {allergy}</h2>
                 </>
               )}

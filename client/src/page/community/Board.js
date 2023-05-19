@@ -136,6 +136,7 @@ const Board = () => {
                 </>
               )}
             </div>
+
             {showEditForm ? (
               <div className="retouch-box">
                 <div className="retouch-title">

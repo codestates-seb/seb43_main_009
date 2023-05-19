@@ -9,8 +9,13 @@ export const fetchUserData = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('accessToken');
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.userId;
       const response = await axios.get(`${API_SERVER}/users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `${token}`,
+        },
+        withCredentials: true,
       });
       return response.data;
     } catch (err) {
