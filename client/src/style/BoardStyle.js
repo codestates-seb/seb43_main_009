@@ -250,7 +250,7 @@ export const ImgBox = styled.div`
   width: 20%;
   height: 300px;
   background-image: url(${picture});
-  background-size: 300px;
+  background-size: 200px;
   /* background-position: center; */
   background-repeat: no-repeat;
   animation: ${float} 5s ease-in infinite;
@@ -265,9 +265,10 @@ export const ImgBox = styled.div`
   color: transparent;
   text-align: calc();
   font-size: 0.9rem;
+  margin-left: 100px;
 
   &:hover {
-    color: black; // 텍스트 색상
+    color: var(--gray-600); // 텍스트 색상
     animation: ${hoverAnimation} 2s linear infinite;
   }
 
@@ -275,5 +276,12 @@ export const ImgBox = styled.div`
     content: '나도 글쓰러 가기!'; // hover시 표시될 텍스트
     display: block;
     width: 100%;
+    margin-bottom: 300px;
+    margin-left: 50px;
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
   }
 `;
