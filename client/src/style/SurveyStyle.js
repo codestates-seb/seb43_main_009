@@ -154,7 +154,10 @@ export const Step3Design = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #f4f4f4;
-
+  .gsc-input-box {
+    height: 50px !important;
+    width: 30vw;
+  }
   .choice {
     font-size: 23px;
     margin-top: 30px;
@@ -162,6 +165,10 @@ export const Step3Design = styled.div`
   .choice2 {
     font-size: 23px;
     margin-top: 10px;
+  }
+  .etc {
+    font-size: 17px;
+    margin-top: 40px;
   }
   img {
     width: 35px;
@@ -174,6 +181,19 @@ export const Step3Design = styled.div`
   }
   .selected {
     background-color: #f05858;
+  }
+  .gsc-input-box {
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 30px;
+    border: none;
+    width: 32vw;
+    margin-left: 16px;
+  }
+  .gsc-control-cse {
+    display: none;
+  }
+  .gsc-input {
+    height: 75px !important;
   }
 
   button {
@@ -201,6 +221,9 @@ export const Step3Design = styled.div`
     :focus {
       background-color: var(--claret);
     }
+    &.nonono {
+      margin-top: 20px;
+    }
     &.next,
     &.previous {
       width: 14vw;
@@ -213,6 +236,9 @@ export const Step3Design = styled.div`
       :focus {
         background-color: var(--gray-500);
       }
+    }
+    &.gsc-search-button {
+      display: none;
     }
   }
   input {

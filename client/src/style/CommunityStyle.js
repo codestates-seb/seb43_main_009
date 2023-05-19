@@ -46,7 +46,7 @@ export const CommunitypostDesign = styled.div`
     align-items: space-between;
     width: 80%;
     border: none;
-    height: 7px;
+    height: auto;
     margin-left: 8vw;
     font-size: 15px;
     cursor: pointer;
@@ -78,7 +78,7 @@ export const CommunityDesign = styled.div`
   vertical-align: baseline;
   background-color: #f9e6e6;
   width: 100vw;
-  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
