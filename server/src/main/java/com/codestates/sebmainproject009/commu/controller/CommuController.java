@@ -15,16 +15,15 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
-import com.codestates.sebmainproject009.user.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -65,12 +64,15 @@ public class CommuController {
 
 
     @PostMapping(value = "/postsToS3", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity postCommu(@RequestParam("image") MultipartFile image,
+    public ResponseEntity postCommu(@RequestParam("image") @Nullable MultipartFile image,
+
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content,
                                     @RequestParam("userId") Long userId) {
         // 이미지 업로드 및 S3 URL 가져오는 로직
-        String imageUrl = uploadImageToS3(image);
+        String imageUrl=null;
+        if(image != null)
+            imageUrl = uploadImageToS3(image);
 
         // CommuPostDto에 이미지 URL 설정
         Commu commu = commuService.createCommuCustom(title, content, imageUrl, userId);

@@ -24,4 +24,7 @@ public class CommuResponseDto {
     private List<Comment> comments;
 
     private Long userId;
+
+    private String imageUrl;
+
 }
