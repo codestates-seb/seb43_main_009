@@ -155,12 +155,21 @@ const SearchList = () => {
   const nothing = '이미지가 존재하지 않습니다.';
   const noresult = '찾으시는 데이터가 존재하지 않습니다.';
 
+  const handleSearch = () => {
+    if (searchTerm.length >= 2) {
+      const url = `/search/list/${searchTerm}`;
+      Navigate(url);
+      dispatch(GetSearch(searchTerm));
+      dispatch(SetParams(searchTerm));
+    } else {
+      window.alert('검색어는 최소 2글자 이상 입력해야 합니다.');
+    }
+  };
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      Navigate(`/search/list/${searchTerm}`);
-      dispatch(GetSearch(searchTerm));
-      dispatch(SetParams(searchTerm));
+      handleSearch();
     }
   };
 
@@ -182,8 +191,6 @@ const SearchList = () => {
     setItemOffset(newOffset);
   }; */
 
-  const handleSearch = GetSearch(searchTerm);
-
   return (
     <Layout>
       <SearchlistDesign>
@@ -192,6 +199,7 @@ const SearchList = () => {
             className="search"
             type="text"
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown}
           ></input>
           <button className="searchbutton" onClick={handleSearch}>
             Search
@@ -226,7 +234,7 @@ const SearchList = () => {
               </div>
             ))
           ) : (
-            <div>asd</div>
+            <div>검색결과가 없습니다.</div>
           )}
         </div>
       </SearchlistDesign>

@@ -19,12 +19,13 @@ const SearchMain = () => {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      if (searchTerm.trim() === '') {
-        window.alert('검색어를 입력해주세요.');
-      } else {
-        navigate(`/search/list/${searchTerm}`);
+      if (searchTerm.length >= 2) {
+        const url = `/search/list/${searchTerm}`;
+        navigate(url);
         dispatch(GetSearch(searchTerm));
         dispatch(SetParams(searchTerm));
+      } else {
+        window.alert('검색어는 최소 2글자 이상 입력해야 합니다.');
       }
     }
   };

@@ -6,13 +6,16 @@ const API_SERVER = process.env.API_SERVER;
 
 export const GetSearch = createAsyncThunk('search/result', async (params) => {
   try {
-    const response = await axios.get(
-      `${API_SERVER}/search?itemName=${params}`,
-      {
-        withCredentials: true,
-      },
-    );
-    console.log(`${API_SERVER}/search?itemName=${params}`);
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      withCredentials: true,
+    };
+    if (token) {
+      config.headers = {
+        Authorization: `${token}`,
+      };
+    }
+    const response = await axios.get(`${API_SERVER}/search?itemName=${params}`);
     return response.data;
   } catch (error) {
     console.error('fail', error);
