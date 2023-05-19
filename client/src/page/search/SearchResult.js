@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { StyledTable, SGradiant } from '../../style/SearchStyle';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import noimg from '../../../public/noimg.jpg';
 
 export const SearchWrapper = styled.div`
   margin: 0px;
@@ -50,6 +51,7 @@ const SearchResult = () => {
   const [data, setData] = useState([]);
   let num = 1;
   let sub = num - 1;
+  const nothing = '이미지가 존재하지 않습니다.';
   const dummy = [
     {
       itemName: '정보없음',
@@ -105,7 +107,7 @@ const SearchResult = () => {
                   <td>{row.entpName}</td>
                   <td rowSpan="3">
                     <img
-                      src={row.itemImage}
+                      src={row.itemImage === nothing ? noimg : row.itemImage}
                       alt={row.itemName}
                       style={{ maxWidth: '100%', maxHeight: '100%' }}
                     />

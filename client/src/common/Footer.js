@@ -70,7 +70,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="backTeam">
+            <div className="frontTeam">
               <h4>Back-End</h4>
               <ul>
                 <li>
