@@ -152,7 +152,10 @@ const Login = () => {
       const accessToken = response.headers['authorization'];
       const refreshToken = response.headers['refresh'];
       localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
+      const date = new Date();
+      //쿠키 만료시간 7일뒤
+      date.setDate(date.getDate() + 7);
+      document.cookie = `refreshToken=${refreshToken}; expires=${date.toUTCString()}; path=/`;
       alert('로그인 성공!');
       navigate('/');
       dispatch(login());
