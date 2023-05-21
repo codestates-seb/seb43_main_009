@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Axios } from '../utils/api'; // Import your custom Axios instance
+import { Axios } from '../utils/api';
 import { GetCommulist } from './CommuntiySlice';
 import { getUserInfo } from '../utils/UserInfo';
 

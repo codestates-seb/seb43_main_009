@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Axios } from '../utils/api';
 import { getUserInfo } from '../utils/UserInfo';
 
 const API_SERVER = process.env.API_SERVER;
@@ -8,15 +9,9 @@ export const fetchUserData = createAsyncThunk(
   'mypage/fetchUserData',
   async (userId, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('accessToken');
       const userInfo = getUserInfo();
       const userId = userInfo && userInfo.userId;
-      const response = await axios.get(`${API_SERVER}/users/${userId}`, {
-        headers: {
-          Authorization: `${token}`,
-        },
-        withCredentials: true,
-      });
+      const response = await Axios.get(`/users/${userId}`);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
