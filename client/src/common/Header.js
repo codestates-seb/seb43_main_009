@@ -76,8 +76,8 @@ export const Header = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [username, setUsername] = useState(null);
-  const userId = getUserInfo().userId;
-  console.log(getUserInfo().userId);
+  const userInfo = getUserInfo();
+  const userId = userInfo ? userInfo.userId : null;
 
   const handleLogout = () => {
     dispatch(logout());

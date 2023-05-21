@@ -16,16 +16,16 @@ const Mypage = () => {
   const { userId } = useParams();
   console.log(token);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.mypage.user);
+  const myData = useSelector((state) => state.mypage.data);
+  // const user = useSelector((state) => state.mypage.user);
   const status = useSelector((state) => state.mypage.status);
-  console.log(user);
+  console.log(myData);
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchUserData(userId));
     }
   }, [status, dispatch, userId]);
-  console.log(user);
 
   const handleEditButtonClick = () => {
     setIsEditing(true);
@@ -38,7 +38,7 @@ const Mypage = () => {
   const handleSaveButtonClick = () => {
     setIsEditing(false);
   };
-  if (!user) {
+  if (!myData) {
     return <div>Loading...</div>; // Or some loading spinner
   }
   return (
@@ -78,8 +78,8 @@ const Mypage = () => {
                 </>
               ) : (
                 <>
-                  <h2>name : {user.displayName}</h2>
-                  <h2>email : {user.email}</h2>
+                  <h2>name : {myData.displayName}</h2>
+                  <h2>email : {myData.email}</h2>
                   <h2>allergy : {allergy}</h2>
                 </>
               )}

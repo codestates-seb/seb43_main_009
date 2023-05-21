@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Axios } from '../utils/api';
 import { getUserInfo } from '../utils/UserInfo';
 
-const API_SERVER = process.env.API_SERVER;
+// const API_SERVER = process.env.API_SERVER;
 
 export const fetchUserData = createAsyncThunk(
   'mypage/fetchUserData',
@@ -21,7 +21,7 @@ export const fetchUserData = createAsyncThunk(
 
 const mypageSlice = createSlice({
   name: 'mypage',
-  initialState: { user: null, status: 'idle', error: null },
+  initialState: { data: {}, status: 'idle', error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -31,7 +31,7 @@ const mypageSlice = createSlice({
       .addCase(fetchUserData.fulfilled, (state, action) => {
         state.status = 'succeeded';
         // Add the fetched user to the state
-        state.user = action.payload;
+        state.data = action.payload;
       })
       .addCase(fetchUserData.rejected, (state, action) => {
         state.status = 'failed';
