@@ -6,8 +6,28 @@ import xray from '../../../../public/xray.png';
 import { CiCoffeeCup } from 'react-icons/ci';
 // import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
 import GoogleSearch from '../../../common/GoogleSearch';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
+const slideUp = keyframes`
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+`;
 const Step3Design = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
@@ -24,7 +44,7 @@ const Step3Design = styled.div`
     background-color: rgba(0, 0, 0, 0);
     margin-top: 30px;
     border: none;
-    margin-left: 16px;
+    margin-left: -6px;
   }
   .gsc-control-cse {
     display: none;
@@ -39,7 +59,18 @@ const Step3Design = styled.div`
     }
   }
 `;
-
+const AnimateContent = styled.div`
+  ${({ animate }) =>
+    animate === 'up'
+      ? css`
+          animation: ${slideUp} 1s;
+        `
+      : animate === 'down'
+      ? css`
+          animation: ${slideDown} 1s;
+        `
+      : ''}
+`;
 const Choice = styled.div`
   font-size: 23px;
   margin-top: 30px;
@@ -139,6 +170,8 @@ export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
   margin-right: 10px;
 `;
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
+  const [animate, setAnimate] = useState('up');
+  window.scrollTo(0, 0);
   const menu = {
     caffeine: '카페인',
     aspirin: '아스피린',
@@ -157,70 +190,73 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const handleInputBlur = () => {
     changeInput({ target: { name: 'allergy', value: userInput } });
   };
+  const handleNextClick = () => {
+    setAnimate('down');
+    setTimeout(() => {
+      submitForm();
+      nextSteps();
+    }, 1000);
+  };
 
   return (
     <Step3Design>
       <Choice>해당하는 약물 알러지를 선택해주세요 </Choice>
       <Choice2>의약품검색 페이지에서 알러지정보가 반영됩니다!</Choice2>
-      <Button
-        className={allergy === menu.caffeine ? 'selected' : ''}
-        value="CAFFEINE"
-        onClick={handleAllergyClick}
-      >
-        <DesginCiCoffeeCup /> 카페인
-      </Button>
-      <Button
-        className={allergy === menu.aspirin ? 'selected' : ''}
-        value="PAINKILLER"
-        onClick={handleAllergyClick}
-      >
-        <Img className="aspirin" src={aspirin} alt="aspirin" />
-        아스피린(소염진통제)
-      </Button>
-      <Button
-        className={allergy === menu.penicillin ? 'selected' : ''}
-        value="ANTIBIOTIC"
-        onClick={handleAllergyClick}
-      >
-        <Img className="penicillin" src={penicillin} alt="penicillin" />
-        페니실린(항생제)
-      </Button>
-      <Button
-        className={allergy === menu.anticonvulsants ? 'selected' : ''}
-        value="ANTICONVULSANT"
-        onClick={handleAllergyClick}
-      >
-        <Img
-          className="anticonvulsants"
-          src={anticonvulsants}
-          alt="anticonvulsants"
-        />
-        항경련제
-      </Button>
-      {/* <button className={allergy===menu.xray?'selected':''} value="CONTRAST" onClick={handleAllergyClick}>
- <img className="xray" src={xray} alt="xray"/>
- 조영제 
- </button> */}
-      {/* <input type="text" value={userInput} onChange={handleInputChange} onBlur={handleInputBlur} placeholder="이외 알러지 입력 ex) 유당"/> */}
-      <GoogleSearch changeInput={changeInput} />
-      <Etc>이외 알러지 입력 ex: 유당</Etc>
-      <Button className="nonono" value="NONE" onClick={handleAllergyClick}>
-        <Nothing>없음</Nothing>
-      </Button>
-      <Goorback>
-        <Button className="previous" onClick={prevSteps}>
-          ◀︎ 이전
+      <AnimateContent animate={animate}>
+        <Button
+          className={allergy === menu.caffeine ? 'selected' : ''}
+          value="CAFFEINE"
+          onClick={handleAllergyClick}
+        >
+          <DesginCiCoffeeCup /> 카페인
         </Button>
         <Button
-          className="next"
-          onClick={() => {
-            nextSteps();
-            submitForm();
-          }}
+          className={allergy === menu.aspirin ? 'selected' : ''}
+          value="PAINKILLER"
+          onClick={handleAllergyClick}
         >
-          다음 ▶︎
+          <Img className="aspirin" src={aspirin} alt="aspirin" />
+          아스피린(소염진통제)
         </Button>
-      </Goorback>
+        <Button
+          className={allergy === menu.penicillin ? 'selected' : ''}
+          value="ANTIBIOTIC"
+          onClick={handleAllergyClick}
+        >
+          <Img className="penicillin" src={penicillin} alt="penicillin" />
+          페니실린(항생제)
+        </Button>
+        <Button
+          className={allergy === menu.anticonvulsants ? 'selected' : ''}
+          value="ANTICONVULSANT"
+          onClick={handleAllergyClick}
+        >
+          <Img
+            className="anticonvulsants"
+            src={anticonvulsants}
+            alt="anticonvulsants"
+          />
+          항경련제
+        </Button>
+        {/* <button className={allergy===menu.xray?'selected':''} value="CONTRAST" onClick={handleAllergyClick}>
+              <img className="xray" src={xray} alt="xray"/>
+              조영제 
+              </button> */}
+        {/* <input type="text" value={userInput} onChange={handleInputChange} onBlur={handleInputBlur} placeholder="이외 알러지 입력 ex) 유당"/> */}
+        <GoogleSearch changeInput={changeInput} />
+        <Etc>이외 알러지 입력 ex: 유당</Etc>
+        <Button className="nonono" value="NONE" onClick={handleAllergyClick}>
+          <Nothing>없음</Nothing>
+        </Button>
+        <Goorback>
+          <Button className="previous" onClick={prevSteps}>
+            ◀︎ 이전
+          </Button>
+          <Button className="next" onClick={handleNextClick}>
+            다음 ▶︎
+          </Button>
+        </Goorback>
+      </AnimateContent>
     </Step3Design>
   );
 };

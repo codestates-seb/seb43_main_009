@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import doctor from '../../../../public/doctor.jpg';
 import { getUserInfo } from '../../../utils/UserInfo';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+`;
+const AnimateContent = styled.div`
+  ${({ animate }) =>
+    animate === 'up'
+      ? css`
+          animation: ${slideUp} 1s;
+        `
+      : animate === 'down'
+      ? css`
+          animation: ${slideDown} 1s;
+        `
+      : ''}
+`;
 
 const Card = styled.div`
   display: flex;
@@ -77,12 +110,16 @@ const Step1Design = styled.div`
 `;
 
 const Step1 = ({ nextSteps }) => {
+  const [animate, setAnimate] = useState('up');
   const Navigate = useNavigate();
   const token = getUserInfo();
 
   const handleStartClick = () => {
     if (token) {
-      nextSteps();
+      setAnimate('down');
+      setTimeout(() => {
+        nextSteps();
+      }, 1000);
     } else {
       alert('로그인 후 사용가능합니다.');
       Navigate('/login');
@@ -91,17 +128,19 @@ const Step1 = ({ nextSteps }) => {
 
   return (
     <Step1Design>
-      <Card>
-        <Doctor src={doctor} alt="doctor"></Doctor>
-        <div>
-          <Recommend>맞춤추천</Recommend>
-          <Comment>
-            올바른 영양제 섭취를 위해 <br />
-            개인별 필요 성분과 제품을 알려드려요
-          </Comment>
-          <Start onClick={handleStartClick}>시작하기</Start>
-        </div>
-      </Card>
+      <AnimateContent animate={animate}>
+        <Card>
+          <Doctor src={doctor} alt="doctor"></Doctor>
+          <div>
+            <Recommend>맞춤추천</Recommend>
+            <Comment>
+              올바른 영양제 섭취를 위해 <br />
+              개인별 필요 성분과 제품을 알려드려요
+            </Comment>
+            <Start onClick={handleStartClick}>시작하기</Start>
+          </div>
+        </Card>
+      </AnimateContent>
     </Step1Design>
   );
 };
