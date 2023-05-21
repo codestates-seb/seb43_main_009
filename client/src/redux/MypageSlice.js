@@ -19,6 +19,22 @@ export const fetchUserData = createAsyncThunk(
   },
 );
 
+export const updateUserData = createAsyncThunk(
+  'mypage/updateUserData',
+  async ({ displayName, email }, { dispatch, rejectWithValue }) => {
+    try {
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.userId;
+      const response = await Axios.get(`/users/${userId}`);
+      await Axios.patch(`/users/${userId}`, { userId, displayName, email });
+      dispatch(fetchUserData(userId));
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
+
 const mypageSlice = createSlice({
   name: 'mypage',
   initialState: { data: {}, status: 'idle', error: null },
