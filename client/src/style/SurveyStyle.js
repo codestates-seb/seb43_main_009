@@ -84,7 +84,6 @@ export const Step2Design = styled.div`
   img {
     width: 25px;
     height: 25px;
-    margin-left: 37%;
     margin-right: 10px;
   }
 
@@ -101,6 +100,7 @@ export const Step2Design = styled.div`
     display: flex;
     align-items: center;
     margin-top: 30px;
+    justify-content: center;
     &.next {
       width: 14vw;
       height: 60px;
@@ -114,7 +114,7 @@ export const Step2Design = styled.div`
       }
     }
     :focus {
-      background-color: var(--claret);
+      background-color: #f16060;
     }
   }
   .selected {
@@ -131,17 +131,14 @@ export const Step2Design = styled.div`
 `;
 
 export const StyledGistomach = styled(GiStomach)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
 export const StyledImEye = styled(ImEye)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
 export const StyledBsShieldPlus = styled(BsShieldPlus)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
@@ -219,7 +216,7 @@ export const Step3Design = styled.div`
     margin-top: 30px;
 
     :focus {
-      background-color: var(--claret);
+      background-color: #f16060;
     }
     &.nonono {
       margin-top: 20px;
@@ -361,6 +358,10 @@ export const SurveyResultDesign = styled.div`
     border-radius: 14px;
     font-weight: 700;
     cursor: pointer;
+    @media screen and (max-width: 900px) {
+      width: 100px;
+      height: 30px;
+    }
   }
   .retry {
     background-color: #f05858;
@@ -373,5 +374,9 @@ export const SurveyResultDesign = styled.div`
     color: white;
     font-weight: 700;
     cursor: pointer;
+    @media screen and (max-width: 900px) {
+      width: 100px;
+      height: 30px;
+    }
   }
 `;
