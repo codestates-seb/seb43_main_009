@@ -2,7 +2,7 @@ import Layout from '../../common/Layout';
 import { MyDesign } from '../../style/MyStyle';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import picture from '../../../public/3.png';
+import picture from '../../../public/pillscha.png';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../../redux/MypageSlice';
