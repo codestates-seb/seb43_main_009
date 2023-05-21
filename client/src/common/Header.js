@@ -76,6 +76,8 @@ export const Header = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [username, setUsername] = useState(null);
+  const userInfo = getUserInfo();
+  const userId = userInfo ? userInfo.userId : null;
 
   const handleLogout = () => {
     dispatch(logout());
@@ -110,7 +112,10 @@ export const Header = () => {
         <MenuWrapper>
           {isLoggedIn ? (
             <>
-              <UserName>{username}님 환영합니다! </UserName>
+              <StyledLink to={`/users/${userId}`}>
+                <UserName>{username}님 환영합니다! </UserName>
+              </StyledLink>
+
               <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>

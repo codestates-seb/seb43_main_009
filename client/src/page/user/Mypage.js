@@ -2,33 +2,43 @@ import Layout from '../../common/Layout';
 import { MyDesign } from '../../style/MyStyle';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import picture from '../../../public/3.png';
+import picture from '../../../public/pillscha.png';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData } from '../../redux/MypageSlice';
+import { fetchUserData, updateUserData } from '../../redux/MypageSlice';
 
 const Mypage = () => {
+  const [displayName, setDisplayName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [allergy, setAllergy] = useState('');
-  const token = localStorage.getItem('accessToken');
+  // const token = localStorage.getItem('accessToken');
   const { userId } = useParams();
-  console.log(token);
+  // console.log(token);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.mypage.user);
+  const myData = useSelector((state) => state.mypage.data);
+  // const user = useSelector((state) => state.mypage.user);
   const status = useSelector((state) => state.mypage.status);
-  console.log(user);
+  console.log(myData);
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchUserData(userId));
     }
   }, [status, dispatch, userId]);
-  console.log(user);
+
+  useEffect(() => {
+    if (myData) {
+      setDisplayName(myData.displayName);
+      setEmail(myData.email);
+    }
+  }, [myData]);
 
   const handleEditButtonClick = () => {
     setIsEditing(true);
+    setDisplayName(myData.displayName);
+    setEmail(myData.email);
   };
 
   const handleInputChange = (e, setter) => {
@@ -37,8 +47,9 @@ const Mypage = () => {
 
   const handleSaveButtonClick = () => {
     setIsEditing(false);
+    dispatch(updateUserData({ displayName, email }));
   };
-  if (!user) {
+  if (!myData) {
     return <div>Loading...</div>; // Or some loading spinner
   }
   return (
@@ -62,8 +73,8 @@ const Mypage = () => {
                 <>
                   name :
                   <input
-                    onChange={(e) => handleInputChange(e, setName)}
-                    value={name}
+                    onChange={(e) => handleInputChange(e, setDisplayName)}
+                    value={displayName}
                   />
                   email :
                   <input
@@ -78,8 +89,8 @@ const Mypage = () => {
                 </>
               ) : (
                 <>
-                  <h2>name : {user.displayName}</h2>
-                  <h2>email : {user.email}</h2>
+                  <h2>name : {myData.displayName}</h2>
+                  <h2>email : {myData.email}</h2>
                   <h2>allergy : {allergy}</h2>
                 </>
               )}

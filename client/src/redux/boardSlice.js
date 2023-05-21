@@ -1,137 +1,78 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { Axios } from '../utils/api';
 import { GetCommulist } from './CommuntiySlice';
-import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo } from '../utils/UserInfo';
 
-const API_SERVER = process.env.API_SERVER;
-// API_SERVER
-export const checkToken = createAsyncThunk('board/checkToken', async () => {
-  const token = localStorage.getItem('accessToken');
-  return token;
-});
-
-//userid는 로그인할 때 받아오기
+//글쓰기
 export const submitPost = createAsyncThunk(
   'board/submitPost',
-  async ({ title, content }, { dispatch }) => {
+  async ({ title, content }, { dispatch, rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('accessToken');
       const userInfo = getUserInfo();
       const userId = userInfo && userInfo.userId;
-      await axios.post(
-        `${API_SERVER}/commu/posts`,
-        {
-          title,
-          content,
-          userId,
-        },
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-          withCredentials: true,
-        },
-      );
-      // const dispatch = useDispatch();
+      await Axios.post('/commu/posts', { title, content, userId });
       dispatch(GetCommulist());
     } catch (error) {
-      console.error(`${API_SERVER}/commu/posts`, error);
+      return rejectWithValue(error.response.data);
     }
   },
 );
-//조회
+//글 상세조회
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
-  async (commuId) => {
+  async (commuId, { rejectWithValue }) => {
     try {
-      console.log(`${API_SERVER}/commu/${commuId}`);
-
-      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
-        withCredentials: true,
-      });
+      const response = await Axios.get(`/commu/${commuId}`);
       return response.data;
     } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
-      throw error;
+      return rejectWithValue(error.response.data);
     }
   },
 );
-//수정
+//글 수정
 export const updatePost = createAsyncThunk(
   'board/updatePost',
-  async ({ commuId, title, content }, { dispatch }) => {
+  async ({ commuId, title, content }, { dispatch, rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('accessToken');
-      const response = await axios.patch(
-        `${API_SERVER}/commu/${commuId}`,
-        { commuId, title, content },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        },
-      );
-      // const dispatch = useDispatch();
-      // dispatch(fetchBoardData());
-      // return response.data;
+      await Axios.patch(`/commu/${commuId}`, { commuId, title, content });
       dispatch(fetchBoardData(commuId));
     } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
+      return rejectWithValue(error.response.data);
     }
   },
 );
-
-//삭제
+//글 삭제
 export const deletePost = createAsyncThunk(
   'board/deletePost',
   async (commuId, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('accessToken');
-      await axios.delete(`${API_SERVER}/commu/${commuId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
+      await Axios.delete(`/commu/${commuId}`);
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+//댓글달기
+export const submitComment = createAsyncThunk(
+  'board/submitComment',
+  async ({ commuId, comment }, { dispatch, rejectWithValue }) => {
+    try {
+      const userInfo = getUserInfo();
+      const userId = userInfo && userInfo.userId;
+      await Axios.post(`/commu/${commuId}`, { comment, userId, commuId });
+      const response = await Axios.get(`/commu/${commuId}`);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
   },
 );
 
-export const submitComment = createAsyncThunk(
-  'board/submitComment',
-  async ({ commuId, comment }, { dispatch }) => {
-    try {
-      const token = localStorage.getItem('accessToken');
-      const userInfo = getUserInfo();
-      const userId = userInfo && userInfo.userId;
-      await axios.post(
-        `${API_SERVER}/commu/${commuId}`,
-        { comment, userId, commuId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        },
-      );
-      // dispatch(fetchBoardData(commuId));
-      const response = await axios.get(`${API_SERVER}/commu/${commuId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
-      return response.data;
-    } catch (error) {
-      console.error(`${API_SERVER}/commu/${commuId}`, error);
-      throw error;
-    }
-  },
-);
+export const checkToken = createAsyncThunk('board/checkToken', async () => {
+  const token = localStorage.getItem('accessToken');
+  return token;
+});
+
 //쿠키에 토큰값이 저장돼서
 export const boardSlice = createSlice({
   name: 'board',

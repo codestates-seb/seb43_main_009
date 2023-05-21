@@ -19,15 +19,17 @@ export const MyDesign = styled.div`
   .allcomm {
     display: flex;
     margin-bottom: 10%;
+    align-items: center;
 
     .allcomm1 {
       background-color: white;
-      width: 20vw;
-      height: 50vh;
+      width: 30vw;
+      height: 30vh;
       margin-right: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
 
       img {
         width: 100%;
