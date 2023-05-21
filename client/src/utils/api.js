@@ -31,24 +31,6 @@ Axios.interceptors.response.use(
     // 응답 오류가 있는 작업 수행
     //에러가 401이 온다면, refresh token을 이용해서 access token을 재갱신한 후에,
     //기존에 요청했던 api를 다시 요청한다.
-    //refresh token도 만료되어 401이 떨어진다면, 로그인 페이지로 이동시킨다.
-    // const originalRequest = error.config;
-    // if (error.response.status === 401 && !originalRequest._retry) {
-    //   originalRequest._retry = true;
-    //   const accessToken = await refreshAccessToken(); // a function to call the API that refreshes the token
-    //   if (accessToken) {
-    //     localStorage.setItem('accessToken', accessToken);
-    //     Axios.defaults.headers.common[
-    //       'Authorization'
-    //     ] = `Bearer ${accessToken}`;
-    //     return Axios(originalRequest);
-    //   }
-
-    //   // If refresh token request also gets 401, redirect to login
-    //   const navigate = getNavigation();
-    //   if (navigate) navigate('/login');
-    //   return Promise.reject(error);
-    // }
     return Promise.reject(error);
   },
 );
