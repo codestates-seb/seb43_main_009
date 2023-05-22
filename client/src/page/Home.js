@@ -4,6 +4,7 @@ import { login } from '../redux/authSlice';
 import Layout from '../common/Layout';
 import OAuthLogin from './user/OAuthLogin';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { setStep } from '../redux/surveySlice';
 
 import {
   SServiceInfoLayout,
@@ -31,6 +32,7 @@ const Home = () => {
 
   const handleButtonClick = () => {
     Navigate('/survey');
+    dispatch(setStep(1));
   };
   return (
     <>

@@ -2,10 +2,11 @@ import Layout from '../../common/Layout';
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { StyledTable, SGradiant } from '../../style/SearchStyle';
+import { StyledTable, SGradiant, ButtonBox } from '../../style/SearchStyle';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import noimg from '../../../public/noimg.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export const SearchWrapper = styled.div`
   margin: 0px;
@@ -46,9 +47,39 @@ const StyledBox = styled.div`
   padding: 35px 35px 0px 35px;
 `;
 
+export const GoWrite = styled.button`
+  width: 20%;
+  background-color: #f05858;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffe0e0;
+  }
+`;
+export const GoBack = styled.button`
+  width: 20%;
+  background-color: #f05858;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffe0e0;
+  }
+`;
+
 const SearchResult = () => {
   const { searchTerm } = useParams();
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   let num = 1;
   let sub = num - 1;
   const nothing = '이미지가 존재하지 않습니다.';
@@ -65,17 +96,41 @@ const SearchResult = () => {
     },
   ];
 
+  const goback = () => {
+    navigate(-1);
+  };
+  const gowrite = () => {
+    navigate('/commu');
+  };
+
   // handleSearch 함수를 정의합니다.
   const handleSearch = async () => {
     try {
+      const token = localStorage.getItem('accessToken');
+      const config = {
+        withCredentials: true,
+      };
+      if (token) {
+        config.headers = {
+          Authorization: `${token}`,
+        };
+      }
       const response = await axios.get(
         `https://server.dowajoyak.shop/search/${searchTerm}`,
+        config,
       );
+      console.log(response.data);
 
       if (typeof response.data === 'object') {
         setData(response.data);
+        console.log('oject일때');
+        if (response.data.length === 0) {
+          setData(dummy);
+          console.log('null일때');
+        }
       } else {
         setData(dummy);
+        console.log('더미일때');
       }
     } catch (error) {
       console.error(error);
@@ -93,7 +148,6 @@ const SearchResult = () => {
           <StyledBox>
             <h1>약에대한 정보입니다</h1>
           </StyledBox>
-
           <StyledTable>
             {data.slice(sub, num).map((row) => (
               <tbody key={row.itemName}>
@@ -136,6 +190,10 @@ const SearchResult = () => {
               </tbody>
             ))}
           </StyledTable>
+          <ButtonBox>
+            <GoBack onClick={goback}>뒤로가기</GoBack>
+            <GoWrite onClick={gowrite}>커뮤니티</GoWrite>
+          </ButtonBox>
           <SGradiant />
         </SearchWrapper2>
       </SearchWrapper>
