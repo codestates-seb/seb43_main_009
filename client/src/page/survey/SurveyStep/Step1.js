@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import doctor from '../../../../public/doctor.jpg';
 import { getUserInfo } from '../../../utils/UserInfo';
 import { useNavigate } from 'react-router-dom';
@@ -113,6 +113,10 @@ const Step1 = ({ nextSteps }) => {
   const [animate, setAnimate] = useState('up');
   const Navigate = useNavigate();
   const token = getUserInfo();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleStartClick = () => {
     if (token) {

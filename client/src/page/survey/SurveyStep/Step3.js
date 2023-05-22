@@ -165,10 +165,11 @@ export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const [animate, setAnimate] = useState('up');
   const [selectedButton, setSelectedButton] = useState(null);
+  const [userInput, setUserInput] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
-  const [userInput, setUserInput] = useState('');
+  }, []);
   const handleAllergyClick = (e) => {
     if (selectedButton === e.currentTarget) {
       changeInput({ target: { name: 'allergy', value: '' } });
