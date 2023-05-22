@@ -71,7 +71,11 @@ const Commpost = () => {
           >
             <li className="postid">{el.commuId}</li>
             <li className="postname">{el.displayName}</li>
-            <li className="posttitle">{el.title}</li>
+            <li className="posttitle">
+              {el.title.length > 20
+                ? el.title.substring(0, 20) + '...'
+                : el.title}
+            </li>
             <li className="postview">{el.view}</li>
             <li className="postcreat">{formatDate(el.createAt)}</li>
           </ul>

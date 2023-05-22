@@ -1,8 +1,8 @@
 import Layout from '../../common/Layout';
-import { MyDesign } from '../../style/MyStyle';
+import { MyDesign, InformationBox, Heading, Button } from '../../style/MyStyle';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import picture from '../../../public/pillscha.png';
+import picture from '../../../public/rabbit.jpg';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData, updateUserData } from '../../redux/MypageSlice';
@@ -60,14 +60,14 @@ const Mypage = () => {
             <img src={picture}></img>
           </div>
           <div className="allcomm2">
-            <div className="information-box">
-              <h1>내정보</h1>
+            <InformationBox>
+              <Heading>내정보</Heading>
               {isEditing ? (
-                <button onClick={handleSaveButtonClick}>저장</button>
+                <Button onClick={handleSaveButtonClick}>저장</Button>
               ) : (
-                <button onClick={handleEditButtonClick}>정보변경</button>
+                <Button onClick={handleEditButtonClick}>정보변경</Button>
               )}
-            </div>
+            </InformationBox>
             <div className="content-box">
               {isEditing ? (
                 <>
@@ -91,7 +91,7 @@ const Mypage = () => {
                 <>
                   <h2>name : {myData.displayName}</h2>
                   <h2>email : {myData.email}</h2>
-                  <h2>allergy : {allergy}</h2>
+                  <h2>allergy : {myData.allergy}</h2>
                 </>
               )}
             </div>

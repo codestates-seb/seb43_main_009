@@ -43,6 +43,10 @@ const StyledLink = styled(Link)`
 const UserName = styled.div`
   font-weight: 600;
   margin-top: 0.1rem;
+  color: black;
+  &:hover {
+    color: #f05758;
+  }
 `;
 
 const Menu = styled.div`
