@@ -54,6 +54,8 @@ const SearchList = () => {
   useEffect(() => {
     {
       dispatch(GetSearch(itemname));
+      dispatch(SetParams(itemname));
+      window.scrollTo(0, 0);
     }
   }, [dispatch, itemname]);
 

@@ -53,7 +53,6 @@ export const CommunitypostDesign = styled.div`
     color: #999999;
   }
   .active {
-    border: 1px solid black;
     width: 30px;
     color: #ff0033;
     text-decoration: underline;
@@ -148,7 +147,8 @@ export const CommunityDesign = styled.div`
     justify-content: center;
     background-color: white;
     width: 80vw;
-    height: 95vh;
+    margin-top: 40px;
+    margin-bottom: 70px;
   }
 
   .writepost {
