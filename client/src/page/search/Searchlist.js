@@ -6,6 +6,32 @@ import { SetParams, GetSearch } from '../../redux/SearchSlice';
 import noimg from '../../../public/noimg.jpg';
 import nosearch from '../../../public/nosearch.png';
 import { SearchlistDesign } from '../../style/SearchStyle';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+`;
+
+const Spinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+`;
 
 const SearchList = () => {
   const Navigate = useNavigate();
@@ -13,6 +39,7 @@ const SearchList = () => {
   const { itemname } = useParams();
   const searchKeyword = useSelector((state) => state.search.params);
   const searchResults = useSelector((state) => state.search.data);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const nothing = '이미지가 존재하지 않습니다.';
   const noresult = '찾으시는 데이터가 존재하지 않습니다.';
@@ -52,12 +79,23 @@ const SearchList = () => {
   };
 
   useEffect(() => {
-    {
-      dispatch(GetSearch(itemname));
-      dispatch(SetParams(itemname));
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        await dispatch(GetSearch(itemname));
+        await dispatch(SetParams(itemname));
+      } catch (error) {
+        console.error('fail', error);
+        // 에러 처리 로직을 추가할 수 있습니다.
+      } finally {
+        setIsLoading(false);
+      }
       window.scrollTo(0, 0);
-    }
+    };
+
+    fetchData();
   }, [dispatch, itemname]);
+  console.log(searchResults);
 
   return (
     <Layout>
@@ -73,44 +111,56 @@ const SearchList = () => {
             Search
           </button>
         </div>
-        <div className="result">{searchKeyword}(으)로 검색한 결과입니다.</div>
-        <div className="itemnumber">
-          검색결과 리스트 (
-          {searchResults !== noresult ? searchResults.length : 0}개)
-        </div>
-
-        <div className="table">
-          {searchResults !== noresult ? (
-            <div className="sub">
-              <div className="image">식별/포장</div>
-              <div className="name">제품명</div>
-              <div className="company">회사명</div>
-              <div className="haveallergy">알러지 여부</div>
-            </div>
-          ) : null}
-          {searchResults !== noresult ? (
-            searchResults.map((el, index) => (
-              <div
-                key={el.itemName}
-                className={`list ${
-                  index === searchResults.length - 1 ? 'last-item' : ''
-                }`}
-                onClick={() => Navigate(`/search/${el.itemName}`)}
-              >
-                <div className="imgdiv">
-                  <img
-                    className="itemimage"
-                    alt="itemimage"
-                    src={el.itemImage === nothing ? noimg : el.itemImage}
-                  ></img>
-                </div>
-                <div className="itemname">{el.itemName}</div>
-                <div className="entpname">{el.entpName}</div>
-                <div className="allergy">{checkwarn(el.allergy)}</div>
-              </div>
-            ))
+        <div>
+          {isLoading ? (
+            // 로딩 화면을 표시하는 컴포넌트 또는 로딩 상태에 따른 처리
+            <SpinnerContainer>
+              <Spinner></Spinner>
+            </SpinnerContainer>
           ) : (
-            <img className="nosearch" alt="nosearch" src={nosearch}></img>
+            <>
+              <div className="result">
+                {searchKeyword}(으)로 검색한 결과입니다.
+              </div>
+              <div className="itemnumber">
+                검색결과 리스트 (
+                {searchResults !== noresult ? searchResults.length : 0}개)
+              </div>
+              <div className="table">
+                {searchResults !== noresult ? (
+                  <div className="sub">
+                    <div className="image">식별/포장</div>
+                    <div className="name">제품명</div>
+                    <div className="company">회사명</div>
+                    <div className="haveallergy">알러지 여부</div>
+                  </div>
+                ) : null}
+                {searchResults !== noresult ? (
+                  searchResults.map((el, index) => (
+                    <div
+                      key={el.itemName}
+                      className={`list ${
+                        index === searchResults.length - 1 ? 'last-item' : ''
+                      }`}
+                      onClick={() => Navigate(`/search/${el.itemName}`)}
+                    >
+                      <div className="imgdiv">
+                        <img
+                          className="itemimage"
+                          alt="itemimage"
+                          src={el.itemImage === nothing ? noimg : el.itemImage}
+                        ></img>
+                      </div>
+                      <div className="itemname">{el.itemName}</div>
+                      <div className="entpname">{el.entpName}</div>
+                      <div className="allergy">{checkwarn(el.allergy)}</div>
+                    </div>
+                  ))
+                ) : (
+                  <img className="nosearch" alt="nosearch" src={nosearch}></img>
+                )}
+              </div>
+            </>
           )}
         </div>
       </SearchlistDesign>

@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Axios } from '../utils/api';
 
 const API_SERVER = process.env.API_SERVER;
 // API_SERVER
 
-export const GetSearch = createAsyncThunk('search/result', async (params) => {
+/*export const GetSearch = createAsyncThunk('search/result', async (params) => {
   try {
     const token = localStorage.getItem('accessToken');
     const config = {
@@ -19,6 +20,18 @@ export const GetSearch = createAsyncThunk('search/result', async (params) => {
       `${API_SERVER}/search?itemName=${params}`,
       config,
     );
+    return response.data;
+  } catch (error) {
+    console.error('fail', error);
+    throw error;
+  }
+});
+
+*/
+
+export const GetSearch = createAsyncThunk('search/result', async (params) => {
+  try {
+    const response = await Axios.get(`search?itemName=${params}`);
     return response.data;
   } catch (error) {
     console.error('fail', error);
