@@ -41,14 +41,15 @@ Axios.interceptors.response.use(
       window.location.href = '/login';
 
       try {
-        const refreshToken = localStorage.getItem('refreshToken');
-        const response = await axios.post('yourRefreshTokenEndpoint', {
-          refreshToken,
-        });
-        const accessToken = response.data.accessToken;
-        axios.defaults.headers.common['Authorization'] =
-          'Bearer ' + accessToken;
-        return Axios(originalRequest);
+        // const refreshToken = localStorage.getItem('refreshToken');
+        // const response = await axios.post('refreshToken', {
+        //   refreshToken,
+        // });
+        // const accessToken = response.data.accessToken;
+        // axios.defaults.headers.common['Authorization'] =
+        //   'Bearer ' + accessToken;
+        // return Axios(originalRequest);
+        console.log('try');
       } catch (err) {
         console.log(error);
       }
