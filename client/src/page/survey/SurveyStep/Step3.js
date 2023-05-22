@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
@@ -35,7 +35,7 @@ const Step3Design = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
+  height: 1000px;
   background-color: #f4f4f4;
   /* 구글 자동완성 CSS */
   .gsc-input-box {
@@ -171,7 +171,9 @@ export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
 `;
 const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const [animate, setAnimate] = useState('up');
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const menu = {
     caffeine: '카페인',
     aspirin: '아스피린',

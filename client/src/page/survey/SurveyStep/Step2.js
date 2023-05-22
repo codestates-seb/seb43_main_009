@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dryskin from '../../../../public/dryskin.png';
 import fatigue from '../../../../public/fatigue.png';
 // import {
@@ -40,7 +40,7 @@ const Step2Design = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
+  height: 1000px;
   background-color: #f4f4f4;
 `;
 const AnimateContent = styled.div`
@@ -121,7 +121,10 @@ export const StyledBsShieldPlus = styled(BsShieldPlus)`
 
 const Step2 = ({ disease, changeInput, nextSteps }) => {
   const [animate, setAnimate] = useState('up');
-  window.scrollTo(0, 0);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const handleDiseaseClick = (e) => {
     changeInput({ target: { name: 'disease', value: e.currentTarget.value } });
   };
@@ -134,7 +137,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
 
   return (
     <Step2Design>
-      <Choice>불편하거나 걱정되는 곳을 선택해 주세요! </Choice>
+      <Choice>불편하거나 걱정되는 곳을 한가지 선택해 주세요! </Choice>
       <AnimateContent animate={animate}>
         <Button
           className="intestine"

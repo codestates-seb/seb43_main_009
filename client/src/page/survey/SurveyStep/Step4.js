@@ -11,6 +11,7 @@ const SurveyResultDesign = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  height: 1100px;
   background-color: #f4f4f4;
   font-size: 22px;
 `;
@@ -71,7 +72,7 @@ const Recommend = styled.div`
   margin-bottom: 5vh;
   border-radius: 14px;
   width: 80vw;
-  height: 50vh;
+  height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
