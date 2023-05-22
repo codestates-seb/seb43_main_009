@@ -164,7 +164,7 @@ public class CommuController {
         if(token != null){
             userId = jwtTokenizer.extractUserIdFromToken(token);
         }else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         if(userId != null && commuService.isSameWriter(userId, commuId)){

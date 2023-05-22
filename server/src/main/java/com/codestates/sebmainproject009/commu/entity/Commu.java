@@ -24,10 +24,10 @@ public class Commu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commuId;
 
-    @Column
+    @Column(length = 30)
     private String title;
 
-    @Column
+    @Column(length = 3000)
     private String content;
 
     @OneToMany(mappedBy = "commu", cascade = {CascadeType.ALL})

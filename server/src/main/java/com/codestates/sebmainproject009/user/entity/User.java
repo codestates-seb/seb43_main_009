@@ -43,7 +43,7 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = true)
     private Allergy allergy = Allergy.NONE;
-
+    private String otherAllergy;
 
     public User() {
     }
@@ -73,6 +73,7 @@ public class User {
         ALCOHOL("알코올"),
         ANTIBIOTIC("항생"),
         PAINKILLER("진통"),
+        OTHER("기타"),
         NONE("없음");
 
         @Getter

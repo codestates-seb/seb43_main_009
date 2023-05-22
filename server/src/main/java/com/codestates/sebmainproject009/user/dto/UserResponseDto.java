@@ -10,4 +10,5 @@ public class UserResponseDto {
     private long userId;
     private String email;
     private String displayName;
+    private String allergy;
 }
