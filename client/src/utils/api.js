@@ -33,7 +33,7 @@ Axios.interceptors.response.use(
     //기존에 요청했던 api를 다시 요청한다.
     const originalRequest = error.config;
 
-    if (error.response.status === 400 && !originalRequest._retry) {
+    if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       const refreshToken = localStorage.getItem('refreshToken');
