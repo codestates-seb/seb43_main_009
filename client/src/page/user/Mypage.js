@@ -71,21 +71,15 @@ const Mypage = () => {
             <div className="content-box">
               {isEditing ? (
                 <>
-                  name :
-                  <input
-                    onChange={(e) => handleInputChange(e, setDisplayName)}
-                    value={displayName}
-                  />
-                  email :
-                  <input
-                    onChange={(e) => handleInputChange(e, setEmail)}
-                    value={email}
-                  />
-                  allergy :
-                  <input
-                    onChange={(e) => handleInputChange(e, setAllergy)}
-                    value={allergy}
-                  />
+                  <h2>
+                    name :
+                    <input
+                      onChange={(e) => handleInputChange(e, setDisplayName)}
+                      value={displayName}
+                    />
+                  </h2>
+                  <h2>email : {email}</h2>
+                  <h2>allergy : {myData.allergy}</h2>
                 </>
               ) : (
                 <>
