@@ -165,4 +165,29 @@ public class JwtTokenizer {
         }
         return false;
     }
+
+    public String getToken(String authorizationHeader) {
+
+        String token;
+
+        if(authorizationHeader !=null) {
+            token = extractTokenFromHeader(authorizationHeader);
+        }
+        else
+            token = null;
+
+        return token;
+    }
+
+    public Long getUserId(String token) {
+
+        Long userId;
+
+        if (token != null) {
+            userId = extractUserIdFromToken(token);
+        }
+        else userId = null;
+
+        return userId;
+    }
 }
