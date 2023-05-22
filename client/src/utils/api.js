@@ -35,21 +35,22 @@ Axios.interceptors.response.use(
 
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
+      alert('토큰이 만료되었습니다. 다시 로그인해주세요');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      window.location.href = '/login';
 
-      const refreshToken = localStorage.getItem('refreshToken');
       try {
-        // const response = await axios.post('yourRefreshTokenEndpoint', {
-        //   refreshToken,
-        // });
-        // const accessToken = response.data.accessToken;
-        // axios.defaults.headers.common['Authorization'] =
-        //   'Bearer ' + accessToken;
-        // return Axios(originalRequest);
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await axios.post('yourRefreshTokenEndpoint', {
+          refreshToken,
+        });
+        const accessToken = response.data.accessToken;
+        axios.defaults.headers.common['Authorization'] =
+          'Bearer ' + accessToken;
+        return Axios(originalRequest);
       } catch (err) {
-        alert('토큰이 만료되었습니다. 다시 로그인해주세요');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        window.location.href = '/login';
+        console.log(error);
       }
     }
     return Promise.reject(error);

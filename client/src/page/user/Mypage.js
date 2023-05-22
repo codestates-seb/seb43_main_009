@@ -21,6 +21,13 @@ const Mypage = () => {
   // const user = useSelector((state) => state.mypage.user);
   const status = useSelector((state) => state.mypage.status);
   console.log(myData);
+  const inputRef = React.useRef();
+
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -74,6 +81,7 @@ const Mypage = () => {
                   <h2>
                     name :
                     <input
+                      ref={inputRef}
                       onChange={(e) => handleInputChange(e, setDisplayName)}
                       value={displayName}
                     />

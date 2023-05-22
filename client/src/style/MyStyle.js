@@ -82,6 +82,10 @@ export const MyDesign = styled.div`
             format('woff');
           font-weight: normal;
           font-size: x-large;
+          /* &:focus {
+            border-color: red;
+            outline: none;
+          } */
         }
       }
     }
