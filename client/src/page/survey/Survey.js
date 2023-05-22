@@ -55,6 +55,10 @@ const Survey = () => {
   };
   const resetSteps = () => {
     dispatch(setStep(step - 3));
+    setForm({
+      disease: '',
+      allergy: '',
+    });
   };
 
   console.log(form);

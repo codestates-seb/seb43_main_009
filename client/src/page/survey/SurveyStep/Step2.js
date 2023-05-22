@@ -121,7 +121,7 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   const handleDiseaseClick = (e) => {
     if (selectedButton === e.currentTarget) {
       changeInput({ target: { name: 'disease', value: '' } });
