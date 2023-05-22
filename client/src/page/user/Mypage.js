@@ -21,6 +21,13 @@ const Mypage = () => {
   // const user = useSelector((state) => state.mypage.user);
   const status = useSelector((state) => state.mypage.status);
   console.log(myData);
+  const inputRef = React.useRef();
+
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -71,21 +78,16 @@ const Mypage = () => {
             <div className="content-box">
               {isEditing ? (
                 <>
-                  name :
-                  <input
-                    onChange={(e) => handleInputChange(e, setDisplayName)}
-                    value={displayName}
-                  />
-                  email :
-                  <input
-                    onChange={(e) => handleInputChange(e, setEmail)}
-                    value={email}
-                  />
-                  allergy :
-                  <input
-                    onChange={(e) => handleInputChange(e, setAllergy)}
-                    value={allergy}
-                  />
+                  <h2>
+                    name :
+                    <input
+                      ref={inputRef}
+                      onChange={(e) => handleInputChange(e, setDisplayName)}
+                      value={displayName}
+                    />
+                  </h2>
+                  <h2>email : {email}</h2>
+                  <h2>allergy : {myData.allergy}</h2>
                 </>
               ) : (
                 <>

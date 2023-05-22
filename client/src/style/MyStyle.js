@@ -68,11 +68,24 @@ export const MyDesign = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: left;
-        padding: 1rem;
+
+        .adjust-box {
+          margin: 2rem;
+        }
 
         input {
-          height: 2rem;
-          width: 70%;
+          height: 1.5rem;
+          width: 40%;
+          border: none;
+          font-family: 'MaplestoryOTFBold';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+            format('woff');
+          font-weight: normal;
+          font-size: x-large;
+          /* &:focus {
+            border-color: red;
+            outline: none;
+          } */
         }
       }
     }
