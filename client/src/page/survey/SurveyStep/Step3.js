@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
-import xray from '../../../../public/xray.png';
+// import xray from '../../../../public/xray.png';
 import { CiCoffeeCup } from 'react-icons/ci';
 // import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
-import GoogleSearch from '../../../common/GoogleSearch';
+// import GoogleSearch from '../../../common/GoogleSearch';
 import styled, { keyframes, css } from 'styled-components';
 
 const slideUp = keyframes`
@@ -150,6 +150,9 @@ const Input = styled.input`
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0 px10 px15 px-3 px,
     rgba(0, 0, 0, 0.05) 0 px4 px6 px-2 px;
+  &:focus {
+    outline: 3px solid var(--main);
+  }
 `;
 
 const Goorback = styled.div`
@@ -171,6 +174,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const handleAllergyClick = (e) => {
     if (selectedButton === e.currentTarget) {
       changeInput({ target: { name: 'allergy', value: '' } });
@@ -182,12 +186,26 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
       setSelectedButton(e.currentTarget);
     }
   };
+
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
+    changeInput({ target: { name: 'allergy', value: e.target.value } });
   };
+
   const handleInputBlur = () => {
     changeInput({ target: { name: 'allergy', value: userInput } });
   };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      setAnimate('down');
+      setTimeout(() => {
+        submitForm();
+        nextSteps();
+      }, 1000);
+    }
+  };
+
   const handleNextClick = () => {
     setAnimate('down');
     setTimeout(() => {
@@ -244,13 +262,22 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
               <img className="xray" src={xray} alt="xray"/>
               조영제 
               </button> */}
-        {/* <input type="text" value={userInput} onChange={handleInputChange} onBlur={handleInputBlur} placeholder="이외 알러지 입력 ex) 유당"/> */}
-        <GoogleSearch
-          changeInput={changeInput}
-          nextStep={nextSteps}
-          setAnimate={setAnimate}
+        <Input
+          type="text"
+          value={userInput}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
+          onKeyDown={handleInputKeyDown}
+          placeholder="기타 알러지를 입력하세요 ex: 유당"
         />
-        <Etc>기타 알러지를 입력하세요 ex: 유당</Etc>
+        {/* <div>
+          <GoogleSearch
+            changeInput={changeInput}
+            nextStep={nextSteps}
+            setAnimate={setAnimate}
+          />
+        </div> */}
+        {/* <Etc>기타 알러지를 입력하세요 ex: 유당</Etc> */}
         <Button
           className="nonono"
           value="NONE"
