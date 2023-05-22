@@ -31,9 +31,30 @@ Axios.interceptors.response.use(
     // 응답 오류가 있는 작업 수행
     //에러가 401이 온다면, refresh token을 이용해서 access token을 재갱신한 후에,
     //기존에 요청했던 api를 다시 요청한다.
+    const originalRequest = error.config;
+
+    if (error.response.status === 400 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        // const response = await axios.post('yourRefreshTokenEndpoint', {
+        //   refreshToken,
+        // });
+        // const accessToken = response.data.accessToken;
+        // axios.defaults.headers.common['Authorization'] =
+        //   'Bearer ' + accessToken;
+        // return Axios(originalRequest);
+      } catch (err) {
+        alert('토큰이 만료되었습니다. 다시 로그인해주세요');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        window.location.href = '/login';
+      }
+    }
     return Promise.reject(error);
   },
 );
 
 //에러코드가 401이고,요청이 아직 재시도 되지 않았는지.
-// originalRequest._retry = true;는 토큰을 한 번 새로고치려고 시도했음을 표시하는데 사용
+// originalRequest._retry = true;는 토큰을 한 번 새로고치려고 시도했음을 표시하는데 사용 = 재시도

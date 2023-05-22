@@ -24,15 +24,15 @@ export const MyDesign = styled.div`
     .allcomm1 {
       background-color: white;
       width: 30vw;
-      height: 30vh;
+      height: 50vh;
       margin-right: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px;
+      border-radius: 30px;
 
       img {
-        width: 100%;
+        width: 80%;
         height: auto;
       }
     }
@@ -45,12 +45,13 @@ export const MyDesign = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border-radius: 5px;
       font-family: 'MaplestoryOTFBold';
       src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
         format('woff');
       font-weight: normal;
       font-style: normal;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
 
       .information-box {
         width: 70%;
@@ -68,6 +69,11 @@ export const MyDesign = styled.div`
         justify-content: center;
         align-items: left;
         padding: 1rem;
+
+        input {
+          height: 2rem;
+          width: 70%;
+        }
       }
     }
   }
@@ -80,5 +86,34 @@ export const MyDesign = styled.div`
     white-space: nowrap;
     display: flex;
     justify-content: space-around;
+  }
+`;
+
+export const InformationBox = styled.div`
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+`;
+
+export const Heading = styled.h1`
+  font-size: 2rem;
+  text-align: center;
+  color: #343a40;
+`;
+
+export const Button = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.5em 2em;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #f27b60;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f05758;
+    cursor: pointer;
   }
 `;
