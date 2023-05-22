@@ -103,7 +103,7 @@ export const SearchlistDesign = styled.div`
     border-radius: 4px;
     margin-top: 50px;
     &:focus {
-      outline: none;
+      border: 2px solid #ffa1a1;
     }
   }
 
