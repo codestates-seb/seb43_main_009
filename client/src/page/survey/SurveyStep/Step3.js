@@ -84,6 +84,7 @@ const Choice2 = styled.div`
 const Etc = styled.div`
   font-size: 17px;
   margin-top: 40px;
+  margin-left: 1vw;
 `;
 
 const Img = styled.img`
@@ -244,8 +245,12 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
               조영제 
               </button> */}
         {/* <input type="text" value={userInput} onChange={handleInputChange} onBlur={handleInputBlur} placeholder="이외 알러지 입력 ex) 유당"/> */}
-        <GoogleSearch changeInput={changeInput} />
-        <Etc>이외 알러지 입력 ex: 유당</Etc>
+        <GoogleSearch
+          changeInput={changeInput}
+          nextStep={nextSteps}
+          setAnimate={setAnimate}
+        />
+        <Etc>기타 알러지를 입력하세요 ex: 유당</Etc>
         <Button
           className="nonono"
           value="NONE"

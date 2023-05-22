@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const GoogleSearch = ({ changeInput }) => {
+const GoogleSearch = ({ changeInput, nextStep, setAnimate }) => {
   useEffect(() => {
     const gcse = document.createElement('script');
     gcse.type = 'text/javascript';
@@ -22,6 +22,14 @@ const GoogleSearch = ({ changeInput }) => {
 
         gscInput.addEventListener('input', (e) => {
           changeInput({ target: { name: 'allergy', value: e.target.value } });
+        });
+        gscInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            setAnimate('down');
+            setTimeout(() => {
+              nextStep();
+            }, 1000);
+          }
         });
         clearInterval(intervalId);
       }
