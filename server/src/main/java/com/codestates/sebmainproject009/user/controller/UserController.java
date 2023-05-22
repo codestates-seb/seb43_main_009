@@ -6,6 +6,7 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.user.dto.UserPatchDto;
 import com.codestates.sebmainproject009.user.dto.UserPostDto;
+import com.codestates.sebmainproject009.user.dto.UserResponseDto;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.mapper.UserMapper;
 import com.codestates.sebmainproject009.user.service.UserService;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @RestController
@@ -25,6 +24,7 @@ import java.util.Objects;
 public class UserController {
 
     private final UserService userService;
+
     private final UserMapper mapper;
 
     private final CommuService commuService;
@@ -61,7 +61,13 @@ public class UserController {
     public ResponseEntity getUser(@PathVariable @Positive long userId){
         User user = userService.findUser(userId);
 
-        return new ResponseEntity<>(mapper.userToUserResponseDto(user),HttpStatus.OK);
+        UserResponseDto userResponseDto = mapper.userToUserResponseDto(user);
+
+        // User 가 알러지 값을 임의로 입력했으면 따로 불러와서 설정해 주어야 함.
+        if(user.getAllergy().toString().equals("OTHER"))
+            userResponseDto.setAllergy(user.getOtherAllergy());
+
+        return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{userId}")

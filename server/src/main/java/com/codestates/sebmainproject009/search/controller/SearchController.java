@@ -1,26 +1,23 @@
 package com.codestates.sebmainproject009.search.controller;
 
 
+import com.codestates.sebmainproject009.JSON.service.JSONService;
+import com.codestates.sebmainproject009.api.service.APIServiceImpl;
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.search.entity.Item;
 import com.codestates.sebmainproject009.search.entity.ItemList;
+import com.codestates.sebmainproject009.search.service.SearchService;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.service.UserService;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.*;
 
 
@@ -28,203 +25,104 @@ import java.util.*;
 @RequestMapping("/search")
 public class SearchController {
 
-    @Value("${serviceKey}")
-    private String serviceKey;
+    private final JwtTokenizer jwtTokenizer;
 
-    private StringBuilder urlBuilder;
+    private final UserService userService;
 
-    private JwtTokenizer jwtTokenizer;
+    private final SearchService searchService;
 
-    private UserService userService;
+    private final JSONService jsonService;
 
-    public SearchController(JwtTokenizer jwtTokenizer, UserService userService) {
+    private final APIServiceImpl APIServiceImpl;
+
+    public SearchController(JwtTokenizer jwtTokenizer, UserService userService, SearchService searchService, JSONService jsonService, APIServiceImpl APIServiceImpl) {
         this.jwtTokenizer = jwtTokenizer;
         this.userService = userService;
+        this.searchService = searchService;
+        this.jsonService = jsonService;
+        this.APIServiceImpl = APIServiceImpl;
     }
 
     @GetMapping
     public ResponseEntity getSearchList(@NotNull @RequestParam String itemName,
-                                        @Nullable @RequestHeader("Authorization") String authorizationHeader)throws IOException, URISyntaxException{
+                                        @Nullable @RequestHeader("Authorization") String authorizationHeader){
 
-        urlBuilder = new StringBuilder("http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList");
+        try {
+            // request url 만들기
+            String requestStringURL = APIServiceImpl.getURLWithEasyDrugAPI(itemName, "json", "100");
+            URL requestURL = new URL(requestStringURL);
 
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey);
-        urlBuilder.append("&" + URLEncoder.encode("itemName", "UTF-8")+ "=" + URLEncoder.encode(itemName, "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
+            // request url 을 통해서 원하는 JSON Object 로 변환시키기
+            JSONObject jsonBody = jsonService.getJsonBodyByRequestURL(requestURL);
+            JSONArray jsonArray = jsonService.getJsonArrayByJsonBody(jsonBody);
 
-        URL url = new URL(urlBuilder.toString());
+            // 결과를 담을 리스트 선언
+            List<ItemList> resultList;
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url.toURI(), String.class);
+            // authorizationHeader 를 통해서 토큰 추출하기, 헤더에 토큰이 없거나 토큰이 만료되면 null
+            String extractToken = jwtTokenizer.getToken(authorizationHeader);
 
+            // 토큰이 있으면 토큰을 통해 user 를 찾아서 itemList 받아오기
+            if(extractToken != null){
+                Long foundUserId = jwtTokenizer.getUserId(extractToken);
+                User foundUser = userService.findVerifiedUser(foundUserId);
 
-        String responseBody = responseEntity.getBody();
-
-
-        JSONObject jsonObject = new JSONObject(responseBody);
-        JSONObject jsonObject1 = jsonObject.getJSONObject("body");
-
-        JSONArray jsonArray;
-        try{
-            jsonArray = jsonObject1.getJSONArray("items");
-        }catch (JSONException exception){
-            return  ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
-        }
-
-        // userId 뽑기
-        String token = getToken(authorizationHeader);
-        Long userId = getUserId(token);
-        User user;
-        if(userId!=null)
-            user = userService.findVerifiedUser(userId);
-        else user = null;
-
-
-
-        if(!jsonArray.isEmpty()) {
-            jsonArray = jsonObject1.getJSONArray("items");
-            List<Object> list = jsonArray.toList();
-
-            List<ItemList> resultList = new ArrayList<>();
-
-            for (int i = 0; i < list.size(); i++) {
-                Item item = Item.builder().jsonObject(jsonArray.getJSONObject(i)).build();
-                ItemList itemList = ItemList.builder().jsonObject(jsonArray.getJSONObject(i)).build();
-
-                if(user != null) {
-                    if(user.getAllergy().toString().equals("NONE"))
-                        itemList.setAllergy("회원님이 설정하신 맞춤추천 데이터가 존재하지 않습니다.");
-                    else{
-                        if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy())){
-                            itemList.setAllergy("주의사항 있음.");
-                        }
-                        else {
-                            itemList.setAllergy("주의사항 없음.");
-                        }
-                    }
-                } else {
-                    itemList.setAllergy("로그인 후 확인 가능");
-                }
-                resultList.add(itemList);
+                resultList = searchService.getItemListFromJsonArrayWithUser(jsonArray, foundUser);
+            } else {
+                // 토큰이 없다면 user 를 찾을 필요 없어서 찾지 않고 itemList 받아오기
+                resultList = searchService.getItemListFromJsonArrayWithoutUser(jsonArray);
             }
 
             return ResponseEntity.ok().body(resultList);
+
+        } catch (Exception e){
+            // 현재까지 처리한 Exception 은 검색한 데이터가 없을 때 뿐임.
+            return  ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
         }
-        else
-            return ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
 
     }
 
 
     @GetMapping("/{itemName}")
     public ResponseEntity getInfo(@NotNull @PathVariable String itemName,
-                                  @Nullable @RequestHeader("Authorization") String authorizationHeader) throws IOException, URISyntaxException {
+                                  @Nullable @RequestHeader("Authorization") String authorizationHeader){
 
-        urlBuilder = new StringBuilder("http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList");
+        try {
+            // request url 만들기
+            String requestStringURL = APIServiceImpl.getURLWithEasyDrugAPI(itemName, "json", "100");
+            URL requestURL = new URL(requestStringURL);
 
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey);
-        urlBuilder.append("&" + URLEncoder.encode("itemName", "UTF-8")+ "=" + URLEncoder.encode(itemName, "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
+            // request url 을 통해서 원하는 JSON Object 로 변환시키기
+            JSONObject jsonBody = jsonService.getJsonBodyByRequestURL(requestURL);
+            JSONArray jsonArray = jsonService.getJsonArrayByJsonBody(jsonBody);
 
-        URL url = new URL(urlBuilder.toString());
+            // 결과를 담을 리스트 선언
+            List<Item> resultList;
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url.toURI(), String.class);
+            // authorizationHeader 를 통해서 토큰 추출하기, 헤더에 토큰이 없거나 토큰이 만료되면 null
+            String extractToken = jwtTokenizer.getToken(authorizationHeader);
 
+            // 토큰이 있으면 토큰을 통해 user 를 찾아서 item 리스트 받아오기
+            if(extractToken != null){
+                Long foundUserId = jwtTokenizer.getUserId(extractToken);
+                User foundUser = userService.findVerifiedUser(foundUserId);
 
-        String responseBody = responseEntity.getBody();
-
-
-        JSONObject jsonObject = new JSONObject(responseBody);
-        JSONObject jsonObject1 = jsonObject.getJSONObject("body");
-
-        JSONArray jsonArray;
-
-        try{
-            jsonArray = jsonObject1.getJSONArray("items");
-        }catch (JSONException exception){
-            return  ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
-        }
-
-        // userId 뽑기
-        String token = getToken(authorizationHeader);
-        Long userId = getUserId(token);
-        User user;
-        if(userId!=null)
-            user = userService.findVerifiedUser(userId);
-        else user = null;
-
-
-
-        if(!jsonArray.isEmpty()) {
-
-            jsonArray = jsonObject1.getJSONArray("items");
-
-            List<Object> list = jsonArray.toList();
-
-            List<Item> resultList = new ArrayList<>();
-
-            for (int i = 0; i < list.size(); i++) {
-
-                Item item = Item.builder().jsonObject(jsonArray.getJSONObject(i)).build();
-
-                if(user != null) {
-                    if(user.getAllergy().toString().equals("NONE"))
-                        item.setAllergy("회원님이 설정하신 맞춤추천 데이터가 존재하지 않습니다.");
-                    else{
-                        if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy())){
-                            if(user.getAllergy().getAllergy().equals("항생")||user.getAllergy().getAllergy().equals("진통"))
-                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"제 계열에 연관된 주의사항이 있습니다. 주의하세요.");
-                            else
-                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 연관된 주의사항이 있습니다. 주의하세요.");
-                        }
-                        else {
-                            if(user.getAllergy().getAllergy().equals("항생")||user.getAllergy().getAllergy().equals("진통"))
-                                item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"제 계열에 대한 상호작용이 존재하지 않습니다.");
-                            else
-                             item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 대한 상호작용이 존재하지 않습니다.");
-                        }
-                    }
-                } else {
-                    item.setAllergy("로그인하여 맞춤추천 설정 후에 확인하실 수 있습니다.");
-                }
-
-                if(item.getItemName().equals(itemName))
-                  resultList.add(item);
+                resultList = searchService.getItemInfoFromJsonArrayWithUser(jsonArray, foundUser, itemName);
+            } else {
+                // 토큰이 없다면 user 를 찾을 필요 없어서 찾지 않고 item 리스트 받아오기
+                resultList = searchService.getItemInfoFromJsonArrayWithoutUser(jsonArray, itemName);
             }
 
             return ResponseEntity.ok().body(resultList);
-        }
-        else
+
+        } catch (Exception e){
+
+            // 현재까지 처리한 Exception 은 검색한 데이터가 없을 때 뿐임.
             return ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
-    }
-
-    private Long getUserId(String token) {
-
-        Long userId;
-
-        if (token != null) {
-            userId = jwtTokenizer.extractUserIdFromToken(token);
         }
-        else userId = null;
 
-        return userId;
+
     }
-
-    private String getToken(String authorizationHeader) {
-
-        String token;
-
-        if(authorizationHeader !=null) {
-            token = jwtTokenizer.extractTokenFromHeader(authorizationHeader);
-        }
-        else
-            token = null;
-
-        return token;
-    }
-
 
 }
 
