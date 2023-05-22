@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStep } from '../redux/surveySlice';
+import { Axios } from '../utils/api';
+
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
@@ -96,15 +98,34 @@ export const Header = () => {
     window.scrollTo(0, 0);
   };
 
+  // useEffect(() => {
+  //   const userInfo = getUserInfo();
+  //   if (userInfo?.username) {
+  //     const namePart = userInfo.username.split('@')[0];
+  //     setUsername(namePart);
+  //   } else {
+  //     setUsername('Guest');
+  //   }
+  // }, [isLoggedIn]);
   useEffect(() => {
-    const userInfo = getUserInfo();
-    if (userInfo?.username) {
-      const namePart = userInfo.username.split('@')[0];
-      setUsername(namePart);
-    } else {
-      setUsername('Guest');
-    }
-  }, [isLoggedIn]);
+    // 사용자 정보를 가져오는 API 요청을 보냅니다.
+    Axios.get(`/users/${userId}`)
+      .then((response) => {
+        // 응답 데이터에서 사용자 이름을 가져옵니다.
+        const userInfo = getUserInfo();
+        console.log(userInfo);
+        // 기존 코드에서 차용한 방식으로 사용자 이름을 설정합니다.
+        if (userInfo.username) {
+          const namePart = userInfo.username.split('@')[0];
+          setUsername(namePart);
+        } else {
+          setUsername('Guest');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [isLoggedIn, userId]);
 
   return (
     <GlobalFont>

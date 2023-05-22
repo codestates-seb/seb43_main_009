@@ -37,7 +37,6 @@ Axios.interceptors.response.use(
       originalRequest._retry = true;
       alert('토큰이 만료되었습니다. 다시 로그인해주세요');
       localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
       window.location.href = '/login';
 
       try {

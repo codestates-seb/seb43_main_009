@@ -7,6 +7,7 @@ import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Link } from 'react-router-dom';
+import { Axios } from '../../utils/api'
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -142,7 +143,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await Axios.post(
         'https://server.dowajoyak.shop/users/login',
         {
           username: email,
