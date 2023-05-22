@@ -25,6 +25,7 @@ export const StyledInput = styled.input`
 
   &:focus {
     border-color: red;
+    outline: none;
   }
 `;
 
@@ -104,6 +105,7 @@ export const SearchlistDesign = styled.div`
     margin-top: 50px;
     &:focus {
       border: 2px solid #ffa1a1;
+      outline: none;
     }
   }
 
