@@ -68,6 +68,8 @@ export const StyledTable = styled.table`
     font-weight: bold;
   }
   tr:nth-child(7) td:nth-child(2) {
+    font-size: 21px;
+    font-weight: 600;
     color: red;
   }
 `;
@@ -84,7 +86,7 @@ export const SGradiant2 = styled.div`
 
 export const ButtonBox = styled.div`
   display: flex;
-  margin: 35px 35px 0px;
+  margin: 35px;
   justify-content: flex-end;
 `;
 
