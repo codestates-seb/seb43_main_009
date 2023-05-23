@@ -1,5 +1,9 @@
 :root {
-  --claret: #f06868;
+  --main: #f05758;
+  --claret: #ed8787;
+  --claret2: #f1ada1;
+  --claret3: #f09c8d;
+  --claret4: #e94545;
   --bluish-gray-10: #f5f7f9;
   --bluish-gray-50: #f2f4f7;
   --bluish-gray-100: #eceef3;
@@ -50,6 +54,7 @@
   --peach-500: #ff6947;
   --peach-600: #ff360a;
   --peach-700: #b82100;
+  --good-gray: #f8f9fa;
 
   /* boxShadow */
   --15px: 0px 0px 15px 0px #00000026;
@@ -67,7 +72,7 @@
 }
 @font-face {
   font-family: 'Noto Sans KR';
-  src: url('https://fonts.gstatic.com/s/notosanskr/v12/Pby6FmXiEBPT4ITbgNA5CgmOelv.ttf')
+  src: url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Raleway:ital,wght@0,700;1,300;1,400&display=swap')
     format('truetype');
   font-weight: 400;
   font-style: normal;

@@ -9,11 +9,10 @@ function Footer() {
       <FooterStyle>
         <div className="content-template">
           <div className="content">
-            <div className="frontTeam">
-              <h4>Front-End</h4>
-              <ul>
+            <div className="Team">
+              <h4 className="Teamh4">Front-End</h4>
+              <ul className="Teamul">
                 <li>
-                  <span>염도경 (TL)</span>
                   <a
                     href="https://github.com/yeomdogyeong"
                     target="_blank"
@@ -25,9 +24,10 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>염도경</span>
+                  <span>(TL)</span>
                 </li>
                 <li>
-                  <span>김성수</span>
                   <a
                     href="https://github.com/ggggggggithub"
                     target="_blank"
@@ -39,9 +39,9 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>김성수</span>
                 </li>
                 <li>
-                  <span>노호준</span>
                   <a
                     href="https://github.com/nowaveosu"
                     target="_blank"
@@ -53,9 +53,9 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>노호준</span>
                 </li>
                 <li>
-                  <span>이진하</span>
                   <a
                     href="https://github.com/wlsljh0516"
                     target="_blank"
@@ -67,14 +67,14 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>이진하</span>
                 </li>
               </ul>
             </div>
-            <div className="backTeam">
-              <h4>Back-End</h4>
-              <ul>
+            <div className="Team">
+              <h4 className="Teamh4">Back-End</h4>
+              <ul className="Teamul">
                 <li>
-                  <span>조만기 (DTL)</span>
                   <a
                     href="https://github.com/Sniij"
                     target="_blank"
@@ -86,9 +86,10 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>조만기</span>
+                  <span>(DTL)</span>
                 </li>
                 <li>
-                  <span>양인수</span>
                   <a
                     href="https://github.com/insooY"
                     target="_blank"
@@ -100,9 +101,9 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>양인수</span>
                 </li>
                 <li>
-                  <span>한동희</span>
                   <a
                     href="https://github.com/Gitdonghee"
                     target="_blank"
@@ -114,6 +115,7 @@ function Footer() {
                       alt="Profile icon"
                     />
                   </a>
+                  <span>한동희</span>
                 </li>
               </ul>
             </div>
@@ -124,7 +126,7 @@ function Footer() {
                   alt="teamLogo"
                   className="teamlogoItem"
                 />
-                <span>
+                <span className="Teamspan">
                   Team. <strong>반미콩</strong>
                 </span>
               </div>
@@ -147,7 +149,6 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="copyright">ⓒ 2023 Company. All Rights Reserved.</div>
       </FooterStyle>
     </>
   );

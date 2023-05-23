@@ -1,10 +1,9 @@
 import Layout from '../../common/Layout';
-import { CommunityBox } from '../../style/CommunityDesign';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { CommunityBox } from '../../style/CommunityStyle';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { submitPost } from '../../redux/boardSlice';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { GetCommulist } from '../../redux/CommuntiySlice';
 
 const CommunityWrite = () => {
@@ -13,7 +12,6 @@ const CommunityWrite = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
-  console.log(title, content);
 
   const goHome = () => {
     navigate('/commu');

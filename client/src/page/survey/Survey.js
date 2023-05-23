@@ -1,29 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Step1 from './SurveyStep/Step1';
 import Step2 from './SurveyStep/Step2';
 import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4';
-import Step5 from './SurveyStep/Step5';
-import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../utils/cookies';
 import axios from 'axios';
 import Layout from '../../common/Layout';
+import { getUserInfo } from '../../utils/UserInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStep } from '../../redux/surveySlice';
 
 const Survey = () => {
-  const [step, setStep] = useState(1);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const step = useSelector((state) => state.survey.step);
+
   const [form, setForm] = useState({
     disease: '',
     allergy: '',
   });
+
+  const userInfo = getUserInfo();
 
   const { disease, allergy } = form;
 
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        'http://ec2-3-34-134-67.ap-northeast-2.compute.amazonaws.com:8080/surveys',
-        form,
+        'https://server.dowajoyak.shop/surveys',
+        {
+          disease,
+          allergy,
+          userId: userInfo.userId,
+        },
       );
       console.log(response.data);
     } catch (error) {
@@ -40,10 +47,17 @@ const Survey = () => {
   };
 
   const nextSteps = () => {
-    setStep(step + 1);
+    dispatch(setStep(step + 1));
   };
   const prevSteps = () => {
-    setStep(step - 1);
+    dispatch(setStep(step - 1));
+  };
+  const resetSteps = () => {
+    dispatch(setStep(step - 3));
+    setForm({
+      disease: '',
+      allergy: '',
+    });
   };
 
   console.log(form);
@@ -66,20 +80,11 @@ const Survey = () => {
             changeInput={changeInput}
             prevSteps={prevSteps}
             nextSteps={nextSteps}
-          />
-        )}
-        {step === 4 && (
-          <Step4
-            disease={disease}
-            allergy={allergy}
-            changeInput={changeInput}
-            prevSteps={prevSteps}
-            nextSteps={nextSteps}
             submitForm={submitForm}
             form={form}
           />
         )}
-        {step === 5 && <Step5 form={form} />}
+        {step === 4 && <Step4 resetSteps={resetSteps} form={form} />}
       </div>
     </Layout>
   );

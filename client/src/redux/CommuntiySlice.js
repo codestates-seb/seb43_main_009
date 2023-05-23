@@ -21,7 +21,6 @@ export const CommunitySlice = createSlice({
   name: 'commu',
   initialState: {
     data: [],
-
     status: 'idle',
     error: null,
     reducers: {},

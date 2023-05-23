@@ -1,85 +1,152 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
-import xray from '../../../../public/xray.png';
-import { Step3Design, DesginCiCoffeeCup } from '../../../style/SurveyStyle';
+import {
+  AnimateContent,
+  Step3Design,
+  Step3Choice,
+  Step3Choice2,
+  Etc,
+  Step3Img,
+  Nothing,
+  Step3Button,
+  Step3Input,
+  Goorback,
+  DesginCiCoffeeCup,
+} from '../../../style/SurveyStyle';
 
-const Step3 = ({ allergy, prevSteps, nextSteps, changeInput }) => {
-  const menu = {
-    caffeine: '카페인',
-    aspirin: '아스피린',
-    penicillin: '페니실린',
-    anticonvulsants: '항경련제',
-    xray: '조영제',
-    nothing: '없음',
-  };
+const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
+  const [animate, setAnimate] = useState('up');
+  const [selectedButton, setSelectedButton] = useState(null);
+  const [userInput, setUserInput] = useState('');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAllergyClick = (e) => {
+    if (selectedButton === e.currentTarget) {
+      changeInput({ target: { name: 'allergy', value: '' } });
+      setSelectedButton(null);
+    } else {
+      changeInput({
+        target: { name: 'allergy', value: e.currentTarget.value },
+      });
+      setSelectedButton(e.currentTarget);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
     changeInput({ target: { name: 'allergy', value: e.target.value } });
   };
+
+  const handleInputBlur = () => {
+    changeInput({ target: { name: 'allergy', value: userInput } });
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      setAnimate('down');
+      setTimeout(() => {
+        submitForm();
+        nextSteps();
+      }, 1000);
+    }
+  };
+
+  const handleNextClick = () => {
+    setAnimate('down');
+    setTimeout(() => {
+      submitForm();
+      nextSteps();
+    }, 1000);
+  };
+
   return (
     <Step3Design>
-      <div className="choice">알레르기를 선택해주세요! </div>
-      <button
-        className={allergy === menu.caffeine ? 'selected' : ''}
-        value="카페인"
-        onClick={handleAllergyClick}
-      >
-        <DesginCiCoffeeCup />
-        카페인
-      </button>
-      <button
-        className={allergy === menu.aspirin ? 'selected' : ''}
-        value="아스피린"
-        onClick={handleAllergyClick}
-      >
-        <img className="aspirin" src={aspirin} alt="aspirin" />
-        아스피린(소염진통제)
-      </button>
-      <button
-        className={allergy === menu.penicillin ? 'selected' : ''}
-        value="페니실린"
-        onClick={handleAllergyClick}
-      >
-        <img className="penicillin" src={penicillin} alt="penicillin" />
-        페니실린(항생제)
-      </button>
-      <button
-        className={allergy === menu.anticonvulsants ? 'selected' : ''}
-        value="항경련제"
-        onClick={handleAllergyClick}
-      >
-        <img
-          className="anticonvulsants"
-          src={anticonvulsants}
-          alt="anticonvulsants"
+      <Step3Choice>해당하는 약물 알러지를 선택해주세요 </Step3Choice>
+      <Step3Choice2>
+        의약품검색 페이지에서 알러지정보가 반영됩니다!
+      </Step3Choice2>
+      <AnimateContent animate={animate}>
+        <Step3Button
+          className="caffeine"
+          value="CAFFEINE"
+          onClick={handleAllergyClick}
+          selected={allergy === 'CAFFEINE'}
+        >
+          <DesginCiCoffeeCup /> 카페인
+        </Step3Button>
+        <Step3Button
+          className="aspirin"
+          value="PAINKILLER"
+          onClick={handleAllergyClick}
+          selected={allergy === 'PAINKILLER'}
+        >
+          <Step3Img className="aspirin" src={aspirin} alt="aspirin" />
+          아스피린(소염진통제)
+        </Step3Button>
+        <Step3Button
+          className="penicillin "
+          value="ANTIBIOTIC"
+          onClick={handleAllergyClick}
+          selected={allergy === 'ANTIBIOTIC'}
+        >
+          <Step3Img className="penicillin" src={penicillin} alt="penicillin" />
+          페니실린(항생제)
+        </Step3Button>
+        <Step3Button
+          className="anticonvulsants "
+          value="ANTICONVULSANT"
+          onClick={handleAllergyClick}
+          selected={allergy === 'ANTICONVULSANT'}
+        >
+          <Step3Img
+            className="anticonvulsants"
+            src={anticonvulsants}
+            alt="anticonvulsants"
+          />
+          항경련제
+        </Step3Button>
+        {/* <button className="xray" value="CONTRAST" onClick={handleAllergyClick}>
+              <img className="xray" src={xray} alt="xray"/>
+              조영제 
+              </button> */}
+        <Step3Input
+          type="text"
+          value={userInput}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
+          onKeyDown={handleInputKeyDown}
+          placeholder="기타 알러지를 입력하세요 ex: 유당"
         />
-        항경련제
-      </button>
-      <button
-        className={allergy === menu.xray ? 'selected' : ''}
-        value="조영제"
-        onClick={handleAllergyClick}
-      >
-        <img className="xray" src={xray} alt="xray" />
-        조영제
-      </button>
-      <button
-        className={allergy === menu.nothing ? 'selected' : ''}
-        value="없음"
-        onClick={handleAllergyClick}
-      >
-        <span className="nothing">없음</span>
-      </button>
-      <div className="goorback">
-        <div className="previous" onClick={prevSteps}>
-          ◀︎ 이전
-        </div>
-        <div className="next" onClick={nextSteps}>
-          다음 ▶︎
-        </div>
-      </div>
+        {/* <div>
+          <GoogleSearch
+            changeInput={changeInput}
+            nextStep={nextSteps}
+            setAnimate={setAnimate}
+          />
+        </div> */}
+        {/* <Etc>기타 알러지를 입력하세요 ex: 유당</Etc> */}
+        <Step3Button
+          className="nonono"
+          value="NONE"
+          onClick={handleAllergyClick}
+          selected={allergy === 'NONE'}
+        >
+          <Nothing>없음</Nothing>
+        </Step3Button>
+        <Goorback>
+          <Step3Button className="previous" onClick={prevSteps}>
+            ◀︎ 이전
+          </Step3Button>
+          <Step3Button className="next" onClick={handleNextClick}>
+            다음 ▶︎
+          </Step3Button>
+        </Goorback>
+      </AnimateContent>
     </Step3Design>
   );
 };
