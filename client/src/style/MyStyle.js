@@ -27,13 +27,14 @@ export const MyDesign = styled.div`
       height: 50vh;
       margin-right: 2rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       border-radius: 30px;
 
       img {
-        width: 80%;
-        height: auto;
+        max-width: 80%;
+        max-height: 80%;
       }
     }
 
