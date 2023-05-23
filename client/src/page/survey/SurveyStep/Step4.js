@@ -52,7 +52,7 @@ const Danger = styled.div`
 const Caution = styled.span`
   color: black;
   margin-top: 0;
-  margin-left: 1vw;
+  margin-left: 10px;
 `;
 
 const Expliandetail = styled.div`

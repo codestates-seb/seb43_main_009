@@ -24,6 +24,11 @@ const GoogleSearch = ({ changeInput }) => {
           changeInput({ target: { name: 'allergy', value: e.target.value } });
         });
         clearInterval(intervalId);
+        gscInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+          }
+        });
       }
     }, 100);
   }, []);
