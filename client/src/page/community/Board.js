@@ -110,8 +110,15 @@ const Board = () => {
       navigate('/commu');
     }
   }, [dispatch, navigate, boardData.commuId]);
+
   const handleImgClick = () => {
-    navigate('/commu/posts', { replace: true });
+    const token = localStorage.getItem('accessToken');
+    if (token === null) {
+      alert('가입정보가 없습니다. 로그인 페이지로 이동합니다.');
+      navigate('/login');
+    } else {
+      navigate('/commu/posts', { replace: true });
+    }
   };
   return (
     <Layout>
