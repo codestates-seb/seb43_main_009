@@ -1,5 +1,5 @@
 spring:
-  servelt:
+  servlet:
     multipart:
       max-file-size: 10MB
   config:
