@@ -43,7 +43,10 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = true)
     private Allergy allergy = Allergy.NONE;
+
     private String otherAllergy;
+
+    private String profileImgUrl;
 
     public User() {
     }

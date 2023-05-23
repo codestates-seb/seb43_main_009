@@ -57,7 +57,7 @@ public class CustomS3Client {
             s3Client.putObject(putObjectRequest);
 
             // 업로드된 이미지의 URL 생성
-            String imageUrl = "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + fileName;
+            String imageUrl = "https://s3." + region + ".amazonaws.com/" + bucketName + "/" + fileName;
 
             return imageUrl;
         } catch (Exception e) {
