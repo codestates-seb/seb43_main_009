@@ -1,10 +1,5 @@
 package com.codestates.sebmainproject009.commu.controller;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.comment.service.CommentService;
 import com.codestates.sebmainproject009.commu.dto.CommuPatchDto;
@@ -15,7 +10,7 @@ import com.codestates.sebmainproject009.commu.entity.Commu;
 import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
-import org.springframework.beans.factory.annotation.Value;
+import com.codestates.sebmainproject009.s3.client.CustomS3Client;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,11 +19,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/commu")
@@ -39,19 +30,16 @@ public class CommuController {
 
     private final JwtTokenizer jwtTokenizer;
 
-    @Value("${cloud.aws.credentials.accessKey}")
-    String accessKey;
-    @Value("${cloud.aws.credentials.secretKey}")
-    String secretKey;
-    String region = "ap-northeast-2";
-    String bucketName = "dowajoyak.link";
+    private CustomS3Client customS3Client;
 
 
-    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService, JwtTokenizer jwtTokenizer) {
+
+    public CommuController(CommuService commuService, CommuMapper mapper, CommentService commentService, JwtTokenizer jwtTokenizer, CustomS3Client customS3Client) {
         this.commuService = commuService;
         this.mapper = mapper;
         this.commentService = commentService;
         this.jwtTokenizer = jwtTokenizer;
+        this.customS3Client = customS3Client;
     }
 
     @PostMapping("/posts")
@@ -68,59 +56,20 @@ public class CommuController {
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content,
                                     @RequestParam("userId") Long userId) {
+
         // 이미지 업로드 및 S3 URL 가져오는 로직
-        String imageUrl=null;
-        if(image != null)
-            imageUrl = uploadImageToS3(image);
+        String imageUrl = null;
+        if(image!=null){
+            imageUrl = customS3Client.uploadImageToS3(image);
+        }
 
         // CommuPostDto에 이미지 URL 설정
         Commu commu = commuService.createCommuCustom(title, content, imageUrl, userId);
 
 
-        return new ResponseEntity<>(mapper.commuToCommuImageResponseDto(commu), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.commuToCommuResponseDto(commu), HttpStatus.CREATED);
     }
 
-
-    public String uploadImageToS3(MultipartFile image) {
-        // AWS 계정 정보 설정
-
-
-        // S3 클라이언트 생성
-        AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                .withRegion(region)
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-                .build();
-
-        try {
-            // 업로드할 이미지 파일의 이름 생성
-            String fileName = generateFileName(image.getOriginalFilename());
-
-            // 이미지 파일을 로컬에 저장
-            Path tempFile = Files.createTempFile(fileName, "");
-            image.transferTo(tempFile.toFile());
-
-            // S3에 이미지 업로드
-            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, fileName, tempFile.toFile());
-            s3Client.putObject(putObjectRequest);
-
-            // 업로드된 이미지의 URL 생성
-            String imageUrl = "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + fileName;
-
-            return imageUrl;
-        } catch (IOException e) {
-            // 업로드 실패 처리
-            e.printStackTrace();
-            return null;
-        } finally {
-            // S3 클라이언트 종료
-            s3Client.shutdown();
-        }
-    }
-    private String generateFileName(String originalFilename) {
-        String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
-        String uniqueFileName = UUID.randomUUID().toString().replace("-", "");
-        return uniqueFileName + extension;
-    }
 
     @GetMapping("/all")
     public ResponseEntity getCommuAll(){
