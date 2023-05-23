@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Step1 from './SurveyStep/Step1';
 import Step2 from './SurveyStep/Step2';
 import Step3 from './SurveyStep/Step3';
 import Step4 from './SurveyStep/Step4';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../common/Layout';
 import { getUserInfo } from '../../utils/UserInfo';
@@ -13,7 +12,7 @@ import { setStep } from '../../redux/surveySlice';
 const Survey = () => {
   const dispatch = useDispatch();
   const step = useSelector((state) => state.survey.step);
-  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     disease: '',
     allergy: '',

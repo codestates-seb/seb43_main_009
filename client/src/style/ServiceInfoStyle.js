@@ -12,6 +12,10 @@ export const SServiceInfoLayout = styled.div`
     format('woff');
   font-weight: normal;
   font-style: normal;
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+    margin: auto;
+  }
 `;
 
 export const SServiceInfoSection = styled.div`

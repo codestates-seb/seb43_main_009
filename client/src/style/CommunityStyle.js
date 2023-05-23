@@ -147,8 +147,7 @@ export const CommunityDesign = styled.div`
     justify-content: center;
     background-color: white;
     width: 80vw;
-    margin-top: 40px;
-    margin-bottom: 70px;
+    height: 95vh;
   }
 
   .writepost {
