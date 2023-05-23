@@ -40,6 +40,7 @@ export const Header = () => {
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem('accessToken');
+    Navigate('/');
     window.alert('로그아웃 성공!');
   };
 
@@ -82,7 +83,6 @@ export const Header = () => {
   return (
     <GlobalFont>
       <HeaderWrapper>
-        <Menu>❤️</Menu>
         <StyledLink to="/" onClick={handleScrollZero}>
           <Logo src={logo} />
         </StyledLink>
