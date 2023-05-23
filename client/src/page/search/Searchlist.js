@@ -5,33 +5,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { SetParams, GetSearch } from '../../redux/SearchSlice';
 import noimg from '../../../public/noimg.jpg';
 import nosearch from '../../../public/nosearch.png';
-import { SearchlistDesign } from '../../style/SearchStyle';
-import styled, { keyframes } from 'styled-components';
-
-const spin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-`;
-
-const Spinner = styled.div`
-  width: 40px;
-  height: 40px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
-  border-radius: 50%;
-  animation: ${spin} 1s linear infinite;
-`;
+import {
+  SearchlistDesign,
+  SpinnerContainer,
+  Spinner,
+} from '../../style/SearchStyle';
 
 const SearchList = () => {
   const Navigate = useNavigate();

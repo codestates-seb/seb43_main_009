@@ -89,6 +89,7 @@ export const Header = () => {
     dispatch(logout());
     localStorage.removeItem('accessToken');
     window.alert('로그아웃 성공!');
+    window.location.reload();
   };
 
   const handleResetStep = () => {
