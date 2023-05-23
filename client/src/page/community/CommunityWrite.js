@@ -2,11 +2,10 @@ import Layout from '../../common/Layout';
 import { CommunityBox } from '../../style/CommunityStyle';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { submitPost, uploadImage } from '../../redux/boardSlice';
+import { submitPost } from '../../redux/boardSlice';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { GetCommulist } from '../../redux/CommuntiySlice';
-import { useRef } from 'react';
 
 const CommunityWrite = () => {
   const dispatch = useDispatch();
@@ -14,31 +13,13 @@ const CommunityWrite = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
-  const imgRef = useRef();
+
   const goHome = () => {
     navigate('/commu');
   };
 
   const handleSubmit = async () => {
-    const img = imgRef.current.files[0];
-
-    // Create a FormData instance for the image
-    const formData = new FormData();
-    formData.append('img', img);
-
-    // Dispatch uploadImage
-    const uploadResult = await dispatch(uploadImage(formData));
-
-    if (uploadResult.error) {
-      // Handle error here
-      console.error('Image upload failed:', uploadResult.error);
-      return;
-    }
-
-    // Assuming your server returns the URL of the uploaded image
-    const imageUrl = uploadResult.payload;
-
-    await dispatch(submitPost({ title, content, userId, imageUrl }));
+    await dispatch(submitPost({ title, content, userId }));
     dispatch(GetCommulist());
     goHome();
   };
@@ -58,7 +39,6 @@ const CommunityWrite = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <input type="file" ref={imgRef} accept="image/*" />
           <div className="button-container">
             <button className="cancel-button" onClick={goHome}>
               취소

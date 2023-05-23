@@ -17,34 +17,6 @@ export const submitPost = createAsyncThunk(
     }
   },
 );
-export const uploadImage = createAsyncThunk(
-  'board/uploadImage',
-  async (formData, { rejectWithValue }) => {
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
-
-      // Adjust this to your actual upload endpoint
-      const response = await Axios.post(
-        'https://server.dowajoyak.shop/postsToS3',
-        formData,
-        config,
-      );
-
-      if (response.status !== 200) {
-        throw new Error('Image upload failed');
-      }
-
-      // return the response data (assuming it contains the URL of the uploaded image)
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  },
-);
 //글 상세조회
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
