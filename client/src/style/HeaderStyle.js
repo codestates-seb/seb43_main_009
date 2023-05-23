@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
+  width: 100%;
 `;
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -22,6 +23,11 @@ export const Logo = styled.img`
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (max-width: 768px) {
+    height: 30px;
+    position: absolute;
+    left: 18%;
+  }
 `;
 
 export const MenuWrapper = styled.div`
@@ -36,7 +42,7 @@ export const StyledLink = styled(Link)`
 
 export const UserName = styled.div`
   font-weight: 600;
-  margin-top: 0.1rem;
+  margin-top: 0.3rem;
   color: black;
   &:hover {
     color: #f05758;
