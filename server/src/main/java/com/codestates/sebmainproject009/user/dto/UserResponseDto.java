@@ -11,4 +11,5 @@ public class UserResponseDto {
     private String email;
     private String displayName;
     private String allergy;
+    private String profileImgUrl;
 }

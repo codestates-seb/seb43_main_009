@@ -62,10 +62,11 @@ public class UserController {
         User user = userService.findUser(userId);
 
         UserResponseDto userResponseDto = mapper.userToUserResponseDto(user);
-
+        userResponseDto.setProfileImgUrl(user.getProfileImgUrl());
         // User 가 알러지 값을 임의로 입력했으면 따로 불러와서 설정해 주어야 함.
         if(user.getAllergy().toString().equals("OTHER"))
             userResponseDto.setAllergy(user.getOtherAllergy());
+
 
         return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
