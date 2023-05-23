@@ -5,23 +5,26 @@ import { useNavigate, useParams } from 'react-router-dom';
 import picture from '../../../public/rabbit.jpg';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData, updateUserData } from '../../redux/MypageSlice';
+import {
+  fetchUserData,
+  updateUserData,
+  uploadUserImage,
+} from '../../redux/MypageSlice';
 
 const Mypage = () => {
   const [displayName, setDisplayName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-  // const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [allergy, setAllergy] = useState('');
-  // const token = localStorage.getItem('accessToken');
   const { userId } = useParams();
-  // console.log(token);
   const dispatch = useDispatch();
   const myData = useSelector((state) => state.mypage.data);
-  // const user = useSelector((state) => state.mypage.user);
   const status = useSelector((state) => state.mypage.status);
+
   console.log(myData);
   const inputRef = React.useRef();
+  const [pictureSrc, setPictureSrc] = useState(myData.profileImgUrl);
+  const fileInputRef = React.useRef(null);
 
   useEffect(() => {
     if (isEditing) {
@@ -39,8 +42,31 @@ const Mypage = () => {
     if (myData) {
       setDisplayName(myData.displayName);
       setEmail(myData.email);
+      setPictureSrc(myData.profileImgUrl || picture);
     }
   }, [myData]);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPictureSrc(reader.result);
+        dispatch(uploadUserImage(file))
+          .unwrap()
+          .then((uploadedImage) => {
+            setPictureSrc(uploadedImage.profileImgUrl);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
 
   const handleEditButtonClick = () => {
     setIsEditing(true);
@@ -54,17 +80,29 @@ const Mypage = () => {
 
   const handleSaveButtonClick = () => {
     setIsEditing(false);
-    dispatch(updateUserData({ displayName, email }));
+    dispatch(updateUserData({ displayName, email, profileImgUrl: pictureSrc }));
   };
   if (!myData) {
-    return <div>Loading...</div>; // Or some loading spinner
+    return <div>Loading...</div>;
   }
   return (
     <Layout>
       <MyDesign>
         <div className="allcomm">
           <div className="allcomm1">
-            <img src={picture}></img>
+            <img src={pictureSrc}></img>
+            {isEditing && (
+              <div className="button-box">
+                <Button onClick={triggerFileInput}>Upload Image</Button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  style={{ display: 'none' }}
+                />
+              </div>
+            )}
           </div>
           <div className="allcomm2">
             <InformationBox>
