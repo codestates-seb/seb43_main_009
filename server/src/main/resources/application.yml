@@ -1,4 +1,7 @@
 spring:
+  servelt:
+    multipart:
+      max-file-size: 10MB
   config:
     import: "aws-parameterstore:"
   datasource:
