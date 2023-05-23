@@ -16,8 +16,8 @@ export const GoogleSignup = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: grey;
-  color: white;
+  background-color: white;
+  color: #3f7fea;
   border-radius: 3px;
   border: none;
   text-decoration-line: none;
@@ -44,7 +44,7 @@ export const NaverSignup = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: #0ac157;
+  background-color: #1cc800;
   color: white;
   border-radius: 3px;
   border: none;
@@ -52,6 +52,18 @@ export const NaverSignup = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+export const GoogleLogo = styled.img`
+  width: 24px;
+  margin-right: 11px;
+`;
+export const KakaoLogo = styled.img`
+  width: 20px;
+  margin-right: 10px;
+`;
+export const NaverLogo = styled.img`
+  width: 24px;
+  margin-right: 4px;
 `;
 
 export const EmailSignup = styled.form`
@@ -104,7 +116,7 @@ export const PasswordWrapper = styled.div`
 `;
 
 export const PasswordLabel = styled.div`
-  margin-left: 26px;
+  margin: 10px 10px 2px 24px;
   font-weight: bold;
 `;
 
@@ -117,13 +129,13 @@ export const PasswordInput = styled.input`
 export const SignupButton = styled.button`
   margin: 10px;
   width: 246px;
-  height: 35px;
+  height: 40px;
   color: white;
-  border-radius: 3px;
+  border-radius: 25px;
   background-color: #f05858;
   border: none;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
   &:hover {
     cursor: pointer;
   }

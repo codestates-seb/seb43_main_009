@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import Layout from '../../common/Layout';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import googleLogo from '../../../public/googleLogo.png';
+import naverLogo from '../../../public/naverLogo.png';
+import kakaoLogo from '../../../public/kakaoLogo.png';
 import {
   Wrapper,
   SignupWrapper,
   GoogleSignup,
   KakaoSignup,
+  GoogleLogo,
+  KakaoLogo,
+  NaverLogo,
   NaverSignup,
   EmailSignup,
   DisplayNameWrapper,
@@ -45,17 +51,20 @@ const Signup = () => {
     <Layout>
       <SignupWrapper>
         <GoogleSignup href="https://server.dowajoyak.shop/oauth2/authorization/google">
+          <GoogleLogo src={googleLogo} alt="logo" />
           구글로 회원가입
         </GoogleSignup>
         <KakaoSignup href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+          <KakaoLogo src={kakaoLogo} alt="logo" />
           카카오로 회원가입
         </KakaoSignup>
         <NaverSignup href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+          <NaverLogo src={naverLogo} alt="logo" />
           네이버로 회원가입
         </NaverSignup>
         <EmailSignup onSubmit={handleSignup}>
           <DisplayNameWrapper>
-            <DisplayNameLabel>닉네임</DisplayNameLabel>
+            <DisplayNameLabel>사용자명</DisplayNameLabel>
           </DisplayNameWrapper>
           <DisplayNameInput
             type="name"
