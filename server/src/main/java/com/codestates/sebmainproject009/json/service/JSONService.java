@@ -1,4 +1,4 @@
-package com.codestates.sebmainproject009.JSON.service;
+package com.codestates.sebmainproject009.json.service;
 
 import org.json.JSONArray;
 import org.json.JSONException;
