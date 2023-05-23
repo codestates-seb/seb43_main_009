@@ -28,9 +28,14 @@ public class SearchService {
             if(user.getAllergy().toString().equals("NONE"))
                 itemList.setAllergy("회원님이 설정하신 맞춤추천 데이터가 존재하지 않습니다.");
             else{
-                if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy()) ||
-                        item.getIntrcQesitm().contains(user.getOtherAllergy())){
+                if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy())){
                     itemList.setAllergy("주의사항 있음.");
+                } else if(user.getOtherAllergy()!=null){
+                    if(item.getIntrcQesitm().contains(user.getOtherAllergy())){
+                        itemList.setAllergy("주의사항 있음.");
+                    } else {
+                        itemList.setAllergy("주의사항 없음.");
+                    }
                 }
                 else {
                     itemList.setAllergy("주의사항 없음.");
@@ -71,13 +76,16 @@ public class SearchService {
 
             if(user.getAllergy().toString().equals("NONE")) //맞춤 설정을 하지 않은 경우
                 item.setAllergy("회원님이 설정하신 맞춤추천 데이터가 존재하지 않습니다.");
-            else{ // 맞춤 설정을 한 경우
-                if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy()) || item.getIntrcQesitm().contains(user.getOtherAllergy())){
+            else if (user.getOtherAllergy()!=null) { // 맞춤 설정 중 기타 부분은 따로 처리
+                if(item.getIntrcQesitm().contains(user.getOtherAllergy())){
+                    item.setAllergy("회원님이 설정하신 '"+user.getOtherAllergy()+"' 에 연관된 주의사항이 있습니다. 주의하세요.");
+                } else
+                    item.setAllergy("회원님이 설정하신 '"+user.getOtherAllergy()+"' 에 대한 상호작용이 존재하지 않습니다.");
+            } else{ // 맞춤 설정을 한 경우
+                if(item.getIntrcQesitm().contains(user.getAllergy().getAllergy())){
                     // 맞춤 설정한 알러지가 주의 사항에 포함된 경우
                     if(user.getAllergy().getAllergy().equals("항생")||user.getAllergy().getAllergy().equals("진통"))
                         item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"제 계열에 연관된 주의사항이 있습니다. 주의하세요.");
-                    else if(user.getAllergy().getAllergy().equals("기타"))
-                        item.setAllergy("회원님이 설정하신 '"+user.getOtherAllergy()+"' 에 연관된 주의사항이 있습니다. 주의하세요.");
                     else
                         item.setAllergy("회원님이 설정하신 "+user.getAllergy().getAllergy()+"에 연관된 주의사항이 있습니다. 주의하세요.");
                 }
