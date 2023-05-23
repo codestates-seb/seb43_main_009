@@ -47,6 +47,7 @@ export const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
   color: black;
+  margin-top: 3px;
   text-decoration: none;
   &.login {
     cursor: pointer;
@@ -70,6 +71,5 @@ export const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: 101;
-  background-color: ${(props) => (props.showModal ? '#8A8A8A' : 'white')};
+  z-index: ${(props) => (props.showModal ? -1 : 100)};
 `;
