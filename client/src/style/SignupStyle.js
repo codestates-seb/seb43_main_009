@@ -1,25 +1,18 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const SignupWrapper = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  height: 1000px;
-  margin-top: 50px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
-  background-color: #f4f4f4;
-`;
-
-export const SignupWrapper = styled.div`
+  background-color: #f9e6e6;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 700px;
+  height: 800px;
 `;
 
 export const GoogleSignup = styled.a`
+  margin-top: 100px;
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
@@ -68,9 +61,8 @@ export const EmailSignup = styled.form`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  border: 1px solid #c9c9c9;
+  border: none;
   border-radius: 3px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
 
 export const DisplayNameWrapper = styled.div`

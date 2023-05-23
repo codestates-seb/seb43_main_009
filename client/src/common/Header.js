@@ -56,6 +56,7 @@ const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
   color: black;
+  margin-top: 3px;
   text-decoration: none;
   &.login {
     cursor: pointer;
@@ -79,8 +80,7 @@ const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: 101;
-  background-color: ${(props) => (props.showModal ? '#8A8A8A' : 'white')};
+  z-index: ${(props) => (props.showModal ? -1 : 100)};
 `;
 
 export const Header = () => {
@@ -90,12 +90,16 @@ export const Header = () => {
   const userInfo = getUserInfo();
   const userId = userInfo ? userInfo.userId : null;
   const [showModal, setShowModal] = useState(false);
-
+  const [isClosing, setIsClosing] = useState(false);
   const handleLoginClick = () => {
     setShowModal(true);
   };
   const handleModalClose = () => {
-    setShowModal(false);
+    setIsClosing(true);
+    setTimeout(() => {
+      setShowModal(false);
+      setIsClosing(false);
+    }, 200);
   };
   const handleLogout = () => {
     dispatch(logout());
@@ -165,6 +169,7 @@ export const Header = () => {
               {showModal && (
                 <LoginModal
                   showModal={showModal}
+                  isClosing={isClosing}
                   onClose={handleModalClose}
                 ></LoginModal>
               )}

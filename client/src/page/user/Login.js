@@ -7,8 +7,10 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Link } from 'react-router-dom';
 import { Axios } from '../../utils/api';
+import logo from '../../../public/logo.png';
 import {
   LoginWrapper,
+  Logo,
   GoogleLogin,
   KakaoLogin,
   NaverLogin,
@@ -20,6 +22,7 @@ import {
   PasswordLabel,
   PasswordInput,
   LoginButton,
+  Message,
   StyledLink,
 } from '../../style/LoginStyle';
 
@@ -86,6 +89,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <LoginButton type="submit">로그인</LoginButton>
+          <Message>아직 회원이 아니신가요?</Message>
           <StyledLink to="/signup">회원가입</StyledLink>
         </EmailLogin>
       </LoginWrapper>
