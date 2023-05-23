@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCookie } from './cookie';
 
 export const Axios = axios.create({
   baseURL: process.env.API_SERVER,
@@ -35,21 +36,23 @@ Axios.interceptors.response.use(
 
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      alert('토큰이 만료되었습니다. 다시 로그인해주세요');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      window.location.href = '/login';
 
+      // localStorage.removeItem('accessToken');
+      // localStorage.removeItem('refreshToken');
+      // window.location.href = '/login';
       try {
-        // const refreshToken = localStorage.getItem('refreshToken');
-        // const response = await axios.post('refreshToken', {
-        //   refreshToken,
-        // });
-        // const accessToken = response.data.accessToken;
-        // axios.defaults.headers.common['Authorization'] =
-        //   'Bearer ' + accessToken;
-        // return Axios(originalRequest);
-        console.log('try');
+        const refreshToken = getCookie('refreshToken');
+        if (refreshToken === null || refreshToken === undefined) {
+          alert('토큰이 만료되었습니다. 다시 로그인해주세요');
+          window.location.href = '/login';
+        }
+        const response = await axios.post('refreshToken', {
+          refreshToken,
+        });
+        const accessToken = response.data.accessToken;
+        localStorage.setItem('accessToken', accessToken);
+        return Axios(originalRequest);
+        // console.log('try');
       } catch (err) {
         console.log(error);
       }

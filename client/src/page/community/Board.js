@@ -67,8 +67,8 @@ const Board = () => {
     }
     const token = localStorage.getItem('accessToken');
     if (token === null) {
-      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
-      navigate('/signup');
+      alert('로그인정보가 없습니다. 다시 로그인 해주세요.');
+      navigate('/login');
     }
 
     dispatch(submitComment({ commuId: boardData.commuId, comment }))
