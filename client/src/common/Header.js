@@ -8,6 +8,7 @@ import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStep } from '../redux/surveySlice';
 import { Axios } from '../utils/api';
+import LoginModal from '../page/user/LoginModal';
 
 const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
@@ -23,7 +24,7 @@ const HeaderWrapper = styled.div`
   top: 0;
   width: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 100;
 `;
 const Logo = styled.img`
   height: 50px;
@@ -56,6 +57,9 @@ const Menu = styled.div`
   margin-left: 20px;
   color: black;
   text-decoration: none;
+  &.login {
+    cursor: pointer;
+  }
   &.signup {
     margin-right: 20px;
   }
@@ -75,7 +79,8 @@ const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 101;
+  background-color: ${(props) => (props.showModal ? '#8A8A8A' : 'white')};
 `;
 
 export const Header = () => {
@@ -84,7 +89,14 @@ export const Header = () => {
   const [username, setUsername] = useState(null);
   const userInfo = getUserInfo();
   const userId = userInfo ? userInfo.userId : null;
+  const [showModal, setShowModal] = useState(false);
 
+  const handleLoginClick = () => {
+    setShowModal(true);
+  };
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem('accessToken');
@@ -141,16 +153,23 @@ export const Header = () => {
               <StyledLink to={`/users/${userId}`}>
                 <UserName>{username}님 환영합니다! </UserName>
               </StyledLink>
-
               <Menu className="logout" onClick={handleLogout}>
                 로그아웃
               </Menu>
             </>
           ) : (
             <>
-              <StyledLink to="/login" onClick={handleScrollZero}>
-                <Menu>로그인</Menu>
-              </StyledLink>
+              {/* <StyledLink to="/login" onClick={handleScrollZero}> */}
+              <Menu className="login" onClick={handleLoginClick}>
+                로그인
+              </Menu>
+              {showModal && (
+                <LoginModal
+                  showModal={showModal}
+                  onClose={handleModalClose}
+                ></LoginModal>
+              )}
+              {/* </StyledLink> */}
               <StyledLink to="/signup" onClick={handleScrollZero}>
                 <Menu className="signup">회원가입</Menu>
               </StyledLink>
@@ -158,7 +177,7 @@ export const Header = () => {
           )}
         </MenuWrapper>
       </HeaderWrapper>
-      <UnderMenuWrapper>
+      <UnderMenuWrapper showModal={showModal}>
         <StyledLink
           to="/survey"
           onClick={() => {
