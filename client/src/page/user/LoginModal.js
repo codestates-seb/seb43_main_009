@@ -6,11 +6,13 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Link } from 'react-router-dom';
 import { Axios } from '../../utils/api';
+import logo from '../../../public/logo.png';
 import {
   ModalWrapper,
   ModalContent,
   CloseButton,
   LoginWrapperForModal,
+  Logo,
   GoogleLogin,
   KakaoLogin,
   NaverLogin,
@@ -22,10 +24,11 @@ import {
   PasswordLabel,
   PasswordInput,
   LoginButton,
+  Message,
   StyledLink,
 } from '../../style/LoginStyle';
 
-const LoginModal = ({ onClose }) => {
+const LoginModal = ({ onClose, isClosing }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('hello@gmail.com');
@@ -59,9 +62,10 @@ const LoginModal = ({ onClose }) => {
   };
   return (
     <ModalWrapper>
-      <ModalContent>
+      <ModalContent isClosing={isClosing}>
         <CloseButton onClick={onClose}>X</CloseButton>
         <LoginWrapperForModal>
+          <Logo src={logo} alt="logo" />
           <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
             구글로 로그인
           </GoogleLogin>
@@ -89,6 +93,7 @@ const LoginModal = ({ onClose }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <LoginButton type="submit">로그인</LoginButton>
+            <Message>아직 회원이 아니신가요?</Message>
             <StyledLink to="/signup">회원가입</StyledLink>
           </EmailLogin>
         </LoginWrapperForModal>

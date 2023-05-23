@@ -19,13 +19,37 @@ export const ModalContent = styled.div`
   height: 600px;
   background-color: white;
   border-radius: 15px;
+  transform-origin: center;
+  @keyframes zoomIn {
+    from {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @keyframes zoomOut {
+    from {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+  }
+
+  animation: ${({ isClosing }) => (isClosing ? 'zoomOut' : 'zoomIn')} 0.2s;
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: none;
+  border: 0;
+  outline: 0;
+  background-color: #f9e6e6;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
 `;
 export const LoginWrapperForModal = styled.div`
   display: flex;
@@ -43,13 +67,16 @@ export const LoginWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 800px;
   width: 100%;
   background-color: #f9e6e6;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
 `;
-
+export const Logo = styled.img`
+  width: 130px;
+  margin-bottom: 30px;
+`;
 export const GoogleLogin = styled.a`
   width: 290px;
   height: 37px;
@@ -98,10 +125,9 @@ export const EmailLogin = styled.form`
   height: 255px;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #bbbbbb;
+  border: none;
   background-color: white;
   border-radius: 3px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
 export const EmailWrapper = styled.div`
   display: flex;
@@ -143,10 +169,10 @@ export const PasswordInput = styled.input`
 export const LoginButton = styled.button`
   margin: 10px;
   width: 240px;
-  height: 35px;
+  height: 40px;
   color: white;
   background-color: #f05858;
-  border-radius: 3px;
+  border-radius: 25px;
   border: none;
   font-size: 17px;
   font-weight: 600;
@@ -155,9 +181,13 @@ export const LoginButton = styled.button`
     cursor: pointer;
   }
 `;
+export const Message = styled.div`
+  font-size: 15px;
+  color: #6c6b6b;
+`;
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
-  font-size: 12px;
+  color: var(--main);
+  font-size: 15px;
   margin-bottom: 10px;
 `;
