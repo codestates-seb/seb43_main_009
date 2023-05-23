@@ -119,7 +119,12 @@ export const PasswordLabel = styled.div`
   margin: 10px 10px 2px 24px;
   font-weight: bold;
 `;
-
+export const WarningMessage = styled.div`
+  font-size: 16px;
+  width: 240px;
+  margin-left: 2px;
+  color: #ff1f32;
+`;
 export const PasswordInput = styled.input`
   margin: 10px;
   width: 240px;
