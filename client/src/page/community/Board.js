@@ -1,39 +1,59 @@
-import Layout from "../../common/Layout";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import React from "react";
-import { useEffect, useState } from "react";
-import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import Layout from '../../common/Layout';
+import styled from 'styled-components';
+import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchBoardData,
   deletePost,
   updatePost,
   submitComment,
-} from "../../redux/counterSlice";
+} from '../../redux/boardSlice';
 
 const Board = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const boardData = useSelector((state) => state.counter.data);
-  const boardStatus = useSelector((state) => state.counter.status);
-  const boardError = useSelector((state) => state.counter.error);
+  const boardData = useSelector((state) => state.board.data);
+  const boardStatus = useSelector((state) => state.board.status);
+  const boardError = useSelector((state) => state.board.error);
+  // const submitData = useSelector((state) => state.counter.data);
+  // const submitStatus = useSelector((state) => state.counter.status);
 
+  const { commuId } = useParams();
   const [showEditForm, setShowEditForm] = useState(false);
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedContent, setEditedContent] = useState("");
-  const [comment, setComment] = useState("");
+  const [editedTitle, setEditedTitle] = useState('');
+  const [editedContent, setEditedContent] = useState('');
+  const [comment, setComment] = useState('');
+
+  useEffect(() => {
+    {
+      dispatch(fetchBoardData(commuId));
+    }
+  }, [dispatch, commuId]);
+
+  console.log(boardData);
+  const commentList = boardData.comments || [];
+  console.log(commentList);
 
   const handleSubmitComment = useCallback(() => {
-    dispatch(submitComment({ commuId: boardData.commuId, comment }));
-    setComment("");
-  }, [dispatch, boardData.commuId, comment]);
+    if (comment.trim() === '') {
+      // 댓글 내용이 비어있는 경우
+      alert('댓글 내용을 입력해주세요.');
+      return;
+    }
+    dispatch(submitComment({ commuId: boardData.commuId, comment, userId: 1 }));
+    setComment('');
+  }, [dispatch, boardData.commuId, comment, commuId]);
 
   //수정
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
+    console.log(editedTitle);
     setEditedContent(boardData.content);
+    console.log(editedContent);
   };
   //수정 저장
   const handleSaveEdit = useCallback(() => {
@@ -42,25 +62,21 @@ const Board = () => {
         commuId: boardData.commuId,
         title: editedTitle,
         content: editedContent,
-      })
+      }),
     );
+    console.log(editedTitle);
+    console.log(editedContent);
     setShowEditForm(false);
   }, [dispatch, boardData.commuId, editedTitle, editedContent]);
 
   //게시글이 삭제 전에 확인메세지를 표시하고, 삭제가 완료된 후에 페이지 이동
   //혹시 delete확인이 필요하지 않다면 navigate hook을 제거할 것
   const handleDeletePost = useCallback(async () => {
-    if (window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
+    if (window.confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
       await dispatch(deletePost(boardData.commuId));
-      navigate("/commu");
+      navigate('/commu');
     }
   }, [dispatch, navigate, boardData.commuId]);
-
-  useEffect(() => {
-    if (boardStatus === "idle") {
-      dispatch(fetchBoardData());
-    }
-  }, [boardStatus, dispatch]);
 
   return (
     <Layout>
@@ -93,17 +109,19 @@ const Board = () => {
                 ></textarea>
               </div>
             ) : (
-              boardStatus === "succeeded" && (
+              boardStatus === 'succeeded' && (
                 <div>
-                  <h3>{boardData.title}</h3>
-                  <p>{boardData.content}</p>
-                  <p>작성자: {boardData.displayName}</p>
-                  <p>작성시간: {boardData.createdAt}</p>
-                  <p>조회수: {boardData.view}</p>
+                  <h3>제목 : {boardData.title}</h3>
+                  <p>내용 : {boardData.content}</p>
+                  <div className="post-info">
+                    <p>작성자: {boardData.displayName}</p>
+                    <p>작성시간: {boardData.createAt}</p>
+                    <p>조회수: {boardData.view}</p>
+                  </div>
                 </div>
               )
             )}
-            {boardStatus === "failed" && (
+            {boardStatus === 'failed' && (
               <div>
                 <p>Error: {boardError}</p>
               </div>
@@ -113,13 +131,17 @@ const Board = () => {
 
         <div className="down-box">
           <div className="comment-content">
-            {boardStatus === "succeeded" && (
+            {boardStatus === 'succeeded' && (
               <div>
-                {boardData.commentList.map((comment, index) => (
-                  <div key={index}>
-                    <p>댓글 작성자: {comment.displayName}</p>
-                    <p>댓글 내용: {comment.content}</p>
-                    <p>댓글 작성시간: {comment.createdAt}</p>
+                {commentList.map((comment) => (
+                  <div key={comment.commentId} className="comment">
+                    <div className="comment-text">
+                      <Author>{comment.displayName}</Author>
+                      <CommentText>{comment.comment}</CommentText>
+                    </div>
+                    <div>
+                      <Timestamp>{comment.createAt}</Timestamp>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -157,6 +179,7 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .button-box {
       width: 70%;
@@ -164,9 +187,6 @@ const CommunityBox = styled.div`
       justify-content: flex-end;
 
       button {
-        background-color: #f06868;
-        border: none;
-        color: white;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -174,13 +194,15 @@ const CommunityBox = styled.div`
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 12px;
-        padding: 8px 24px;
+        padding: 4px 12px;
         transition-duration: 0.4s;
-
+        background-color: white;
+        color: #f06868;
+        border: none;
         &:hover {
-          background-color: white;
-          color: #f06868;
-          border: 1px solid #f06868;
+          background-color: #f06868;
+          border: none;
+          color: white;
         }
       }
     }
@@ -192,13 +214,27 @@ const CommunityBox = styled.div`
       height: 70%;
       padding: 16px;
       box-sizing: border-box;
+      background-color: #fafafa;
+      position: relative;
 
       input {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
       }
 
       textarea {
         width: 80%;
+        border-radius: 4px;
+        padding: 4px;
+      }
+      .post-info {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
       }
     }
   }
@@ -211,16 +247,33 @@ const CommunityBox = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .comment-content {
       border: 1px solid #e0e0e0;
       width: 60%;
-      height: 30%;
+      height: 70%;
       font-size: 14px;
       padding: 16px;
       box-sizing: border-box;
       background-color: #f5f5f5;
       margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 500px;
+      border-radius: 10px;
+
+      .comment {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+      }
+
+      .comment-text {
+        display: flex;
+        align-items: baseline;
+      }
     }
 
     .write-box {
@@ -236,6 +289,7 @@ const CommunityBox = styled.div`
         height: 70%;
         border: 1px solid #e0e0e0;
         border-radius: 10px;
+        padding: 4px;
       }
 
       button {
@@ -260,4 +314,26 @@ const CommunityBox = styled.div`
   }
 `;
 
+const Author = styled.span`
+  font-weight: bold;
+  color: #f06868;
+  font-size: 14px;
+`;
+
+const CommentText = styled.span`
+  font-size: 14px;
+  color: #444;
+  margin-left: 1rem;
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const Timestamp = styled.span`
+  font-size: 12px;
+  color: #999;
+  display: inline-block;
+  margin-top: 4px;
+`;
 export default Board;

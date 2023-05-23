@@ -22,4 +22,9 @@ public class CommuResponseDto {
     private int view;
     private String displayName;
     private List<Comment> comments;
+
+    private Long userId;
+
+    private String imageUrl;
+
 }
