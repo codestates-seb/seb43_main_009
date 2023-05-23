@@ -146,7 +146,7 @@ const SearchResult = () => {
       <SearchWrapper>
         <SearchWrapper2>
           <StyledBox>
-            <h1>약에대한 정보입니다</h1>
+            <h1>약에 대한 정보입니다</h1>
           </StyledBox>
           <StyledTable>
             {data.slice(sub, num).map((row) => (
@@ -163,7 +163,7 @@ const SearchResult = () => {
                     <img
                       src={row.itemImage === nothing ? noimg : row.itemImage}
                       alt={row.itemName}
-                      style={{ maxWidth: '100%', maxHeight: '100%' }}
+                      style={{ width: '100%', height: '100%' }}
                     />
                   </td>
                 </tr>
@@ -194,7 +194,6 @@ const SearchResult = () => {
             <GoBack onClick={goback}>뒤로가기</GoBack>
             <GoWrite onClick={gowrite}>커뮤니티</GoWrite>
           </ButtonBox>
-          <SGradiant />
         </SearchWrapper2>
       </SearchWrapper>
     </Layout>
