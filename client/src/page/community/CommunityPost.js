@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CommunitypostDesign } from '../../style/CommunityDesign';
+import { CommunitypostDesign } from '../../style/CommunityStyle';
 import { GetCommulist } from '../../redux/CommuntiySlice';
 
 const Commpost = () => {
@@ -13,7 +13,7 @@ const Commpost = () => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setpageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 10;
+  const itemsPerPage = 11;
 
   useEffect(() => {
     {
@@ -71,7 +71,11 @@ const Commpost = () => {
           >
             <li className="postid">{el.commuId}</li>
             <li className="postname">{el.displayName}</li>
-            <li className="posttitle">{el.title}</li>
+            <li className="posttitle">
+              {el.title.length > 20
+                ? el.title.substring(0, 20) + '...'
+                : el.title}
+            </li>
             <li className="postview">{el.view}</li>
             <li className="postcreat">{formatDate(el.createAt)}</li>
           </ul>

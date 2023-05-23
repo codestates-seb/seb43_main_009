@@ -1,5 +1,5 @@
 import Layout from '../../common/Layout';
-import { CommunityDesign } from '../../style/CommunityDesign';
+import { CommunityDesign } from '../../style/CommunityStyle';
 import CommunityPost from './CommunityPost';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,11 @@ const Community = () => {
   const Navigate = useNavigate();
 
   const goWrite = () => {
-    Navigate('/commu/posts');
+    const token = localStorage.getItem('accessToken');
+    if (token === null) {
+      alert('로그인 후 사용가능합니다.');
+      Navigate('/login');
+    } else Navigate('/commu/posts');
   };
 
   return (
