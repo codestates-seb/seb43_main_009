@@ -12,7 +12,6 @@ Axios.interceptors.request.use(
   function (config) {
     // 요청이 전달되기 전에 작업 수행
     //jwt토큰넣기
-
     config.headers.Authorization = localStorage.getItem('accessToken');
     return config;
   },
@@ -21,7 +20,6 @@ Axios.interceptors.request.use(
     return Promise.reject(error);
   },
 );
-
 //응답 가로채기
 Axios.interceptors.response.use(
   function (response) {
@@ -52,22 +50,15 @@ Axios.interceptors.response.use(
           alert('토큰이 만료되었습니다. 다시 로그인해주세요');
           window.location.href = '/login';
         }
-        const response = await Axios.post(
-          '/jwt/refresh',
-          { refresh: refreshToken },
-          {
-            headers: {
-              refresh: refreshToken,
-            },
-          },
-        );
-        console.log(response.data);
-        const accessToken = response.data;
+        const response = await axios.post('refreshToken', {
+          refreshToken,
+        });
+        const accessToken = response.data.accessToken;
         localStorage.setItem('accessToken', accessToken);
-
         return Axios(originalRequest);
+        // console.log('try');
       } catch (err) {
-        console.log(err);
+        console.log(error);
       }
     }
     return Promise.reject(error);
