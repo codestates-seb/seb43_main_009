@@ -127,7 +127,6 @@ public class JwtTokenizer {
         if(verifyTokenExpiration(authorizationHeader)){
             return authorizationHeader;
         }
-
         return null;
     }
 
@@ -152,7 +151,6 @@ public class JwtTokenizer {
     public boolean verifyTokenExpiration(String requestToken) {
         if (requestToken != null) {
             Jws<Claims> claims = getClaims(requestToken, encodeBase64SecretKey(secretKey));
-
             Date expiration = null;
             if(claims!=null)
                 expiration = claims.getBody().getExpiration();
@@ -189,5 +187,22 @@ public class JwtTokenizer {
         else userId = null;
 
         return userId;
+    }
+
+    public Jws<Claims> getClaimsByToken(String extractToken) {
+
+        String base64EncodedSecretKey = encodeBase64SecretKey(secretKey);
+        Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
+
+        try {
+            Jws<Claims> claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(extractToken);
+            return claims;
+        }catch (ExpiredJwtException e){
+            return null;
+        }
+
     }
 }
