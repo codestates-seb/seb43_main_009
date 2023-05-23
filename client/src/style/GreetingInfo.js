@@ -106,6 +106,7 @@ export const STextInfoSection = styled.div`
 
   .example {
     font-size: medium;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     position: absolute;
     margin-top: 240px;
     color: var(--gray-400);
