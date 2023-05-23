@@ -5,7 +5,6 @@ export const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
 `;
-
 export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -16,9 +15,8 @@ export const HeaderWrapper = styled.div`
   top: 0;
   width: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 100;
 `;
-
 export const Logo = styled.img`
   height: 50px;
   position: absolute;
@@ -50,6 +48,9 @@ export const Menu = styled.div`
   margin-left: 20px;
   color: black;
   text-decoration: none;
+  &.login {
+    cursor: pointer;
+  }
   &.signup {
     margin-right: 20px;
   }
@@ -69,5 +70,6 @@ export const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 101;
+  background-color: ${(props) => (props.showModal ? '#8A8A8A' : 'white')};
 `;

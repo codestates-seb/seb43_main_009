@@ -1,6 +1,6 @@
 import Layout from '../../common/Layout';
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useId } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,7 +12,7 @@ import {
   checkToken,
 } from '../../redux/boardSlice';
 import { getUserInfo } from '../../utils/UserInfo';
-import questionsmark from '../../../public/questionsmark.png';
+
 import {
   CommunityBox,
   Author,
@@ -27,7 +27,7 @@ const Board = () => {
   const boardData = useSelector((state) => state.board.data);
   const boardStatus = useSelector((state) => state.board.status);
   const boardError = useSelector((state) => state.board.error);
-  const token = useSelector((state) => state.board.token);
+
   // const submitData = useSelector((state) => state.counter.data);
   // const submitStatus = useSelector((state) => state.counter.status);
 
