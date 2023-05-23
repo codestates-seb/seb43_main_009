@@ -101,6 +101,7 @@ const SearchResult = () => {
   };
   const gowrite = () => {
     navigate('/commu');
+    window.scrollTo(0, 0);
   };
 
   // handleSearch 함수를 정의합니다.
@@ -139,6 +140,7 @@ const SearchResult = () => {
 
   useEffect(() => {
     handleSearch();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
