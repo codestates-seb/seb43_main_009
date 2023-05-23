@@ -154,9 +154,9 @@ export const STextInfoSection = styled.div`
     border-radius: 50px;
     border: none;
     opacity: 0.75;
-    font-size: 25px;
+    font-size: 22px;
     color: #eb5035;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     animation: ${bounce} 2s ease-in-out infinite;
     animation-fill-mode: both;
