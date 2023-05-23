@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const SearchWrapper = styled.div`
   width: 100%;
@@ -100,7 +99,6 @@ export const SearchResultDesign = styled.div`
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
     &:hover {
       background-color: #45a049;
     }
@@ -118,7 +116,6 @@ export const SearchlistDesign = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   background-color: #f4f4f4;
 
   .search {
@@ -130,7 +127,7 @@ export const SearchlistDesign = styled.div`
     border-radius: 4px;
     margin-top: 50px;
     &:focus {
-      border: 2px solid #ffa1a1;
+      border-color: red;
       outline: none;
     }
   }
@@ -149,11 +146,11 @@ export const SearchlistDesign = styled.div`
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
     &:hover {
       background-color: #45a049;
     }
   }
+
   .result {
     font-size: 30px;
     margin-top: 30px;
@@ -181,12 +178,14 @@ export const SearchlistDesign = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
   .table {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+
   .sub {
     background-color: #fcb2b2;
     justify-content: center;
@@ -253,7 +252,33 @@ export const SearchlistDesign = styled.div`
   .allergy {
     color: red;
   }
+
   .list.last-item {
     margin-bottom: 50px;
   }
+`;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+`;
+
+export const Spinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
 `;
