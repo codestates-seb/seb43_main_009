@@ -2,13 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Link } from 'react-router-dom';
 import { Axios } from '../../utils/api';
 import {
-  LoginWrapper,
+  ModalWrapper,
+  ModalContent,
+  CloseButton,
+  LoginWrapperForModal,
   GoogleLogin,
   KakaoLogin,
   NaverLogin,
@@ -23,7 +25,7 @@ import {
   StyledLink,
 } from '../../style/LoginStyle';
 
-const Login = () => {
+const LoginModal = ({ onClose }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('hello@gmail.com');
@@ -55,41 +57,44 @@ const Login = () => {
       console.error(error);
     }
   };
-
   return (
-    <Layout>
-      <LoginWrapper>
-        <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
-          구글로 로그인
-        </GoogleLogin>
-        <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
-          카카오로 로그인
-        </KakaoLogin>
-        <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
-          네이버로 로그인
-        </NaverLogin>
-        <EmailLogin onSubmit={handleSubmit}>
-          <EmailWrapper>
-            <EmailLabel>이메일</EmailLabel>
-          </EmailWrapper>
-          <EmailInput
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <PasswordWrapper>
-            <PasswordLabel>비밀번호</PasswordLabel>
-          </PasswordWrapper>
-          <PasswordInput
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <LoginButton type="submit">로그인</LoginButton>
-          <StyledLink to="/signup">회원가입</StyledLink>
-        </EmailLogin>
-      </LoginWrapper>
-    </Layout>
+    <ModalWrapper>
+      <ModalContent>
+        <CloseButton onClick={onClose}>X</CloseButton>
+        <LoginWrapperForModal>
+          <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
+            구글로 로그인
+          </GoogleLogin>
+          <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+            카카오로 로그인
+          </KakaoLogin>
+          <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+            네이버로 로그인
+          </NaverLogin>
+          <EmailLogin onSubmit={handleSubmit}>
+            <EmailWrapper>
+              <EmailLabel>이메일</EmailLabel>
+            </EmailWrapper>
+            <EmailInput
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <PasswordWrapper>
+              <PasswordLabel>비밀번호</PasswordLabel>
+            </PasswordWrapper>
+            <PasswordInput
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <LoginButton type="submit">로그인</LoginButton>
+            <StyledLink to="/signup">회원가입</StyledLink>
+          </EmailLogin>
+        </LoginWrapperForModal>
+      </ModalContent>
+    </ModalWrapper>
   );
 };
-export default Login;
+
+export default LoginModal;
