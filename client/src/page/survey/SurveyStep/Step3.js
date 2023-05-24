@@ -151,4 +151,3 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
 };
 
 export default Step3;
-
