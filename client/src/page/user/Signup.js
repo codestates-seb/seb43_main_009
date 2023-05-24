@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../../common/Layout';
-import axios from 'axios';
+import { Axios } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import googleLogo from '../../../public/googleLogo.png';
 import naverLogo from '../../../public/naverLogo.png';
@@ -57,7 +57,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://server.dowajoyak.shop/users/signup', {
+      await Axios.post('/users/signup', {
         email: emailInputValue,
         displayName: DisplayNameInputValue,
         password: passwordInputValue,
@@ -71,15 +71,15 @@ const Signup = () => {
   return (
     <Layout>
       <SignupWrapper>
-        <GoogleSignup href="https://server.dowajoyak.shop/oauth2/authorization/google">
+        <GoogleSignup href="https://server.dowajoyak.store/oauth2/authorization/google">
           <GoogleLogo src={googleLogo} alt="logo" />
           구글로 회원가입
         </GoogleSignup>
-        <KakaoSignup href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+        <KakaoSignup href="https://server.dowajoyak.store/oauth2/authorization/kakao">
           <KakaoLogo src={kakaoLogo} alt="logo" />
           카카오로 회원가입
         </KakaoSignup>
-        <NaverSignup href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+        <NaverSignup href="https://server.dowajoyak.store/oauth2/authorization/naver">
           <NaverLogo src={naverLogo} alt="logo" />
           네이버로 회원가입
         </NaverSignup>
