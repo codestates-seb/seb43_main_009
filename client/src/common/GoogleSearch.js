@@ -4,7 +4,7 @@ const GoogleSearch = ({ changeInput, setAnimate, nextStep, onInput }) => {
   useEffect(() => {
     const gcse = document.createElement('script');
     gcse.type = 'text/javascript';
-    gcse.src = '';
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + process.env.CX_VALUE;
 
     const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
@@ -13,7 +13,6 @@ const GoogleSearch = ({ changeInput, setAnimate, nextStep, onInput }) => {
       const gscInput = document.querySelector('input.gsc-input');
       if (gscInput) {
         console.log('gsc-input element found:', gscInput);
-
         gscInput.setAttribute('placeholder', '이외 알러지 입력 ex) 유당');
 
         //일반 입력
