@@ -62,9 +62,9 @@ Axios.interceptors.response.use(
           },
         );
         console.log(response.data);
+        localStorage.removeItem('accessToken');
         const accessToken = response.data;
         localStorage.setItem('accessToken', accessToken);
-
         return Axios(originalRequest);
       } catch (err) {
         console.log(err);

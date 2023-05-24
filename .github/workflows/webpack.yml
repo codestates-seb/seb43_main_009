@@ -7,11 +7,9 @@ on:
 defaults:
   run:
     working-directory: ./client #default working directory
-
 env:
   AWS_REGION: ap-northeast-2
   S3_BUCKET_NAME: dowajoyak.store
-  CX_VALUE: ${{ secrets.CX_VALUE }}
   API_SERVER: https://server.dowajoyak.store
 
 jobs:
@@ -30,6 +28,12 @@ jobs:
         run: |
           npm i
           npm run build
+
+      - name: access to secrets
+        run: |
+          echo "CX_VALUE=$CX_VALUE" >> .env
+        env:
+          CX_VALUE: ${{secrets.CX_VALUE}}
 
       # Access Key와 Secret Access Key를 통해 권한을 확인합니다.
       # 아래 코드에 Access Key와 Secret Key를 직접 작성하지 않습니다.
