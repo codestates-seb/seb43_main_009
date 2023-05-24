@@ -32,12 +32,15 @@ const Step2 = ({ disease, changeInput, nextSteps }) => {
     }
   };
   const handleNextClick = () => {
-    setAnimate('down');
-    setTimeout(() => {
-      nextSteps();
-    }, 1000);
+    if (selectedButton) {
+      setAnimate('down');
+      setTimeout(() => {
+        nextSteps();
+      }, 1000);
+    } else {
+      alert('최소 한가지의 값을 선택해주세요!');
+    }
   };
-
   return (
     <Step2Design>
       <Step2Choice>불편하거나 걱정되는 곳을 한가지 선택해 주세요! </Step2Choice>

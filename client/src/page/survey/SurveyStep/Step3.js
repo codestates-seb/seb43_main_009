@@ -20,7 +20,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const [animate, setAnimate] = useState('up');
   const [selectedButton, setSelectedButton] = useState(null);
   const [userInput, setUserInput] = useState('');
-
+  const [googleSearchValue, setGoogleSearchValue] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,11 +57,15 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   };
 
   const handleNextClick = () => {
-    setAnimate('down');
-    setTimeout(() => {
-      submitForm();
-      nextSteps();
-    }, 1000);
+    if (selectedButton || googleSearchValue) {
+      setAnimate('down');
+      setTimeout(() => {
+        submitForm();
+        nextSteps();
+      }, 1000);
+    } else {
+      alert('해당하는 알러지를 최소 한가지 설정해주세요!');
+    }
   };
 
   return (
@@ -127,6 +131,7 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
             changeInput={changeInput}
             nextStep={nextSteps}
             setAnimate={setAnimate}
+            onInput={setGoogleSearchValue}
           />
         </div>
         <Step3Button
