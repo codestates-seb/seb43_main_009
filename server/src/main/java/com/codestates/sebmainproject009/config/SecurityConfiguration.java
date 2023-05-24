@@ -95,6 +95,8 @@ public class SecurityConfiguration {
         configuration.addAllowedOriginPattern("https://dowajoyak.shop");
         configuration.addAllowedOriginPattern("https://www.dowajoyak.shop");
         configuration.addAllowedOriginPattern("https://server.dowajoyak.shop");
+        configuration.addAllowedOriginPattern("https://www.dowajoyak.store");
+        configuration.addAllowedOriginPattern("https://dowajoyak.store");
         configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.addExposedHeader("Authorization");
