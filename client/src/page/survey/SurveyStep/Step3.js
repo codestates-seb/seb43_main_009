@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
+import GoogleSearch from '../../../common/GoogleSearch';
 import {
   AnimateContent,
   Step3Design,
   Step3Choice,
   Step3Choice2,
-  Etc,
   Step3Img,
   Nothing,
   Step3Button,
@@ -114,22 +114,21 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
               <img className="xray" src={xray} alt="xray"/>
               조영제 
               </button> */}
-        <Step3Input
+        {/* <Step3Input
           type="text"
           value={userInput}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onKeyDown={handleInputKeyDown}
           placeholder="기타 알러지를 입력하세요 ex: 유당"
-        />
-        {/* <div>
+        /> */}
+        <div>
           <GoogleSearch
             changeInput={changeInput}
             nextStep={nextSteps}
             setAnimate={setAnimate}
           />
-        </div> */}
-        {/* <Etc>기타 알러지를 입력하세요 ex: 유당</Etc> */}
+        </div>
         <Step3Button
           className="nonono"
           value="NONE"
