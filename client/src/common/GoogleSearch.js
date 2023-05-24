@@ -3,8 +3,10 @@ import React, { useEffect } from 'react';
 const GoogleSearch = ({ changeInput, setAnimate, nextStep, onInput }) => {
   useEffect(() => {
     const gcse = document.createElement('script');
+    console.log(process.env.CX_VALUE);
+    console.log(process.env.API_SERVER);
     gcse.type = 'text/javascript';
-    gcse.src = '';
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + process.env.CX_VALUE;
 
     const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
