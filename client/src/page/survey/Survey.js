@@ -8,6 +8,7 @@ import Layout from '../../common/Layout';
 import { getUserInfo } from '../../utils/UserInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStep } from '../../redux/surveySlice';
+import { Axios } from '../../utils/api';
 
 const Survey = () => {
   const dispatch = useDispatch();
@@ -24,14 +25,11 @@ const Survey = () => {
 
   const submitForm = async () => {
     try {
-      const response = await axios.post(
-        'https://server.dowajoyak.shop/surveys',
-        {
-          disease,
-          allergy,
-          userId: userInfo.userId,
-        },
-      );
+      const response = await Axios.post('/surveys', {
+        disease,
+        allergy,
+        userId: userInfo.userId,
+      });
       console.log(response.data);
     } catch (error) {
       console.error(error);
