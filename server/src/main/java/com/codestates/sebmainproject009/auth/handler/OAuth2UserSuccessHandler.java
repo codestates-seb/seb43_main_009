@@ -107,7 +107,7 @@ public class OAuth2UserSuccessHandler extends SimpleUrlAuthenticationSuccessHand
                 .scheme("https")
                 //.scheme("http")
                 //.host("localhost")
-                .host("dowajoyak.shop")
+                .host("dowajoyak.store")
                 .port(443)
                 //.path("/receive-token.html")
                 .queryParams(queryParams)
