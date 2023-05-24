@@ -77,5 +77,5 @@ export const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: ${(props) => (props.showModal ? -1 : 100)};
+  z-index: ${(props) => (props.showModal ? 2 : 100)};
 `;
