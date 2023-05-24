@@ -191,7 +191,7 @@ export const Step3Design = styled.div`
   /* 구글 자동완성 CSS */
   .gsc-input-box {
     height: 50px !important;
-    width: 32vw;
+    width: 31vw;
     background-color: rgba(0, 0, 0, 0);
     margin-top: 30px;
     border: none;
@@ -200,10 +200,25 @@ export const Step3Design = styled.div`
   .gsc-control-cse {
     display: none;
   }
-  .gsc-input {
-    height: 75px !important;
-    border-radius: 20px;
+  input {
+    &.gsc-input {
+      height: 75px !important;
+      border-radius: 2px;
+      border-style: solid;
+      border-color : red;
+      text-align: center;
+      font-size:20px;
+      background: none !important;
+      background-color: white !important;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px !important;
+    }
+    &.gsc-input::placeholder {
+      color: var(--main);
+      font-size: 20px;
   }
+  }
+
   button {
     &.gsc-search-button {
       display: none;
@@ -219,12 +234,6 @@ export const Step3Choice = styled.div`
 export const Step3Choice2 = styled.div`
   font-size: 23px;
   margin-top: 10px;
-`;
-
-export const Etc = styled.div`
-  font-size: 17px;
-  margin-top: 40px;
-  margin-left: 1vw;
 `;
 
 export const Step3Img = styled.img`
@@ -257,7 +266,7 @@ export const Step3Button = styled.button`
   margin-top: 30px;
   transition: background-color 0.5s;
   &.nonono {
-    margin-top: 20px;
+    margin-top: 60px;
   }
 
   &.next,
@@ -438,3 +447,4 @@ export const Retry = styled.button`
     height: 30px;
   }
 `;
+

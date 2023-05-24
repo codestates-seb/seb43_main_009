@@ -1,6 +1,6 @@
 import Layout from '../../common/Layout';
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Axios } from '../../utils/api';
 import {
   SpinnerContainer,
   Spinner,
@@ -58,10 +58,7 @@ const SearchResult = () => {
           Authorization: `${token}`,
         };
       }
-      const response = await axios.get(
-        `https://server.dowajoyak.shop/search/${searchTerm}`,
-        config,
-      );
+      const response = await Axios.get(`/search/${searchTerm}`, config);
       console.log(response.data);
 
       if (typeof response.data === 'object') {
