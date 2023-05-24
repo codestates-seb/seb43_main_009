@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-const GoogleSearch = ({ changeInput, setAnimate, nextStep }) => {
+const GoogleSearch = ({ changeInput, setAnimate, nextStep, onInput }) => {
   useEffect(() => {
     const gcse = document.createElement('script');
     gcse.type = 'text/javascript';
-    gcse.src = `https://cse.google.com/cse.js?cx=${process.env.CX_VALUE}`;
     gcse.src = '';
+
     const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
 
@@ -19,6 +19,7 @@ const GoogleSearch = ({ changeInput, setAnimate, nextStep }) => {
         //일반 입력
         gscInput.addEventListener('input', (e) => {
           changeInput({ target: { name: 'allergy', value: e.target.value } });
+          onInput(e.target.value);
         });
         clearInterval(intervalId);
         gscInput.addEventListener('keydown', (e) => {

@@ -51,7 +51,7 @@ const Survey = () => {
     dispatch(setStep(step - 1));
   };
   const resetSteps = () => {
-    dispatch(setStep(step - 3));
+    dispatch(setStep(1));
     setForm({
       disease: '',
       allergy: '',
@@ -63,7 +63,7 @@ const Survey = () => {
   return (
     <Layout>
       <div className="wrap">
-        {step === 1 && <Step1 nextSteps={nextSteps} />}
+        {step === 1 && <Step1 nextSteps={nextSteps} resetSteps={resetSteps} />}
         {step === 2 && (
           <Step2
             disease={disease}
