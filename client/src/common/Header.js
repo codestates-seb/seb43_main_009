@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../public/logo.png';
-import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
@@ -27,6 +27,7 @@ export const Header = () => {
   const userId = userInfo ? userInfo.userId : null;
   const [showModal, setShowModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const navigate = useNavigate();
   const handleLoginClick = () => {
     setShowModal(true);
   };
@@ -40,7 +41,7 @@ export const Header = () => {
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem('accessToken');
-    Navigate('/');
+    navigate('/');
     window.alert('로그아웃 성공!');
   };
 
