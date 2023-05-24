@@ -12,6 +12,7 @@ env:
   AWS_REGION: ap-northeast-2
   S3_BUCKET_NAME: dowajoyak.store
   CX_VALUE: ${{ secrets.CX_VALUE }}
+  API_SERVER: https://server.dowajoyak.store
 
 jobs:
   build:
