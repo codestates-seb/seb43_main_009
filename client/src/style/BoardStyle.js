@@ -84,17 +84,18 @@ export const CommunityBox = styled.div`
       flex-direction: column;
       justify-content: space-between;
       border-radius: 20px;
-      width: 80%;
+      width: 70%;
       min-height: 100%;
       padding: 16px;
       box-sizing: border-box;
       position: relative;
       margin-bottom: 20px;
       white-space: pre-wrap;
-
+      height: 500px;
       .retouch-box {
         overflow-y: auto;
         overflow-x: hidden;
+
         span {
           font-size: x-large;
           font-weight: 600;

@@ -48,6 +48,8 @@ Axios.interceptors.response.use(
       // window.location.href = '/login';
       try {
         const refreshToken = getCookie('refreshToken');
+        // const reToken = response.headers['refresh'];
+        // const refreshToken = getCookie(reToken);
         if (refreshToken === null || refreshToken === undefined) {
           alert('토큰이 만료되었습니다. 다시 로그인해주세요');
           window.location.href = '/login';
@@ -55,14 +57,20 @@ Axios.interceptors.response.use(
         const response = await Axios.post(
           '/jwt/refresh',
           { refresh: refreshToken },
-          {
-            headers: {
-              refresh: refreshToken,
-            },
-          },
+          // {
+          //   headers: {
+          //     refresh: refreshToken,
+          //   },
+          // },
         );
+
+        console.log(response);
+        // response.headers.a-b
+        // response.headers['a-b']
+
         console.log(response.data);
         localStorage.removeItem('accessToken');
+
         const accessToken = response.data;
         localStorage.setItem('accessToken', accessToken);
         return Axios(originalRequest);
