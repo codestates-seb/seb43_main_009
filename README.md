@@ -116,7 +116,7 @@
 - JWT 구현 <br/> 
 - OAuth2 + JWT 통합 <br/>
 - 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/>
-- JSON parsing component 구현<br/>
+- JSON parsing service 구현<br/>
 - S3 버킷에 이미지를 올리는 API 구현 <br/>
 - Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/>
 - 서버 환경 변수 리소스를 Parameter Store와 연동 configuration <br/>
