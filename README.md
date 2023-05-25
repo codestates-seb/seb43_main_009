@@ -111,19 +111,21 @@
 <div markdown="1">       
 
 - OAuth2(Google) 구현<br/>
-- Spring Security configuration<br/>
-- CORS configuration(security  +S3)<br/>
+- Spring Security configuration (For login, signup) <br/>
+- CORS configuration(security+S3)<br/>
 - JWT 구현 <br/> 
 - OAuth2 + JWT 통합 <br/>
 - 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/>
-- JSON parsing 구현<br/>
+- JSON parsing component 구현<br/>
 - S3 버킷에 이미지를 올리는 API 구현 <br/>
 - Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/>
-- 서버 환경 변수 리소스를 Parameter Store와 연동<br/>
+- 서버 환경 변수 리소스를 Parameter Store와 연동 configuration <br/>
 - 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>
 - Github Actions configuration(FE+BE, Code Deploy)<br/>
-- Refresh token을 통한 access token 재발급 API 구현
-
+- Refresh token을 통한 access token 재발급 API 구현<br/>
+- 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic 추가하여 refactoring <br/>
+- 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
+	
 </div>
 </details>
 
