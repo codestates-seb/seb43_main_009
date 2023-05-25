@@ -5,7 +5,6 @@ const GoogleSearch = ({ changeInput, setAnimate, nextStep }) => {
     const gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.src = `https://cse.google.com/cse.js?cx=${process.env.CX_VALUE}`;
-    gcse.src = '';
     const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
 
