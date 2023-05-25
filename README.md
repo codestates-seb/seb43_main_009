@@ -45,7 +45,7 @@
     <tr>
       <th align="center"> <a href="https://github.com/Sniij"> 조만기 </a> <br/>BE(Leader)</th>
       <th align="center"> <a href="https://github.com/insooY"> 양인수 </a> <br/>BE</th>
-      <th align="center"> <a href="https://github.com/Sniij"> 한동희 </a> <br/>BE</th>
+      <th align="center"> <a href="https://github.com/Gitdonghee"> 한동희 </a> <br/>BE</th>
     </tr>
   </thead>
   <tbody>
