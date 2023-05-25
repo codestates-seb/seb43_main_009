@@ -2,16 +2,16 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "123" ]
 
 permissions:
   contents: read
   
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: dowajoyak.shop
-  CODE_DEPLOY_APPLICATION_NAME: dowajoyak-client-codeDeploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-client-codeDeploy-group
+  S3_BUCKET_NAME: dowajoyak.store
+  CODE_DEPLOY_APPLICATION_NAME: dowajoyak-CodeDeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dowajoyak-CodeDeploy-group
 
 jobs:
   build:
