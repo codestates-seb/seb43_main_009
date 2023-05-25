@@ -123,7 +123,7 @@
 - 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>
 - Github Actions configuration(FE+BE, Code Deploy)<br/>
 - Refresh token을 통한 access token 재발급 API 구현<br/>
-- 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic 추가하여 refactoring <br/>
+- 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
 - 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
 	
 </div>
