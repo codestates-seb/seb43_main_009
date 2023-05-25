@@ -105,6 +105,17 @@
 <h3>:raccoon:BE_task_assignment:raccoon:</h3>
 <br>
 
+
+<details>
+<summary>조만기</summary>
+<div markdown="1">       
+
+- OAuth2(Google) 구현<br/> - Spring Security configuration<br/>- CORS configuration(security  +S3)<br/> - JWT 구현 <br/> - OAuth2 + JWT 통합 <br/> - 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/> - JSON parsing 구현<br/>- S3 버킷에 이미지를 올리는 API 구현 <br/>- Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/> - 서버 환경 변수 리소스를 Parameter Store와 연동<br/>- 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>- Github Actions configuration(FE+BE, Code Deploy)<br/>- Refresh token을 통한 access token 재발급 API 구현
+
+</div>
+</details>
+
+
 |조만기|- OAuth2(Google) 구현<br/> - Spring Security configuration<br/>- CORS configuration(security  +S3)<br/> - JWT 구현 <br/> - OAuth2 + JWT 통합 <br/> - 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/> - JSON parsing 구현<br/>- S3 버킷에 이미지를 올리는 API 구현 <br/>- Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/> - 서버 환경 변수 리소스를 Parameter Store와 연동<br/>- 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>- Github Actions configuration(FE+BE, Code Deploy)<br/>- Refresh token을 통한 access token 재발급 API 구현|
 |---|---|
 |양인수||
