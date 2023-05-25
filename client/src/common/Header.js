@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import logo from '../../public/logo.png';
-import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStep } from '../redux/surveySlice';
-import { Axios } from '../utils/api';
 import LoginModal from '../page/user/LoginModal';
 import {
   GlobalFont,
@@ -27,6 +26,7 @@ export const Header = () => {
   const userId = userInfo ? userInfo.userId : null;
   const [showModal, setShowModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const navigate = useNavigate();
   const handleLoginClick = () => {
     setShowModal(true);
   };
@@ -40,7 +40,8 @@ export const Header = () => {
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem('accessToken');
-    Navigate('/');
+    setShowModal(false);
+    navigate('/');
     window.alert('로그아웃 성공!');
   };
 
@@ -51,34 +52,15 @@ export const Header = () => {
     window.scrollTo(0, 0);
   };
 
-  // useEffect(() => {
-  //   const userInfo = getUserInfo();
-  //   if (userInfo?.username) {
-  //     const namePart = userInfo.username.split('@')[0];
-  //     setUsername(namePart);
-  //   } else {
-  //     setUsername('Guest');
-  //   }
-  // }, [isLoggedIn]);
   useEffect(() => {
-    // 사용자 정보를 가져오는 API 요청을 보냅니다.
-    Axios.get(`/users/${userId}`)
-      .then((response) => {
-        // 응답 데이터에서 사용자 이름을 가져옵니다.
-        const userInfo = getUserInfo();
-        console.log(userInfo);
-        // 기존 코드에서 차용한 방식으로 사용자 이름을 설정합니다.
-        if (userInfo.username) {
-          const namePart = userInfo.username.split('@')[0];
-          setUsername(namePart);
-        } else {
-          setUsername('Guest');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [isLoggedIn, userId]);
+    const userInfo = getUserInfo();
+    if (userInfo?.username) {
+      const namePart = userInfo.username.split('@')[0];
+      setUsername(namePart);
+    } else {
+      setUsername('Guest');
+    }
+  }, [isLoggedIn]);
 
   return (
     <GlobalFont>
