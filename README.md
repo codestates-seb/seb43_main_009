@@ -11,7 +11,7 @@
 </p>
 
 <div align="center">
-<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> SEB_43 9TEAM 반미콩입니다 :muscle:</h1>
+<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> 반미콩입니다 :muscle:</h1>
 </div>
 
 <br>
