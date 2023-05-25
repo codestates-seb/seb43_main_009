@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import doctor from '../../../../public/doctor.jpg';
-import { Step1Design } from '../../../style/SurveyStyle';
+import { getUserInfo } from '../../../utils/UserInfo';
+import { useNavigate } from 'react-router-dom';
+import {
+  AnimateContent,
+  Card,
+  Doctor,
+  Step1Recommend,
+  Comment,
+  Start,
+  Step1Design,
+} from '../../../style/SurveyStyle';
 
-const Step1 = ({ disease, changeInput, nextSteps }) => {
-  const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: 'disease', value: e.target.value } });
+const Step1 = ({ nextSteps }) => {
+  const [animate, setAnimate] = useState('up');
+  const Navigate = useNavigate();
+  const token = getUserInfo();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleStartClick = () => {
+    if (token) {
+      setAnimate('down');
+      setTimeout(() => {
+        nextSteps();
+      }, 1000);
+    } else {
+      alert('로그인 후 사용가능합니다.');
+      Navigate('/login');
+    }
   };
 
   return (
     <Step1Design>
-      <div className="stepone">
-        <img className="doctor" src={doctor} alt="doctor"></img>
-        <div>
-          <div className="recommend">맞춤추천</div>
-          <div className="comment">
-            올바른 영양제 섭취를 위해 <br />
-            개인별 필요 성분과 제품을 알려드려요
+      <AnimateContent animate={animate}>
+        <Card>
+          <Doctor src={doctor} alt="doctor"></Doctor>
+          <div>
+            <Step1Recommend>맞춤추천</Step1Recommend>
+            <Comment>
+              올바른 영양제 섭취를 위해 <br />
+              개인별 필요 성분과 제품을 알려드려요
+            </Comment>
+            <Start onClick={handleStartClick}>시작하기</Start>
           </div>
-          <button className="start" onClick={nextSteps}>
-            시작하기
-          </button>
-        </div>
-      </div>
+        </Card>
+      </AnimateContent>
     </Step1Design>
   );
 };

@@ -1,55 +1,112 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { GiStomach } from 'react-icons/gi';
 import { ImEye } from 'react-icons/im';
 import { BsShieldPlus } from 'react-icons/bs';
 import { CiCoffeeCup } from 'react-icons/ci';
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+`;
+export const AnimateContent = styled.div`
+  ${({ animate }) =>
+    animate === 'up'
+      ? css`
+          animation: ${slideUp} 1s;
+        `
+      : animate === 'down'
+      ? css`
+          animation: ${slideDown} 1s;
+        `
+      : ''}
+`;
+
+export const Card = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 400px;
+  height: 560px;
+  min-height: 400px;
+  margin-top: 7%;
+  background-color: white;
+  font-size: 25px;
+  border-radius: 15px;
+  @media screen and (max-height: 800px) {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 300px;
+    height: 360px;
+  }
+
+  transition: all 0.2s;
+  box-shadow: 12px 12px 2px 1px rgba(80, 80, 80, 0.2);
+  &:hover {
+    box-shadow: -12px 12px 2px -1px rgba(80, 80, 80, 0.2);
+  }
+
+  box-shadow: 0 5px 5px -5px black;
+`;
+
+export const Doctor = styled.img`
+  width: 100%;
+  height: 50%;
+  border-radius: 15px 15px 0 0 / 15px 15px 0 0;
+`;
+
+export const Step1Recommend = styled.div`
+  margin-top: 20px;
+  font-weight: bold;
+`;
+
+export const Comment = styled.div`
+  margin-top: 20px;
+`;
+
+export const Start = styled.button`
+  margin: 20px;
+  width: 120px;
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  background-color: #f05858;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: #d32f2f;
+  }
+  @media screen and (max-height: 700px) {
+    font-size: 16px;
+  }
+`;
 
 export const Step1Design = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  .stepone {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    width: 40%;
-    height: 80%;
-    margin-top: 70px;
-    background-color: #fffbfb;
-    font-size: 30px;
-    border-radius: 15px;
-    .doctor {
-      width: 100%;
-      height: 60%;
-      border-radius: 15px 15px 0 0 / 15px 15px 0 0;
-    }
-    .recommend {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .comment {
-      margin-top: 10px;
-    }
-    .start {
-      margin-top: 15px;
-      width: 120px;
-      height: 50px;
-      border-radius: 15px;
-      border: none;
-      background-color: #f05858;
-      font-size: 25px;
-      color: white;
-      cursor: pointer;
-      &:hover {
-        background-color: #d32f2f;
-      }
-    }
-  }
+  height: 85vh;
+  background-color: #f4f4f4;
 `;
 
 export const Step2Design = styled.div`
@@ -57,52 +114,68 @@ export const Step2Design = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
+  height: 1000px;
+  background-color: #f4f4f4;
+`;
 
-  img {
-    width: 35px;
-    height: 35px;
-    margin-left: 37%;
-    margin-right: 10px;
-  }
+export const Step2Img = styled.img`
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+`;
 
-  button {
-    width: 30vw;
+export const Step2Button = styled.button`
+  width: 30vw;
+  height: 75px;
+  border: none;
+  border-radius: 20px;
+  background-color: ${({ selected }) => (selected ? '#f16060' : 'white')};
+  font-size: 25px;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  display: flex;
+  align-items: center;
+  margin: 30px auto;
+  justify-content: center;
+  transition: background-color 0.5s;
+
+  &.next {
+    width: 14vw;
     height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-  .choice {
-    font-size: 35px;
-  }
-  .next,
-  .nothing {
-    margin: 0 auto;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    margin: 30px auto 0;
+    transition: background-color 0.5s;
+    :focus {
+      background-color: var(--gray-500);
+    }
   }
 `;
 
+export const Step2Choice = styled.div`
+  font-size: 25px;
+  margin-top: 30px;
+  animation: none;
+`;
+
+export const Step2Next = styled.span`
+  margin: 0 auto;
+`;
+
 export const StyledGistomach = styled(GiStomach)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
 export const StyledImEye = styled(ImEye)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
 export const StyledBsShieldPlus = styled(BsShieldPlus)`
-  margin-left: 37%;
   margin-right: 10px;
 `;
 
@@ -111,72 +184,126 @@ export const Step3Design = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
-
-  .choice {
-    font-size: 35px;
+  height: 1000px;
+  background-color: #f4f4f4;
+  /* 구글 자동완성 CSS */
+  .gsc-input-box {
+    height: 50px !important;
+    width: 32vw;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 30px;
+    border: none;
+    margin-left: -6px;
   }
-
-  img {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
+  .gsc-control-cse {
+    display: none;
   }
-  .aspirin {
-    margin-left: 10%;
+  .gsc-input {
+    height: 75px !important;
+    border-radius: 20px;
   }
-  .penicillin {
-    margin-left: 17%;
-  }
-  .anticonvulsants {
-    margin-left: 29%;
-  }
-  .xray {
-    margin-left: 33%;
-  }
-  .nothing {
-    margin: 0 auto;
-  }
-  .selected {
-    background-color: #f05858;
-  }
-
   button {
-    width: 30vw;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #f9e6e6;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-  }
-  .goorback {
-    width: 30vw;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .previous,
-  .next {
-    width: 14vw;
-    height: 60px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    border-radius: 20px;
-    background-color: #f9e6e6;
+    &.gsc-search-button {
+      display: none;
+    }
   }
 `;
 
+export const Step3Choice = styled.div`
+  font-size: 23px;
+  margin-top: 30px;
+`;
+
+export const Step3Choice2 = styled.div`
+  font-size: 23px;
+  margin-top: 10px;
+`;
+
+export const Etc = styled.div`
+  font-size: 17px;
+  margin-top: 40px;
+  margin-left: 1vw;
+`;
+
+export const Step3Img = styled.img`
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+`;
+
+export const Nothing = styled.span`
+  margin: 0 auto;
+`;
+
+export const Step3Button = styled.button`
+  width: 30vw;
+  height: 75px;
+  border: none;
+  border-radius: 20px;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  outline: none;
+  background-color: ${({ selected }) => (selected ? '#f16060' : 'white')};
+  font-size: 25px;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  transition: background-color 0.5s;
+  &.nonono {
+    margin-top: 20px;
+  }
+
+  &.next,
+  &.previous {
+    width: 14vw;
+    height: 60px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    margin-top: 40px;
+
+    &:focus {
+      background-color: var(--gray-500);
+    }
+  }
+
+  &.gsc-search-button {
+    display: none;
+  }
+`;
+
+export const Step3Input = styled.input`
+  width: 30vw;
+  height: 75px;
+  margin-top: 30px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 px10 px15 px-3 px,
+    rgba(0, 0, 0, 0.05) 0 px4 px6 px-2 px;
+  &:focus {
+    outline: 3px solid var(--main);
+  }
+`;
+
+export const Goorback = styled.div`
+  width: 30vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const DesginCiCoffeeCup = styled(CiCoffeeCup)`
-  margin-left: 33%;
   margin-right: 10px;
 `;
 
@@ -185,60 +312,129 @@ export const SurveyResultDesign = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
-  background-color: #f1f2f3;
+  height: 1100px;
+  background-color: #f4f4f4;
   font-size: 22px;
+`;
 
-  img {
-    width: 150px;
-    height: 50px;
-  }
-  .whoresult {
-    border-bottom: 1px solid black;
-    margin-top: 10vh;
-  }
+export const Li = styled.li`
+  margin-bottom: 3 px;
+`;
 
-  div span {
-    margin-left: 5vw;
-  }
-  .explain {
-    margin-top: 7vh;
-    margin-left: 5vw;
-  }
-  .explaindetail {
-    width: 80vw;
-    margin-top: 5vh;
-  }
-  .helppill {
-    margin-top: 5vh;
-    margin-left: 1vw;
-  }
+export const Logo = styled.img`
+  width: 100px;
+`;
 
-  .recommend {
-    background-color: #f5d6d6;
-    margin-top: 5vh;
-    margin-left: 5vw;
-    width: 80vw;
-    height: 50vh;
-    flex-wrap: wrap;
-  }
-  .efficacy {
-    margin-top: 5vh;
-  }
+export const Whoresult = styled.div`
+  border-bottom: 1px solid black;
+  margin-top: 10vh;
+  padding-bottom: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'MaplestoryOTFBold';
+`;
 
-  .buynow {
-    margin-left: 2vw;
-    margin-top: 20px;
+export const Span = styled.span`
+  margin-left: 10vw;
+`;
+
+export const Explain = styled.div`
+  margin-top: 5vh;
+  margin-left: 10vw;
+`;
+
+export const Danger = styled.div`
+  margin-top: 7vh;
+  margin-left: 10vw;
+  color: red;
+  width: 80vw;
+`;
+
+export const Caution = styled.span`
+  color: black;
+  margin-top: 0;
+  margin-left: 5px;
+`;
+
+export const Expliandetail = styled.div`
+  width: 80vw;
+  margin-top: 5vh;
+`;
+
+export const Helppill = styled.div`
+  margin-top: 5vh;
+  margin-left: 37px;
+  margin-right: 5px;
+`;
+
+export const Step4Recommend = styled.div`
+  background-color: #f5d6d6;
+  margin-top: 5vh;
+  margin-left: 10vw;
+  margin-bottom: 5vh;
+  border-radius: 14px;
+  width: 80vw;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+`;
+
+export const RecommendContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Nutrients = styled.img`
+  margin-left: auto;
+  margin-top: 30px;
+  margin-right: 3vw;
+  height: 300px;
+  width: 300px;
+`;
+
+export const Efficacy = styled.div`
+  margin-top: 5vh;
+  margin-left: 20px;
+`;
+
+export const ButtonWrapper = styled.div`
+  margin-left: 45px;
+  margin-top: 3vh;
+`;
+
+export const Buynow = styled.button`
+  background-color: #d4f8ff;
+  margin-bottom: 30px;
+  width: 160px;
+  height: 70px;
+  font-size: 20px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+  @media screen and (max-width: 900px) {
+    width: 100px;
+    height: 30px;
   }
-  .retry {
-    background-color: #f05858;
-    border: none;
-    margin-left: 5vw;
-    width: 160px;
-    height: 70px;
-    font-size: 20px;
-    color: white;
-  }
-  .high {
+`;
+
+export const Retry = styled.button`
+  background-color: #f05858;
+  border-radius: 14px;
+  margin-left: 2vw;
+  width: 160px;
+  height: 70px;
+  border: none;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+
+  @media screen and (max-width: 900px) {
+    width: 100px;
+    height: 30px;
   }
 `;

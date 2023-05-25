@@ -1,77 +1,101 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dryskin from '../../../../public/dryskin.png';
 import fatigue from '../../../../public/fatigue.png';
 import {
+  AnimateContent,
   Step2Design,
+  Step2Img,
+  Step2Button,
+  Step2Choice,
+  Step2Next,
   StyledGistomach,
   StyledImEye,
   StyledBsShieldPlus,
 } from '../../../style/SurveyStyle';
 
 const Step2 = ({ disease, changeInput, nextSteps }) => {
-  const menu = {
-    stomach: '소화',
-    skin: '피부',
-    eye: '눈',
-    sheild: '면역',
-    fatiuge: '피로',
-    nothing: '없음',
-  };
+  const [animate, setAnimate] = useState('up');
+  const [selectedButton, setSelectedButton] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleDiseaseClick = (e) => {
-    changeInput({ target: { name: 'disease', value: e.target.value } });
+    if (selectedButton === e.currentTarget) {
+      changeInput({ target: { name: 'disease', value: '' } });
+      setSelectedButton(null);
+    } else {
+      changeInput({
+        target: { name: 'disease', value: e.currentTarget.value },
+      });
+      setSelectedButton(e.currentTarget);
+    }
+  };
+  const handleNextClick = () => {
+    setAnimate('down');
+    setTimeout(() => {
+      nextSteps();
+    }, 1000);
   };
 
   return (
     <Step2Design>
-      <div className="choice">불편하시거나 걱정되시는 곳을 선택해 주세요! </div>
-      <button
-        className={disease === menu.stomach ? 'selected' : ''}
-        value="소화"
-        onClick={handleDiseaseClick}
-      >
-        <StyledGistomach /> 소화, 장
-      </button>
-      <button
-        className={disease === menu.skin ? 'selected' : ''}
-        value="피부"
-        onClick={handleDiseaseClick}
-      >
-        <img src={dryskin} alt="dryskin" />
-        피부
-      </button>
-      <button
-        className={disease === menu.eye ? 'selected' : ''}
-        value="눈"
-        onClick={handleDiseaseClick}
-      >
-        <StyledImEye /> 눈
-      </button>
-      <button
-        className={disease === menu.sheild ? 'selected' : ''}
-        value="면역"
-        onClick={handleDiseaseClick}
-      >
-        <StyledBsShieldPlus />
-        면역
-      </button>
-      <button
-        className={disease === menu.fatiuge ? 'selected' : ''}
-        value="피로"
-        onClick={handleDiseaseClick}
-      >
-        <img src={fatigue} alt="fatiuge" /> 피로
-      </button>
-      <button
-        className={disease === menu.nothing ? 'selected' : ''}
-        value="없음"
-        onClick={handleDiseaseClick}
-      >
-        <span className="nothing">없음</span>
-      </button>
-      <button onClick={nextSteps}>
-        <span className="next">다음 ▶︎</span>
-      </button>
+      <Step2Choice>불편하거나 걱정되는 곳을 한가지 선택해 주세요! </Step2Choice>
+      <AnimateContent animate={animate}>
+        <Step2Button
+          className="intestine"
+          value="INTESTINE"
+          onClick={handleDiseaseClick}
+          selected={disease === 'INTESTINE'}
+        >
+          <StyledGistomach /> 소화, 장
+        </Step2Button>
+        <Step2Button
+          className="skin"
+          value="SKIN"
+          onClick={handleDiseaseClick}
+          selected={disease === 'SKIN'}
+        >
+          <Step2Img src={dryskin} alt="dryskin" />
+          피부
+        </Step2Button>
+        <Step2Button
+          className="eye"
+          value="EYE"
+          onClick={handleDiseaseClick}
+          selected={disease === 'EYE'}
+        >
+          <StyledImEye /> 눈
+        </Step2Button>
+        <Step2Button
+          className="sheild"
+          value="IMMUNE"
+          onClick={handleDiseaseClick}
+          selected={disease === 'IMMUNE'}
+        >
+          <StyledBsShieldPlus />
+          면역
+        </Step2Button>
+        <Step2Button
+          className="fatiuge"
+          value="FATIGUE"
+          onClick={handleDiseaseClick}
+          selected={disease === 'FATIGUE'}
+        >
+          <Step2Img src={fatigue} alt="fatiuge" /> 피로
+        </Step2Button>
+        <Step2Button
+          className="none"
+          value="NONE"
+          onClick={handleDiseaseClick}
+          selected={disease === 'NONE'}
+        >
+          <Step2Next>없음</Step2Next>
+        </Step2Button>
+        <Step2Button onClick={handleNextClick} className="next">
+          <Step2Next>다음 ▶︎</Step2Next>
+        </Step2Button>
+      </AnimateContent>
     </Step2Design>
   );
 };

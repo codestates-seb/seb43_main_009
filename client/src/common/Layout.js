@@ -1,12 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Footer from './Footer';
 import Header from './Header';
-
-const MainContent = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+import { MainContent } from '../style/LayoutStyle';
 
 const Layout = (props) => {
   const { children } = props;

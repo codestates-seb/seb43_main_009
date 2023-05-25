@@ -3,6 +3,7 @@ import '../variables.css';
 
 const FooterStyle = styled.footer`
   position: relative;
+  height: 100%;
   font-family: 'Noto Sans KR', sans-serif;
   li {
     color: #000000;
@@ -23,8 +24,10 @@ const FooterStyle = styled.footer`
   li > span {
     display: block;
     text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    @media only screen and (max-width: 768px) {
+      font-size: 10px;
+    }
   }
   .content-template {
     width: 100%;
@@ -37,7 +40,6 @@ const FooterStyle = styled.footer`
   .content {
     background-color: #d9d9d9;
     width: 100%;
-    padding: 50px 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -52,18 +54,35 @@ const FooterStyle = styled.footer`
     color: var(--gray-600);
   }
   .content > .frontTeam,
-  .backteam {
+  .Team {
     display: flex;
     flex-direction: column;
   }
-  .frontTeam {
+  .Teamul {
+    height: auto;
     display: flex;
-    flex-direction: column;
+    padding-inline-start: 0;
+  }
+  .Teamh4 {
+    font-size: 20px;
+    @media only screen and (max-width: 768px) {
+      font-size: 10px;
+    }
+  }
+  .Teamspan {
+    font-size: 20px;
+    @media only screen and (max-width: 768px) {
+      font-size: 15px;
+    }
   }
   .profile-icon {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    @media only screen and (max-width: 768px) {
+      width: 50px;
+      height: 50px;
+    }
   }
   .footerLogo {
     display: flex;
@@ -83,6 +102,9 @@ const FooterStyle = styled.footer`
   }
   .teamContent {
     display: flex;
+    @media only screen and (max-width: 768px) {
+      width: 30%;
+    }
   }
   .teamLogo {
     display: flex;
@@ -100,10 +122,16 @@ const FooterStyle = styled.footer`
     margin-bottom: 10px;
     width: 150px;
     border-radius: 10px;
+    @media only screen and (max-width: 768px) {
+      width: 100px;
+    }
   }
   strong {
     font-weight: bold;
-    font-size: 23px;
+    font-size: 20px;
+    @media only screen and (max-width: 768px) {
+      font-size: 15px;
+    }
   }
   .linkSNS {
     width: 70px;
