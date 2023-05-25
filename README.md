@@ -50,7 +50,7 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120099321?v=4" alt="조만기" width="180"></td>
+      <td align="center"><img src="https://i.namu.wiki/i/hPndVO91vVA0x1c0Vb4ELrqyJ2vtV3aXxsdbCENJlBR9cHjKBsXnJqEUoDouNGuiH9pZt11XfrOQ-F1oz-hdWA.webp" alt="조만기" width="180"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" width="180"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" width="180"></td>
     </tr>
