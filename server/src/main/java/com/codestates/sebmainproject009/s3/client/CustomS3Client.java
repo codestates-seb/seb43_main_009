@@ -22,7 +22,7 @@ public class CustomS3Client {
     @Value("${cloud.aws.credentials.secretKey}")
     String secretKey;
     String region = "ap-northeast-2";
-    String bucketName = "dowajoyak.link";
+    String bucketName = "dowajoyak.image";
 
     private final GenerateName generateName;
 
