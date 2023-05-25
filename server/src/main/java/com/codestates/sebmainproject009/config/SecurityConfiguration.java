@@ -92,9 +92,9 @@ public class SecurityConfiguration {
 
         configuration.addAllowedOriginPattern("http://localhost:3000");
         configuration.addAllowedOriginPattern("http://localhost:3001");
-        configuration.addAllowedOriginPattern("https://dowajoyak.shop");
-        configuration.addAllowedOriginPattern("https://www.dowajoyak.shop");
-        configuration.addAllowedOriginPattern("https://server.dowajoyak.shop");
+        configuration.addAllowedOriginPattern("https://www.dowajoyak.store");
+        configuration.addAllowedOriginPattern("https://dowajoyak.store");
+        configuration.addAllowedOriginPattern("https://server.dowajoyak.store");
         configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.addExposedHeader("Authorization");

@@ -65,7 +65,7 @@ spring:
 cloud:
   aws:
     s3:
-      bucket: dowajoyak.shop
+      bucket: dowajoyak.store
     region:
       auto: false
       static: ap-northeast-2
@@ -88,7 +88,7 @@ logging:
 
 jwt:
   key: ${jwt-secret}
-  access-token-expiration-minutes: 3
+  access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 
 mail:
