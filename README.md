@@ -1,25 +1,17 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=반미콩%20&fontSize=75)
 
-<div align="center">
-	<h3>:four_leaf_clover:skills</h3>
-	<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=white" />
-	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
-	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
-	<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
-</div>
-
 <p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-  
-  <a href="#demo">
-    <img src="https://img.shields.io/badge/DEMO%20(not%20yet)%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
+
+  <a href="https://www.dowajoyak.store" target="_blank">
+    <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
 </p>
 
 <div align="center">
-<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> SEB_43 9TEAM 반미콩입니다 :muscle:</h1>
+<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> 반미콩입니다 :muscle:</h1>
 </div>
 
 <br>
@@ -30,7 +22,7 @@
 |염도경<br>(FE Leader)|김성수<br>(FE)|노호준<br>(FE)|이진하A<br>(FE)|조만기<br>(BE Leader)|양인수<br>(BE)|한동희<br>(BE)|
 |---|---|---|---|---|---|---|
 |<img width="430px" height="95px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
-  
+
 
 </div>
 
@@ -45,17 +37,17 @@
     <tr>
       <th align="center"> <a href="https://github.com/Sniij"> 조만기 </a> <br/>BE(Leader)</th>
       <th align="center"> <a href="https://github.com/insooY"> 양인수 </a> <br/>BE</th>
-      <th align="center"> <a href="https://github.com/Sniij"> 한동희 </a> <br/>BE</th>
+      <th align="center"> <a href="https://github.com/Gitdonghee"> 한동희 </a> <br/>BE</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120099321?v=4" alt="조만기" width="180"></td>
+      <td align="center"><img src="https://i.namu.wiki/i/hPndVO91vVA0x1c0Vb4ELrqyJ2vtV3aXxsdbCENJlBR9cHjKBsXnJqEUoDouNGuiH9pZt11XfrOQ-F1oz-hdWA.webp" alt="조만기" width="180"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" width="180"></td>
       <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" width="180"></td>
     </tr>
     <tr>
-      <td align="center">구현 예시들</td>
+      <td align="center">흠,,,자기소개?</td>
       <td align="center">구현 예시들</td>
       <td align="center">구현 예시들</td>
     </tr>
@@ -95,16 +87,16 @@
 
 <div align="center">
 
- <h2>멤버별 기능 구현</h2>
+<h2>멤버별 기능 구현</h2>
 </div>
 
 <h3>:hamster:FE_task_assignment:hamster:</h3>
 <br>
-  
-|염도경|N|
+
+|염도경|webpack 경로설정,공용 협업 툴 설정, 커뮤니티CRUD, 마이페이지, 토큰관리, 검색 메인페이지|
 |---|---|
-|김성수||
-|노호준||
+|김성수|커뮤니티, 검색리스트|
+|노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
 |이진하A|메인 페이지, 풋터, 검색 상세페이지|
 
 <br><br>
@@ -113,15 +105,40 @@
 <h3>:raccoon:BE_task_assignment:raccoon:</h3>
 <br>
 
-|조만기|N|
+
+<details>
+<summary>조만기</summary>
+<div markdown="1">       
+
+- OAuth2(Google) 구현<br/>
+- Spring Security configuration (For login, signup) <br/>
+- CORS configuration(security+S3)<br/>
+- JWT 구현 <br/>
+- OAuth2 + JWT 통합 <br/>
+- 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/>
+- JSON parsing service 구현<br/>
+- S3 버킷에 이미지를 올리는 API 구현 <br/>
+- Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/>
+- 서버 환경 변수 리소스를 Parameter Store와 연동 configuration <br/>
+- 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>
+- Github Actions configuration(FE+BE, Code Deploy)<br/>
+- Refresh token을 통한 access token 재발급 API 구현<br/>
+- 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
+- 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
+
+</div>
+</details>
+
+
+|조만기||
 |---|---|
 |양인수||
 |한동희||
 
   </div>
-  
+
 <div align="center">
-  
+
 <div align="center">
     <h1>Stacks used 🛒</h1>
     <p style="font-weight: bold; font-size:25px">Tools</p>

@@ -5,6 +5,7 @@ import com.codestates.sebmainproject009.exception.BusinessLogicException;
 import com.codestates.sebmainproject009.exception.ExceptionCode;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -21,6 +22,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
+    @Value("${profileDefaultImgUrl}")
+    private String defaultProfileImgUrl;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
         this.userRepository = userRepository;
@@ -38,7 +41,7 @@ public class UserService {
 
         List<String > roles = authorityUtils.createRoles(user.getEmail());
         user.setRoles(roles);
-
+        user.setProfileImgUrl(defaultProfileImgUrl);
         User savedUser = userRepository.save(user);
 
         return savedUser;

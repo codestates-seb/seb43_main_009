@@ -11,6 +11,7 @@ import com.codestates.sebmainproject009.commu.mapper.CommuMapper;
 import com.codestates.sebmainproject009.commu.service.CommuService;
 import com.codestates.sebmainproject009.response.MultiResponseDto;
 import com.codestates.sebmainproject009.s3.client.CustomS3Client;
+import com.codestates.sebmainproject009.user.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,7 +54,6 @@ public class CommuController {
 
     @PostMapping(value = "/postsToS3", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity postCommu(@RequestParam("image") @Nullable MultipartFile image,
-
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content,
                                     @RequestParam("userId") Long userId) {
@@ -94,9 +94,10 @@ public class CommuController {
     @GetMapping("/{commuId}")
     public ResponseEntity getCommu(@PathVariable long commuId){
         Commu commu = commuService.findCommu(commuId);
+        User user = commu.getUser();
 
         CommuResponseDto commuResponseDto = mapper.commuToCommuResponseDto(commu);
-
+        commuResponseDto.setUserProfileImageUrl(user.getProfileImgUrl());
         commuResponseDto.setComments(commu.getComments());
 
         return new ResponseEntity<>(commuResponseDto, HttpStatus.OK);
