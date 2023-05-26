@@ -18,9 +18,17 @@ const CommunityWrite = () => {
   };
 
   const handleSubmit = async () => {
-    await dispatch(submitPost({ title, content, userId }));
-    dispatch(GetCommulist());
-    goHome();
+    const titleValue = /^\s*$/.test(title);
+    const contentValue = /^\s*$/.test(content);
+    if (titleValue) {
+      window.alert('제목을 입력해주세요.');
+    } else if (contentValue) {
+      window.alert('내용을 입력해주세요.');
+    } else {
+      await dispatch(submitPost({ title, content, userId }));
+      dispatch(GetCommulist());
+      goHome();
+    }
   };
 
   return (
