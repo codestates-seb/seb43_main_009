@@ -65,6 +65,10 @@ export const Menu = styled.div`
     margin-right: 20px;
     cursor: pointer;
   }
+  &.selected {
+    color: #f05758;
+    border-bottom 2px solid #f05758;  
+  }
 `;
 
 export const UnderMenuWrapper = styled.div`

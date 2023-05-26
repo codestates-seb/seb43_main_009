@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../public/logo.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getUserInfo } from '../utils/UserInfo';
 import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
@@ -20,6 +20,7 @@ import {
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [username, setUsername] = useState(null);
   const userInfo = getUserInfo();
@@ -27,6 +28,12 @@ export const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const navigate = useNavigate();
+  const tabmenu = {
+    survey: '/survey',
+    commu: '/commu',
+    search: '/search',
+  };
+  const currentTab = pathname;
   const handleLoginClick = () => {
     setShowModal(true);
   };
@@ -108,13 +115,25 @@ export const Header = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <Menu>맞춤추천</Menu>
+          <Menu
+            className={currentTab.startsWith(tabmenu.survey) ? 'selected' : ''}
+          >
+            맞춤추천
+          </Menu>
         </StyledLink>
         <StyledLink to="/commu" onClick={handleScrollZero}>
-          <Menu>커뮤니티</Menu>
+          <Menu
+            className={currentTab.startsWith(tabmenu.commu) ? 'selected' : ''}
+          >
+            커뮤니티
+          </Menu>
         </StyledLink>
         <StyledLink to="/search" onClick={handleScrollZero}>
-          <Menu>의약품검색</Menu>
+          <Menu
+            className={currentTab.startsWith(tabmenu.search) ? 'selected' : ''}
+          >
+            의약품검색
+          </Menu>
         </StyledLink>
       </UnderMenuWrapper>
     </GlobalFont>
