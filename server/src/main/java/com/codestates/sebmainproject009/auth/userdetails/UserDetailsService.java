@@ -7,7 +7,6 @@ import com.codestates.sebmainproject009.exception.ExceptionCode;
 import com.codestates.sebmainproject009.user.entity.User;
 import com.codestates.sebmainproject009.user.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +38,7 @@ public class UserDetailsService implements org.springframework.security.core.use
             setUserId(user.getUserId());
             setEmail(user.getEmail());
             setPassword(user.getPassword());
+            setProfileImgUrl(user.getProfileImgUrl());
             setRoles(user.getRoles());
         }
 
