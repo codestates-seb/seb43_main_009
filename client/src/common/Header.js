@@ -43,6 +43,7 @@ export const Header = () => {
     setShowModal(false);
     navigate('/');
     window.alert('로그아웃 성공!');
+    window.location.reload();
   };
 
   const handleResetStep = () => {
