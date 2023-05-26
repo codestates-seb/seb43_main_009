@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import picture from '../../public/pencil.png';
 import { keyframes } from 'styled-components';
-import pastel from '../../public/handdraw.jpg';
+import pastel from '../../public/acrylic.jpg';
 const float = keyframes`
   0% {
     transform: translateX(0px) translateY(0px);
@@ -13,7 +13,7 @@ const float = keyframes`
     transform: translateX(0px) translateY(0px);
   }
   50% {
-    transform: translateX(5px) translateY(0px);
+    transform: translateX(5px) transla gteY(0px);
   }
   73% {
     transform: translateX(-5px) translateY(0px);
@@ -49,7 +49,7 @@ export const CommunityBox = styled.div`
   background-color: white;
   .up-box {
     width: 100vw;
-    height: 60vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,8 +65,16 @@ export const CommunityBox = styled.div`
     .button-box {
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
 
+      span {
+        font-size: large;
+        font-weight: 600;
+        color: var(--bluish-gray-500);
+        position: absolute;
+        margin-left: 2.5rem;
+        margin-top: 0.7rem;
+      }
       button {
         text-align: center;
         text-decoration: none;
@@ -77,8 +85,8 @@ export const CommunityBox = styled.div`
         border-radius: 12px;
         padding: 5px 12px;
         transition-duration: 0.4s;
-        background-color: white;
-        color: var(--bluish-gray-600);
+        /* background-color: white; */
+        color: var(--bluish-gray-500);
         border: none;
         &:hover {
           border: none;
@@ -91,7 +99,6 @@ export const CommunityBox = styled.div`
       /* border: 1px solid #e0e0e0; */
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       border-radius: 20px;
       width: 70%;
       min-height: 100%;
@@ -100,7 +107,7 @@ export const CommunityBox = styled.div`
       position: relative;
       margin-bottom: 20px;
       white-space: pre-wrap;
-      height: 400px;
+      height: 300px;
       /* background-color: white; */
 
       .retouch-box {
@@ -115,17 +122,26 @@ export const CommunityBox = styled.div`
         .retouch-title {
           border-bottom: 1px solid #e0e0e0;
           margin-bottom: 1rem;
-          input:focus {
-            outline: none;
-            font-size: x-large;
-            font-weight: 600;
+          input {
+            background-color: #e0e0e0;
+            :focus {
+              outline: none;
+              font-size: x-large;
+              font-weight: 600;
+              background-color: #e0e0e0;
+            }
           }
         }
         .retouch-content {
           /* border: 1px solid #e0e0e0; */
           margin-top: 1rem;
-          textarea:focus {
-            outline: none;
+          textarea {
+            background-color: #e0e0e0;
+
+            :focus {
+              outline: none;
+              background-color: #e0e0e0;
+            }
           }
         }
       }
@@ -178,7 +194,7 @@ export const CommunityBox = styled.div`
         font-size: 15px;
         position: absolute;
         bottom: 0;
-        color: var(--bluish-gray-600);
+        color: var(--bluish-gray-500);
         margin-bottom: 1rem;
       }
     }
