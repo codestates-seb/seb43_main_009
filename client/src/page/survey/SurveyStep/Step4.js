@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../../../public/logo.png';
 import { getUserInfo } from '../../../utils/UserInfo';
 import { choosenutrients } from './Nutrients';
@@ -24,10 +24,14 @@ import {
 
 const Step4 = ({ form, resetSteps }) => {
   // 소화 , 피부, 눈 , 면역, 피로
-
   const nutrients = choosenutrients(form);
   const userInfo = getUserInfo();
   const namePart = userInfo.username.split('@')[0];
+  useEffect(() => {
+    const body = document.querySelector('body');
+    body.classList.remove('gsc-overflow-hidden');
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <SurveyResultDesign>
       {nutrients && (

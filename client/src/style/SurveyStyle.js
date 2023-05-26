@@ -127,12 +127,12 @@ export const Step2Img = styled.img`
 `;
 
 export const Step2Button = styled.button`
-  width: 30vw;
-  height: 75px;
+  width: 20vw;
+  height: 7vh;
+  font-size: 2.3vh;
   border: none;
   border-radius: 20px;
   background-color: ${({ selected }) => (selected ? '#f16060' : 'white')};
-  font-size: 25px;
   font-weight: 600;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
@@ -143,9 +143,9 @@ export const Step2Button = styled.button`
   transition: background-color 0.5s;
 
   &.next {
-    width: 14vw;
-    height: 60px;
-    font-size: 20px;
+    width: 10vw;
+    height: 6vh;
+    font-size: 2.3vh;
     background-color: black;
     color: white;
     box-shadow: none;
@@ -154,6 +154,12 @@ export const Step2Button = styled.button`
     :focus {
       background-color: var(--gray-500);
     }
+    @media (max-width: 1400px) {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 1400px) {
+    font-size: 20px;
   }
 `;
 
@@ -190,8 +196,8 @@ export const Step3Design = styled.div`
   background-color: #f4f4f4;
   /* 구글 자동완성 CSS */
   .gsc-input-box {
-    height: 50px !important;
-    width: 31vw;
+    height: 7vh !important;
+    width: 21vw;
     background-color: rgba(0, 0, 0, 0);
     margin-top: 30px;
     border: none;
@@ -202,12 +208,12 @@ export const Step3Design = styled.div`
   }
   input {
     &.gsc-input {
-      height: 75px !important;
+      height: 7vh !important;
       border-radius: 2px;
       border-style: solid;
-      border-color : red;
+      border-color: red;
       text-align: center;
-      font-size:20px;
+      font-size: 2.3vh;
       background: none !important;
       background-color: white !important;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
@@ -216,7 +222,10 @@ export const Step3Design = styled.div`
     &.gsc-input::placeholder {
       color: var(--main);
       font-size: 20px;
-  }
+      @media (max-width: 1400px) {
+        font-size: 12px;
+      }
+    }
   }
 
   button {
@@ -247,33 +256,30 @@ export const Nothing = styled.span`
 `;
 
 export const Step3Button = styled.button`
-  width: 30vw;
-  height: 75px;
+  width: 20vw;
+  height: 7vh;
+  font-size: 2.3vh;
   border: none;
   border-radius: 20px;
-  font-size: 35px;
   display: flex;
   align-items: center;
   outline: none;
   background-color: ${({ selected }) => (selected ? '#f16060' : 'white')};
-  font-size: 25px;
   font-weight: 600;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  display: flex;
-  align-items: center;
   justify-content: center;
   margin-top: 30px;
   transition: background-color 0.5s;
   &.nonono {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   &.next,
   &.previous {
-    width: 14vw;
-    height: 60px;
-    font-size: 20px;
+    width: 9vw;
+    height: 6vh;
+    font-size: 2.3vh;
     background-color: black;
     color: white;
     box-shadow: none;
@@ -282,10 +288,16 @@ export const Step3Button = styled.button`
     &:focus {
       background-color: var(--gray-500);
     }
+    @media (max-width: 1400px) {
+      font-size: 20px;
+    }
   }
 
   &.gsc-search-button {
     display: none;
+  }
+  @media (max-width: 1400px) {
+    font-size: 20px;
   }
 `;
 
@@ -305,8 +317,8 @@ export const Step3Input = styled.input`
 `;
 
 export const Goorback = styled.div`
-  width: 30vw;
-  height: 60px;
+  width: 20vw;
+  height: 7vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -324,6 +336,9 @@ export const SurveyResultDesign = styled.div`
   height: 1100px;
   background-color: #f4f4f4;
   font-size: 22px;
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
 `;
 
 export const Li = styled.li`
@@ -382,7 +397,7 @@ export const Step4Recommend = styled.div`
   margin-left: 10vw;
   margin-bottom: 5vh;
   border-radius: 14px;
-  width: 80vw;
+  width: 80%;
   height: 400px;
   display: flex;
   flex-direction: row;
@@ -418,15 +433,17 @@ export const Buynow = styled.button`
   margin-bottom: 30px;
   width: 160px;
   height: 70px;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   border-radius: 14px;
   font-weight: 700;
   cursor: pointer;
 
-  @media screen and (max-width: 900px) {
-    width: 100px;
-    height: 30px;
+  @media (max-width: 900px) {
+    width: 120px;
+    height: 50px;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -437,14 +454,15 @@ export const Retry = styled.button`
   width: 160px;
   height: 70px;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   font-weight: 700;
   cursor: pointer;
 
-  @media screen and (max-width: 900px) {
-    width: 100px;
-    height: 30px;
+  @media (max-width: 900px) {
+    width: 120px;
+    height: 50px;
+    font-size: 14px;
+    margin-left: 0px;
   }
 `;
-
