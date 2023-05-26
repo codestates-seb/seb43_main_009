@@ -26,7 +26,6 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
     localStorage.setItem('hasLoaded', 'false');
   }, []);
 
-
   const handleAllergyClick = (e) => {
     if (selectedButton === e.currentTarget) {
       changeInput({ target: { name: 'allergy', value: '' } });

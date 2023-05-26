@@ -392,7 +392,7 @@ export const Helppill = styled.div`
 
 export const Step4Recommend = styled.div`
   background-color: #f5d6d6;
-  margin-top: 5vh;
+  margin-top: 10px;
   margin-left: 10vw;
   margin-bottom: 5vh;
   border-radius: 14px;
@@ -445,7 +445,20 @@ export const Buynow = styled.button`
     margin-bottom: 10px;
   }
 `;
-
+export const SearchButton = styled.button`
+  background-color: #ff6e6f;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10vw;
+  color: white;
+  width: 80vw;
+  height: 5vw;
+  font-size: 18px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+`;
 export const Retry = styled.button`
   background-color: #f05858;
   border-radius: 14px;

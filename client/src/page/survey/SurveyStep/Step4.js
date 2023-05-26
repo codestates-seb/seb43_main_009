@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import logo from '../../../../public/logo.png';
 import { getUserInfo } from '../../../utils/UserInfo';
 import { choosenutrients } from './Nutrients';
+import { useNavigate } from 'react-router-dom';
 import {
   SurveyResultDesign,
   Li,
@@ -18,6 +19,7 @@ import {
   Nutrients,
   Efficacy,
   ButtonWrapper,
+  SearchButton,
   Buynow,
   Retry,
 } from '../../../style/SurveyStyle';
@@ -27,6 +29,7 @@ const Step4 = ({ form, resetSteps }) => {
   const nutrients = choosenutrients(form);
   const userInfo = getUserInfo();
   const namePart = userInfo.username.split('@')[0];
+  const navigate = useNavigate();
   useEffect(() => {
     const body = document.querySelector('body');
     body.classList.remove('gsc-overflow-hidden');
@@ -47,7 +50,9 @@ const Step4 = ({ form, resetSteps }) => {
           <Danger>
             주의사항:<Caution>{nutrients.caution}</Caution>
           </Danger>
-
+          <SearchButton onClick={() => navigate('/search')}>
+            의약품 검색페이지에서 알러지정보 확인하기
+          </SearchButton>
           <Step4Recommend>
             <RecommendContent>
               <Helppill>
