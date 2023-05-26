@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 import picture from '../../public/pencil.png';
 import { keyframes } from 'styled-components';
-
+import pastel from '../../public/handdraw.jpg';
 const float = keyframes`
   0% {
     transform: translateX(0px) translateY(0px);
   }
   25% {
-    transform: translateX(-3px) translateY(3px);
+    transform: translateX(-3px) translateY(0px);
+  }
+  35% {
+    transform: translateX(0px) translateY(0px);
   }
   50% {
-    transform: translateX(3px) translateY(0px);
+    transform: translateX(5px) translateY(0px);
   }
   73% {
-    transform: translateX(-3px) translateY(0px);
+    transform: translateX(-5px) translateY(0px);
   }
   100% {
     transform: translateX(0px) translateY(0px);
@@ -43,16 +46,21 @@ export const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  background-color: white;
   .up-box {
     width: 100vw;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 4rem;
+    /* margin-top: 3rem;
+    margin-bottom: 2rem; */
+    /* background-color: #ed8787; */
+    background-image: url(${pastel});
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 
     .button-box {
       width: 100%;
@@ -70,7 +78,7 @@ export const CommunityBox = styled.div`
         padding: 5px 12px;
         transition-duration: 0.4s;
         background-color: white;
-        color: var(--bluish-gray-500);
+        color: var(--bluish-gray-600);
         border: none;
         &:hover {
           border: none;
@@ -80,7 +88,7 @@ export const CommunityBox = styled.div`
     }
 
     .title-box {
-      border: 1px solid #e0e0e0;
+      /* border: 1px solid #e0e0e0; */
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -92,8 +100,8 @@ export const CommunityBox = styled.div`
       position: relative;
       margin-bottom: 20px;
       white-space: pre-wrap;
-      height: 500px;
-      background-color: white;
+      height: 400px;
+      /* background-color: white; */
 
       .retouch-box {
         overflow-y: auto;
@@ -170,7 +178,7 @@ export const CommunityBox = styled.div`
         font-size: 15px;
         position: absolute;
         bottom: 0;
-        color: var(--gray-500);
+        color: var(--bluish-gray-600);
         margin-bottom: 1rem;
       }
     }
@@ -310,7 +318,7 @@ export const ImgBox = styled.div`
     content: '나도 글쓰러 가기!'; // hover시 표시될 텍스트
     display: block;
     width: 100%;
-    margin-bottom: 300px;
+    margin-bottom: 200px;
     margin-left: 50px;
     font-family: 'MaplestoryOTFBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
