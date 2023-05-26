@@ -49,14 +49,13 @@ export const Card = styled.div`
   background-color: white;
   font-size: 25px;
   border-radius: 15px;
-  @media screen and (max-height: 800px) {
-    margin-top: 20px;
-    font-size: 16px;
+  @media screen and (max-width: 1000px), screen and (max-height: 800px) {
+    margin-top: 40px;
+    font-size: 18px;
     font-weight: 700;
     width: 300px;
-    height: 360px;
+    height: 380px;
   }
-
   transition: all 0.2s;
   box-shadow: 12px 12px 2px 1px rgba(80, 80, 80, 0.2);
   &:hover {
@@ -164,7 +163,7 @@ export const Step2Button = styled.button`
 `;
 
 export const Step2Choice = styled.div`
-  font-size: 25px;
+  font-size: 2.2vh;
   margin-top: 30px;
   animation: none;
 `;
@@ -223,7 +222,7 @@ export const Step3Design = styled.div`
       color: var(--main);
       font-size: 20px;
       @media (max-width: 1400px) {
-        font-size: 12px;
+        font-size: 15px;
       }
     }
   }
@@ -236,12 +235,12 @@ export const Step3Design = styled.div`
 `;
 
 export const Step3Choice = styled.div`
-  font-size: 23px;
+  font-size: 2.2vh;
   margin-top: 30px;
 `;
 
 export const Step3Choice2 = styled.div`
-  font-size: 23px;
+  font-size: 2.2vh;
   margin-top: 10px;
 `;
 
