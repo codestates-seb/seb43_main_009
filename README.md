@@ -4,7 +4,6 @@
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-  
   <a href="https://www.dowajoyak.store" target="_blank">
     <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
@@ -22,7 +21,7 @@
 |염도경<br>(FE Leader)|김성수<br>(FE)|노호준<br>(FE)|이진하A<br>(FE)|조만기<br>(BE Leader)|양인수<br>(BE)|한동희<br>(BE)|
 |---|---|---|---|---|---|---|
 |<img width="430px" height="95px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
-  
+
 
 </div>
 
@@ -87,12 +86,12 @@
 
 <div align="center">
 
- <h2>멤버별 기능 구현</h2>
+<h2>멤버별 기능 구현</h2>
 </div>
 
 <h3>:hamster:FE_task_assignment:hamster:</h3>
 <br>
-  
+
 |염도경|webpack 경로설정,공용 협업 툴 설정, 커뮤니티CRUD, 마이페이지, 토큰관리, 검색 메인페이지|
 |---|---|
 |김성수|커뮤니티, 검색리스트|
@@ -113,7 +112,7 @@
 - OAuth2(Google) 구현<br/>
 - Spring Security configuration (For login, signup) <br/>
 - CORS configuration(security+S3)<br/>
-- JWT 구현 <br/> 
+- JWT 구현 <br/>
 - OAuth2 + JWT 통합 <br/>
 - 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/>
 - JSON parsing service 구현<br/>
@@ -125,7 +124,7 @@
 - Refresh token을 통한 access token 재발급 API 구현<br/>
 - 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
 - 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
-	
+  
 </div>
 </details>
 
@@ -136,9 +135,9 @@
 |한동희||
 
   </div>
-  
+
 <div align="center">
-  
+
 <div align="center">
     <h1>Stacks used 🛒</h1>
     <p style="font-weight: bold; font-size:25px">Tools</p>
