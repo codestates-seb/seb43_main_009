@@ -18,6 +18,10 @@ const Step1 = ({ nextSteps, resetSteps }) => {
   const token = getUserInfo();
 
   useEffect(() => {
+    if (localStorage.getItem('hasLoaded') === 'false') {
+      localStorage.setItem('hasLoaded', 'true');
+      window.location.reload();
+    }
     window.scrollTo(0, 0);
   }, []);
 
