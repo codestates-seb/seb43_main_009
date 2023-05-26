@@ -10,13 +10,16 @@ import {
   updateUserData,
   uploadUserImage,
 } from '../../redux/MypageSlice';
+import { getUserInfo } from '../../utils/UserInfo';
 
 const Mypage = () => {
   const [displayName, setDisplayName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [email, setEmail] = useState('');
   const [allergy, setAllergy] = useState('');
-  const { userId } = useParams();
+  // const { userId } = useParams();
+  const userInfo = getUserInfo();
+  const userId = userInfo ? userInfo.userId : null;
   const dispatch = useDispatch();
   const myData = useSelector((state) => state.mypage.data);
   const status = useSelector((state) => state.mypage.status);
