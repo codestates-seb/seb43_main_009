@@ -52,6 +52,7 @@ export const CommunityBox = styled.div`
     justify-content: center;
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
 
     .button-box {
       width: 100%;
@@ -79,7 +80,7 @@ export const CommunityBox = styled.div`
     }
 
     .title-box {
-      /* border: 1px solid #e0e0e0; */
+      border: 1px solid #e0e0e0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -92,6 +93,8 @@ export const CommunityBox = styled.div`
       margin-bottom: 20px;
       white-space: pre-wrap;
       height: 500px;
+      background-color: white;
+
       .retouch-box {
         overflow-y: auto;
         overflow-x: hidden;
@@ -168,6 +171,7 @@ export const CommunityBox = styled.div`
         position: absolute;
         bottom: 0;
         color: var(--gray-500);
+        margin-bottom: 1rem;
       }
     }
   }
@@ -224,6 +228,10 @@ export const CommunityBox = styled.div`
         border: 1px solid #e0e0e0;
         border-radius: 10px;
         padding: 4px;
+        &:focus {
+          border-color: #8c9cba;
+          outline: none;
+        }
       }
 
       button {
@@ -272,17 +280,18 @@ export const Timestamp = styled.span`
 `;
 
 export const ImgBox = styled.div`
-  width: 20%;
-  height: 300px;
+  width: 15%;
+  height: 200px;
   background-image: url(${picture});
   background-size: 200px;
   /* background-position: center; */
   background-repeat: no-repeat;
   animation: ${float} 5s ease-in infinite;
   position: fixed;
-  bottom: 0;
+  bottom: 15;
   right: 0;
   z-index: 1;
+
   cursor: pointer;
   display: flex;
   align-items: center;

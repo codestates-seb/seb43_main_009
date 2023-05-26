@@ -31,12 +31,12 @@ const Mypage = () => {
       inputRef.current.focus();
     }
   }, [isEditing]);
-
   useEffect(() => {
-    if (status === 'idle') {
+    console.log(status);
+    {
       dispatch(fetchUserData(userId));
     }
-  }, [status, dispatch, userId]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (myData) {
