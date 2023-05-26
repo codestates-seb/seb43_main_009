@@ -23,7 +23,9 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const [googleSearchValue, setGoogleSearchValue] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
+    localStorage.setItem('hasLoaded', 'false');
   }, []);
+
 
   const handleAllergyClick = (e) => {
     if (selectedButton === e.currentTarget) {
