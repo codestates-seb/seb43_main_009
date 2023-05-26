@@ -155,48 +155,48 @@ const Board = () => {
                 )}
               </div>
             </div>
-
-            {showEditForm ? (
-              <div className="retouch-box">
-                <div className="retouch-title">
-                  <span>제목</span>
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                  />
-                </div>
-                <div className="retouch-content">
-                  <span>
-                    내용<br></br>
-                    <br></br>
-                  </span>
-                  <textarea
-                    value={editedContent}
-                    onChange={(e) => setEditedContent(e.target.value)}
-                  ></textarea>
-                </div>
-              </div>
-            ) : (
-              boardStatus === 'succeeded' && (
-                <div className="content">
-                  <h3>제목 : {boardData.title}</h3>
-                  <p>내용 : {boardData.content}</p>
-                  <div className="post-info">
-                    <span>작성시간: {formatDate(boardData.createAt)}</span>
-                    <span>조회수: {boardData.view}</span>
+            <div className="form-box">
+              {showEditForm ? (
+                <div className="retouch-box">
+                  <div className="retouch-title">
+                    <span>제목</span>
+                    <input
+                      type="text"
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                    />
+                  </div>
+                  <div className="retouch-content">
+                    <span>
+                      내용<br></br>
+                      <br></br>
+                    </span>
+                    <textarea
+                      value={editedContent}
+                      onChange={(e) => setEditedContent(e.target.value)}
+                    ></textarea>
                   </div>
                 </div>
-              )
-            )}
-            {boardStatus === 'failed' && (
-              <div>
-                <p>Error: {boardError}</p>
-              </div>
-            )}
+              ) : (
+                boardStatus === 'succeeded' && (
+                  <div className="content">
+                    <h3>제목 : {boardData.title}</h3>
+                    <span>내용 : {boardData.content}</span>
+                    <div className="post-info">
+                      <span>작성시간: {formatDate(boardData.createAt)}</span>
+                      <span>조회수: {boardData.view}</span>
+                    </div>
+                  </div>
+                )
+              )}
+              {boardStatus === 'failed' && (
+                <div>
+                  <p>Error: {boardError}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-
         <div className="down-box">
           <div className="comment-content">
             {boardStatus === 'succeeded' && (
