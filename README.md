@@ -4,7 +4,6 @@
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-
   <a href="https://www.dowajoyak.store" target="_blank">
     <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
@@ -125,7 +124,7 @@
 - Refresh token을 통한 access token 재발급 API 구현<br/>
 - 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
 - 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
-
+  
 </div>
 </details>
 
