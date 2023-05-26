@@ -36,7 +36,7 @@ const Mypage = () => {
     {
       dispatch(fetchUserData(userId));
     }
-  }, []);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (myData) {
