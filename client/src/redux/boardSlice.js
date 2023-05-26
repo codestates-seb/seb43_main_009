@@ -23,6 +23,7 @@ export const fetchBoardData = createAsyncThunk(
   async (commuId, { rejectWithValue }) => {
     try {
       const response = await Axios.get(`/commu/${commuId}`);
+      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
