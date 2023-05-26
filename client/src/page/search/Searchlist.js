@@ -100,44 +100,46 @@ const SearchList = () => {
               <div className="result">
                 {searchKeyword}(으)로 검색한 결과입니다.
               </div>
-              <div className="itemnumber">
-                검색결과 리스트 (
-                {searchResults !== noresult ? searchResults.length : 0}개)
-              </div>
-              <div className="table">
-                {searchResults !== noresult ? (
-                  <div className="sub">
-                    <div className="image">식별/포장</div>
-                    <div className="name">제품명</div>
-                    <div className="company">회사명</div>
-                    <div className="haveallergy">알러지 여부</div>
+              {searchResults !== noresult && (
+                <>
+                  <div className="itemnumber">
+                    검색결과 리스트 ({searchResults.length}개)
                   </div>
-                ) : null}
-                {searchResults !== noresult ? (
-                  searchResults.map((el, index) => (
-                    <div
-                      key={el.itemName}
-                      className={`list ${
-                        index === searchResults.length - 1 ? 'last-item' : ''
-                      }`}
-                      onClick={() => Navigate(`/search/${el.itemName}`)}
-                    >
-                      <div className="imgdiv">
-                        <img
-                          className="itemimage"
-                          alt="itemimage"
-                          src={el.itemImage === nothing ? noimg : el.itemImage}
-                        ></img>
-                      </div>
-                      <div className="itemname">{el.itemName}</div>
-                      <div className="entpname">{el.entpName}</div>
-                      <div className="allergy">{checkwarn(el.allergy)}</div>
+                  <div className="table">
+                    <div className="sub">
+                      <div className="image">식별/포장</div>
+                      <div className="name">제품명</div>
+                      <div className="company">회사명</div>
+                      <div className="haveallergy">알러지 여부</div>
                     </div>
-                  ))
-                ) : (
-                  <img className="nosearch" alt="nosearch" src={nosearch}></img>
-                )}
-              </div>
+                    {searchResults.map((el, index) => (
+                      <div
+                        key={el.itemName}
+                        className={`list ${
+                          index === searchResults.length - 1 ? 'last-item' : ''
+                        }`}
+                        onClick={() => Navigate(`/search/${el.itemName}`)}
+                      >
+                        <div className="imgdiv">
+                          <img
+                            className="itemimage"
+                            alt="itemimage"
+                            src={
+                              el.itemImage === nothing ? noimg : el.itemImage
+                            }
+                          ></img>
+                        </div>
+                        <div className="itemname">{el.itemName}</div>
+                        <div className="entpname">{el.entpName}</div>
+                        <div className="allergy">{checkwarn(el.allergy)}</div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+              {searchResults === noresult && (
+                <img className="nosearch" alt="nosearch" src={nosearch}></img>
+              )}
             </>
           )}
         </div>
