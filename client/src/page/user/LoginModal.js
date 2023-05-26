@@ -35,8 +35,8 @@ import {
 const LoginModal = ({ onClose, isClosing }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('hello@gmail.com');
-  const [password, setPassword] = useState('1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   window.scrollTo(0, 0);
 
   const handleSubmit = async (e) => {
