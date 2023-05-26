@@ -85,7 +85,6 @@ const Board = () => {
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
-
     setEditedContent(boardData.content);
   };
   //수정 저장
