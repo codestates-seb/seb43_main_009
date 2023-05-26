@@ -65,8 +65,16 @@ export const CommunityBox = styled.div`
     .button-box {
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
 
+      span {
+        font-size: large;
+        font-weight: 600;
+        color: var(--bluish-gray-500);
+        position: absolute;
+        margin-left: 2.5rem;
+        margin-top: 0.7rem;
+      }
       button {
         text-align: center;
         text-decoration: none;

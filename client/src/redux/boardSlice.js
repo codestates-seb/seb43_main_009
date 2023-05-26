@@ -24,6 +24,8 @@ export const fetchBoardData = createAsyncThunk(
     try {
       const response = await Axios.get(`/commu/${commuId}`);
       console.log(response);
+      const userProfileImageUrl = response.data.userProfileImageUrl;
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -91,6 +93,7 @@ export const boardSlice = createSlice({
       .addCase(fetchBoardData.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.data = action.payload;
+        state.userProfileImageUrl = action.payload.userProfileImageUrl;
       })
       .addCase(fetchBoardData.rejected, (state, action) => {
         state.status = 'failed';
