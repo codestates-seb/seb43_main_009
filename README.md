@@ -98,6 +98,55 @@
 |노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
 |이진하A|메인 페이지, 풋터, 검색 상세페이지|
 
+<details>
+<summary>염도경</summary>
+<div markdown="1">       
+
+- webpack 경로설정 <br/>
+- 공용 협업 툴 설정 <br/>
+- 커뮤니티CRUD <br/>
+- 마이페이지 <br/>
+- 토큰관리 <br/>
+- 검색 메인페이지<br/>
+  
+</div>
+</details>
+
+<details>
+<summary>김성수</summary>
+<div markdown="1">       
+
+- 커뮤니티 <br/>
+- 검색리스트 <br/>
+  
+</div>
+</details>
+
+<details>
+<summary>노호준</summary>
+<div markdown="1">       
+
+- 헤더 <br/>
+- 로그인 <br/>
+- 회원가입 <br/>
+- 맞춤추천페이지 <br/>
+- 자동완성입력창 <br/>
+  
+</div>
+</details>
+
+<details>
+<summary>이진하A</summary>
+<div markdown="1">       
+
+- 메인 페이지 <br/>
+- 풋터 <br/>
+- 검색 상세페이지 <br/>
+
+</div>
+</details>
+
+
 <br><br>
 
 
