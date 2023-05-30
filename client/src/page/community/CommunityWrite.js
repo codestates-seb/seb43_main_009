@@ -24,6 +24,10 @@ const CommunityWrite = () => {
       window.alert('제목을 입력해주세요.');
     } else if (contentValue) {
       window.alert('내용을 입력해주세요.');
+    } else if (title.length > 30) {
+      window.alert('제목은 30자 이내로 작성 가능합니다.');
+    } else if (content.length > 3000) {
+      window.alert('내용은 3000자 이내로 작성 가능합니다.');
     } else {
       await dispatch(submitPost({ title, content, userId }));
       dispatch(GetCommulist());
