@@ -1,5 +1,9 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=반미콩%20&fontSize=75)
-
+<h2>Team. 반미콩🥙</h2>
+<br/>
+<div align="center">
+<img src="client/public/logo.png" style="width:200px;"/>
+<br/>
+<h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다. </h3>	
 <p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
@@ -8,17 +12,22 @@
     <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
 </p>
-
-<div align="center">
-<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> 반미콩입니다 :muscle:</h1>
 </div>
+<br>
+
+<h2> 🔗 배포링크 </h2>
+<ul>
+   <li><a href="https://www.dowajoyak.store" target="_blank">배포링크 </a>
+   <li>테스트아이디 : hello@gmail.com </li>
+   <li>테스트비밀번호 : 1234</li>
+</ul>
 
 <br>
 
+<h2>👪 팀원 소개</h2>
 <div align="center">
-<h3>:stuffed_flatbread: 반미콩 Members :stuffed_flatbread:</h3>
 
-|염도경<br>(FE Leader)|김성수<br>(FE)|노호준<br>(FE)|이진하A<br>(FE)|조만기<br>(BE Leader)|양인수<br>(BE)|한동희<br>(BE)|
+|<a href="https://github.com/yeomdogyeong"> 염도경 </a><br>FE Leader|<a href="https://github.com/ggggggggithub"> 김성수 </a><br>FE|<a href="https://github.com/nowaveosu"> 노호준 </a><br>FE|<a href="https://github.com/wlsljh0516"> 이진하A </a><br>FE|<a href="https://github.com/Sniij"> 조만기 </a><br>BE Leader|<a href="https://github.com/insooY"> 양인수 </a><br>BE|<a href="https://github.com/Gitdonghee"> 한동희 </a><br>BE|
 |---|---|---|---|---|---|---|
 |<img width="430px" height="95px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
 
@@ -26,67 +35,11 @@
 </div>
 
 
-<br>
-<br>
-
-<div align="center">
-    <h3>Welcome to our Git👨‍👦‍👦</h3>
-<table>
-  <thead>
-    <tr>
-      <th align="center"> <a href="https://github.com/Sniij"> 조만기 </a> <br/>BE(Leader)</th>
-      <th align="center"> <a href="https://github.com/insooY"> 양인수 </a> <br/>BE</th>
-      <th align="center"> <a href="https://github.com/Gitdonghee"> 한동희 </a> <br/>BE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><img src="https://i.namu.wiki/i/hPndVO91vVA0x1c0Vb4ELrqyJ2vtV3aXxsdbCENJlBR9cHjKBsXnJqEUoDouNGuiH9pZt11XfrOQ-F1oz-hdWA.webp" alt="조만기" width="180"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" width="180"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" width="180"></td>
-    </tr>
-    <tr>
-      <td align="center">흠,,,자기소개?</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-    </tr>
-  </tbody>
-</table>
 
 <br>
-
-<table>
-  <thead>
-    <tr>
-      <th align="center"> <a href="https://github.com/yeomdogyeong"> 염도경 </a> <br/>FE(Leader)</th>
-      <th align="center"> <a href="https://github.com/ggggggggithub"> 김성수 </a> <br/>FE</th>
-      <th align="center"> <a href="https://github.com/nowaveosu"> 노호준 </a> <br/>FE</th>
-      <th align="center"> <a href="https://github.com/wlsljh0516"> 이진하 </a> <br/>FE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/82639552?v=4" alt="염도경" width="350"></td>
-      <td align="center"><img src="https://cdn.pixabay.com/photo/2014/10/04/22/29/monkey-474147_960_720.png" alt="김성수" width="300"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/82007474?v=4" alt="노호준" style="max-width: 100%"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/66173718?v=4" alt="이진하" style="max-width: 100%"></td>
-    </tr>
-    <tr>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-    </tr>
-  </tbody>
-</table>
-
-</div>
-
-<br>
-
+<h2>🚩 멤버별 기능 구현</h2>
 <div align="center">
 
-<h2>멤버별 기능 구현</h2>
 </div>
 
 <h3>:hamster:FE_task_assignment:hamster:</h3>
@@ -98,53 +51,6 @@
 |노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
 |이진하A|메인 페이지, 풋터, 검색 상세페이지|
 
-<details>
-<summary>염도경</summary>
-<div markdown="1">       
-
-- webpack 경로설정 <br/>
-- 공용 협업 툴 설정 <br/>
-- 커뮤니티CRUD <br/>
-- 마이페이지 <br/>
-- 토큰관리 <br/>
-- 검색 메인페이지<br/>
-  
-</div>
-</details>
-
-<details>
-<summary>김성수</summary>
-<div markdown="1">       
-
-- 커뮤니티 <br/>
-- 검색리스트 <br/>
-  
-</div>
-</details>
-
-<details>
-<summary>노호준</summary>
-<div markdown="1">       
-
-- 헤더 <br/>
-- 로그인 <br/>
-- 회원가입 <br/>
-- 맞춤추천페이지 <br/>
-- 자동완성입력창 <br/>
-  
-</div>
-</details>
-
-<details>
-<summary>이진하A</summary>
-<div markdown="1">       
-
-- 메인 페이지 <br/>
-- 풋터 <br/>
-- 검색 상세페이지 <br/>
-
-</div>
-</details>
 
 
 <br><br>
@@ -185,10 +91,9 @@
 
   </div>
 
-<div align="center">
 
+<h2>Stacks used 🛒</h2>
 <div align="center">
-    <h1>Stacks used 🛒</h1>
     <p style="font-weight: bold; font-size:25px">Tools</p>
 <table>
   <thead>
@@ -260,10 +165,3 @@
 </table>
 
 </div>
-
-<br>
-
----
-<br>
-
-
