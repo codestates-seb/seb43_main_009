@@ -108,7 +108,12 @@
 <details>
 <summary>한동희</summary>
 <div markdown="1">       
-
+- OAuth2(Naver) 구현<br/>
+- Spring Security configuration (For login, signup) <br/>
+- CORS configuration(security+S3)<br/>
+- JWT 구현 <br/>
+- OAuth2 + JWT 통합 <br/>
+- Survey 구현 <br/>
 </div>
 </details>
 
