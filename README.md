@@ -1,111 +1,70 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=반미콩%20&fontSize=75)
-
+<h2>Team. 반미콩🥙</h2>
+<br/>
 <div align="center">
-	<h3>:four_leaf_clover:skills</h3>
-	<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=white" />
-	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
-	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
-	<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
-</div>
-
+<br/>
+<img src="client/public/logo.png" style="width:200px;"/>
+<br/>
+<h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다. </h3>	
 <p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-  
-  <a href="#demo">
-    <img src="https://img.shields.io/badge/DEMO%20(not%20yet)%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
+  <a href="https://www.dowajoyak.store" target="_blank">
+    <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
 </p>
-
-<div align="center">
-<h1>:stuffed_flatbread:이것은 반미인가 콩인가:question: <br>:raising_hand: 안녕하세요  <br> SEB_43 9TEAM 반미콩입니다 :muscle:</h1>
+<br/>
 </div>
-
 <br>
 
-<div align="center">
-<h3>:stuffed_flatbread: 반미콩 Members :stuffed_flatbread:</h3>
+<h2> 🔗 배포링크 </h2>
+<br/>
+<ul>
+   <li><a href="https://www.dowajoyak.store" target="_blank">배포링크 </a>
+   <li>테스트아이디 : hello@gmail.com </li>
+   <li>테스트비밀번호 : 1234</li>
+</ul>
+<br/>
+<h2> 💼 문서 </h2>
+<br/>
+<ul>
+   <li><a href="https://docs.google.com/spreadsheets/d/17Q39IjxK8O79CnEZ6XcHj8lsbarEj6Fc4DlTW_tKggg/edit?usp=sharing" target="_blank">사용자 요구사항 정의서</a>
+   <li><a href="https://docs.google.com/spreadsheets/d/1CUPt0x8gKh97rYzg2F48SPbh83m-5zFZFi5pKde51R8/edit?usp=sharing" target="_blank">API 명세서 </a>
+   <li><a href="https://www.figma.com/file/M4aYo41q8IRlMjVBHeku7u/%EB%8F%84%EC%99%80%EC%A1%B0%EC%95%BD?type=design&node-id=0%3A1&t=hDW9kJgniAdpezfv-1" target="_blank">UI/UX Design </a>
+   <li><a href="https://ibb.co/0YGTYMG">ERD</a></a>
+</ul>
+<br>
 
-|염도경<br>(FE Leader)|김성수<br>(FE)|노호준<br>(FE)|이진하A<br>(FE)|조만기<br>(BE Leader)|양인수<br>(BE)|한동희<br>(BE)|
+<h2>👪 팀원 소개</h2>
+<br/>
+<div align="center">
+
+|<a href="https://github.com/yeomdogyeong"> 염도경 </a><br>FE Leader|<a href="https://github.com/ggggggggithub"> 김성수 </a><br>FE|<a href="https://github.com/nowaveosu"> 노호준 </a><br>FE|<a href="https://github.com/wlsljh0516"> 이진하A </a><br>FE|<a href="https://github.com/Sniij"> 조만기 </a><br>BE Leader|<a href="https://github.com/insooY"> 양인수 </a><br>BE|<a href="https://github.com/Gitdonghee"> 한동희 </a><br>BE|
 |---|---|---|---|---|---|---|
 |<img width="430px" height="95px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
-  
+
 
 </div>
 
 
-<br>
-<br>
-
-<div align="center">
-    <h3>Welcome to our Git👨‍👦‍👦</h3>
-<table>
-  <thead>
-    <tr>
-      <th align="center"> <a href="https://github.com/Sniij"> 조만기 </a> <br/>BE(Leader)</th>
-      <th align="center"> <a href="https://github.com/insooY"> 양인수 </a> <br/>BE</th>
-      <th align="center"> <a href="https://github.com/Sniij"> 한동희 </a> <br/>BE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120099321?v=4" alt="조만기" width="180"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/120349578?v=4" alt="양인수" width="180"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/119929608?v=4" alt="한동희" width="180"></td>
-    </tr>
-    <tr>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-    </tr>
-  </tbody>
-</table>
 
 <br>
-
-<table>
-  <thead>
-    <tr>
-      <th align="center"> <a href="https://github.com/yeomdogyeong"> 염도경 </a> <br/>FE(Leader)</th>
-      <th align="center"> <a href="https://github.com/ggggggggithub"> 김성수 </a> <br/>FE</th>
-      <th align="center"> <a href="https://github.com/nowaveosu"> 노호준 </a> <br/>FE</th>
-      <th align="center"> <a href="https://github.com/wlsljh0516"> 이진하 </a> <br/>FE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/82639552?v=4" alt="염도경" width="350"></td>
-      <td align="center"><img src="https://cdn.pixabay.com/photo/2014/10/04/22/29/monkey-474147_960_720.png" alt="김성수" width="300"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/82007474?v=4" alt="노호준" style="max-width: 100%"></td>
-      <td align="center"><img src="https://avatars.githubusercontent.com/u/66173718?v=4" alt="이진하" style="max-width: 100%"></td>
-    </tr>
-    <tr>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-      <td align="center">구현 예시들</td>
-    </tr>
-  </tbody>
-</table>
-
-</div>
-
-<br>
-
+<h2>🚩 멤버별 기능 구현</h2>
+<br/>
 <div align="center">
 
- <h2>멤버별 기능 구현</h2>
 </div>
 
 <h3>:hamster:FE_task_assignment:hamster:</h3>
 <br>
-  
-|염도경|N|
-|---|---|
-|김성수||
-|노호준||
-|이진하A||
+
+|염도경|webpack 경로설정,공용 협업 툴 설정, 커뮤니티CRUD, 마이페이지, 토큰관리, 검색 메인페이지|
+|:---:|---|
+|김성수|커뮤니티, 검색리스트|
+|노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
+|이진하A|메인 페이지, 풋터, 검색 상세페이지|
+
+
 
 <br><br>
 
@@ -113,18 +72,42 @@
 <h3>:raccoon:BE_task_assignment:raccoon:</h3>
 <br>
 
-|조만기|N|
+
+<details>
+<summary>조만기</summary>
+<div markdown="1">       
+
+- OAuth2(Google) 구현<br/>
+- Spring Security configuration (For login, signup) <br/>
+- CORS configuration(security+S3)<br/>
+- JWT 구현 <br/>
+- OAuth2 + JWT 통합 <br/>
+- 외부 API 연동 후 커스텀하여 약 검색 API 구현 <br/>
+- JSON parsing service 구현<br/>
+- S3 버킷에 이미지를 올리는 API 구현 <br/>
+- Client와 통신을 위해 기본 배포 환경 configuration(EC2+RDS+S3) <br/>
+- 서버 환경 변수 리소스를 Parameter Store와 연동 configuration <br/>
+- 배포 도메인 안정성을 위해 https to https deploy configuration(ACM, CloudFront, ELB, Route 53) <br/>
+- Github Actions configuration(FE+BE, Code Deploy)<br/>
+- Refresh token을 통한 access token 재발급 API 구현<br/>
+- 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
+- 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨려 유지보수 편의성과 안정성을 높임 <br/>
+  
+</div>
+</details>
+
+
+|조만기||
 |---|---|
 |양인수||
 |한동희||
 
   </div>
-  
-<div align="center">
-  
-<div align="center">
-    <h1>Stacks used 🛒</h1>
-    <p style="font-weight: bold; font-size:25px">Tools</p>
+
+<br/>
+<h2>Stacks used 🛒</h2>
+<div>
+    <p style="font-weight: bold; font-size:30px">Tools</p>
 <table>
   <thead>
     <tr>
@@ -145,7 +128,7 @@
     </tr>
   </tbody>
 </table>
-    <p style="font-weight: bold; font-size:25px">Back-End</p>
+    <p style="font-weight: bold; font-size:30px">Back-End</p>
 <table>
   <thead>
     <tr>
@@ -168,7 +151,7 @@
     </tr>
   </tbody>
 </table>
-    <p style="font-weight: bold; font-size:25px">Front-End</p>
+    <p style="font-weight: bold; font-size:30px">Front-End</p>
 <table>
   <thead>
     <tr>
@@ -196,9 +179,21 @@
 
 </div>
 
+
+<h2>🗒️ Commit convention</h2>
 <br>
 
----
-<br>
+|Message|설명|
+|:---:|:---|
+|[BE]| Back-End|
+|[FE]| Front-End|
+|[Feat]| 기능구현|
+|[Comment]|주석 등 필요한 코멘트|
+|[Docs]|문서 관련 수정|
+|[Fix]|버그 수정|
+|[Refactor]|코드 리팩토링|
+|[Test]|테스트 코드 추가|
+|[Etc] |이외 기타사항|
 
+	
 
