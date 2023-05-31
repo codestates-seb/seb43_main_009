@@ -5,14 +5,14 @@
 <img src="client/public/logo.png" style="width:200px;"/>
 <br/>
 <h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다. </h3>	
-<!-- <p align='center'>
+<p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
   <a href="https://www.dowajoyak.store" target="_blank">
     <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-</p> -->
+</p>
 <br/>
 </div>
 <br>
@@ -31,7 +31,7 @@
    <li><a href="https://docs.google.com/spreadsheets/d/17Q39IjxK8O79CnEZ6XcHj8lsbarEj6Fc4DlTW_tKggg/edit?usp=sharing" target="_blank">사용자 요구사항 정의서</a>
    <li><a href="https://docs.google.com/spreadsheets/d/1CUPt0x8gKh97rYzg2F48SPbh83m-5zFZFi5pKde51R8/edit?usp=sharing" target="_blank">API 명세서 </a>
    <li><a href="https://www.figma.com/file/M4aYo41q8IRlMjVBHeku7u/%EB%8F%84%EC%99%80%EC%A1%B0%EC%95%BD?type=design&node-id=0%3A1&t=hDW9kJgniAdpezfv-1" target="_blank">UI/UX Design </a>
-   <li><a href="https://www.dowajoyak.store" target="_blank">ERD </a>
+   <li><a href="https://ibb.co/0YGTYMG">ERD</a></a>
 </ul>
 <br>
 
@@ -59,7 +59,7 @@
 <br>
 
 |염도경|webpack 경로설정,공용 협업 툴 설정, 커뮤니티CRUD, 마이페이지, 토큰관리, 검색 메인페이지|
-|---|---|
+|:---:|---|
 |김성수|커뮤니티, 검색리스트|
 |노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
 |이진하A|메인 페이지, 풋터, 검색 상세페이지|
