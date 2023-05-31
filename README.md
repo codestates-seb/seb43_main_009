@@ -4,7 +4,7 @@
 <br/>
 <img src="client/public/logo.png" style="width:200px;"/>
 <br/>
-<h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다. </h3>	
+<h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다 </h3>	
 <p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
@@ -61,7 +61,7 @@
 |염도경|webpack 경로설정,공용 협업 툴 설정, 커뮤니티CRUD, 마이페이지, 토큰관리, 검색 메인페이지|
 |:---:|---|
 |김성수|커뮤니티, 검색리스트|
-|노호준|헤더, 로그인, 회원가입, 맞춤추천페이지, 자동완성입력창|
+|노호준|헤더, 로그인, 회원가입, 구글 OAuth, 카카오 OAuth, 네이버 OAuth,  맞춤추천페이지, 자동완성 입력창구현|
 |이진하A|메인 페이지, 풋터, 검색 상세페이지|
 
 
@@ -108,19 +108,14 @@
 <details>
 <summary>한동희</summary>
 <div markdown="1">       
-	
 - OAuth2(Naver) 구현<br/>
 - Spring Security configuration (For login, signup) <br/>
 - JWT 공동 구현 <br/>
 - OAuth2 + JWT 통합 <br/>
 - Survey 구현 <br/>
 - 커뮤니티 게시판 공동 구현 <br/>
-	
 </div>
 </details>
-
-
-
   </div>
 
 <br/>
@@ -139,11 +134,11 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"> <img alt="Github" src="https://simpleicons.org/icons/github.svg" style="max-width: 100%"/> </td>
-      <td align="center"> <img alt="IntelliJ" src="https://simpleicons.org/icons/intellijidea.svg" width="50" > </td>
-      <td align="center"> <img alt="VSCode" src="https://simpleicons.org/icons/visualstudiocode.svg" width="50"> </td>
-      <td align="center"> <img alt="Discord" src="https://simpleicons.org/icons/discord.svg" width="50"></td>
-      <td align="center"> <img alt="Notion" src="https://simpleicons.org/icons/notion.svg" width="50"> </td>
+      <td align="center"> <img alt="Github" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/> </td>
+      <td align="center"> <img alt="IntelliJ" src="https://user-images.githubusercontent.com/25181517/192108890-200809d1-439c-4e23-90d3-b090cf9a4eea.png" width="50" > </td>
+      <td align="center"> <img alt="VSCode" src="https://i.ibb.co/SwMG1sf/download-9.png" width="50"> </td>
+      <td align="center"> <img alt="Discord" src="https://i.ibb.co/QDLgLdS/discord-logo-discord-icon-transparent-free-png.webp" width="70"></td>
+      <td align="center"> <img alt="Notion" src="https://i.ibb.co/JyMLRY8/Notion-app-logo.png" width="50"> </td>
     </tr>
   </tbody>
 </table>
@@ -161,12 +156,12 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"> <img  alt="Java" src="https://techstack-generator.vercel.app/java-icon.svg" style="max-width: 100%"/> </td>
-      <td align="center"> <img alt="spring logo" src="https://simpleicons.org/icons/spring.svg" width="50" > </td>
-      <td align="center"> <img alt="spring-boot logo" src="https://simpleicons.org/icons/springboot.svg" width="60"> </td>
-      <td align="center"> <img alt="spring-security logo" src="https://simpleicons.org/icons/springsecurity.svg" width="60"></td>
-      <td align="center"> <img alt="MySQL" src="https://simpleicons.org/icons/mysql.svg" width="80"> </td>
-      <td align="center"> <img alt="AWS" src="https://simpleicons.org/icons/amazonaws.svg" width="70"> </td>
+      <td align="center"> <img  alt="Java" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="60"/> </td>
+      <td align="center"> <img alt="spring logo" src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" width="50" > </td>
+      <td align="center"> <img alt="spring-boot logo" src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="60"> </td>
+      <td align="center"> <img alt="spring-security logo" src="https://i.ibb.co/CWX7HVk/download-7.png" alt="download-7" width="40"></td>
+      <td align="center"> <img alt="MySQL" src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" width="80"> </td>
+      <td align="center"> <img alt="AWS" src="https://user-images.githubusercontent.com/25181517/183896132-54262f2e-6d98-41e3-8888-e40ab5a17326.png" width="70"> </td>
     </tr>
   </tbody>
 </table>
@@ -176,22 +171,22 @@
     <tr>
       <th align="center"> React </th>
       <th align="center"> JavaScript </th>
-      <th align="center"> HTML </th>
-      <th align="center"> CSS </th>
-        <th align="center"> Webpack </th>
-	 <th align="center"> styled-components </th>
-	 <th align="center"> Redux </th>
+      <th align="center"> styled-components </th>
+      <th align="center"> Webpack </th>
+      <th align="center"> es-lint </th>
+      <th align="center"> prettier </th> 
+      <th align="center"> Redux </th>
     </tr>
   </thead>
   <tbody>
     <tr>      
-      <td align="center"> <img alt="React" src="https://simpleicons.org/icons/react.svg" width="60"></td>
-      <td align="center"> <img alt="JavaScript" src="https://simpleicons.org/icons/javascript.svg" style="max-width: 100%"/> </td>
-      <td align="center"> <img alt="HTML" src="https://simpleicons.org/icons/html5.svg" width="50" > </td>
-      <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/css3.svg" width="60"> </td>
-      <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/webpack.svg" width="60"> </td>
-       <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/styledcomponents.svg" width="60"> </td>
-        <td align="center"> <img alt="CSS" src="https://simpleicons.org/icons/redux.svg" width="60"> </td>
+      <td align="center"> <img alt="React" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" width="60"></td>
+      <td align="center"> <img alt="JavaScript" src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="60"/> </td>
+      <td align="center"> <img alt="styled-components" src="https://i.ibb.co/stW53wm/img1-daumcdn.png" width="60"> </td>
+      <td align="center"> <img alt="Webpack" src="https://user-images.githubusercontent.com/25181517/187955008-981340e6-b4cc-441b-80cf-7a5e94d29e7e.png" width="60"> </td>
+      <td align="center"> <img alt="es-lint" src="https://i.ibb.co/ypr3Q2s/v-VGFTo-Ha-IT1489115329-cont.png" width="60"> </td>
+      <td align="center"> <img alt="prettier" src="https://i.ibb.co/8YTWnTd/25822731.png" width="60"> </td>
+      <td align="center"> <img alt="Redux" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" width="60"> </td>
     </tr>
   </tbody>
 </table>
@@ -213,6 +208,3 @@
 |[Refactor]|코드 리팩토링|
 |[Test]|테스트 코드 추가|
 |[Etc] |이외 기타사항|
-
-	
-
