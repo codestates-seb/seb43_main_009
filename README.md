@@ -97,10 +97,22 @@
 </details>
 
 
-|조만기||
-|---|---|
-|양인수||
-|한동희||
+<details>
+<summary>양인수</summary>
+<div markdown="1">       
+
+</div>
+</details>
+
+
+<details>
+<summary>한동희</summary>
+<div markdown="1">       
+
+</div>
+</details>
+
+
 
   </div>
 
