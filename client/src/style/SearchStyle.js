@@ -177,6 +177,7 @@ export const SearchlistDesign = styled.div`
   .list {
     border-bottom: 1px dotted #999999;
     height: 120px;
+    cursor: pointer;
   }
 
   .nosearch {

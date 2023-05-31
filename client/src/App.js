@@ -11,10 +11,10 @@ import SearchResult from './page/search/SearchResult';
 import Board from './page/community/Board';
 import SearchList from './page/search/Searchlist';
 import Mypage from './page/user/Mypage';
-
+import { getCookie } from './utils/cookie';
 const App = () => {
   console.log(process.env.API_SERVER);
-
+  console.log(getCookie('refreshToken'));
   return (
     <BrowserRouter>
       <Routes>

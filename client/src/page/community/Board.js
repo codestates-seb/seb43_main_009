@@ -67,8 +67,8 @@ const Board = () => {
     }
     const token = localStorage.getItem('accessToken');
     if (token === null) {
-      alert('가입정보가 없습니다. 회원가입 페이지로 이동합니다.');
-      navigate('/signup');
+      alert('로그인정보가 없습니다. 다시 로그인 해주세요.');
+      navigate('/login');
     }
 
     dispatch(submitComment({ commuId: boardData.commuId, comment }))
@@ -85,7 +85,6 @@ const Board = () => {
   const handleEditClick = () => {
     setShowEditForm(true);
     setEditedTitle(boardData.title);
-
     setEditedContent(boardData.content);
   };
   //수정 저장
@@ -127,65 +126,76 @@ const Board = () => {
         <div className="up-box">
           <div className="title-box">
             <div className="button-box">
-              {showEditForm ? (
-                <>
-                  <button onClick={handleSaveEdit}>저장</button>
-                  <button onClick={() => setShowEditForm(false)}>취소</button>
-                </>
-              ) : (
-                <>
-                  {userId === boardData.userId && ( // 만약 게시글 작성자와 로그인한 사용자가 같다면 버튼을 보여줍니다.
-                    <>
-                      <button onClick={handleEditClick}>게시글 수정</button>
-                      <button onClick={handleDeletePost}>게시글 삭제</button>
-                    </>
-                  )}
-                </>
-              )}
-            </div>
-
-            {showEditForm ? (
-              <div className="retouch-box">
-                <div className="retouch-title">
-                  <span>제목</span>
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                  />
-                </div>
-                <div className="retouch-content">
-                  <span>
-                    내용<br></br>
-                    <br></br>
-                  </span>
-                  <textarea
-                    value={editedContent}
-                    onChange={(e) => setEditedContent(e.target.value)}
-                  ></textarea>
-                </div>
+              <img
+                src={boardData.userProfileImageUrl}
+                alt={boardData.displayName}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                }}
+              />
+              <span>작성자 : {boardData.displayName}</span>
+              <div>
+                {showEditForm ? (
+                  <>
+                    <button onClick={handleSaveEdit}>저장</button>
+                    <button onClick={() => setShowEditForm(false)}>취소</button>
+                  </>
+                ) : (
+                  <>
+                    {userId === boardData.userId && ( // 만약 게시글 작성자와 로그인한 사용자가 같다면 버튼을 보여줍니다.
+                      <>
+                        <button onClick={handleEditClick}>게시글 수정</button>
+                        <button onClick={handleDeletePost}>게시글 삭제</button>
+                      </>
+                    )}
+                  </>
+                )}
               </div>
-            ) : (
-              boardStatus === 'succeeded' && (
-                <div className="content">
-                  <h3>제목 : {boardData.title}</h3>
-                  <p>내용 : {boardData.content}</p>
-                  <div className="post-info">
-                    <span>작성자: {boardData.displayName}</span>
-                    <span>작성시간: {formatDate(boardData.createAt)}</span>
-                    <span>조회수: {boardData.view}</span>
+            </div>
+            <div className="form-box">
+              {showEditForm ? (
+                <div className="retouch-box">
+                  <div className="retouch-title">
+                    <span>제목</span>
+                    <input
+                      type="text"
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                    />
+                  </div>
+                  <div className="retouch-content">
+                    <span>
+                      내용<br></br>
+                      <br></br>
+                    </span>
+                    <textarea
+                      value={editedContent}
+                      onChange={(e) => setEditedContent(e.target.value)}
+                    ></textarea>
                   </div>
                 </div>
-              )
-            )}
-            {boardStatus === 'failed' && (
-              <div>
-                <p>Error: {boardError}</p>
-              </div>
-            )}
+              ) : (
+                boardStatus === 'succeeded' && (
+                  <div className="content">
+                    <h3>제목 : {boardData.title}</h3>
+                    <span>내용 : {boardData.content}</span>
+                    <div className="post-info">
+                      <span>작성시간: {formatDate(boardData.createAt)}</span>
+                      <span>조회수: {boardData.view}</span>
+                    </div>
+                  </div>
+                )
+              )}
+              {boardStatus === 'failed' && (
+                <div>
+                  <p>Error: {boardError}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-
         <div className="down-box">
           <div className="comment-content">
             {boardStatus === 'succeeded' && (

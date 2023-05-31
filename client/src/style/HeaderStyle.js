@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const GlobalFont = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
+  width: 100%;
 `;
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -22,6 +23,11 @@ export const Logo = styled.img`
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (max-width: 768px) {
+    height: 30px;
+    position: absolute;
+    left: 18%;
+  }
 `;
 
 export const MenuWrapper = styled.div`
@@ -36,7 +42,7 @@ export const StyledLink = styled(Link)`
 
 export const UserName = styled.div`
   font-weight: 600;
-  margin-top: 0.1rem;
+  margin-top: 0.3rem;
   color: black;
   &:hover {
     color: #f05758;
@@ -47,6 +53,7 @@ export const Menu = styled.div`
   font-size: 20px;
   margin-left: 20px;
   color: black;
+  margin-top: 3px;
   text-decoration: none;
   &.login {
     cursor: pointer;
@@ -57,6 +64,10 @@ export const Menu = styled.div`
   &.logout {
     margin-right: 20px;
     cursor: pointer;
+  }
+  &.selected {
+    color: #f05758;
+    border-bottom 2px solid #f05758;  
   }
 `;
 
@@ -70,6 +81,5 @@ export const UnderMenuWrapper = styled.div`
   top: 110px;
   width: 100%;
   background-color: white;
-  z-index: 101;
-  background-color: ${(props) => (props.showModal ? '#8A8A8A' : 'white')};
+  z-index: ${(props) => (props.showModal ? 2 : 100)};
 `;

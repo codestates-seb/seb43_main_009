@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 import picture from '../../public/pencil.png';
 import { keyframes } from 'styled-components';
-
+import pastel from '../../public/acrylic.jpg';
 const float = keyframes`
   0% {
     transform: translateX(0px) translateY(0px);
   }
   25% {
-    transform: translateX(-3px) translateY(3px);
+    transform: translateX(-3px) translateY(0px);
+  }
+  35% {
+    transform: translateX(0px) translateY(0px);
   }
   50% {
-    transform: translateX(3px) translateY(0px);
+    transform: translateX(5px) transla gteY(0px);
   }
   73% {
-    transform: translateX(-3px) translateY(0px);
+    transform: translateX(-5px) translateY(0px);
   }
   100% {
     transform: translateX(0px) translateY(0px);
@@ -43,130 +46,155 @@ export const CommunityBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  background-color: white;
   .up-box {
     width: 100vw;
+    /* height: 65vh; */
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    .button-box {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-
-      button {
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        padding: 5px 12px;
-        transition-duration: 0.4s;
-        background-color: white;
-        color: var(--bluish-gray-500);
-        border: none;
-        &:hover {
-          border: none;
-          color: var(--peach-500);
-        }
-      }
-    }
+    background-image: url(${pastel});
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 
     .title-box {
       /* border: 1px solid #e0e0e0; */
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       border-radius: 20px;
-      width: 80%;
+      width: 70%;
       min-height: 100%;
       padding: 16px;
       box-sizing: border-box;
       position: relative;
       margin-bottom: 20px;
       white-space: pre-wrap;
-
-      .retouch-box {
-        overflow-y: auto;
-        overflow-x: hidden;
-        span {
-          font-size: x-large;
-          font-weight: 600;
-          padding: 1rem;
-        }
-        .retouch-title {
-          border-bottom: 1px solid #e0e0e0;
-          margin-bottom: 1rem;
-          input:focus {
-            outline: none;
-            font-size: x-large;
-            font-weight: 600;
-          }
-        }
-        .retouch-content {
-          /* border: 1px solid #e0e0e0; */
-          margin-top: 1rem;
-          textarea:focus {
-            outline: none;
-          }
-        }
-      }
-
-      .content {
-        /* overflow: auto; */
-        flex-grow: 1;
-      }
-
-      .content h3 {
-        padding: 10px;
-        font-size: 24px;
-        font-weight: 800;
-        color: #333;
-        margin-bottom: 20px;
-      }
-
-      .content p {
-        padding: 10px;
-        font-size: 16px;
-        color: #666;
-        line-height: 1.6;
-        word-break: break-all;
-      }
-      input {
-        width: 80%;
-        height: 10%;
-        border-radius: 4px;
-        padding: 10px;
-        opacity: 0.8;
-        font-size: large;
-        border: none;
-      }
-
-      textarea {
+      height: 500px;
+      /* background-color: white; */
+      .button-box {
         width: 100%;
-        height: 30vh;
-        border-radius: 4px;
-        padding: 10px;
-        font-size: large;
-        opacity: 0.8;
-        border: none;
-        overflow-wrap: break-word;
-        resize: vertical;
-      }
-      .post-info {
         display: flex;
         justify-content: space-between;
-        width: 90%;
-        font-size: 15px;
-        position: absolute;
-        bottom: 0;
-        color: var(--gray-500);
+
+        span {
+          font-size: large;
+          font-weight: 600;
+          color: var(--bluish-gray-500);
+          position: absolute;
+          margin-left: 2.5rem;
+          margin-top: 0.7rem;
+        }
+        button {
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 12px;
+          padding: 5px 12px;
+          transition-duration: 0.4s;
+          /* background-color: white; */
+          color: var(--bluish-gray-500);
+          border: none;
+          &:hover {
+            border: none;
+            color: var(--peach-500);
+          }
+        }
+      }
+
+      .form-box {
+        .retouch-box {
+          overflow-y: auto;
+          overflow-x: hidden;
+
+          span {
+            font-size: x-large;
+            font-weight: 600;
+            padding: 1rem;
+          }
+          .retouch-title {
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 1rem;
+            input {
+              background-color: #e0e0e0;
+              :focus {
+                outline: none;
+                font-size: x-large;
+                font-weight: 600;
+                background-color: #e0e0e0;
+              }
+            }
+          }
+          .retouch-content {
+            /* border: 1px solid #e0e0e0; */
+            margin-top: 1rem;
+            textarea {
+              background-color: #e0e0e0;
+
+              :focus {
+                outline: none;
+                background-color: #e0e0e0;
+              }
+            }
+          }
+        }
+
+        .content {
+          height: 380px;
+          overflow: auto;
+          flex-grow: 1;
+          h3 {
+            padding: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 20px;
+          }
+          span {
+            padding: 10px;
+            font-size: 16px;
+            color: #666;
+
+            word-break: break-all;
+          }
+        }
+
+        input {
+          width: 80%;
+          height: 10%;
+          border-radius: 4px;
+          padding: 10px;
+          opacity: 0.8;
+          font-size: large;
+          border: none;
+        }
+
+        textarea {
+          width: 100%;
+          height: 30vh;
+          border-radius: 4px;
+          padding: 10px;
+          font-size: large;
+          opacity: 0.8;
+          border: none;
+          overflow-wrap: break-word;
+          resize: vertical;
+        }
+        .post-info {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          font-size: 15px;
+          position: absolute;
+          bottom: 0;
+          color: var(--bluish-gray-500);
+          margin-bottom: 1rem;
+        }
       }
     }
   }
@@ -223,6 +251,10 @@ export const CommunityBox = styled.div`
         border: 1px solid #e0e0e0;
         border-radius: 10px;
         padding: 4px;
+        &:focus {
+          border-color: #8c9cba;
+          outline: none;
+        }
       }
 
       button {
@@ -271,17 +303,18 @@ export const Timestamp = styled.span`
 `;
 
 export const ImgBox = styled.div`
-  width: 20%;
-  height: 300px;
+  width: 15%;
+  height: 200px;
   background-image: url(${picture});
   background-size: 200px;
   /* background-position: center; */
   background-repeat: no-repeat;
   animation: ${float} 5s ease-in infinite;
   position: fixed;
-  bottom: 0;
+  bottom: 15;
   right: 0;
   z-index: 1;
+
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -300,7 +333,7 @@ export const ImgBox = styled.div`
     content: '나도 글쓰러 가기!'; // hover시 표시될 텍스트
     display: block;
     width: 100%;
-    margin-bottom: 300px;
+    margin-bottom: 200px;
     margin-left: 50px;
     font-family: 'MaplestoryOTFBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')

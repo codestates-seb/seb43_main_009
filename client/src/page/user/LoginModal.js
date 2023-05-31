@@ -1,14 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Link } from 'react-router-dom';
 import { Axios } from '../../utils/api';
 import logo from '../../../public/logo.png';
+import googleLogo from '../../../public/googleLogo.png';
+import naverLogo from '../../../public/naverLogo.png';
+import kakaoLogo from '../../../public/kakaoLogo.png';
 import {
   ModalWrapper,
+  GoogleLogo,
+  KakaoLogo,
+  NaverLogo,
   ModalContent,
   CloseButton,
   LoginWrapperForModal,
@@ -31,20 +35,17 @@ import {
 const LoginModal = ({ onClose, isClosing }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('hello@gmail.com');
-  const [password, setPassword] = useState('1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   window.scrollTo(0, 0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post(
-        'https://server.dowajoyak.shop/users/login',
-        {
-          username: email,
-          password,
-        },
-      );
+      const response = await Axios.post('/users/login', {
+        username: email,
+        password,
+      });
       const accessToken = response.headers['authorization'];
       const refreshToken = response.headers['refresh'];
       localStorage.setItem('accessToken', accessToken);
@@ -66,13 +67,16 @@ const LoginModal = ({ onClose, isClosing }) => {
         <CloseButton onClick={onClose}>X</CloseButton>
         <LoginWrapperForModal>
           <Logo src={logo} alt="logo" />
-          <GoogleLogin href="https://server.dowajoyak.shop/oauth2/authorization/google">
+          <GoogleLogin href="https://server.dowajoyak.store/oauth2/authorization/google">
+            <GoogleLogo src={googleLogo} alt="logo" />
             구글로 로그인
           </GoogleLogin>
-          <KakaoLogin href="https://server.dowajoyak.shop/oauth2/authorization/kakao">
+          <KakaoLogin href="https://server.dowajoyak.store/oauth2/authorization/kakao">
+            <KakaoLogo src={kakaoLogo} alt="logo" />
             카카오로 로그인
           </KakaoLogin>
-          <NaverLogin href="https://server.dowajoyak.shop/oauth2/authorization/naver">
+          <NaverLogin href="https://server.dowajoyak.store/oauth2/authorization/naver">
+            <NaverLogo src={naverLogo} alt="logo" />
             네이버로 로그인
           </NaverLogin>
           <EmailLogin onSubmit={handleSubmit}>

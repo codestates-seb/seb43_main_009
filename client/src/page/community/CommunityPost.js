@@ -37,6 +37,7 @@ const Commpost = () => {
   // 상세조회로 이동
   const goBoard = (el) => {
     Navigate(`/commu/${el.commuId}`);
+    window.scrollTo(0, 0);
   };
 
   // 오늘과 같은 작성날이면 월,일 표시
