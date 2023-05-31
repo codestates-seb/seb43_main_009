@@ -101,7 +101,8 @@
 <details>
 <summary>양인수</summary>
 <div markdown="1">       
-
+- OAuth2(Kakao) 구현<br/>
+- 커뮤니티 페이지 백앤드 구현 <br/>
 </div>
 </details>
 
