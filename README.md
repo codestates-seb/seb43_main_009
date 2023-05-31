@@ -1,30 +1,42 @@
 <h2>Team. 반미콩🥙</h2>
 <br/>
 <div align="center">
+<br/>
 <img src="client/public/logo.png" style="width:200px;"/>
 <br/>
 <h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다. </h3>	
-<p align='center'>
+<!-- <p align='center'>
   <a href="https://github.com/codestates-seb/seb43_main_009/issues">
     <img src="https://img.shields.io/badge/IDEA%20ISSUE%20-%23F7DF1E.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
   <a href="https://www.dowajoyak.store" target="_blank">
     <img src="https://img.shields.io/badge/DEMO%20-%234FC08D.svg?&style=for-the-badge&&logoColor=white"/>
   </a>
-</p>
+</p> -->
+<br/>
 </div>
 <br>
 
 <h2> 🔗 배포링크 </h2>
+<br/>
 <ul>
    <li><a href="https://www.dowajoyak.store" target="_blank">배포링크 </a>
    <li>테스트아이디 : hello@gmail.com </li>
    <li>테스트비밀번호 : 1234</li>
 </ul>
-
+<br/>
+<h2> 💼 문서 </h2>
+<br/>
+<ul>
+   <li><a href="https://docs.google.com/spreadsheets/d/17Q39IjxK8O79CnEZ6XcHj8lsbarEj6Fc4DlTW_tKggg/edit?usp=sharing" target="_blank">사용자 요구사항 정의서</a>
+   <li><a href="https://docs.google.com/spreadsheets/d/1CUPt0x8gKh97rYzg2F48SPbh83m-5zFZFi5pKde51R8/edit?usp=sharing" target="_blank">API 명세서 </a>
+   <li><a href="https://www.figma.com/file/M4aYo41q8IRlMjVBHeku7u/%EB%8F%84%EC%99%80%EC%A1%B0%EC%95%BD?type=design&node-id=0%3A1&t=hDW9kJgniAdpezfv-1" target="_blank">UI/UX Design </a>
+   <li><a href="https://www.dowajoyak.store" target="_blank">ERD </a>
+</ul>
 <br>
 
 <h2>👪 팀원 소개</h2>
+<br/>
 <div align="center">
 
 |<a href="https://github.com/yeomdogyeong"> 염도경 </a><br>FE Leader|<a href="https://github.com/ggggggggithub"> 김성수 </a><br>FE|<a href="https://github.com/nowaveosu"> 노호준 </a><br>FE|<a href="https://github.com/wlsljh0516"> 이진하A </a><br>FE|<a href="https://github.com/Sniij"> 조만기 </a><br>BE Leader|<a href="https://github.com/insooY"> 양인수 </a><br>BE|<a href="https://github.com/Gitdonghee"> 한동희 </a><br>BE|
@@ -38,6 +50,7 @@
 
 <br>
 <h2>🚩 멤버별 기능 구현</h2>
+<br/>
 <div align="center">
 
 </div>
@@ -91,10 +104,10 @@
 
   </div>
 
-
+<br/>
 <h2>Stacks used 🛒</h2>
-<div align="center">
-    <p style="font-weight: bold; font-size:25px">Tools</p>
+<div>
+    <p style="font-weight: bold; font-size:30px">Tools</p>
 <table>
   <thead>
     <tr>
@@ -115,7 +128,7 @@
     </tr>
   </tbody>
 </table>
-    <p style="font-weight: bold; font-size:25px">Back-End</p>
+    <p style="font-weight: bold; font-size:30px">Back-End</p>
 <table>
   <thead>
     <tr>
@@ -138,7 +151,7 @@
     </tr>
   </tbody>
 </table>
-    <p style="font-weight: bold; font-size:25px">Front-End</p>
+    <p style="font-weight: bold; font-size:30px">Front-End</p>
 <table>
   <thead>
     <tr>
@@ -165,3 +178,22 @@
 </table>
 
 </div>
+
+
+<h2>🗒️ Commit convention</h2>
+<br>
+
+|Message|설명|
+|:---:|:---|
+|[BE]| Back-End|
+|[FE]| Front-End|
+|[Feat]| 기능구현|
+|[Comment]|주석 등 필요한 코멘트|
+|[Docs]|문서 관련 수정|
+|[Fix]|버그 수정|
+|[Refactor]|코드 리팩토링|
+|[Test]|테스트 코드 추가|
+|[Etc] |이외 기타사항|
+
+	
+
