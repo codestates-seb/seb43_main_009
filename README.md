@@ -41,7 +41,7 @@
 
 |<a href="https://github.com/yeomdogyeong"> 염도경 </a><br>FE Leader|<a href="https://github.com/ggggggggithub"> 김성수 </a><br>FE|<a href="https://github.com/nowaveosu"> 노호준 </a><br>FE|<a href="https://github.com/wlsljh0516"> 이진하A </a><br>FE|<a href="https://github.com/Sniij"> 조만기 </a><br>BE Leader|<a href="https://github.com/insooY"> 양인수 </a><br>BE|<a href="https://github.com/Gitdonghee"> 한동희 </a><br>BE|
 |---|---|---|---|---|---|---|
-|<img width="430px" height="95px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
+|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"/>|<img width="550px" src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"/>|<img width="430px" src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"/>|<img width="500px" src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"/>|
 
 
 </div>
@@ -138,7 +138,7 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"> <img alt="Github" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/> </td>
+      <td align="center"> <img alt="Github" src="https://i.ibb.co/b79YbB3/291716-github-logo-social-network-social-icon.png" width="50"/> </td>
       <td align="center"> <img alt="IntelliJ" src="https://user-images.githubusercontent.com/25181517/192108890-200809d1-439c-4e23-90d3-b090cf9a4eea.png" width="50" > </td>
       <td align="center"> <img alt="VSCode" src="https://i.ibb.co/SwMG1sf/download-9.png" width="50"> </td>
       <td align="center"> <img alt="Discord" src="https://i.ibb.co/QDLgLdS/discord-logo-discord-icon-transparent-free-png.webp" width="70"></td>
