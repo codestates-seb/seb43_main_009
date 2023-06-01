@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './page/Home';
 import CommunityWrite from './page/community/CommunityWrite';
-import Login from './page/user/Login';
+import Login from './page/user/Login.tsx';
 import Signup from './page/user/Signup';
 import Community from './page/community/Community';
 import Survey from './page/survey/Survey';

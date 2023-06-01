@@ -50,18 +50,13 @@ module.exports = (env) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.(png|jpe?g|gif)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-              //이미지 파일을 불러올 때 각 파일의 이름과 확장자로 불러오게
-              //hash는 파일을 호출 할 때 최신 파일을 호출할 수 있게 해준다
-              options: {
-                name: '[name].[ext]',
-                outputPath: 'images/',
-              },
-            },
-          ],
+          test: /\.(?:gif|png|jpg|jpeg)$/i,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
         },
       ],
     },

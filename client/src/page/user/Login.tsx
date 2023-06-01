@@ -4,7 +4,6 @@ import Layout from '../../common/Layout';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { Axios } from '../../utils/api';
-import logo from '../../../public/logo.png';
 import googleLogo from '../../../public/googleLogo.png';
 import naverLogo from '../../../public/naverLogo.png';
 import kakaoLogo from '../../../public/kakaoLogo.png';
@@ -37,7 +36,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   window.scrollTo(0, 0);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await Axios.post('/users/login', {
