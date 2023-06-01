@@ -2,7 +2,9 @@
 <br/>
 <div align="center">
 <br/>
-<img src="client/public/logo.png" style="width:200px;"/>
+<a href="https://www.dowajoyak.store" target="_blank">
+   <img src="client/public/logo.png" style="width:200px;"/>
+</a>
 <br/>
 <h3> 본인의 알러지 입력을 기반으로 한 약 검색서비스, 도와조약입니다 </h3>	
 <p align='center'>
