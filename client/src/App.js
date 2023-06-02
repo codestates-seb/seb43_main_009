@@ -3,7 +3,7 @@ import React from 'react';
 import Home from './page/Home';
 import CommunityWrite from './page/community/CommunityWrite';
 import Login from './page/user/Login.tsx';
-import Signup from './page/user/Signup';
+import Signup from './page/user/Signup.tsx';
 import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
 import SearchMain from './page/search/SearchMain';

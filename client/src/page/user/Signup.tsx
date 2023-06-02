@@ -35,7 +35,7 @@ const Signup = () => {
   const [DisplayNameInputValue, setDisplayNameInputValue] = useState('');
   const [passwordWarning, setPasswordWarning] = useState('');
   window.scrollTo(0, 0);
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setPasswordInputValue(e.target.value);
     const password = e.target.value;
     if (password.length < 8) {
@@ -54,7 +54,7 @@ const Signup = () => {
       setPasswordWarning('');
     }
   };
-  const handleSignup = async (e) => {
+  const handleSignup = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await Axios.post('/users/signup', {
