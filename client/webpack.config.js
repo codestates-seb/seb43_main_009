@@ -27,6 +27,9 @@ module.exports = (env) => {
       filename: 'bundle.js',
       clean: true,
     },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+    },
     module: {
       rules: [
         {
@@ -35,6 +38,22 @@ module.exports = (env) => {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
+        },
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  '@babel/preset-env',
+                  '@babel/preset-react',
+                  '@babel/preset-typescript',
+                ],
+              },
+            },
+          ],
+          exclude: /node_modules/,
         },
         {
           test: /\.html$/,

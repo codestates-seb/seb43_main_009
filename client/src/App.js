@@ -8,7 +8,7 @@ import Community from './page/community/Community';
 import Survey from './page/survey/Survey';
 import SearchMain from './page/search/SearchMain';
 import SearchResult from './page/search/SearchResult';
-import Board from './page/community/Board';
+import Board from './page/community/Board.tsx';
 import SearchList from './page/search/Searchlist';
 import Mypage from './page/user/Mypage';
 import { getCookie } from './utils/cookie';
