@@ -79,7 +79,10 @@
 <details>
 <summary>조만기</summary>
 <div markdown="1">       
-
+   
+- Git Branch strategy design <br/>
+- Github convention configuration <br/>
+- 커뮤니티 게시판 공동 구현 <br/>
 - OAuth2(Google) 구현<br/>
 - Spring Security configuration (For login, signup) <br/>
 - CORS configuration(security+S3)<br/>
@@ -97,8 +100,7 @@
 - AWS IAM 유저 생성 후 권한 설정하여 팀원들이 AWS 서비스에 접속할 수 있도록 configuration
 - 커뮤니티 CRUD 기존 부분에서 token 검사를 통한 authorization logic으로 refactoring하여 보안성 높임 <br/>
 - 검색 API 기존 부분에서 기능별로 class 분리시켜 서로의 의존성을 떨어뜨리는 refactoring을 통해 유지보수 편의성과 안정성을 높임 <br/>
-- 커뮤니티 게시판 공동 구현 <br/>
-   
+ 
 </div>
 </details>
 
