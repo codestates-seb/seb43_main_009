@@ -32,14 +32,18 @@ import {
   StyledLink,
 } from '../../style/LoginStyle';
 
-const LoginModal = ({ onClose, isClosing }) => {
+interface LoginModalProps {
+  onClose: () => void;
+  isClosing: boolean;
+}
+const LoginModal = ({ onClose, isClosing }: LoginModalProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   window.scrollTo(0, 0);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await Axios.post('/users/login', {

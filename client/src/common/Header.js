@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { login, logout } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStep } from '../redux/surveySlice';
-import LoginModal from '../page/user/LoginModal';
+import LoginModal from '../page/user/LoginModal.tsx';
 import {
   GlobalFont,
   HeaderWrapper,
