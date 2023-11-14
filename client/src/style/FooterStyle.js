@@ -3,28 +3,25 @@ import '../variables.css';
 
 const FooterStyle = styled.footer`
   position: relative;
-  height: 100%;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'MaplestoryOTFBold';
+
   li {
     color: #000000;
     display: inline-block;
     text-align: center;
-    margin: 0px 10px;
+    margin: 5px 30px;
   }
-  h3 {
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 1em;
-  }
-  h4 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+
+  .Teamh4 {
+    margin-left: 10px;
+    font-size: 10px;
+    margin-top: 10px;
   }
   li > span {
     display: block;
     text-align: center;
-    font-size: 20px;
+    font-size: 13px;
+    color: gray;
     @media only screen and (max-width: 768px) {
       font-size: 10px;
     }
@@ -38,7 +35,7 @@ const FooterStyle = styled.footer`
     background-color: var(--blackalpha-800);
   }
   .content {
-    background-color: #d9d9d9;
+    border-top: 1px solid #e0e0e0;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -59,18 +56,17 @@ const FooterStyle = styled.footer`
     flex-direction: column;
   }
   .Teamul {
-    height: auto;
     display: flex;
-    padding-inline-start: 0;
+    /* padding-inline-start: 0; */
   }
   .Teamh4 {
-    font-size: 20px;
+    font-size: 15px;
     @media only screen and (max-width: 768px) {
       font-size: 10px;
     }
   }
   .Teamspan {
-    font-size: 20px;
+    font-size: 15px;
     @media only screen and (max-width: 768px) {
       font-size: 15px;
     }
@@ -84,6 +80,13 @@ const FooterStyle = styled.footer`
       height: 50px;
     }
   }
+
+  .github-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+  }
+
   .footerLogo {
     display: flex;
     justify-content: center;
@@ -134,22 +137,22 @@ const FooterStyle = styled.footer`
     }
   }
   .linkSNS {
-    width: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
   }
   .linkSNS > a {
     padding: 5px;
     border-radius: 50%;
     color: var(--white);
-    border: 1px solid var(--gray-600);
     cursor: pointer;
   }
   .linkSNS > a:hover {
     color: var(--blackalpha-900);
     background: var(--white);
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
   }
 `;
 
