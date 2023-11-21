@@ -67,7 +67,7 @@ export const Menu = styled.div`
   }
   &.selected {
     color: #f05758;
-    border-bottom 2px solid #f05758;  
+    border-bottom: 2px solid #f05758;
   }
 `;
 
