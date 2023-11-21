@@ -1,7 +1,7 @@
 import React from 'react';
 import FooterStyle from '../style/FooterStyle';
-import { RxNotionLogo } from 'react-icons/rx';
-import { GoMarkGithub } from 'react-icons/go';
+// import { RxNotionLogo } from 'react-icons/rx';
+// import { GoMarkGithub } from 'react-icons/go';
 
 function Footer() {
   return (
@@ -10,7 +10,7 @@ function Footer() {
         <div className="content-template">
           <div className="content">
             <div className="Team">
-              <h4 className="Teamh4">Front-End</h4>
+              <div className="Teamh4">FE🧃</div>
               <ul className="Teamul">
                 <li>
                   <a
@@ -20,7 +20,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307158-1cb6146d-53a1-4c06-9f8e-9ab3b6557199.jpg"
+                      src="https://github.com/yeomdogyeong.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -35,7 +35,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307301-f1f52c06-781b-43ff-9493-d9e69c7ea118.jpg"
+                      src="https://github.com/ggggggggithub.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -49,7 +49,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307316-087601a2-bf93-4bf3-a7b1-b128243ef242.jpg"
+                      src="https://github.com/nowaveosu.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -63,7 +63,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307329-5a37c265-ec9d-4a63-acd3-e3d5f69068b0.jpg"
+                      src="https://github.com/wlsljh0516.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -72,7 +72,7 @@ function Footer() {
               </ul>
             </div>
             <div className="Team">
-              <h4 className="Teamh4">Back-End</h4>
+              <div className="Teamh4">BE🧃</div>
               <ul className="Teamul">
                 <li>
                   <a
@@ -82,7 +82,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307385-877084c4-1a4d-4b61-9c2c-eec712e6bb3e.jpg"
+                      src="https://github.com/Sniij.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -97,7 +97,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307351-71145bf5-c902-434b-90e3-9563385b9c71.jpg"
+                      src="https://github.com/insooY.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -111,7 +111,7 @@ function Footer() {
                   >
                     <img
                       className="profile-icon"
-                      src="https://user-images.githubusercontent.com/82639552/235307360-cd8e5f1d-ee0c-4295-bad2-278d072ccd5e.jpg"
+                      src="https://github.com/Gitdonghee.png"
                       alt="Profile icon"
                     />
                   </a>
@@ -120,7 +120,7 @@ function Footer() {
               </ul>
             </div>
             <div className="teamContent">
-              <div className="teamLogo">
+              {/* <div className="teamLogo">
                 <img
                   src="https://camo.githubusercontent.com/dc42bd7ca030fc716579172fe7e093a7e510bd149987a7f5b6ed50b116343a88/68747470733a2f2f63617073756c652d72656e6465722e76657263656c2e6170702f6170693f747970653d776176696e6726636f6c6f723d6175746f266865696768743d3330302673656374696f6e3d68656164657226746578743d25454225423025393825454225414625423825454325424425413925323026666f6e7453697a653d3735"
                   alt="teamLogo"
@@ -129,21 +129,27 @@ function Footer() {
                 <span className="Teamspan">
                   Team. <strong>반미콩</strong>
                 </span>
-              </div>
+              </div> */}
               <div className="linkSNS">
-                <a
+                {/* <a
                   href="https://www.notion.so/codestates/db25eab5a8684b1786324e6cd8724852"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <RxNotionLogo size={25} />
-                </a>
+                  <RxNotionLogo size={33} />
+                </a> */}
                 <a
                   href="https://github.com/codestates-seb/seb43_main_009"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <GoMarkGithub size={25} />
+                  <img
+                    className="github-icon"
+                    src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png"
+                    alt="Profile icon"
+                  />
+
+                  {/* <GoMarkGithub size={33} /> */}
                 </a>
               </div>
             </div>
