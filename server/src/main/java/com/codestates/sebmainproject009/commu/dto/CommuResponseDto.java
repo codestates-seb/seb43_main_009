@@ -27,4 +27,6 @@ public class CommuResponseDto {
 
     private String imageUrl;
 
+    private String userProfileImageUrl;
+
 }

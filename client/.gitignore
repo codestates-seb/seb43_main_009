@@ -4,6 +4,6 @@
 
 # misc
 .env
-.env.local
+.env.dev
 
 npm-debug.log*

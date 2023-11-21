@@ -12,17 +12,22 @@ import {
   Step1Design,
 } from '../../../style/SurveyStyle';
 
-const Step1 = ({ nextSteps }) => {
+const Step1 = ({ nextSteps, resetSteps }) => {
   const [animate, setAnimate] = useState('up');
   const Navigate = useNavigate();
   const token = getUserInfo();
 
   useEffect(() => {
+    if (localStorage.getItem('hasLoaded') === 'false') {
+      localStorage.setItem('hasLoaded', 'true');
+      window.location.reload();
+    }
     window.scrollTo(0, 0);
   }, []);
 
   const handleStartClick = () => {
     if (token) {
+      resetSteps();
       setAnimate('down');
       setTimeout(() => {
         nextSteps();

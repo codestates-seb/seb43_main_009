@@ -13,6 +13,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
@@ -116,12 +117,16 @@ public class SearchController {
                 resultList = searchService.getItemInfoFromJsonArrayWithoutUser(jsonArray, itemName);
             }
 
-            return ResponseEntity.ok().body(resultList);
+            System.out.println(resultList);
 
+            if (!resultList.isEmpty())
+                return ResponseEntity.ok().body(resultList);
+            else
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("찾으시는 데이터가 존재하지 않습니다.");
         } catch (Exception e){
 
             // 현재까지 처리한 Exception 은 검색한 데이터가 없을 때 뿐임.
-            return ResponseEntity.ok().body("찾으시는 데이터가 존재하지 않습니다.");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("찾으시는 데이터가 존재하지 않습니다.");
         }
 
 

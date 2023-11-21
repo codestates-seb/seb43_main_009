@@ -10,6 +10,19 @@ export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 103;
 `;
+export const GoogleLogo = styled.img`
+  width: 24px;
+  margin-right: 11px;
+`;
+export const KakaoLogo = styled.img`
+  width: 20px;
+  margin-right: 10px;
+`;
+export const NaverLogo = styled.img`
+  width: 24px;
+  margin-right: 4px;
+`;
+
 export const ModalContent = styled.div`
   position: absolute;
   top: 50%;
@@ -33,7 +46,7 @@ export const ModalContent = styled.div`
       transform: translate(-50%, -50%) scale(1);
     }
     to {
-      transform: translate(-50%, -50%) scale(0.6);
+      transform: translate(-50%, -50%) scale(0.9);
     }
   }
 
@@ -81,8 +94,8 @@ export const GoogleLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: grey;
-  color: white;
+  background-color: white;
+  color: #3f7fea;
   border-radius: 3px;
   border: none;
   text-decoration-line: none;
@@ -109,7 +122,7 @@ export const NaverLogin = styled.a`
   width: 290px;
   height: 37px;
   margin-bottom: 10px;
-  background-color: #0ac157;
+  background-color: #1cc800;
   color: white;
   border-radius: 3px;
   border: none;
@@ -122,7 +135,7 @@ export const NaverLogin = styled.a`
 export const EmailLogin = styled.form`
   display: flex;
   width: 290px;
-  height: 255px;
+  height: 300px;
   flex-direction: column;
   align-items: center;
   border: none;
@@ -175,7 +188,7 @@ export const LoginButton = styled.button`
   border-radius: 25px;
   border: none;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
 
   &:hover {
     cursor: pointer;

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import penicillin from '../../../../public/penicillin.png';
 import anticonvulsants from '../../../../public/anticonvulsants.png';
 import aspirin from '../../../../public/aspirin.png';
+import GoogleSearch from '../../../common/GoogleSearch';
 import {
   AnimateContent,
   Step3Design,
   Step3Choice,
   Step3Choice2,
-  Etc,
   Step3Img,
   Nothing,
   Step3Button,
@@ -20,9 +20,10 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   const [animate, setAnimate] = useState('up');
   const [selectedButton, setSelectedButton] = useState(null);
   const [userInput, setUserInput] = useState('');
-
+  const [googleSearchValue, setGoogleSearchValue] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
+    localStorage.setItem('hasLoaded', 'false');
   }, []);
 
   const handleAllergyClick = (e) => {
@@ -57,11 +58,15 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
   };
 
   const handleNextClick = () => {
-    setAnimate('down');
-    setTimeout(() => {
-      submitForm();
-      nextSteps();
-    }, 1000);
+    if (selectedButton || googleSearchValue) {
+      setAnimate('down');
+      setTimeout(() => {
+        submitForm();
+        nextSteps();
+      }, 1000);
+    } else {
+      alert('해당하는 알러지를 최소 한가지 설정해주세요!');
+    }
   };
 
   return (
@@ -114,22 +119,22 @@ const Step3 = ({ allergy, prevSteps, nextSteps, changeInput, submitForm }) => {
               <img className="xray" src={xray} alt="xray"/>
               조영제 
               </button> */}
-        <Step3Input
+        {/* <Step3Input
           type="text"
           value={userInput}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onKeyDown={handleInputKeyDown}
           placeholder="기타 알러지를 입력하세요 ex: 유당"
-        />
-        {/* <div>
+        /> */}
+        <div>
           <GoogleSearch
             changeInput={changeInput}
             nextStep={nextSteps}
             setAnimate={setAnimate}
+            onInput={setGoogleSearchValue}
           />
-        </div> */}
-        {/* <Etc>기타 알러지를 입력하세요 ex: 유당</Etc> */}
+        </div>
         <Step3Button
           className="nonono"
           value="NONE"
