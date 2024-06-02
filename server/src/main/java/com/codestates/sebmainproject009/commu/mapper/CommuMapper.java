@@ -1,6 +1,5 @@
 package com.codestates.sebmainproject009.commu.mapper;
 
-import com.codestates.sebmainproject009.comment.dto.CommentResponseDto;
 import com.codestates.sebmainproject009.comment.entity.Comment;
 import com.codestates.sebmainproject009.commu.dto.*;
 import com.codestates.sebmainproject009.commu.entity.Commu;
@@ -22,13 +21,13 @@ public interface CommuMapper {
             return null;
         }
 
-        Long commuId = null;
+        String commuId = null;
         String title = null;
         String content = null;
         LocalDateTime createAt = null;
         int view = 0;
         List<Comment> comments = null;
-        Long userId = null;
+        String userId = null;
         String imageUrl = null;
         String userProfileImageUrl = null;
 

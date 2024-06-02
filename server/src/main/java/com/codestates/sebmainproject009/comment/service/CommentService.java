@@ -43,14 +43,14 @@ public class CommentService {
         Comment comment = mapper.commentPostDtoToComment(commentPostDto);
         comment.setUser(findUser);
         comment.setDisplayName(findUser.getDisplayName());
-        comment.setCommu(findCommu);
+        comment.setCommuId(findCommu.getCommuId());
 
         findCommu.addComment(comment);
 
         return commentRepository.save(comment);
     }
 
-    public void deleteCommentsByCommuId(long commuId){
+    public void deleteCommentsByCommuId(String commuId){
 
         Commu foundCommu = commuService.findCommu(commuId);
 
@@ -62,13 +62,17 @@ public class CommentService {
 
     }
 
-    public void deleteComment(long commentId){
-        commentRepository.deleteById(commentId);
+    public void deleteComment(String commentId){
+        commentRepository.deleteByCommentId(commentId);
     }
 
-    public Comment findVerifiedComment(long commentId){
-        Optional<Comment> optionalComment = commentRepository.findById(commentId);
+    public Comment findVerifiedComment(String commentId){
+        Comment comment = commentRepository.findByCommentId(commentId);
 
-        return optionalComment.orElseThrow(()-> new NoSuchMessageException("댓글이 없습니다."));
+        return comment;
     }
+
+
+
+
 }

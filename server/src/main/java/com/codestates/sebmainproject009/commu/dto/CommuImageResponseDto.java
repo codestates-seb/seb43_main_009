@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CommuImageResponseDto {
 
-    private Long commuId;
+    private String commuId;
     private String title;
     private String content;
     private LocalDateTime createAt = LocalDateTime.now();

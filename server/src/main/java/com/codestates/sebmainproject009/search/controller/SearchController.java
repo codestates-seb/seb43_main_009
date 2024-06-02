@@ -1,9 +1,9 @@
 package com.codestates.sebmainproject009.search.controller;
 
 
-import com.codestates.sebmainproject009.json.service.JSONService;
 import com.codestates.sebmainproject009.api.service.APIServiceImpl;
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
+import com.codestates.sebmainproject009.json.service.JSONService;
 import com.codestates.sebmainproject009.search.entity.Item;
 import com.codestates.sebmainproject009.search.entity.ItemList;
 import com.codestates.sebmainproject009.search.service.SearchService;
@@ -19,9 +19,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
-
 import java.net.URL;
-import java.util.*;
+import java.util.List;
 
 
 @RestController

@@ -2,8 +2,8 @@ package com.codestates.sebmainproject009.auth.handler;
 
 import com.codestates.sebmainproject009.auth.jwt.JwtTokenizer;
 import com.codestates.sebmainproject009.auth.utils.CustomAuthorityUtils;
-import com.codestates.sebmainproject009.user.service.UserService;
 import com.codestates.sebmainproject009.user.entity.User;
+import com.codestates.sebmainproject009.user.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

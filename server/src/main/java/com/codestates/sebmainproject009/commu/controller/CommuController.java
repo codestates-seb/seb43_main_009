@@ -56,7 +56,7 @@ public class CommuController {
     public ResponseEntity postCommu(@RequestParam("image") @Nullable MultipartFile image,
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content,
-                                    @RequestParam("userId") Long userId) {
+                                    @RequestParam("userId") String userId) {
 
         // 이미지 업로드 및 S3 URL 가져오는 로직
         String imageUrl = null;
@@ -92,7 +92,7 @@ public class CommuController {
     }
 
     @GetMapping("/{commuId}")
-    public ResponseEntity getCommu(@PathVariable long commuId){
+    public ResponseEntity getCommu(@PathVariable String commuId){
         Commu commu = commuService.findCommu(commuId);
         User user = commu.getUser();
 
@@ -104,13 +104,13 @@ public class CommuController {
     }
 
     @PatchMapping("/{commuId}")
-    public ResponseEntity patchCommu(@PathVariable long commuId,
+    public ResponseEntity patchCommu(@PathVariable String commuId,
                                      @RequestBody CommuPatchDto commuPatchDto,
                                      @RequestHeader("Authorization") String authorizationHeader){
 
         String token = jwtTokenizer.extractTokenFromHeader(authorizationHeader);
 
-        Long userId;
+        String userId;
         if(token != null){
             userId = jwtTokenizer.extractUserIdFromToken(token);
         }else {
@@ -129,14 +129,14 @@ public class CommuController {
     }
 
     @DeleteMapping("/{commuId}")
-    public ResponseEntity deleteCommu(@PathVariable long commuId,
+    public ResponseEntity deleteCommu(@PathVariable String commuId,
                                       @RequestHeader("Authorization") String authorizationHeader){
         String token = jwtTokenizer.extractTokenFromHeader(authorizationHeader);
 
-        Long userId;
+        String userId;
 
         if(token != null){
-            userId = jwtTokenizer.extractUserIdFromToken(token);
+            userId = String.valueOf(jwtTokenizer.extractUserIdFromToken(token));
         }else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

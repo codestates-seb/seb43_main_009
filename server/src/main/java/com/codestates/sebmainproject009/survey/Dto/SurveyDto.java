@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SurveyDto {
-      private long userId;
+      private String userId;
       private String disease;
       private String allergy;
 }

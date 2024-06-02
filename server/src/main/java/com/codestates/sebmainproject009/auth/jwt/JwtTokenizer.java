@@ -130,7 +130,7 @@ public class JwtTokenizer {
         return null;
     }
 
-    public Long extractUserIdFromToken(String requestToken){
+    public String extractUserIdFromToken(String requestToken){
         if(requestToken!=null) {
             Jws<Claims> claims =
                     getClaims(requestToken, encodeBase64SecretKey(secretKey));
@@ -138,7 +138,7 @@ public class JwtTokenizer {
 
             if(userIdString!=null){
                 try{
-                    return Long.parseLong(userIdString);
+                    return userIdString;
                 } catch (NumberFormatException e){
                     throw new IllegalArgumentException(e.getMessage());
                 }
@@ -177,9 +177,9 @@ public class JwtTokenizer {
         return token;
     }
 
-    public Long getUserId(String token) {
+    public String getUserId(String token) {
 
-        Long userId;
+        String userId;
 
         if (token != null) {
             userId = extractUserIdFromToken(token);

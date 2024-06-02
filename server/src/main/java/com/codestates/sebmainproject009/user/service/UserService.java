@@ -58,28 +58,22 @@ public class UserService {
         return userRepository.save(findUser);
     }
 
-    @Transactional(readOnly = true)
-    public User findUser(long userId){
 
-        return findVerifiedUser(userId);
-    }
     public User findUser(String email){
         Optional<User> optionalUser = userRepository.findByEmail(email);
 
         return optionalUser.orElseThrow();
     }
 
-    public void deleteUser(long userId){
+    public void deleteUser(String userId){
         User findUser = findVerifiedUser(userId);
         userRepository.delete(findUser);
     }
 
     @Transactional(readOnly = true)
-    public User findVerifiedUser(long userId){
-        Optional<User>optionalUser = userRepository.findById(userId);
-
-        return optionalUser.orElseThrow(()->
-                new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+    public User findVerifiedUser(String userId){
+        User user = userRepository.findByUserId(userId);
+        return user;
     }
 
     protected void verifyExistsEmail(String email) {

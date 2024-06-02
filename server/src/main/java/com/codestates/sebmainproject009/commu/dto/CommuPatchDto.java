@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CommuPatchDto {
-    private Long commuId;
+    private String commuId;
     private String title;
     private String content;
-    private Long userId;
+    private String userId;
 }

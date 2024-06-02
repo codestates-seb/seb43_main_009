@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -48,7 +49,7 @@ public class UserController {
     }
 
     @PatchMapping("/{userId}")
-    public ResponseEntity patchUser(@PathVariable @Positive long userId,
+    public ResponseEntity patchUser(@PathVariable @Positive String userId,
                                     @RequestBody UserPatchDto userPatchDto){
         userPatchDto.setUserId(userId);
 
@@ -58,8 +59,8 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity getUser(@PathVariable @Positive long userId){
-        User user = userService.findUser(userId);
+    public ResponseEntity getUser(@PathVariable @Positive String userId){
+        User user = userService.findVerifiedUser(userId);
 
         UserResponseDto userResponseDto = mapper.userToUserResponseDto(user);
         userResponseDto.setProfileImgUrl(user.getProfileImgUrl());
@@ -72,14 +73,14 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity deleteUser(@PathVariable @Positive long userId){
+    public ResponseEntity deleteUser(@PathVariable @Positive String userId){
 
         List<Commu> foundCommu = commuService.findCommuList();
 
         for(Commu data: foundCommu){
-            long found = data.getUser().getUserId();
+            String found = data.getUser().getUserId();
 
-            if(found==userId){
+            if(Objects.equals(found, userId)){
                 commuService.deleteCommu(data.getCommuId());
 
                 // comment 는 글 삭제 메서드에 포함되어 있음

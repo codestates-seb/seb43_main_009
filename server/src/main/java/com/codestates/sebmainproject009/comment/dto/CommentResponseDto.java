@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CommentResponseDto {
-    private Long commentId;
+    private String commentId;
     private String comment;
     private String displayName;
     private LocalDateTime createAt = LocalDateTime.now();

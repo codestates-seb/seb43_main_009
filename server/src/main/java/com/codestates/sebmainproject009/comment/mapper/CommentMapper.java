@@ -3,8 +3,6 @@ package com.codestates.sebmainproject009.comment.mapper;
 import com.codestates.sebmainproject009.comment.dto.CommentPostDto;
 import com.codestates.sebmainproject009.comment.dto.CommentResponseDto;
 import com.codestates.sebmainproject009.comment.entity.Comment;
-import com.codestates.sebmainproject009.commu.dto.CommuResponsesDto;
-import com.codestates.sebmainproject009.commu.entity.Commu;
 import org.mapstruct.Mapper;
 
 import java.util.List;

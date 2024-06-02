@@ -1,35 +1,31 @@
 package com.codestates.sebmainproject009.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Entity
 @Getter
 @Setter
-@Table(name = "user")
+@Document("user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long userId;
-    @Column(updatable = false, nullable = false, unique = true)
-    String email;
-    @Column(nullable = false)
-    String displayName;
-    @Column(nullable = false)
-    String password;
-    @Column
+    private String objectId;
+    private String userId;
+    private String email;
+    private String displayName;
+    private String password;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime createAt = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime();
 
-    @ElementCollection(fetch = FetchType.EAGER)
     private List<String > roles = new ArrayList<>();
 
     public User(String email, String displayName) {
@@ -37,12 +33,10 @@ public class User {
         this.displayName = displayName;
     }
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(length = 20, nullable = true)
+
     private WorriedOrgan worriedOrgan = WorriedOrgan.NONE;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(length = 20, nullable = true)
+
     private Allergy allergy = Allergy.NONE;
 
     private String otherAllergy;

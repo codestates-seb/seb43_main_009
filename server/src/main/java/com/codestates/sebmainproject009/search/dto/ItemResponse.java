@@ -1,10 +1,7 @@
 package com.codestates.sebmainproject009.search.dto;
 
 import com.codestates.sebmainproject009.search.entity.Item;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.http.StreamingHttpOutputMessage;
 
-import java.util.Collection;
 import java.util.List;
 
 public class ItemResponse {

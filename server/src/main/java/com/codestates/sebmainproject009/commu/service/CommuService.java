@@ -40,11 +40,10 @@ public class CommuService {
     public Commu createCommu(CommuPostDto commuPostDto){
         User user = userService.findVerifiedUser(commuPostDto.getUserId());
         Commu commu = mapper.commuPostDtoToCommu(commuPostDto);
+        commu.setView(0);
+        commu.setUser(user);
 
-        Commu cratedCommu = commu;
-        cratedCommu.setUser(user);
-
-        return commuRepository.save(cratedCommu);
+        return commuRepository.save(commu);
     }
 
     public Commu updateCommu(Commu commu){
@@ -58,7 +57,7 @@ public class CommuService {
         return commuRepository.save(findCommu);
     }
 
-    public Commu findCommu(long commuId){
+    public Commu findCommu(String commuId){
         Commu foundCommu = findVerifiedCommu(commuId);
         foundCommu.setView(foundCommu.getView()+1);
 
@@ -73,31 +72,31 @@ public class CommuService {
         return commuRepository.findAll();
     }
 
-    public void deleteCommu(long commuId){
+    public void deleteCommu(String commuId){
         Commu foundCommu = findVerifiedCommu(commuId);
         List<Comment> commentList = foundCommu.getComments();
         for(Comment comment : commentList){
             commentRepository.delete(comment);
         }
 
-        commuRepository.deleteById(commuId);
+        commuRepository.deleteByCommuId(commuId);
     }
 
-    public Commu findVerifiedCommu(long commuId){
-        Optional<Commu>optionalCommu = commuRepository.findById(commuId);
+    public Commu findVerifiedCommu(String commuId){
+        Commu commu = commuRepository.findByCommuId(commuId);
 
-        return optionalCommu.orElseThrow(()-> new NoSuchMessageException("게시글이 없습니다."));
+        return commu;
     }
 
 
-    public boolean isSameWriter(Long userId, long commuId) {
+    public boolean isSameWriter(String userId, String commuId) {
         Commu foundCommu = findVerifiedCommu(commuId);
-        Long writerId = foundCommu.getUser().getUserId();
+        String writerId = foundCommu.getUser().getUserId();
         return writerId.equals(userId);
     }
 
 
-    public Commu createCommuCustom(String title, String content, String imageUrl,Long userId) {
+    public Commu createCommuCustom(String title, String content, String imageUrl,String userId) {
 
         User user = userService.findVerifiedUser(userId);
         Commu commu =new Commu();

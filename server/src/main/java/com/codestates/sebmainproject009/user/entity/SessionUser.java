@@ -10,7 +10,7 @@ public class SessionUser implements Serializable {
     SessionUser(){}
 
     public SessionUser(User user){
-        this.displayName = user.displayName;
+        this.displayName = user.getDisplayName();
         this.email = user.getEmail();
     }
 

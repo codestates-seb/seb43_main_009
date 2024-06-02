@@ -26,7 +26,7 @@ public class S3Controller {
 
     @PostMapping(value = "/postsToS3", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity postToS3(@RequestParam("image") MultipartFile image,
-                                   @RequestParam("userId") Long userId){
+                                   @RequestParam("userId") String userId){
         try {
             String imageUrl = null;
             if(image!=null){

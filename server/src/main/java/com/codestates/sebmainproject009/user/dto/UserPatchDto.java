@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class UserPatchDto {
 
-    private long userId;
+    private String userId;
 
     @NotBlank(message = "이름을 적어주세요.")
     private String displayName;
