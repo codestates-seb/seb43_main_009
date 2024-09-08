@@ -26,9 +26,9 @@ export const fetchBoardData = createAsyncThunk(
       console.log(response);
       const userProfileImageUrl = response.data.userProfileImageUrl;
 
-      return response.data;
+      return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response.data.data);
     }
   },
 );
