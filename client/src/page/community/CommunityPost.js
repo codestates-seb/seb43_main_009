@@ -62,7 +62,7 @@ const Commpost = () => {
   return (
     <CommunitypostDesign>
       {currentItems &&
-        currentItems.map((el) => (
+        currentItems.map((el, index) => (
           <ul
             key={el.commuId}
             className="list"
@@ -70,7 +70,7 @@ const Commpost = () => {
               goBoard(el);
             }}
           >
-            <li className="postid">{el.commuId}</li>
+            <li className="postid">{data.length - (itemOffset + index ) + el.commuId.substring(el.commuId.length - 2) }</li>
             <li className="postname">{el.displayName}</li>
             <li className="posttitle">
               {el.title.length > 20
